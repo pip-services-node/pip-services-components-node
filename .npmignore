@@ -3,6 +3,7 @@
 /test
 /obj/test
 /data
+/doc/api
 /Dockerfile*
 /docker-compose*
 /.dockerignore
