@@ -12,4 +12,5 @@ __export(require("./count"));
 __export(require("./lock"));
 __export(require("./log"));
 __export(require("./info"));
+__export(require("./test"));
 //# sourceMappingURL=index.js.map

@@ -7,3 +7,4 @@ export * from './count';
 export * from './lock';
 export * from './log';
 export * from './info';
+export * from './test';
