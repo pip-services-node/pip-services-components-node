@@ -4,6 +4,7 @@
 
 ### Features
 * **test** Added Shutdown
+* Added Component
 
 ### Breaking changes
 * Moved component definitions into a separate package

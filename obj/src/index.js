@@ -13,4 +13,6 @@ __export(require("./lock"));
 __export(require("./log"));
 __export(require("./info"));
 __export(require("./test"));
+var Component_1 = require("./Component");
+exports.Component = Component_1.Component;
 //# sourceMappingURL=index.js.map

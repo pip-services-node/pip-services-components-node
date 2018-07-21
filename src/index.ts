@@ -8,3 +8,5 @@ export * from './lock';
 export * from './log';
 export * from './info';
 export * from './test';
+
+export { Component } from './Component';
