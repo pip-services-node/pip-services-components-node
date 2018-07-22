@@ -1,4 +1,4 @@
-# Pip.Services Commons for Node.js Downloads
+# Pip.Services Components for Node.js Downloads
 
 Binary releases of the commons are available through NPM global repository. 
 To use the commons you can either include dependency into your **package.json** file:
@@ -7,7 +7,7 @@ To use the commons you can either include dependency into your **package.json** 
 {
     ...
     dependencies: {
-        "pip-services-components-node": "^1.0.*"
+        "pip-services-components-node": "^3.0.*"
     }
 }
 ``` 

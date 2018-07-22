@@ -1,4 +1,4 @@
-# Development and Testing Guide <br/> Pip.Services Commons for Node.js
+# Development and Testing Guide <br/> Pip.Services Components for Node.js
 
 This document provides high-level instructions on how to build and test the microservice.
 
