@@ -30,8 +30,8 @@ export class ContextInfo implements IReconfigurable {
 	 * 
 	 * @param config 	the ConfigParams to configure this object with.
 	 * 
-	 * @see ConfigParams
-	 * @see IConfigurable
+	 * @see [[ConfigParams]]
+	 * @see [[IConfigurable]]
 	 */
 	public configure(config: ConfigParams): void {
 		this.name = config.getAsStringWithDefault("name", this.name);
@@ -75,7 +75,7 @@ export class ContextInfo implements IReconfigurable {
 	 * @param properties 	values that will be converted to a StringValueMap and saved
 	 * 						to this ContextInfo's properties.
 	 * 
-	 * @see StringValueMap
+	 * @see [[StringValueMap]]
 	*/
 	public set properties(properties: any) {
 		this._properties = StringValueMap.fromValue(properties);
@@ -87,7 +87,7 @@ export class ContextInfo implements IReconfigurable {
 	 * 
 	 * @param config 	ConfigParams to use when configuring the new ContextInfo object.
 	 * 
-	 * @see ConfigParams
+	 * @see [[ConfigParams]]
 	 */
 	public static fromConfig(config: ConfigParams): ContextInfo {
 		let result = new ContextInfo();

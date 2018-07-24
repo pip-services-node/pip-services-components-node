@@ -3,18 +3,18 @@ import { StringValueMap } from 'pip-services-commons-node';
 
 /**
  * Used for storing various credentials, such as passwords, logins, application keys, and secrets. 
- * This information is usually linked with connection parameters (see {@link ConnectionParams} for more info). 
+ * This information is usually linked with connection parameters (see [[ConnectionParams]] for more info). 
  * Connection parameters and authentication parameters are separated, due to the fact that credentials need to 
  * be saved as secrects with added security and protection. 
  * 
  * If a service needs to authenticate itself on a certain connection, then the username, password, 
  * and other parameters can be set using a CredentialParams object. Relevant helper classes 
- * (like {@link CredentialResolver}) can be used to acquiring these parameters and discover objects 
- * or components that store and retrieve credential parameters (credential stores - see {@link ICredentialStore}). 
+ * (like [[CredentialResolver]]) can be used to acquiring these parameters and discover objects 
+ * or components that store and retrieve credential parameters (credential stores - see [[ICredentialStore]]). 
  * 
- * @see ConnectionParams
- * @see CredentialResolver
- * @see ICredentialStore
+ * @see [[ConnectionParams]]
+ * @see [[CredentialResolver]]
+ * @see [[ICredentialStore]]
  */
 export class CredentialParams extends ConfigParams {
 
@@ -25,7 +25,7 @@ export class CredentialParams extends ConfigParams {
      * 
      * @param values    credential parameters to store in this object. Defaults to null.
      * 
-     * @see ConfigParams#ConfigParams
+     * @see [[ConfigParams.ConfigParams]]
      */
     public constructor(values: any = null) {
         super(values);
@@ -35,7 +35,7 @@ export class CredentialParams extends ConfigParams {
      * @returns     whether or not these CredentialParams contain a key that can be
      *              used in a credential store ("store_key" is not null?).
      * 
-     * @see ConfigParams
+     * @see [[ConfigParams]]
      */
     public useCredentialStore(): boolean {
         return super.getAsNullableString("store_key") != null;
@@ -44,7 +44,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @returns     the key to use for getting credentials from a credential store.
      * 
-     * @see #useCredentialStore
+     * @see [[useCredentialStore]]
      */
     public getStoreKey(): string {
         return super.getAsNullableString("store_key");
@@ -53,7 +53,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @param value     the key to use for getting credentials from a credential store.
      * 
-     * @see ConfigParams
+     * @see [[ConfigParams]]
      */
     public setStoreKey(value: string) {
         super.put("store_key", value);
@@ -62,7 +62,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @returns     the "username" (or "user") value stored in these CredentialParams.
      * 
-     * @see ConfigParams
+     * @see [[ConfigParams]]
      */
     public getUsername(): string {
         return super.getAsNullableString("username") || super.getAsNullableString("user");
@@ -71,7 +71,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @param value     the username to store in these CredentialParams.
      * 
-     * @see ConfigParams
+     * @see [[ConfigParams]]
      */
     public setUsername(value: string) {
         super.put("username", value);
@@ -80,7 +80,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @returns     the "password" (or "pass") value stored in these CredentialParams.
      * 
-     * @see ConfigParams
+     * @see [[ConfigParams]]
      */
     public getPassword(): string {
         return super.getAsNullableString("password") || super.getAsNullableString("pass");
@@ -89,7 +89,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @param value     the password to store in these CredentialParams.
      * 
-     * @see ConfigParams
+     * @see [[ConfigParams]]
      */
     public setPassword(value: string) {
         super.put("password", value);
@@ -98,7 +98,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @returns     the "access_id" (or "client_id") value stored in these CredentialParams.
      * 
-     * @see ConfigParams
+     * @see [[ConfigParams]]
      */
     public getAccessId(): string {
         return super.getAsNullableString("access_id") || super.getAsNullableString("client_id");
@@ -107,7 +107,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @param value     the access id to store in these CredentialParams.
      * 
-     * @see ConfigParams
+     * @see [[ConfigParams]]
      */
     public setAccessId(value: string) {
         super.put("access_id", value);
@@ -116,7 +116,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @returns     the "access_key" (or "client_key") value stored in these CredentialParams.
      * 
-     * @see ConfigParams
+     * @see [[ConfigParams]]
      */
     public getAccessKey(): string {
         return super.getAsNullableString("access_key") || super.getAsNullableString("client_key");
@@ -125,7 +125,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @param value     the access key to store in these CredentialParams.
      * 
-     * @see ConfigParams
+     * @see [[ConfigParams]]
      */
     public setAccessKey(value: string) {
         super.put("access_key", value);
@@ -138,7 +138,7 @@ export class CredentialParams extends ConfigParams {
 	 * 					Example: "Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z"
 	 * @returns			generated CredentialParams.
 	 * 
-	 * @see StringValueMap#fromString
+	 * @see [[StringValueMap.fromString]]
 	 */
     public static fromString(line: string): CredentialParams {
         let map = StringValueMap.fromString(line);
@@ -152,8 +152,8 @@ export class CredentialParams extends ConfigParams {
 	 * @param config 	ConfigParams with a section named "credential(s)".
 	 * @returns			generated list of CredentialParams.
 	 * 
-     * @see ConfigParams
-     * @see ConfigParams#getSection
+     * @see [[ConfigParams]]
+     * @see [[ConfigParams.getSection]]
 	 */
     public static manyFromConfig(config: ConfigParams): CredentialParams[] {
         let result: CredentialParams[] = [];
@@ -176,12 +176,12 @@ export class CredentialParams extends ConfigParams {
 
     /**
 	 * Static method that converts a ConfigParams object into a list of CredentialParams 
-     * (using {@link #manyFromConfig}) and returns the first one in the list.
+     * (using [[manyFromConfig]]) and returns the first one in the list.
 	 * 
 	 * @param config 	ConfigParams to convert into a credential parameters object.
 	 * @returns			generated CredentialParams.
 	 * 
-	 * @see #manyFromConfig
+	 * @see [[manyFromConfig]]
 	 */
     public static fromConfig(config: ConfigParams): CredentialParams {
         let credentials: CredentialParams[] = this.manyFromConfig(config);

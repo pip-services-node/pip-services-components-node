@@ -8,25 +8,25 @@ import { CredentialParams } from './CredentialParams';
 import { ICredentialStore } from './ICredentialStore';
 
 /**
- * Credential store (see {@link ICredentialStore}) that maintains its registry of credentials ({@link CredentialParams}) 
+ * Credential store (see [[ICredentialStore]]) that maintains its registry of credentials ([[CredentialParams]]) 
  * in memory. 
  * 
- * @see ICredentialStore
- * @see CredentialParams
+ * @see [[ICredentialStore]]
+ * @see [[CredentialParams]]
  */
 export class MemoryCredentialStore implements ICredentialStore, IReconfigurable {
     private readonly _items: StringValueMap = new StringValueMap();
 
     /**
      * Creates a MemoryCredentialStore object and configures it using the given ConfigParams. If no 
-     * ConfigParams are given, then the object must be configured using the {@link #configure} method, 
-     * or credentials must be stored using the {@link #store} method.
+     * ConfigParams are given, then the object must be configured using the [[configure]] method, 
+     * or credentials must be stored using the [[store]] method.
      * 
      * @param config    ConfigParams to configure the new object with.
      * 
-     * @see #configure
-     * @see #store
-     * @see ConfigParams
+     * @see [[configure]]
+     * @see [[store]]
+     * @see [[ConfigParams]]
      */
     public constructor(config: ConfigParams = null) {
         if (config != null)
@@ -34,13 +34,13 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
     }
 
     /**
-     * Configures this object by calling {@link #readCredentials}. Used to set the store's registery of credentials.
+     * Configures this object by calling [[readCredentials]]. Used to set the store's registery of credentials.
      * 
      * @param config    ConfigParams to configure this object with.
      * 
-     * @see #readCredentials
-     * @see ConfigParams
-     * @see IConfigurable
+     * @see [[readCredentials]]
+     * @see [[ConfigParams]]
+     * @see [[IConfigurable]]
      */
     public configure(config: ConfigParams): void {
         this.readCredentials(config);
@@ -52,7 +52,7 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      * 
      * @param credentials   ConfigParams containing credential information.
      * 
-     * @see ConfigParams
+     * @see [[ConfigParams]]
      */
     public readCredentials(credentials: ConfigParams) {
         this._items.clear();

@@ -72,23 +72,23 @@
 					<p>Supports both static and dynamic discovery.</p>
 					<ul>
 						<li>Static discovery: all services have static IP addresses (like a DNS, which also works using static discovery)
-							that are registered from the start (using {@link #configure}) and don&#39;t change along the way. As of late,
+							that are registered from the start (using <a href="memorydiscovery.html#configure">configure</a>) and don&#39;t change along the way. As of late,
 							static discovery has been used more often than dynamic, as it is simpler to use and more reliable
 						(infrastructure does all of the hard work right out of the box).</li>
 					</ul>
 					<ul>
 						<li>Dynamic discovery: every time a service starts, it registers its address in the discovery service (&quot;Service name&quot;
-							is available at &quot;IP address&quot;) using {@link #register}. Clients then ask to resolve the address by which the requested
+							is available at &quot;IP address&quot;) using <a href="memorydiscovery.html#register">register</a>. Clients then ask to resolve the address by which the requested
 							service can be reached. Dynamic discovery is more challenging to use than static discovery: if a service stops working,
 							its address needs to be refreshed, stale addresses need to be cleaned, heartbeats must be used – many problems and
 						challenges occur along the way.</li>
 					</ul>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
-						<dd><p>IDiscovery</p>
+						<dd><p><a href="../interfaces/idiscovery.html">IDiscovery</a></p>
 						</dd>
 						<dt>see</dt>
-						<dd><p>ConnectionParams</p>
+						<dd><p><a href="connectionparams.html">ConnectionParams</a></p>
 						</dd>
 					</dl>
 				</div>
@@ -149,24 +149,24 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/42fc0d2/src/connect/MemoryDiscovery.ts#L35">connect/MemoryDiscovery.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/edc5945/src/connect/MemoryDiscovery.ts#L35">connect/MemoryDiscovery.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Creates a MemoryDiscovery object and configures it for static discovery using the given ConfigParams. If no
-										ConfigParams are given, then the object must be configured using the {@link #configure} method, or it must
-									be used in dynamic discovery mode (using the {@link #register} method).</p>
+										ConfigParams are given, then the object must be configured using the <a href="memorydiscovery.html#configure">configure</a> method, or it must
+									be used in dynamic discovery mode (using the <a href="memorydiscovery.html#register">register</a> method).</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#configure</p>
+									<dd><p><a href="memorydiscovery.html#configure">configure</a></p>
 									</dd>
 									<dt>see</dt>
-									<dd><p>#register</p>
+									<dd><p><a href="memorydiscovery.html#register">register</a></p>
 									</dd>
 									<dt>see</dt>
-									<dd><p>ConfigParams</p>
+									<dd><p>[[ConfigParams]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -194,7 +194,7 @@
 					<div class="tsd-signature tsd-kind-icon">_items<span class="tsd-signature-symbol">:</span> <a href="discoveryitem.html" class="tsd-signature-type">DiscoveryItem</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/42fc0d2/src/connect/MemoryDiscovery.ts#L35">connect/MemoryDiscovery.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/edc5945/src/connect/MemoryDiscovery.ts#L35">connect/MemoryDiscovery.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -211,22 +211,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/42fc0d2/src/connect/MemoryDiscovery.ts#L62">connect/MemoryDiscovery.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/edc5945/src/connect/MemoryDiscovery.ts#L62">connect/MemoryDiscovery.ts:62</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Configures this object by calling {@link #readConnections}. Used to set the discovery service&#39;s static registery.</p>
+									<p>Configures this object by calling <a href="memorydiscovery.html#readconnections">readConnections</a>. Used to set the discovery service&#39;s static registery.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#readConnections</p>
+									<dd><p><a href="memorydiscovery.html#readconnections">readConnections</a></p>
 									</dd>
 									<dt>see</dt>
-									<dd><p>ConfigParams</p>
+									<dd><p>[[ConfigParams]]</p>
 									</dd>
 									<dt>see</dt>
-									<dd><p>IConfigurable</p>
+									<dd><p>[[IConfigurable]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -253,7 +253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/42fc0d2/src/connect/MemoryDiscovery.ts#L74">connect/MemoryDiscovery.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/edc5945/src/connect/MemoryDiscovery.ts#L74">connect/MemoryDiscovery.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -263,7 +263,7 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>ConfigParams</p>
+									<dd><p>[[ConfigParams]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -290,7 +290,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/42fc0d2/src/connect/MemoryDiscovery.ts#L96">connect/MemoryDiscovery.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/edc5945/src/connect/MemoryDiscovery.ts#L96">connect/MemoryDiscovery.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -361,7 +361,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/42fc0d2/src/connect/MemoryDiscovery.ts#L132">connect/MemoryDiscovery.ts:132</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/edc5945/src/connect/MemoryDiscovery.ts#L132">connect/MemoryDiscovery.ts:132</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -426,7 +426,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/42fc0d2/src/connect/MemoryDiscovery.ts#L112">connect/MemoryDiscovery.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/edc5945/src/connect/MemoryDiscovery.ts#L112">connect/MemoryDiscovery.ts:112</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

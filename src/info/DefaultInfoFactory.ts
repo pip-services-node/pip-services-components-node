@@ -6,7 +6,7 @@ import { ContextInfo } from './ContextInfo';
 /**
  * Contains static read-only descriptors for ContextInfo and ContainerInfo (as well as a default info descriptor). 
  * 
- * @see Factory
+ * @see [[Factory]]
  */
 export class DefaultInfoFactory extends Factory {
 	public static readonly Descriptor: Descriptor = new Descriptor("pip-services", "factory", "info", "default", "1.0");
@@ -16,7 +16,7 @@ export class DefaultInfoFactory extends Factory {
     /**
 	 * Adds object factories for ContextInfo and ContainerInfo to this Factory.
 	 * 
-	 * @see Factory#Factory
+	 * @see [[Factory.Factory]]
 	 */
 	public constructor() {
 		super();

@@ -6,7 +6,7 @@ import { MemoryCredentialStore } from './MemoryCredentialStore';
 /**
  * Contains static read-only descriptors for MemoryCredentialStore (as well as a default "credential-store" descriptor).
  * 
- * @see Factory
+ * @see [[Factory]]
  */
 export class DefaultCredentialStoreFactory extends Factory {
 	public static readonly Descriptor = new Descriptor("pip-services", "factory", "credential-store", "default", "1.0");
@@ -15,7 +15,7 @@ export class DefaultCredentialStoreFactory extends Factory {
 	/**
 	 * Adds an object factory for MemoryCredentialStore to this Factory.
 	 * 
-	 * @see Factory#Factory
+	 * @see [[Factory.Factory]]
 	 */
 	public constructor() {
         super();

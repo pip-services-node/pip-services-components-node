@@ -5,14 +5,14 @@ import { ConfigParams } from 'pip-services-commons-node';
 import { IConfigurable } from 'pip-services-commons-node'
 
 /**
- * Combination of the {@link IConfigReader} and {@link IConfigurable} interfaces. Allows for object 
- * configuration using {@link ConfigParams} via the {@link #configure} method, and contains the abstract 
- * method {@link #readConfig}, which, upon implementation, should contain the logic necessary for reading 
- * and parsing ConfigParams. Also contains the {@link #parameterize} method.
+ * Combination of the [[IConfigReader]] and [[IConfigurable]] interfaces. Allows for object 
+ * configuration using ConfigParams via the [[configure]] method, and contains the abstract 
+ * method [[readConfig]], which, upon implementation, should contain the logic necessary for reading 
+ * and parsing ConfigParams. Also contains the [[parameterize]] method.
  * 
- * @see IConfigReader
- * @see IConfigurable
- * @see ConfigParams
+ * @see [[IConfigReader]]
+ * @see [[IConfigurable]]
+ * @see [[ConfigParams]]
  */
 export abstract class ConfigReader implements IConfigurable {
     private _parameters: ConfigParams = new ConfigParams();
@@ -23,12 +23,12 @@ export abstract class ConfigReader implements IConfigurable {
      * Sets this object's configuration parameters.
      * 
      * @param config    ConfigParams that contain a section named "parameters", 
-     *                  which will be used when {@link #parameterize parameterizing} 
+     *                  which will be used when [[parameterize parameterizing]] 
      *                  configurations that are passed to this ConfigReader.
      * 
-     * @see #parameterize
-     * @see IConfigurable
-     * @see ConfigParams
+     * @see [[parameterize]]
+     * @see [[IConfigurable]]
+     * @see [[ConfigParams]]
      */
     public configure(config: ConfigParams): void {
         let parameters = config.getSection("parameters")
@@ -49,7 +49,7 @@ export abstract class ConfigReader implements IConfigurable {
         callback: (err: any, config: ConfigParams) => void): void;
 
     /**
-     * Protected method for parameterizing ConfigReaders, which allows using {@link https://handlebarsjs.com/ handlebars}
+     * Protected method for parameterizing ConfigReaders, which allows using [[https://handlebarsjs.com/ handlebars]]
      * to create parameterized configurations.
      * 
      * The idea behind using parameterized configurations: handlebars allows us to take a templated configuration and 

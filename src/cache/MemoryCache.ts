@@ -7,7 +7,7 @@ import { CacheEntry } from './CacheEntry';
 /**
  * Provides local in-memory cache support.
  * 
- * @see {ICache}
+ * @see [[ICache]]
  */
 export class MemoryCache implements ICache, IReconfigurable {
     //milliseconds
@@ -34,8 +34,8 @@ export class MemoryCache implements ICache, IReconfigurable {
 	 * @throws  MicroserviceError when component is in illegal state 
 	 *          or configuration validation fails. 
      * 
-     * @see ConfigParams
-     * @see IConfigurable
+     * @see [[ConfigParams]]
+     * @see [[IConfigurable]]
 	 */
     public configure(config: ConfigParams): void {
         this._timeout = config.getAsLongWithDefault("timeout", this._timeout);

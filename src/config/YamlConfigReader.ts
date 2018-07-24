@@ -10,7 +10,7 @@ import { FileConfigReader } from './FileConfigReader';
  /**
  * Provides methods for reading configuration parameters from a YAML file.
  * 
- * @see FileConfigReader
+ * @see [[FileConfigReader]]
  */
 export class YamlConfigReader extends FileConfigReader {
 
@@ -19,23 +19,23 @@ export class YamlConfigReader extends FileConfigReader {
      *              If 'path' is omitted in the constructor, then it must be set otherwise 
      *              (for example, using "setPath()") before using the new object.
      * 
-     * @see FileConfigReader
-     * @see FileConfigReader#setPath
+     * @see [[FileConfigReader]]
+     * @see [[FileConfigReader.setPath]]
      */
     public constructor(path: string = null) {
         super(path);
     }
 
     /**
-     * Reads the YAML data from the file and returns it as a parameterized {@link NullableMap} object. 
+     * Reads the YAML data from the file and returns it as a parameterized [[NullableMap]] object. 
      * Reader's path must be set.
      * 
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param parameters        used to parameterize the reader.
      * @returns                 NullableMap with data from the YAML file.
      * 
-     * @see ConfigReader#parameterize
-     * @see NullableMap
+     * @see [[ConfigReader.parameterize]]
+     * @see [[NullableMap]]
      */
     public readObject(correlationId: string, parameters: ConfigParams): any {
         if (super.getPath() == null)
@@ -59,7 +59,7 @@ export class YamlConfigReader extends FileConfigReader {
     }
     
     /**
-     * Reads the YAML data from the file and returns it as a parameterized {@link ConfigParams} object. 
+     * Reads the YAML data from the file and returns it as a parameterized ConfigParams object. 
      * Reader's path must be set.
      * 
      * @param correlationId     unique business transaction id to trace calls across components.
@@ -67,7 +67,8 @@ export class YamlConfigReader extends FileConfigReader {
      * @param callback          callback function that will be called with an error or with the
      *                          ConfigParams that were read.
      * 
-     * @see #readObject(correlationId: string, parameters: ConfigParams)
+     * @see [[ConfigParams]]
+     * @see [[readObject]]
      */
     public readConfig(correlationId: string, parameters: ConfigParams,
         callback: (err: any, config: ConfigParams) => void): void {
@@ -81,26 +82,26 @@ export class YamlConfigReader extends FileConfigReader {
     }
 
     /**
-     * Static implementation of YamlConfigReader's non-static {@link #readObject}.
+     * Static implementation of YamlConfigReader's non-static [[readObject]].
      * 
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param path              location of the target YAML file.
      * @param parameters        used to parameterize the reader.
      * 
-     * @see #readObject(correlationId: string, parameters: ConfigParams)
+     * @see [[readObject]]
      */
     public static readObject(correlationId: string, path: string, parameters: ConfigParams): void {
         return new YamlConfigReader(path).readObject(correlationId, parameters);
     }
 
     /**
-     * Static implementation of YamlConfigReader's non-static {@link #readConfig}.
+     * Static implementation of YamlConfigReader's non-static [[readConfig]].
      * 
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param path              location of the target YAML file.
      * @param parameters        used to parameterize the reader.
      * 
-     * @see #readConfig(correlationId: string, parameters: ConfigParams, callback: (err: any, config: ConfigParams) => void)
+     * @see [[readConfig]]
      */
     public static readConfig(correlationId: string, path: string, parameters: ConfigParams): ConfigParams {
         let value: any = new YamlConfigReader(path).readObject(correlationId, parameters);

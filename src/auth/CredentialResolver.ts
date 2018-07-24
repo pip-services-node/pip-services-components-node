@@ -9,11 +9,11 @@ import { CredentialParams } from './CredentialParams';
 import { ICredentialStore } from './ICredentialStore';
 
 /**
- * Helper class that stores credential parameters ({@link CredentialParams}) and is capable of acquiring parameters 
+ * Helper class that stores credential parameters ([[CredentialParams]]) and is capable of acquiring parameters 
  * from various credential stores.
  * 
- * @see CredentialParams
- * @see ICredentialStore
+ * @see [[CredentialParams]]
+ * @see [[ICredentialStore]]
  */
 export class CredentialResolver {
     private readonly _credentials: CredentialParams[] = [];
@@ -23,8 +23,8 @@ export class CredentialResolver {
      * @param config        ConfigParams (credentials) to configure this object with.
      * @param references    references to the credential stores that should be used by this CredentialResolver.
      * 
-     * @see #configure
-     * @see #setReferences
+     * @see [[configure]]
+     * @see [[setReferences]]
      */
     public constructor(config: ConfigParams = null, references: IReferences = null) {
         if (config != null) this.configure(config);
@@ -46,10 +46,10 @@ export class CredentialResolver {
      * 
      * @param config    credentials to add to this CredentialResolver's list of credentials.
      * 
-     * @see CredentialParams#manyFromConfig
-     * @see CredentialParams
-     * @see ConfigParams
-     * @see IConfigurable
+     * @see [[CredentialParams.manyFromConfig]]
+     * @see [[CredentialParams]]
+     * @see [[ConfigParams]]
+     * @see [[IConfigurable]]
      */
     public configure(config: ConfigParams): void {
         let credentials: CredentialParams[] = CredentialParams.manyFromConfig(config);
@@ -66,9 +66,9 @@ export class CredentialResolver {
     /**
      * Adds a new credential to this CredentialResolver's list of credentials.
      * 
-     * @param credential    CredentialParams for the credential that is to be added.
+     * @param credential    [[CredentialParams]] for the credential that is to be added.
      * 
-     * @see CredentialParams
+     * @see [[CredentialParams]]
      */
     public add(credential: CredentialParams): void {
         this._credentials.push(credential);
@@ -131,8 +131,8 @@ export class CredentialResolver {
     }
 
     /**
-     * Looks up a credential in this CredentialResolver using its list of credentials ({@link CredentialParams}) 
-     * and the credential stores ({@link ICredentialStore}) referenced.
+     * Looks up a credential in this CredentialResolver using its list of credentials ([[CredentialParams]]) 
+     * and the credential stores ([[ICredentialStore]]) referenced.
      * 
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param callback          callback function that will be called with an error or with the 

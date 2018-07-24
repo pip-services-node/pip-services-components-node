@@ -3,12 +3,12 @@ import { ConnectionParams } from './ConnectionParams';
 /**
  * The role of a Discovery service is to store a registry of various end-points (what services are where, and how to connect 
  * to them - similar to a DNS). It contains information about the end-points themselves, but does not have the credentials 
- * to connect to them (separated for security reasons - see {@link CredentialParams}). 
+ * to connect to them (separated for security reasons - see [[CredentialParams]]). 
  * 
  * This interface can be used for creating discovery services (connection registeries).
  * 
- * @see ConnectionParams
- * @see CredentialParams
+ * @see [[ConnectionParams]]
+ * @see [[CredentialParams]]
  */
 export interface IDiscovery {
     /**

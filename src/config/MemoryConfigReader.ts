@@ -14,9 +14,10 @@ export class MemoryConfigReader implements IConfigReader, IReconfigurable {
     /**
      * @param config    (optional) ConfigParams to use in this MemoryConfigReader. 
      *                  If 'config' is omitted in the constructor, then it must be set 
-     *                  using {@link #configure} prior to using the new object.
+     *                  using [[configure]] prior to using the new object.
      * 
-     * @see #configure
+     * @see [[ConfigParams]]
+     * @see [[configure]]
      */
     public constructor(config: ConfigParams = null) {
         this._config = config;
@@ -27,8 +28,8 @@ export class MemoryConfigReader implements IConfigReader, IReconfigurable {
      * 
      * @param config    ConfigParams to save in memory.
      * 
-     * @see ConfigParams
-     * @see IConfigurable
+     * @see [[ConfigParams]]
+     * @see [[IConfigurable]]
      */
     public configure(config: ConfigParams): void {
         this._config = config;
@@ -36,14 +37,15 @@ export class MemoryConfigReader implements IConfigReader, IReconfigurable {
 
     /**
      * Reads the ConfigParams stored in this object and returns them as a parameterized 
-     * {@link ConfigParams} object. Reader's ConfigParams must be set.
+     * ConfigParams object. Reader's ConfigParams must be set.
      * 
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param parameters        used to parameterize the reader.
      * @param callback          callback function that will be called with an error or with the
      *                          ConfigParams that were read. 
      * 
-     * @see #readObject(correlationId: string, parameters: ConfigParams)
+     * @see [[ConfigParams]]
+     * @see [[readObject]]
      */
     public readConfig(correlationId: string, parameters: ConfigParams,
         callback: (err: any, config: ConfigParams) => void): void {

@@ -4,12 +4,12 @@ import { CredentialParams } from './CredentialParams';
  * The role of a Credential store is to maintain a registry of various credential parameters (what usernames and 
  * passwords to use when connecting to certain end-points). These parameters are necessary for authentication and 
  * authorization (when connecting to other services) and do not contain infomation about the end-points themselves 
- * (host's address, port, etc. - see {@link ConnectionParams}).
+ * (host's address, port, etc. - see [[ConnectionParams]]).
  * 
  * This interface can be used for creating credential stores, which can save and retrieve various credential parameters.  
  * 
- * @see CredentialParams
- * @see ConnectionParams
+ * @see [[CredentialParams]]
+ * @see [[ConnectionParams]]
  */
 export interface ICredentialStore {
     /**

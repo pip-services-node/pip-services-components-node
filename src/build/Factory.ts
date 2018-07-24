@@ -9,8 +9,8 @@ class Registration {
 /**
  * Base factory class that can be extended for creating more specific factories. Usually, all that needs
  * to be added to a class that extends Factory is: 
- * - a set of locators (PipServices uses {@link Descriptor Descriptors}) - one for each object type that needs to be included in this factory.
- * - a constructor (in which the object types are registered using the {@link #registerAsType} method).
+ * - a set of locators (PipServices uses [[Descriptor Descriptors]]) - one for each object type that needs to be included in this factory.
+ * - a constructor (in which the object types are registered using the [[registerAsType]] method).
  * 
  * #### Example Descriptor:
  *     public static readonly MyClassDescriptor: Descriptor = new Descriptor("my-services", "factory", "my-class", "default", "1.0");
@@ -21,8 +21,8 @@ class Registration {
  *         this.registerAsType(MyFactory.MyClassDescriptor, MyClass);
  *     }
  * 
- * @see Descriptor
- * @see IFactory
+ * @see [[Descriptor]]
+ * @see [[IFactory]]
  */
 export class Factory implements IFactory {	
 	private _registrations: Registration[] = [];

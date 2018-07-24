@@ -22,7 +22,7 @@ export interface IFactory {
 	 * @return 			an instance of the created component.
 	 * @throws 			a CreateException, when component creation fails.
 	 * 
-	 * @see CreateException
+	 * @see [[CreateException]]
 	 */
 	create(locator: any): any;
 }
