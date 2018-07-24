@@ -1,3 +1,4 @@
+/** @module count */
 export { Timing } from './Timing';
 export { ITimingCallback } from './ITimingCallback';
 export { ICounters } from './ICounters';

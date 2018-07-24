@@ -1,3 +1,4 @@
+/** @module log */
 import { Descriptor } from 'pip-services-commons-node';
 
 import { NullLogger } from './NullLogger';

@@ -1,3 +1,4 @@
+/** @module config */
 let _ = require('lodash');
 let handlebars = require('handlebars');
 

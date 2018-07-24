@@ -1,3 +1,4 @@
+/** @module test */
 let _ = require('lodash');
 
 import { ConfigParams } from "pip-services-commons-node";

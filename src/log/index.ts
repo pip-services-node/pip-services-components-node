@@ -1,3 +1,4 @@
+/** @module log */
 export { ILogger } from './ILogger';
 export { LogLevel } from './LogLevel';
 export { LogLevelConverter } from './LogLevelConverter';

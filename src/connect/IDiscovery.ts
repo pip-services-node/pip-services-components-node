@@ -1,3 +1,4 @@
+/** @module connect */
 import { ConnectionParams } from './ConnectionParams';
 
 /**

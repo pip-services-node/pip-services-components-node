@@ -1,3 +1,4 @@
+/** @module lock */
 import { ILock } from './ILock';
 
 export class NullLock implements ILock {

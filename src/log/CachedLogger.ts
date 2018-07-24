@@ -1,3 +1,4 @@
+/** @module log */
 import { ConfigParams } from 'pip-services-commons-node';
 import { ErrorDescription } from 'pip-services-commons-node';
 import { ErrorDescriptionFactory } from 'pip-services-commons-node';

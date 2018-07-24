@@ -1,3 +1,4 @@
+/** @module log */
 import { ErrorDescription } from 'pip-services-commons-node';
 
 export class LogMessage {	

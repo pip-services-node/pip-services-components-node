@@ -1,3 +1,4 @@
+/** @module count */
 import { CounterType } from './CounterType';
 
 export class Counter {

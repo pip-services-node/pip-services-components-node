@@ -1,3 +1,4 @@
+/** @module auth */
 import { CredentialParams } from './CredentialParams';
 
 /**

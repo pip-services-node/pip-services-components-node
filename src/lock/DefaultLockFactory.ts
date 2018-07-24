@@ -1,3 +1,4 @@
+/** @module lock */
 import { Descriptor } from 'pip-services-commons-node';
 
 import { NullLock } from './NullLock';

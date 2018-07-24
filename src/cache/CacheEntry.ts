@@ -1,3 +1,4 @@
+/** @module cache */
 /**
  * Simplifies working with key-value pairs in/from the cache.
  */

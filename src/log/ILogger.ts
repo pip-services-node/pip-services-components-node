@@ -1,3 +1,4 @@
+/** @module log */
 import { LogLevel } from './LogLevel';
 
 // Todo: solve issue with overloaded methods. Look at Python implementation

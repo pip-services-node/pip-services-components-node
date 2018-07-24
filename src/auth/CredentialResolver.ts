@@ -1,3 +1,4 @@
+/** @module auth */
 let async = require('async');
 
 import { ConfigParams } from 'pip-services-commons-node';

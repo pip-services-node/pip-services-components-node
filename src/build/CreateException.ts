@@ -1,3 +1,4 @@
+/** @module build */
 import { InternalException } from 'pip-services-commons-node';
 
 /**

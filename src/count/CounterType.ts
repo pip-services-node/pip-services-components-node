@@ -1,3 +1,4 @@
+/** @module count */
 export enum CounterType {
     Interval = 0,
     LastValue = 1,

@@ -1,3 +1,4 @@
+/** @module info */
 let os = require('os');
 
 import { StringValueMap } from 'pip-services-commons-node';

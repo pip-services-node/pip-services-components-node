@@ -1,3 +1,4 @@
+/** @module log */
 import { StringConverter } from 'pip-services-commons-node';
 
 import { LogLevel } from './LogLevel';

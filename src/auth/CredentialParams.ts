@@ -1,3 +1,4 @@
+/** @module auth */
 import { ConfigParams } from 'pip-services-commons-node';
 import { StringValueMap } from 'pip-services-commons-node';
 

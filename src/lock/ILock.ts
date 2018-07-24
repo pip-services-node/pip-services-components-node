@@ -1,3 +1,4 @@
+/** @module lock */
 export interface ILock {
     tryAcquireLock(correlationId: string, key: string, ttl: number,
         callback: (err: any, result: boolean) => void): void;

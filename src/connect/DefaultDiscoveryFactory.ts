@@ -1,3 +1,4 @@
+/** @module connect */
 import { Descriptor } from 'pip-services-commons-node';
 
 import { Factory } from '../build/Factory';

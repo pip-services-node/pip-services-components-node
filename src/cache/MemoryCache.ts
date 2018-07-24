@@ -1,3 +1,4 @@
+/** @module cache */
 import { IReconfigurable } from 'pip-services-commons-node';
 import { ConfigParams } from 'pip-services-commons-node';
 

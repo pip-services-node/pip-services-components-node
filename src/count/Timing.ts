@@ -1,3 +1,4 @@
+/** @module count */
 import { ITimingCallback } from './ITimingCallback';
 
 export class Timing {

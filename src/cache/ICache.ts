@@ -1,3 +1,4 @@
+/** @module cache */
 /**
  * Interface that can be used for creating various distributed caches. We can save 
  * an object to cache and retrieve it by its key, using various implementations. 

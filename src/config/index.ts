@@ -1,3 +1,4 @@
+/** @module config */
 export { ConfigReader } from './ConfigReader';
 export { FileConfigReader } from './FileConfigReader';
 export { IConfigReader } from './IConfigReader';

@@ -1,3 +1,4 @@
+/** @module build */
 /**
  * Interface for creating component factories. IFactory is part of the "factory design pattern", 
  * which is used to make factory classes. Factory classes are capable of creating instances of 

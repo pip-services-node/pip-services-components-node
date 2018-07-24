@@ -1,3 +1,4 @@
+/** @module config */
 let fs = require('fs');
 let yaml = require('js-yaml');
 

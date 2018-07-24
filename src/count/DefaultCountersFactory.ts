@@ -1,3 +1,4 @@
+/** @module count */
 import { Descriptor } from 'pip-services-commons-node';
 
 import { NullCounters } from './NullCounters';

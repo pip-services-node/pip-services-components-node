@@ -1,3 +1,4 @@
+/** @module config */
 let fs = require('fs');
 
 import { ConfigParams } from 'pip-services-commons-node';

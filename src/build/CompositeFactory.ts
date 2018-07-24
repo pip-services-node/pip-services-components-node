@@ -1,3 +1,4 @@
+/** @module build */
 let _ = require('lodash');
 
 import { IFactory } from './IFactory';

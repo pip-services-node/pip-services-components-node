@@ -1,3 +1,4 @@
+/** @module build */
 import { IFactory } from './IFactory';
 import { CreateException } from './CreateException';
 

@@ -1,3 +1,4 @@
+/** @module cache */
 export { CacheEntry } from './CacheEntry';
 export { ICache } from './ICache';
 export { NullCache } from './NullCache';

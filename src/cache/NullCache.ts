@@ -1,3 +1,4 @@
+/** @module cache */
 import { ICache } from './ICache';
 /**
  * Null implementation of the [[ICache]] interface. Returns null instead of real values. 

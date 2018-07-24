@@ -1,3 +1,4 @@
+/** @module config */
 import { ConfigParams } from 'pip-services-commons-node';
 
 import { ConfigReader } from './ConfigReader'
