@@ -6,6 +6,7 @@ It defines standard component definitions that can be used to build applications
 - [**Auth**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/auth.html) - authentication credential stores
 - [**Build**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/build.html) - factories
 - [**Cache**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/cache.html) - distributed cache
+- [**Component**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/component.html) - the root package
 - [**Config**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/config.html) - configuration readers
 - [**Connect**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/connect.html) - connection discovery services
 - [**Count**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/count.html) - performance counters
@@ -14,7 +15,8 @@ It defines standard component definitions that can be used to build applications
 - [**Log**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/log.html) - logging components
 - [**Test**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/test.html) - test components
 
-- [**Component**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/component.html) - the root package
+
+- [**Component**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/component.html) - root package
 
 Quick Links:
 
