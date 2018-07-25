@@ -3,25 +3,26 @@
 This framework is a part of [Pip.Services](https://github.com/pip-services/pip-services) project.
 It defines standard components types that be used to build applications and services:
 
-- **Auth** - authentication credential stores
-- **Build** - factories
-- **Cache** - distributed cache
-- **Config** - configuration readers
-- **Connect** - connection discovery services
-- **Count** - performance counters
-- **Info** - context info
-- **Lock** - distributed locks
-- **Log** - logging components
-- **Test** - test components
+- [**Auth**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/auth.html) - authentication credential stores
+- [**Build**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/build.html) - factories
+- [**Cache**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/cache.html) - distributed cache
+- [**Config**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/config.html) - configuration readers
+- [**Connect**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/connect.html) - connection discovery services
+- [**Count**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/count.html) - performance counters
+- [**Info**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/info.html) - context info
+- [**Lock**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/lock.html) - distributed locks
+- [**Log**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/log.html) - logging components
+- [**Test**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/test.html) - test components
 
 Quick Links:
 
 * [Downloads](https://github.com/pip-services-node/pip-services-components-node/blob/master/doc/Downloads.md)
-* [API Reference](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/index.html)
+* [API Reference](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/globals.html)
 * [Building and Testing](https://github.com/pip-services/pip-services-components-node/blob/master/doc/Development.md)
 * [Contributing](https://github.com/pip-services/pip-services-components-node/blob/master/doc/Development.md/#contrib)
 
 ## Acknowledgements
 
 The library is created and maintained by **Sergey Seroukhov**.
+
 The documentation is written by **Mark Makarychev**.
