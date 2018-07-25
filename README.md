@@ -1,7 +1,7 @@
 # <img src="https://github.com/pip-services/pip-services/raw/master/design/Logo.png" alt="Pip.Services Logo" style="max-width:30%"> <br/> Component definitions for Node.js
 
-This framework is a part of [Pip.Services](https://github.com/pip-services/pip-services) project.
-It defines standard components types that be used to build applications and services:
+This framework is part of the [Pip.Services](https://github.com/pip-services/pip-services) project.
+It defines standard component definitions that can be used to build applications and services:
 
 - [**Auth**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/auth.html) - authentication credential stores
 - [**Build**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/build.html) - factories
@@ -13,6 +13,8 @@ It defines standard components types that be used to build applications and serv
 - [**Lock**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/lock.html) - distributed locks
 - [**Log**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/log.html) - logging components
 - [**Test**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/test.html) - test components
+
+- [**Component**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/component.html) - the root package
 
 Quick Links:
 

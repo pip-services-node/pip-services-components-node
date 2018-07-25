@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_component_.html">&quot;Component&quot;</a>
+					<a href="../modules/component.html">component</a>
 				</li>
 				<li>
-					<a href="_component_.component.html">Component</a>
+					<a href="component.component-1.html">Component</a>
 				</li>
 			</ul>
 			<h1>Class Component</h1>
@@ -67,6 +67,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The root package of pip-services-components.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -89,16 +96,16 @@
 						<section class="tsd-index-section tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_component_.component.html#_counters" class="tsd-kind-icon">_counters</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_component_.component.html#_dependencyresolver" class="tsd-kind-icon">_dependency<wbr>Resolver</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_component_.component.html#_logger" class="tsd-kind-icon">_logger</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="component.component-1.html#_counters" class="tsd-kind-icon">_counters</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="component.component-1.html#_dependencyresolver" class="tsd-kind-icon">_dependency<wbr>Resolver</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="component.component-1.html#_logger" class="tsd-kind-icon">_logger</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_component_.component.html#configure" class="tsd-kind-icon">configure</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_component_.component.html#setreferences" class="tsd-kind-icon">set<wbr>References</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="component.component-1.html#configure" class="tsd-kind-icon">configure</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="component.component-1.html#setreferences" class="tsd-kind-icon">set<wbr>References</a></li>
 							</ul>
 						</section>
 					</div>
@@ -112,7 +119,7 @@
 					<div class="tsd-signature tsd-kind-icon">_counters<span class="tsd-signature-symbol">:</span> <a href="count.compositecounters.html" class="tsd-signature-type">CompositeCounters</a><span class="tsd-signature-symbol"> =&nbsp;new CompositeCounters()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/716183d/src/Component.ts#L12">Component.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/d432cba/src/Component.ts#L16">Component.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -122,7 +129,7 @@
 					<div class="tsd-signature tsd-kind-icon">_dependency<wbr>Resolver<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DependencyResolver</span><span class="tsd-signature-symbol"> =&nbsp;new DependencyResolver()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/716183d/src/Component.ts#L10">Component.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/d432cba/src/Component.ts#L14">Component.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -132,7 +139,7 @@
 					<div class="tsd-signature tsd-kind-icon">_logger<span class="tsd-signature-symbol">:</span> <a href="log.compositelogger.html" class="tsd-signature-type">CompositeLogger</a><span class="tsd-signature-symbol"> =&nbsp;new CompositeLogger()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/716183d/src/Component.ts#L11">Component.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/d432cba/src/Component.ts#L15">Component.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -149,13 +156,26 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/716183d/src/Component.ts#L14">Component.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/d432cba/src/Component.ts#L25">Component.ts:25</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Uses the configuration parameters passed to configure the dependency resolver and logger.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the configuration parameters to use for configuration.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -172,13 +192,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/716183d/src/Component.ts#L19">Component.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/d432cba/src/Component.ts#L36">Component.ts:36</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Uses the &#39;references&#39; passed to set the dependency resolver&#39;s, logger&#39;s, and
+									counters&#39; references.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>references: <span class="tsd-signature-type">IReferences</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the references to set.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -193,12 +222,6 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_component_.html">"<wbr>Component"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_index_.html">"index"</a>
-					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/auth.html">auth</a>
 					</li>
@@ -208,6 +231,9 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/cache.html">cache</a>
 					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/component.html">component</a>
+					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/config.html">config</a>
 					</li>
@@ -216,6 +242,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/count.html">count</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/index.html">index</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/info.html">info</a>
@@ -236,22 +265,22 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_component_.component.html" class="tsd-kind-icon">Component</a>
+						<a href="component.component-1.html" class="tsd-kind-icon">Component</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="_component_.component.html#_counters" class="tsd-kind-icon">_counters</a>
+								<a href="component.component-1.html#_counters" class="tsd-kind-icon">_counters</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="_component_.component.html#_dependencyresolver" class="tsd-kind-icon">_dependency<wbr>Resolver</a>
+								<a href="component.component-1.html#_dependencyresolver" class="tsd-kind-icon">_dependency<wbr>Resolver</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="_component_.component.html#_logger" class="tsd-kind-icon">_logger</a>
+								<a href="component.component-1.html#_logger" class="tsd-kind-icon">_logger</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_component_.component.html#configure" class="tsd-kind-icon">configure</a>
+								<a href="component.component-1.html#configure" class="tsd-kind-icon">configure</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_component_.component.html#setreferences" class="tsd-kind-icon">set<wbr>References</a>
+								<a href="component.component-1.html#setreferences" class="tsd-kind-icon">set<wbr>References</a>
 							</li>
 						</ul>
 					</li>
