@@ -16,8 +16,6 @@ export class DefaultInfoFactory extends Factory {
 	
     /**
 	 * Adds object factories for ContextInfo and ContainerInfo to this Factory.
-	 * 
-	 * @see [[Factory.Factory]]
 	 */
 	public constructor() {
 		super();

@@ -19,8 +19,6 @@ export class DefaultConfigReaderFactory extends Factory {
 	
 	/**
 	 * Adds object factories for MemoryConfigReader, JsonConfigReader, and YamlConfigReader to this Factory.
-	 * 
-	 * @see [[Factory.Factory]]
 	 */
 	public constructor() {
         super();

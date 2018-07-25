@@ -28,7 +28,7 @@ export class JsonConfigReader extends FileConfigReader {
     }
 
     /**
-     * Reads the JSON data from the file and returns it as a parameterized [[NullableMap]] object. 
+     * Reads the JSON data from the file and returns it as a parameterized nullable map. 
      * Reader's path must be set.
      * 
      * @param correlationId     unique business transaction id to trace calls across components.
@@ -36,7 +36,7 @@ export class JsonConfigReader extends FileConfigReader {
      * @returns                 NullableMap with data from the JSON file.
      * 
      * @see [[ConfigReader.parameterize]]
-     * @see [[NullableMap]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/convert.jsonconverter.html#tonullablemap toNullableMap]]
      */
     public readObject(correlationId: string, parameters: ConfigParams): any {
         if (super.getPath() == null)
@@ -67,7 +67,7 @@ export class JsonConfigReader extends FileConfigReader {
      * @param callback          callback function that will be called with an error or with the
      *                          ConfigParams that were read.
      * 
-     * @see [[ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
      * @see [[readObject]]
      */
     public readConfig(correlationId: string, parameters: ConfigParams,

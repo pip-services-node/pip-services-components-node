@@ -27,7 +27,7 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      * 
      * @see [[configure]]
      * @see [[store]]
-     * @see [[ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
      */
     public constructor(config: ConfigParams = null) {
         if (config != null)
@@ -40,8 +40,8 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      * @param config    ConfigParams to configure this object with.
      * 
      * @see [[readCredentials]]
-     * @see [[ConfigParams]]
-     * @see [[IConfigurable]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
      */
     public configure(config: ConfigParams): void {
         this.readCredentials(config);
@@ -53,7 +53,7 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      * 
      * @param credentials   ConfigParams containing credential information.
      * 
-     * @see [[ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
      */
     public readCredentials(credentials: ConfigParams) {
         this._items.clear();

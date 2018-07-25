@@ -17,8 +17,6 @@ export class DefaultCacheFactory extends Factory {
 
     /**
 	 * Adds object factories for NullCache and MemoryCache to this Factory.
-	 * 
-	 * @see [[Factory.Factory]]
 	 */
 	public constructor() {
         super();

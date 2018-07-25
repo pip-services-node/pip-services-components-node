@@ -4,8 +4,8 @@ import { InternalException } from 'pip-services-commons-node';
 /**
  * The exception that is thrown, when a component cannot be created by the factory.
  * 
- * @see [[InternalException]]
- * @see [[ApplicationException]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/errors.internalexception.html InternalException]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/errors.applicationexception.html ApplicationException]]
  */
 export class CreateException extends InternalException {
 

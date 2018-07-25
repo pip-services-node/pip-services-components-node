@@ -44,7 +44,7 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
      * 
      * @see [[configure]]
      * @see [[register]]
-     * @see [[ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
      */
     public constructor(config: ConfigParams = null) {
         if (config != null)
@@ -57,8 +57,8 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
      * @param config    ConfigParams to configure this object with.
      * 
      * @see [[readConnections]]
-     * @see [[ConfigParams]]
-     * @see [[IConfigurable]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
      */
     public configure(config: ConfigParams): void {
         this.readConnections(config);
@@ -70,7 +70,7 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
      * 
      * @param connections   ConfigParams containing connection information.
      * 
-     * @see [[ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
      */
     public readConnections(connections: ConfigParams) {
         this._items = [];

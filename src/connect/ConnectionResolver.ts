@@ -49,8 +49,8 @@ export class ConnectionResolver {
      * 
      * @see [[ConnectionParams.manyFromConfig]]
      * @see [[ConnectionParams]]
-     * @see [[ConfigParams]]
-     * @see [[IConfigurable]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
      */
     public configure(config: ConfigParams): void {
         let connections: ConnectionParams[] = ConnectionParams.manyFromConfig(config);

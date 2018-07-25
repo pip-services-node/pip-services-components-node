@@ -15,8 +15,6 @@ export class DefaultDiscoveryFactory extends Factory {
 	
     /**
 	 * Adds an object factory for MemoryDiscovery to this Factory.
-	 * 
-	 * @see [[Factory.Factory]]
 	 */
 	public constructor() {
         super();

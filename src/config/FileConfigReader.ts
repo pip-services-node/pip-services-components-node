@@ -13,7 +13,7 @@ import { ConfigReader } from './ConfigReader'
  * 
  * @see [[ConfigReader]]
  * @see [[ConfigReader.readConfig]]
- * @see [[ConfigParams]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
  */
 export abstract class FileConfigReader extends ConfigReader {
     private _path: string;

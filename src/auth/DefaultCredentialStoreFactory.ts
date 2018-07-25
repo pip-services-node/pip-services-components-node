@@ -15,8 +15,6 @@ export class DefaultCredentialStoreFactory extends Factory {
 	
 	/**
 	 * Adds an object factory for MemoryCredentialStore to this Factory.
-	 * 
-	 * @see [[Factory.Factory]]
 	 */
 	public constructor() {
         super();

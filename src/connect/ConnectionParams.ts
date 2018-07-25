@@ -19,12 +19,13 @@ import { StringValueMap } from 'pip-services-commons-node';
 export class ConnectionParams extends ConfigParams {
 
     /**
-     * Creates a new ConnectionParams object. Calls the constructor of 
-     * [[StringValueMap.StringValueMap]], which it extends by extending [[ConfigParams]].
+     * Creates a new ConnectionParams object. Calls 
+     * [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#constructor StringValueMap's constructor]], 
+     * which it extends by extending [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]].
      * 
      * @param values    values to fill these ConnectionParams with. Defaults to null.
      * 
-     * @see [[StringValueMap.StringValueMap]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#constructor StringValueMap's constructor]]
      */
     public constructor(values: any = null) {
         super(values);
@@ -134,7 +135,7 @@ export class ConnectionParams extends ConfigParams {
      * @param line  parameterized string that contains the connection's parameters.
      * @returns     ConnectionParams that were generated.
      * 
-     * @see [[StringValueMap.fromString]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#fromstring StringValueMap.fromString]]
      */
     public static fromString(line: string): ConnectionParams {
         let map: StringValueMap = StringValueMap.fromString(line);
@@ -153,7 +154,7 @@ export class ConnectionParams extends ConfigParams {
      * @param config    ConfigParams that are to be transformed into a list of ConnectionParams.
      * @returns         the list of ConnectionParams that were successfully generated.
      * 
-     * @see [[ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
      */
     public static manyFromConfig(config: ConfigParams): ConnectionParams[] {
         let result: ConnectionParams[] = [];
@@ -182,7 +183,7 @@ export class ConnectionParams extends ConfigParams {
      * @returns         generated ConnectionParams (if successful) or null otherwise.
      * 
      * @see [[manyFromConfig]]
-     * @see [[ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
      */
     public static fromConfig(config: ConfigParams) {
         let connections: ConnectionParams[] = this.manyFromConfig(config);
