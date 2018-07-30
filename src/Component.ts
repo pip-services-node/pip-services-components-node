@@ -20,7 +20,7 @@ export class Component implements IConfigurable, IReferenceable {
      * 
      * @param config    the configuration parameters to use for configuration.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public configure(config: ConfigParams): void {
         this._dependencyResolver.configure(config);

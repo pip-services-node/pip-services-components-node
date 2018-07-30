@@ -36,7 +36,7 @@ export class JsonConfigReader extends FileConfigReader {
      * @returns                 NullableMap with data from the JSON file.
      * 
      * @see [[ConfigReader.parameterize]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/convert.jsonconverter.html#tonullablemap toNullableMap]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/convert.jsonconverter.html#tonullablemap JsonConverter.toNullableMap]] (in the PipServices "Commons" Package)
      */
     public readObject(correlationId: string, parameters: ConfigParams): any {
         if (super.getPath() == null)
@@ -67,7 +67,7 @@ export class JsonConfigReader extends FileConfigReader {
      * @param callback          callback function that will be called with an error or with the
      *                          ConfigParams that were read.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      * @see [[readObject]]
      */
     public readConfig(correlationId: string, parameters: ConfigParams,

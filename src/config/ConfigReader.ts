@@ -6,14 +6,15 @@ import { ConfigParams } from 'pip-services-commons-node';
 import { IConfigurable } from 'pip-services-commons-node'
 
 /**
- * Combination of the [[IConfigReader]] and [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] interfaces. Allows for object 
- * configuration using ConfigParams via the [[configure]] method, and contains the abstract 
- * method [[readConfig]], which, upon implementation, should contain the logic necessary for reading 
- * and parsing ConfigParams. Also contains the [[parameterize]] method.
+ * Combination of the [[IConfigReader]] and 
+ * [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] 
+ * (in the PipServices "Commons" Package) interfaces. Allows for object configuration using ConfigParams via the [[configure]] method, 
+ * and contains the abstract method [[readConfig]], which, upon implementation, should contain the logic necessary for reading and 
+ * parsing ConfigParams. Also contains the [[parameterize]] method.
  * 
  * @see [[IConfigReader]]
- * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
- * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
  */
 export abstract class ConfigReader implements IConfigurable {
     private _parameters: ConfigParams = new ConfigParams();
@@ -28,8 +29,8 @@ export abstract class ConfigReader implements IConfigurable {
      *                  configurations that are passed to this ConfigReader.
      * 
      * @see [[parameterize]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public configure(config: ConfigParams): void {
         let parameters = config.getSection("parameters")

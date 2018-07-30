@@ -67,7 +67,7 @@ export class YamlConfigReader extends FileConfigReader {
      * @param callback          callback function that will be called with an error or with the
      *                          ConfigParams that were read.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      * @see [[readObject]]
      */
     public readConfig(correlationId: string, parameters: ConfigParams,

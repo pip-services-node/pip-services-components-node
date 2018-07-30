@@ -17,7 +17,7 @@ export class MemoryConfigReader implements IConfigReader, IReconfigurable {
      *                  If 'config' is omitted in the constructor, then it must be set 
      *                  using [[configure]] prior to using the new object.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      * @see [[configure]]
      */
     public constructor(config: ConfigParams = null) {
@@ -29,8 +29,8 @@ export class MemoryConfigReader implements IConfigReader, IReconfigurable {
      * 
      * @param config    ConfigParams to save in memory.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
      */
     public configure(config: ConfigParams): void {
         this._config = config;
@@ -45,7 +45,7 @@ export class MemoryConfigReader implements IConfigReader, IReconfigurable {
      * @param callback          callback function that will be called with an error or with the
      *                          ConfigParams that were read. 
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      * @see [[readObject]]
      */
     public readConfig(correlationId: string, parameters: ConfigParams,

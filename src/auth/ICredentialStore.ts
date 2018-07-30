@@ -20,7 +20,7 @@ export interface ICredentialStore {
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param key               key to store the credentials by.
      * @param credential        CredentialParams of the credential to be stored.
-     * @param callback          callback function that will be called with an error, if one is raised.
+     * @param callback          callback function that will be called with an error if one is raised.
      */
     store(correlationId: string, key: String, credential: CredentialParams, callback: (err: any) => void): void;
 

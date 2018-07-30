@@ -49,8 +49,8 @@ export class CredentialResolver {
      * 
      * @see [[CredentialParams.manyFromConfig]]
      * @see [[CredentialParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipService's "Commons" Package)
      */
     public configure(config: ConfigParams): void {
         let credentials: CredentialParams[] = CredentialParams.manyFromConfig(config);
@@ -85,7 +85,7 @@ export class CredentialResolver {
      * @param callback          callback function that will be called with an error or with the 
      *                          first CredentialParams found. Null will be returned if the credential
      *                          does not have a key, or there are no references set.
-     * @throws a ReferenceException, if no valid "credential-store" services are referenced.
+     * @throws a ReferenceException if no valid "credential-store" services are referenced.
      */
     public lookupInStores(correlationId: string, credential: CredentialParams, 
         callback: (err: any, result: CredentialParams) => void): void {

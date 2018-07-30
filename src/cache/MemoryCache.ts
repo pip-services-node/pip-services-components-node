@@ -35,8 +35,8 @@ export class MemoryCache implements ICache, IReconfigurable {
 	 * @throws  MicroserviceError when component is in illegal state 
 	 *          or configuration validation fails. 
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
 	 */
     public configure(config: ConfigParams): void {
         this._timeout = config.getAsLongWithDefault("timeout", this._timeout);

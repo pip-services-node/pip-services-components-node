@@ -94,7 +94,7 @@ export class Factory implements IFactory {
 	 * @param locator 	the locator of the factory that needs to be called.
 	 * @returns the object that was created by the factory with the given locator.
 	 * 
-	 * @throws a CreateException, if it fails to create an object using the given locator.
+	 * @throws a CreateException if it fails to create an object using the given locator.
 	 */
 	public create(locator: any): any {
         for (let index = 0; index < this._registrations.length; index++) {

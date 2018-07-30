@@ -49,8 +49,8 @@ export class ConnectionResolver {
      * 
      * @see [[ConnectionParams.manyFromConfig]]
      * @see [[ConnectionParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
      */
     public configure(config: ConfigParams): void {
         let connections: ConnectionParams[] = ConnectionParams.manyFromConfig(config);
@@ -85,7 +85,7 @@ export class ConnectionResolver {
      * @param callback          callback function that will be called with an error or with the 
      *                          first ConnectionParams found. Null will be returned if the connection
      *                          does not have a key, or there are no references set.
-     * @throws a ReferenceException, if no valid "discovery" services are referenced.
+     * @throws a ReferenceException if no valid "discovery" services are referenced.
      */
     private resolveInDiscovery(correlationId: string, connection: ConnectionParams, 
         callback: (err: any, result: ConnectionParams) => void): void {
@@ -194,7 +194,7 @@ export class ConnectionResolver {
      * @param callback          callback function that will be called with an error or with the 
      *                          list of ConnectionParams that were found in the referenced discovery 
      *                          services using the 'connection' parameter's discovery key.
-     * @throws a ReferenceException, if no "discovery" services are referenced.
+     * @throws a ReferenceException if no "discovery" services are referenced.
      */
     private resolveAllInDiscovery(correlationId: string, connection: ConnectionParams, 
         callback: (err: any, result: ConnectionParams[]) => void): void {
@@ -337,7 +337,7 @@ export class ConnectionResolver {
      * 
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param connection        connection to register in the discovery services.
-     * @param callback          callback function that will be called with an error, if one is raised.
+     * @param callback          callback function that will be called with an error (if one is raised).
      * 
      * @see [[MemoryDiscovery]]
      */

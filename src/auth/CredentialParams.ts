@@ -26,7 +26,7 @@ export class CredentialParams extends ConfigParams {
      * 
      * @param values    credential parameters to store in this object. Defaults to null.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html#constructor ConfigParams' constructor]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html#constructor ConfigParams' constructor]] (in the PipService's "Commons" Package)
      */
     public constructor(values: any = null) {
         super(values);
@@ -36,7 +36,7 @@ export class CredentialParams extends ConfigParams {
      * @returns     whether or not these CredentialParams contain a key that can be
      *              used in a credential store ("store_key" is not null?).
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public useCredentialStore(): boolean {
         return super.getAsNullableString("store_key") != null;
@@ -54,7 +54,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @param value     the key to use for getting credentials from a credential store.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public setStoreKey(value: string) {
         super.put("store_key", value);
@@ -63,7 +63,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @returns     the "username" (or "user") value stored in these CredentialParams.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public getUsername(): string {
         return super.getAsNullableString("username") || super.getAsNullableString("user");
@@ -72,7 +72,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @param value     the username to store in these CredentialParams.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public setUsername(value: string) {
         super.put("username", value);
@@ -81,7 +81,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @returns     the "password" (or "pass") value stored in these CredentialParams.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public getPassword(): string {
         return super.getAsNullableString("password") || super.getAsNullableString("pass");
@@ -90,7 +90,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @param value     the password to store in these CredentialParams.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public setPassword(value: string) {
         super.put("password", value);
@@ -99,7 +99,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @returns     the "access_id" (or "client_id") value stored in these CredentialParams.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public getAccessId(): string {
         return super.getAsNullableString("access_id") || super.getAsNullableString("client_id");
@@ -108,7 +108,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @param value     the access id to store in these CredentialParams.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public setAccessId(value: string) {
         super.put("access_id", value);
@@ -117,7 +117,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @returns     the "access_key" (or "client_key") value stored in these CredentialParams.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public getAccessKey(): string {
         return super.getAsNullableString("access_key") || super.getAsNullableString("client_key");
@@ -126,7 +126,7 @@ export class CredentialParams extends ConfigParams {
     /**
      * @param value     the access key to store in these CredentialParams.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public setAccessKey(value: string) {
         super.put("access_key", value);
@@ -139,7 +139,7 @@ export class CredentialParams extends ConfigParams {
 	 * 					Example: "Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z"
 	 * @returns			generated CredentialParams.
 	 * 
-	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#fromstring StringValueMap.fromString]]
+	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#fromstring StringValueMap.fromString]] (in the PipService's "Commons" Package)
 	 */
     public static fromString(line: string): CredentialParams {
         let map = StringValueMap.fromString(line);
@@ -153,7 +153,7 @@ export class CredentialParams extends ConfigParams {
 	 * @param config 	ConfigParams with a section named "credential(s)".
 	 * @returns			generated list of CredentialParams.
 	 * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" Package)
      * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html#getsection ConfigParams.getSection]]
 	 */
     public static manyFromConfig(config: ConfigParams): CredentialParams[] {

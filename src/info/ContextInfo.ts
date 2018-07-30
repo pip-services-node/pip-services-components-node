@@ -31,8 +31,8 @@ export class ContextInfo implements IReconfigurable {
 	 * 
 	 * @param config 	the ConfigParams to configure this object with.
 	 * 
-	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
-	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
+	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
 	 */
 	public configure(config: ConfigParams): void {
 		this.name = config.getAsStringWithDefault("name", this.name);
@@ -76,7 +76,7 @@ export class ContextInfo implements IReconfigurable {
 	 * @param properties 	values that will be converted to a StringValueMap and saved
 	 * 						to this ContextInfo's properties.
 	 * 
-	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html StringValueMap]]
+	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html StringValueMap]] (in the PipServices "Commons" Package)
 	*/
 	public set properties(properties: any) {
 		this._properties = StringValueMap.fromValue(properties);
@@ -88,7 +88,7 @@ export class ContextInfo implements IReconfigurable {
 	 * 
 	 * @param config 	ConfigParams to use when configuring the new ContextInfo object.
 	 * 
-	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
 	 */
 	public static fromConfig(config: ConfigParams): ContextInfo {
 		let result = new ContextInfo();

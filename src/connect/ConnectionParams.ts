@@ -25,7 +25,8 @@ export class ConnectionParams extends ConfigParams {
      * 
      * @param values    values to fill these ConnectionParams with. Defaults to null.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#constructor StringValueMap's constructor]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#constructor StringValueMap's constructor]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public constructor(values: any = null) {
         super(values);
@@ -74,7 +75,7 @@ export class ConnectionParams extends ConfigParams {
     }
 
     /**
-     * @returns     the host (or the ip, if no host was found) that is set in 
+     * @returns     the "host" or the "ip" (if no host was found) that is set in 
      *              these ConnectionParams.
      */
     public getHost(): string {
@@ -135,7 +136,7 @@ export class ConnectionParams extends ConfigParams {
      * @param line  parameterized string that contains the connection's parameters.
      * @returns     ConnectionParams that were generated.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#fromstring StringValueMap.fromString]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#fromstring StringValueMap.fromString]] (in the PipServices "Commons" Package)
      */
     public static fromString(line: string): ConnectionParams {
         let map: StringValueMap = StringValueMap.fromString(line);
@@ -154,7 +155,7 @@ export class ConnectionParams extends ConfigParams {
      * @param config    ConfigParams that are to be transformed into a list of ConnectionParams.
      * @returns         the list of ConnectionParams that were successfully generated.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public static manyFromConfig(config: ConfigParams): ConnectionParams[] {
         let result: ConnectionParams[] = [];
@@ -183,7 +184,7 @@ export class ConnectionParams extends ConfigParams {
      * @returns         generated ConnectionParams (if successful) or null otherwise.
      * 
      * @see [[manyFromConfig]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public static fromConfig(config: ConfigParams) {
         let connections: ConnectionParams[] = this.manyFromConfig(config);

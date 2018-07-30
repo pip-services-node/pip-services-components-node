@@ -27,7 +27,7 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      * 
      * @see [[configure]]
      * @see [[store]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public constructor(config: ConfigParams = null) {
         if (config != null)
@@ -40,8 +40,8 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      * @param config    ConfigParams to configure this object with.
      * 
      * @see [[readCredentials]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
      */
     public configure(config: ConfigParams): void {
         this.readCredentials(config);
@@ -53,7 +53,7 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      * 
      * @param credentials   ConfigParams containing credential information.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public readCredentials(credentials: ConfigParams) {
         this._items.clear();
@@ -71,7 +71,7 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param key               key to register the credential by.
      * @param credential        CredentialParams for the given credential.
-     * @param callback          callback function that will be called with an error, if one is risen.
+     * @param callback          callback function that will be called with an error (if one is raised).
      */
     public store(correlationId: string, key: string, credential: CredentialParams, callback: (err: any) => void): void {
         if (credential != null)

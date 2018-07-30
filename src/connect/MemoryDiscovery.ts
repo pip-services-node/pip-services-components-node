@@ -44,7 +44,7 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
      * 
      * @see [[configure]]
      * @see [[register]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public constructor(config: ConfigParams = null) {
         if (config != null)
@@ -57,8 +57,8 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
      * @param config    ConfigParams to configure this object with.
      * 
      * @see [[readConnections]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
      */
     public configure(config: ConfigParams): void {
         this.readConnections(config);
@@ -70,7 +70,7 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
      * 
      * @param connections   ConfigParams containing connection information.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     public readConnections(connections: ConfigParams) {
         this._items = [];
