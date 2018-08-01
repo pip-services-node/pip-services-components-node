@@ -1,5 +1,7 @@
 /** @module config */
+/** @hidden */ 
 let _ = require('lodash');
+/** @hidden */ 
 let handlebars = require('handlebars');
 
 import { ConfigParams } from 'pip-services-commons-node';

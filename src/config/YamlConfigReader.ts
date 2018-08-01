@@ -1,5 +1,7 @@
 /** @module config */
+/** @hidden */ 
 let fs = require('fs');
+/** @hidden */ 
 let yaml = require('js-yaml');
 
 import { ConfigParams } from 'pip-services-commons-node';

@@ -1,4 +1,8 @@
-/** @module component */
+/** 
+ * @module component 
+ * @preferred
+ * The root package of pip-services-components.
+ */
 import { ConfigParams } from 'pip-services-commons-node';
 import { IConfigurable } from 'pip-services-commons-node';
 import { IReferences } from 'pip-services-commons-node';

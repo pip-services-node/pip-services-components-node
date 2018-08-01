@@ -1,4 +1,5 @@
 /** @module log */
+/** @hidden */ 
 let util = require('util');
 
 import { ConfigParams } from 'pip-services-commons-node';
