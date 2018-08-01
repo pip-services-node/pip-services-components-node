@@ -64,6 +64,18 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<p>Contains implementation of the config design pattern. Configurable interface contains
+						one and only method &quot;configure&quot;, which takes ConfigParams as a parameter (extends
+						StringValueMap class). If any object needs to be configurable, we implement this
+					interface and parse the ConfigParams that the method received.</p>
+					<p>ConfigReader&#39;s Parameterize method – allows us to take a standard configuration, and
+						using a set of current parameters we can parameterize it (in particular, used to parameterize
+						using environment variables. When we create the configuration of a container, we can use
+					environment variables to tailor it to the system, dynamically add addresses, ports, etc)</p>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -107,7 +119,7 @@
 					<div class="tsd-signature tsd-kind-icon">_<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;lodash&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7eda918/src/config/MemoryConfigReader.ts#L2">config/MemoryConfigReader.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/322eb92/src/config/MemoryConfigReader.ts#L2">config/MemoryConfigReader.ts:2</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -119,7 +131,7 @@
 					<div class="tsd-signature tsd-kind-icon">_<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;lodash&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7eda918/src/config/ConfigReader.ts#L2">config/ConfigReader.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/322eb92/src/config/ConfigReader.ts#L2">config/ConfigReader.ts:2</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -131,7 +143,7 @@
 					<div class="tsd-signature tsd-kind-icon">fs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;fs&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7eda918/src/config/JsonConfigReader.ts#L2">config/JsonConfigReader.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/322eb92/src/config/JsonConfigReader.ts#L2">config/JsonConfigReader.ts:2</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -143,7 +155,7 @@
 					<div class="tsd-signature tsd-kind-icon">fs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;fs&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7eda918/src/config/YamlConfigReader.ts#L2">config/YamlConfigReader.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/322eb92/src/config/YamlConfigReader.ts#L2">config/YamlConfigReader.ts:2</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -155,7 +167,7 @@
 					<div class="tsd-signature tsd-kind-icon">handlebars<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;handlebars&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7eda918/src/config/ConfigReader.ts#L3">config/ConfigReader.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/322eb92/src/config/ConfigReader.ts#L3">config/ConfigReader.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -165,7 +177,7 @@
 					<div class="tsd-signature tsd-kind-icon">yaml<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;js-yaml&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7eda918/src/config/YamlConfigReader.ts#L3">config/YamlConfigReader.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/322eb92/src/config/YamlConfigReader.ts#L3">config/YamlConfigReader.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>

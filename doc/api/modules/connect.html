@@ -64,6 +64,43 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<p>Contains implementation of connection parameters, using various connection strings,
+						which are stripped of all credentials. If we need to configure a service, the port,
+						ip address, protocol, and other parameters – we use the ConnectionParams object, and
+						relevant helper classes (like ConnectionResolver), for acquiring these parameters,
+					and for discovery of objects, components (which store and retrieve connection parameters).</p>
+					<h3 id="discovery">Discovery</h3>
+					<p>Service that store a registry of various end-points (what services are where, and how to
+						connect to them). It knows the end-points, but doesn&#39;t have the credentials to connect to them.
+					Separated for security reasons.</p>
+					<p>IDiscovery – interface for creating registries.</p>
+					<p>MemoryDiscovery – registry that is stored in memory.</p>
+					<p>There exist 2 types of discovery:</p>
+					<ul>
+						<li><p>Static discovery: all services have static IP addresses (like DNS, which also works using static
+								discovery) that are configured from the start and don&#39;t change along the way. As of lately, used
+							more often than dynamic, because it is simpler to use and more reliable.</p>
+							<ul>
+								<li>Proxy (or reverse proxy) is created with a dns name, and all the dynamics of starting/restarting
+									/switching from one host to another – everything is nice and clear for the clients. Infrastructure
+								does all the hard work out of the box.</li>
+								<li>Configure sets the static registry.</li>
+							</ul>
+						</li>
+						<li><p>Dynamic discovery: every time a service starts, it registers its address in the discovery service (&quot;Service
+								name&quot; at the following address &quot;IP&quot;). Clients then ask to resolve the address by which the requested service
+							can be reached. The service has a general name, by which other services can resolve it.</p>
+							<ul>
+								<li>If a service stops working, you need to refresh its address, clean stale addresses, heartbeats must be
+								used – lots of problems and challenges.</li>
+							</ul>
+						</li>
+					</ul>
+					<p>One service can have more than one address.</p>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -102,7 +139,7 @@
 					<div class="tsd-signature tsd-kind-icon">async<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;async&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7eda918/src/connect/ConnectionResolver.ts#L2">connect/ConnectionResolver.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/322eb92/src/connect/ConnectionResolver.ts#L2">connect/ConnectionResolver.ts:2</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -114,7 +151,7 @@
 					<div class="tsd-signature tsd-kind-icon">async<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;async&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7eda918/src/connect/MemoryDiscovery.ts#L2">connect/MemoryDiscovery.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/322eb92/src/connect/MemoryDiscovery.ts#L2">connect/MemoryDiscovery.ts:2</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
