@@ -1,18 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module info */
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const Factory_1 = require("../build/Factory");
 const ContextInfo_1 = require("./ContextInfo");
 /**
  * Contains static read-only descriptors for ContextInfo and ContainerInfo (as well as a default info descriptor).
  *
- * @see Factory
+ * @see [[Factory]]
  */
 class DefaultInfoFactory extends Factory_1.Factory {
     /**
      * Adds object factories for ContextInfo and ContainerInfo to this Factory.
-     *
-     * @see Factory#Factory
      */
     constructor() {
         super();

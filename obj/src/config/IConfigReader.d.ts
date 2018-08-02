@@ -1,10 +1,11 @@
+/** @module config */
 import { ConfigParams } from 'pip-services-commons-node';
 /**
  * Interface that can be implemented by classes that need to read ConfigParams from a certain
- * source. Contains the abstract method {@link #readConfig}, which, upon implementation, should contain
+ * source. Contains the abstract method [[readConfig]], which, upon implementation, should contain
  * the logic necessary for reading and parsing ConfigParams.
  *
- * @see ConfigReader
+ * @see [[ConfigReader]]
  */
 export interface IConfigReader {
     /**

@@ -1,5 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @module count
+ * @preferred
+ * Performance counters. They show non-functional characteristics about how the code works,
+ * like: times called, response time, objects saved/processed. Using these numbers, we can
+ * show how the code works in the system – how stable, fast, expandable it is.
+ */
 var Timing_1 = require("./Timing");
 exports.Timing = Timing_1.Timing;
 var CachedCounters_1 = require("./CachedCounters");

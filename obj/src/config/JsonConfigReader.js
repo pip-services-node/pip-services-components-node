@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module config */
+/** @hidden */
 let fs = require('fs');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const pip_services_commons_node_2 = require("pip-services-commons-node");
@@ -9,30 +11,30 @@ const FileConfigReader_1 = require("./FileConfigReader");
 /**
  * Provides methods for reading configuration parameters from a JSON file.
  *
- * @see FileConfigReader
+ * @see [[FileConfigReader]]
  */
 class JsonConfigReader extends FileConfigReader_1.FileConfigReader {
     /**
      * @param path (optional) path to the target file containing configuration parameters in JSON format.
      *              If 'path' is omitted in the constructor, then it must be set otherwise
-     *              (for example, using "setPath()") before using the new object.
+     *              (for example, calling the [[setPath]] method before using the new object).
      *
-     * @see FileConfigReader
-     * @see FileConfigReader#setPath
+     * @see [[FileConfigReader]]
+     * @see [[FileConfigReader.setPath]]
      */
     constructor(path = null) {
         super(path);
     }
     /**
-     * Reads the JSON data from the file and returns it as a parameterized {@link NullableMap} object.
+     * Reads the JSON data from the file and returns it as a parameterized nullable map.
      * Reader's path must be set.
      *
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param parameters        used to parameterize the reader.
      * @returns                 NullableMap with data from the JSON file.
      *
-     * @see ConfigReader#parameterize
-     * @see NullableMap
+     * @see [[ConfigReader.parameterize]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/convert.jsonconverter.html#tonullablemap JsonConverter.toNullableMap]] (in the PipServices "Commons" Package)
      */
     readObject(correlationId, parameters) {
         if (super.getPath() == null)
@@ -50,14 +52,16 @@ class JsonConfigReader extends FileConfigReader_1.FileConfigReader {
         }
     }
     /**
-     * Reads the JSON data from the file and returns it as a parameterized {@link ConfigParams} object.
+     * Reads the JSON data from the file and returns it as a parameterized ConfigParams object.
      * Reader's path must be set.
      *
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param parameters        used to parameterize the reader.
      * @param callback          callback function that will be called with an error or with the
      *                          ConfigParams that were read.
-     * @see #readObject(correlationId: string, parameters: ConfigParams)
+     *
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[readObject]]
      */
     readConfig(correlationId, parameters, callback) {
         try {
@@ -70,25 +74,25 @@ class JsonConfigReader extends FileConfigReader_1.FileConfigReader {
         }
     }
     /**
-     * Static implementation of JsonConfigReader's non-static {@link #readObject}.
+     * Static implementation of JsonConfigReader's non-static [[readObject]].
      *
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param path              location of the target JSON file.
      * @param parameters        used to parameterize the reader.
      *
-     * @see #readObject(correlationId: string, parameters: ConfigParams)
+     * @see [[readObject]]
      */
     static readObject(correlationId, path, parameters) {
         return new JsonConfigReader(path).readObject(correlationId, parameters);
     }
     /**
-     * Static implementation of JsonConfigReader's non-static {@link #readConfig}.
+     * Static implementation of JsonConfigReader's non-static [[readConfig]].
      *
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param path              location of the target JSON file.
      * @param parameters        used to parameterize the reader.
      *
-     * @see #readConfig(correlationId: string, parameters: ConfigParams, callback: (err: any, config: ConfigParams) => void)
+     * @see [[readConfig]]
      */
     static readConfig(correlationId, path, parameters) {
         let value = new JsonConfigReader(path).readObject(correlationId, parameters);

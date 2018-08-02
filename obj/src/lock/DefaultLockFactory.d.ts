@@ -1,3 +1,4 @@
+/** @module lock */
 import { Descriptor } from 'pip-services-commons-node';
 import { Factory } from '../build/Factory';
 export declare class DefaultLockFactory extends Factory {

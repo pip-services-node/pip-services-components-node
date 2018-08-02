@@ -1,3 +1,4 @@
+/** @module lock */
 import { ILock } from './ILock';
 export declare class NullLock implements ILock {
     tryAcquireLock(correlationId: string, key: string, ttl: number, callback: (err: any, result: boolean) => void): void;

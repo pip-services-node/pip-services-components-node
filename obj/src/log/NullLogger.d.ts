@@ -1,3 +1,4 @@
+/** @module log */
 import { ILogger } from './ILogger';
 import { LogLevel } from './LogLevel';
 export declare class NullLogger implements ILogger {

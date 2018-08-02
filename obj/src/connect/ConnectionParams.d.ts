@@ -1,26 +1,29 @@
+/** @module connect */
 import { ConfigParams } from 'pip-services-commons-node';
 /**
  * Contains implementation of connection parameters, using various connection strings, which are
  * stripped of all credentials. Connection parameters and credentials are stored separately,
- * since the latter have special requirements for secure storage (see {@link CredentialParams} for more info).
+ * since the latter have special requirements for secure storage (see [[CredentialParams]] for more info).
  *
  * If a service needs to configure a certain connection, then the port, ip address, protocol,
  * and other parameters can be set using a ConnectionParams object. Relevant helper classes
- * (like {@link ConnectionResolver}) can be used to acquiring these parameters and discover objects
- * or components that store and retrieve connection parameters (discovery services - see {@link IDiscovery}).
+ * (like [[ConnectionResolver]]) can be used to acquiring these parameters and discover objects
+ * or components that store and retrieve connection parameters (discovery services - see [[IDiscovery]]).
  *
- * @see CredentialParams
- * @see ConnectionResolver
- * @see IDiscovery
+ * @see [[CredentialParams]]
+ * @see [[ConnectionResolver]]
+ * @see [[IDiscovery]]
  */
 export declare class ConnectionParams extends ConfigParams {
     /**
-     * Creates a new ConnectionParams object. Calls the constructor of
-     * {StringValueMap#StringValueMap}, which it extends by extending ConfigParams.
+     * Creates a new ConnectionParams object. Calls
+     * [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#constructor StringValueMap's constructor]],
+     * which it extends by extending [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]].
      *
      * @param values    values to fill these ConnectionParams with. Defaults to null.
      *
-     * @see StringValueMap#StringValueMap
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#constructor StringValueMap's constructor]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     constructor(values?: any);
     /**
@@ -32,7 +35,7 @@ export declare class ConnectionParams extends ConfigParams {
     /**
      * @returns     the key to use for connection resolving in a discovery service.
      *
-     * @see #useDiscovery
+     * @see [[useDiscovery]]
      */
     getDiscoveryKey(): string;
     /**
@@ -51,7 +54,7 @@ export declare class ConnectionParams extends ConfigParams {
      */
     setProtocol(value: string): void;
     /**
-     * @returns     the host (or the ip, if no host was found) that is set in
+     * @returns     the "host" or the "ip" (if no host was found) that is set in
      *              these ConnectionParams.
      */
     getHost(): string;
@@ -70,7 +73,7 @@ export declare class ConnectionParams extends ConfigParams {
      *
      * @param value     which port to connect to on the host.
      *
-     * @see #getHost
+     * @see [[getHost]]
      */
     setPort(value: number): void;
     /**
@@ -92,7 +95,7 @@ export declare class ConnectionParams extends ConfigParams {
      * @param line  parameterized string that contains the connection's parameters.
      * @returns     ConnectionParams that were generated.
      *
-     * @see StringValueMap#fromString
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#fromstring StringValueMap.fromString]] (in the PipServices "Commons" Package)
      */
     static fromString(line: string): ConnectionParams;
     /**
@@ -107,18 +110,18 @@ export declare class ConnectionParams extends ConfigParams {
      * @param config    ConfigParams that are to be transformed into a list of ConnectionParams.
      * @returns         the list of ConnectionParams that were successfully generated.
      *
-     * @see ConfigParams
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     static manyFromConfig(config: ConfigParams): ConnectionParams[];
     /**
      * Static method that converts ConfigParams into ConnectionParams. Uses static method
-     * {@link #manyFromConfig}.
+     * [[manyFromConfig]].
      *
      * @param config    ConfigParams to convert into a ConnectionParams object.
      * @returns         generated ConnectionParams (if successful) or null otherwise.
      *
-     * @see #manyFromConfig
-     * @see ConfigParams
+     * @see [[manyFromConfig]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     static fromConfig(config: ConfigParams): ConnectionParams;
 }

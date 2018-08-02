@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Null implementation of the {@link ICache} interface. Returns null instead of real values.
+ * Null implementation of the [[ICache]] interface. Returns null instead of real values.
  * Can be used for cutting dependecies while testing.
  *
- * @see ICache
+ * @see [[ICache]]
  */
 class NullCache {
     /**

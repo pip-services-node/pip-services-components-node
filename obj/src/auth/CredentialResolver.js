@@ -1,23 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module auth */
+/** @hidden */
 let async = require('async');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const pip_services_commons_node_2 = require("pip-services-commons-node");
 const CredentialParams_1 = require("./CredentialParams");
 /**
- * Helper class that stores credential parameters ({@link CredentialParams}) and is capable of acquiring parameters
+ * Helper class that stores credential parameters ([[CredentialParams]]) and is capable of acquiring parameters
  * from various credential stores.
  *
- * @see CredentialParams
- * @see ICredentialStore
+ * @see [[CredentialParams]]
+ * @see [[ICredentialStore]]
  */
 class CredentialResolver {
     /**
      * @param config        ConfigParams (credentials) to configure this object with.
      * @param references    references to the credential stores that should be used by this CredentialResolver.
      *
-     * @see #configure
-     * @see #setReferences
+     * @see [[configure]]
+     * @see [[setReferences]]
      */
     constructor(config = null, references = null) {
         this._credentials = [];
@@ -41,10 +43,10 @@ class CredentialResolver {
      *
      * @param config    credentials to add to this CredentialResolver's list of credentials.
      *
-     * @see CredentialParams#manyFromConfig
-     * @see CredentialParams
-     * @see ConfigParams
-     * @see IConfigurable
+     * @see [[CredentialParams.manyFromConfig]]
+     * @see [[CredentialParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipService's "Commons" Package)
      */
     configure(config) {
         let credentials = CredentialParams_1.CredentialParams.manyFromConfig(config);
@@ -59,9 +61,9 @@ class CredentialResolver {
     /**
      * Adds a new credential to this CredentialResolver's list of credentials.
      *
-     * @param credential    CredentialParams for the credential that is to be added.
+     * @param credential    [[CredentialParams]] for the credential that is to be added.
      *
-     * @see CredentialParams
+     * @see [[CredentialParams]]
      */
     add(credential) {
         this._credentials.push(credential);
@@ -76,7 +78,7 @@ class CredentialResolver {
      * @param callback          callback function that will be called with an error or with the
      *                          first CredentialParams found. Null will be returned if the credential
      *                          does not have a key, or there are no references set.
-     * @throws a ReferenceException, if no valid "credential-store" services are referenced.
+     * @throws a ReferenceException if no valid "credential-store" services are referenced.
      */
     lookupInStores(correlationId, credential, callback) {
         if (!credential.useCredentialStore()) {
@@ -113,8 +115,8 @@ class CredentialResolver {
         });
     }
     /**
-     * Looks up a credential in this CredentialResolver using its list of credentials ({@link CredentialParams})
-     * and the credential stores ({@link ICredentialStore}) referenced.
+     * Looks up a credential in this CredentialResolver using its list of credentials ([[CredentialParams]])
+     * and the credential stores ([[ICredentialStore]]) referenced.
      *
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param callback          callback function that will be called with an error or with the

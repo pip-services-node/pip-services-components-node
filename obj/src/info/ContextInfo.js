@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module info */
+/** @hidden */
 let os = require('os');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 /**
@@ -26,8 +28,8 @@ class ContextInfo {
      *
      * @param config 	the ConfigParams to configure this object with.
      *
-     * @see ConfigParams
-     * @see IConfigurable
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
      */
     configure(config) {
         this.name = config.getAsStringWithDefault("name", this.name);
@@ -65,7 +67,7 @@ class ContextInfo {
      * @param properties 	values that will be converted to a StringValueMap and saved
      * 						to this ContextInfo's properties.
      *
-     * @see StringValueMap
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html StringValueMap]] (in the PipServices "Commons" Package)
     */
     set properties(properties) {
         this._properties = pip_services_commons_node_1.StringValueMap.fromValue(properties);
@@ -76,7 +78,7 @@ class ContextInfo {
      *
      * @param config 	ConfigParams to use when configuring the new ContextInfo object.
      *
-     * @see ConfigParams
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     static fromConfig(config) {
         let result = new ContextInfo();

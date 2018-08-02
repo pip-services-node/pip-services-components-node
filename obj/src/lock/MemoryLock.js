@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module lock */
 const Lock_1 = require("./Lock");
 class MemoryLock extends Lock_1.Lock {
     constructor() {

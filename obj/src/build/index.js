@@ -1,5 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @module build
+ * @preferred
+ * Contains the "factory design pattern". There are various factory types,
+ * which are also implemented in a portable manner.
+ */
 var Factory_1 = require("./Factory");
 exports.Factory = Factory_1.Factory;
 var CreateException_1 = require("./CreateException");

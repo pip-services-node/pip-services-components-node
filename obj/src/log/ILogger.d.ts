@@ -1,3 +1,4 @@
+/** @module log */
 import { LogLevel } from './LogLevel';
 export interface ILogger {
     getLevel(): LogLevel;

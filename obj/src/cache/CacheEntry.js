@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module cache */
 /**
  * Simplifies working with key-value pairs in/from the cache.
  */

@@ -1,3 +1,4 @@
+/** @module lock */
 import { Lock } from './Lock';
 export declare class MemoryLock extends Lock {
     private _locks;

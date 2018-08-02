@@ -1,9 +1,10 @@
+/** @module cache */
 import { ICache } from './ICache';
 /**
- * Null implementation of the {@link ICache} interface. Returns null instead of real values.
+ * Null implementation of the [[ICache]] interface. Returns null instead of real values.
  * Can be used for cutting dependecies while testing.
  *
- * @see ICache
+ * @see [[ICache]]
  */
 export declare class NullCache implements ICache {
     /**

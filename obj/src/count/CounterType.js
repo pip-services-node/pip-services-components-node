@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module count */
 var CounterType;
 (function (CounterType) {
     CounterType[CounterType["Interval"] = 0] = "Interval";

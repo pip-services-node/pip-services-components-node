@@ -1,14 +1,15 @@
 import { ConfigParams } from 'pip-services-commons-node';
 import { IConfigurable } from 'pip-services-commons-node';
 /**
- * Combination of the {@link IConfigReader} and {@link IConfigurable} interfaces. Allows for object
- * configuration using {@link ConfigParams} via the {@link #configure} method, and contains the abstract
- * method {@link #readConfig}, which, upon implementation, should contain the logic necessary for reading
- * and parsing ConfigParams. Also contains the {@link #parameterize} method.
+ * Combination of the [[IConfigReader]] and
+ * [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
+ * (in the PipServices "Commons" Package) interfaces. Allows for object configuration using ConfigParams via the [[configure]] method,
+ * and contains the abstract method [[readConfig]], which, upon implementation, should contain the logic necessary for reading and
+ * parsing ConfigParams. Also contains the [[parameterize]] method.
  *
- * @see IConfigReader
- * @see IConfigurable
- * @see ConfigParams
+ * @see [[IConfigReader]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
  */
 export declare abstract class ConfigReader implements IConfigurable {
     private _parameters;
@@ -17,12 +18,12 @@ export declare abstract class ConfigReader implements IConfigurable {
      * Sets this object's configuration parameters.
      *
      * @param config    ConfigParams that contain a section named "parameters",
-     *                  which will be used when {@link #parameterize parameterizing}
+     *                  which will be used when [[parameterize parameterizing]]
      *                  configurations that are passed to this ConfigReader.
      *
-     * @see #parameterize
-     * @see IConfigurable
-     * @see ConfigParams
+     * @see [[parameterize]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     configure(config: ConfigParams): void;
     /**
@@ -36,7 +37,7 @@ export declare abstract class ConfigReader implements IConfigurable {
      */
     abstract readConfig(correlationId: string, parameters: ConfigParams, callback: (err: any, config: ConfigParams) => void): void;
     /**
-     * Protected method for parameterizing ConfigReaders, which allows using {@link https://handlebarsjs.com/ handlebars}
+     * Protected method for parameterizing ConfigReaders, which allows using [[https://handlebarsjs.com/ handlebars]]
      * to create parameterized configurations.
      *
      * The idea behind using parameterized configurations: handlebars allows us to take a templated configuration and

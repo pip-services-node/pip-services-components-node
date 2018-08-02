@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module test */
+/** @hidden */
 let _ = require('lodash');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const pip_services_commons_node_2 = require("pip-services-commons-node");
@@ -14,7 +16,7 @@ class Shutdown {
         this._minTimeout = config.getAsIntegerWithDefault('min_timeout', this._minTimeout);
         this._maxTimeout = config.getAsIntegerWithDefault('max_timeout', this._maxTimeout);
     }
-    isOpened() {
+    isOpen() {
         return this._interval != null;
     }
     open(correlationId, callback) {

@@ -1,10 +1,11 @@
+/** @module cache */
 import { IReconfigurable } from 'pip-services-commons-node';
 import { ConfigParams } from 'pip-services-commons-node';
 import { ICache } from './ICache';
 /**
  * Provides local in-memory cache support.
  *
- * @see {ICache}
+ * @see [[ICache]]
  */
 export declare class MemoryCache implements ICache, IReconfigurable {
     private static readonly _defaultTimeout;
@@ -25,8 +26,8 @@ export declare class MemoryCache implements ICache, IReconfigurable {
      * @throws  MicroserviceError when component is in illegal state
      *          or configuration validation fails.
      *
-     * @see ConfigParams
-     * @see IConfigurable
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
      */
     configure(config: ConfigParams): void;
     /**

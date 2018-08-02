@@ -1,6 +1,11 @@
 # Component definitions for Pip.Services in Node.js Changelog
 
-## <a name="3.0.0"></a> 3.0.0 (2018-08-21) 
+## <a name="3.0.2"></a> 3.0.2 (2018-08-02) 
+
+### Breaking changes
+* Shutdown.isOpened() is now Shutdown.isOpen()
+
+## <a name="3.0.0"></a> 3.0.0 (2018-07-21) 
 
 ### Features
 * **test** Added Shutdown

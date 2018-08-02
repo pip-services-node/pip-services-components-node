@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module log */
 var LogLevel;
 (function (LogLevel) {
     LogLevel[LogLevel["None"] = 0] = "None";

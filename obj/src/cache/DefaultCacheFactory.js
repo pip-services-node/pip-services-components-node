@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module cache */
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const Factory_1 = require("../build/Factory");
 const NullCache_1 = require("./NullCache");
@@ -7,13 +8,11 @@ const MemoryCache_1 = require("./MemoryCache");
 /**
  * Contains static read-only descriptors for the Null and Memory caches (as well as a default cache descriptor).
  *
- * @see Factory
+ * @see [[Factory]]
  */
 class DefaultCacheFactory extends Factory_1.Factory {
     /**
      * Adds object factories for NullCache and MemoryCache to this Factory.
-     *
-     * @see Factory#Factory
      */
     constructor() {
         super();

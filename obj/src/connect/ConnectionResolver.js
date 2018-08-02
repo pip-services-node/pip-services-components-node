@@ -1,24 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module connect */
+/** @hidden */
 let async = require('async');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const pip_services_commons_node_2 = require("pip-services-commons-node");
 const pip_services_commons_node_3 = require("pip-services-commons-node");
 const ConnectionParams_1 = require("./ConnectionParams");
 /**
- * Helper class that stores connection parameters ({@link ConnectionParams}) and is capable of acquiring parameters
+ * Helper class that stores connection parameters ([[ConnectionParams]]) and is capable of acquiring parameters
  * from various discovery services.
  *
- * @see ConnectionParams
- * @see IDiscovery
+ * @see [[ConnectionParams]]
+ * @see [[IDiscovery]]
  */
 class ConnectionResolver {
     /**
      * @param config        ConfigParams (connections) to configure this object with.
      * @param references    references to the discovery services that should be used by this ConnectionResolver.
      *
-     * @see #configure
-     * @see #setReferences
+     * @see [[configure]]
+     * @see [[setReferences]]
      */
     constructor(config = null, references = null) {
         this._connections = [];
@@ -42,10 +44,10 @@ class ConnectionResolver {
      *
      * @param config    connections to add to this ConnectionResolver's list of connections.
      *
-     * @see ConnectionParams#manyFromConfig
-     * @see ConnectionParams
-     * @see ConfigParams
-     * @see IConfigurable
+     * @see [[ConnectionParams.manyFromConfig]]
+     * @see [[ConnectionParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
      */
     configure(config) {
         let connections = ConnectionParams_1.ConnectionParams.manyFromConfig(config);
@@ -62,7 +64,7 @@ class ConnectionResolver {
      *
      * @param connection    ConnectionParams for the connection that is to be added.
      *
-     * @see ConnectionParams
+     * @see [[ConnectionParams]]
      */
     add(connection) {
         this._connections.push(connection);
@@ -77,7 +79,7 @@ class ConnectionResolver {
      * @param callback          callback function that will be called with an error or with the
      *                          first ConnectionParams found. Null will be returned if the connection
      *                          does not have a key, or there are no references set.
-     * @throws a ReferenceException, if no valid "discovery" services are referenced.
+     * @throws a ReferenceException if no valid "discovery" services are referenced.
      */
     resolveInDiscovery(correlationId, connection, callback) {
         if (!connection.useDiscovery()) {
@@ -113,8 +115,8 @@ class ConnectionResolver {
         });
     }
     /**
-     * Resolves a connection in this ConnectionResolver using its list of connections ({@link ConnectionParams})
-     * and the discovery services ({@link IDiscovery}) referenced.
+     * Resolves a connection in this ConnectionResolver using its list of connections ([[ConnectionParams]])
+     * and the discovery services ([[IDiscovery]]) referenced.
      *
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param callback          callback function that will be called with an error or with the
@@ -167,7 +169,7 @@ class ConnectionResolver {
      * @param callback          callback function that will be called with an error or with the
      *                          list of ConnectionParams that were found in the referenced discovery
      *                          services using the 'connection' parameter's discovery key.
-     * @throws a ReferenceException, if no "discovery" services are referenced.
+     * @throws a ReferenceException if no "discovery" services are referenced.
      */
     resolveAllInDiscovery(correlationId, connection, callback) {
         let resolved = [];
@@ -205,8 +207,8 @@ class ConnectionResolver {
     /**
      * Resolves all connections that:
      * - are stored in this ConnectionResolver and do not need to be resolved in a discovery service;
-     * - are resolved in referenced discovery services ({@link IDiscovery}) using the discovery keys stored in the ConnectionResolver's
-     * connections ({@link ConnectionParams}).
+     * - are resolved in referenced discovery services ([[IDiscovery]]) using the discovery keys stored in the ConnectionResolver's
+     * connections ([[ConnectionParams]]).
      *
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param callback          callback function that will be called with an error or with the
@@ -244,14 +246,14 @@ class ConnectionResolver {
     }
     /**
      * Private method that registers the given connection in all referenced discovery services.
-     * Used for dynamic discovery (described in {@link MemoryDiscovery}).
+     * Used for dynamic discovery (described in [[MemoryDiscovery]]).
      *
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param connection        connection to register in the discovery services.
      * @param callback          callback function that will be called with an error or with a
      *                          boolean result (successful or not).
      *
-     * @see MemoryDiscovery
+     * @see [[MemoryDiscovery]]
      */
     registerInDiscovery(correlationId, connection, callback) {
         if (!connection.useDiscovery()) {
@@ -282,13 +284,13 @@ class ConnectionResolver {
     }
     /**
      * Registers the given connection in all referenced discovery services. Used for dynamic discovery
-     * (described in {@link MemoryDiscovery}).
+     * (described in [[MemoryDiscovery]]).
      *
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param connection        connection to register in the discovery services.
-     * @param callback          callback function that will be called with an error, if one is raised.
+     * @param callback          callback function that will be called with an error (if one is raised).
      *
-     * @see MemoryDiscovery
+     * @see [[MemoryDiscovery]]
      */
     register(correlationId, connection, callback) {
         this.registerInDiscovery(correlationId, connection, (err, result) => {

@@ -1,18 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module auth */
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const Factory_1 = require("../build/Factory");
 const MemoryCredentialStore_1 = require("./MemoryCredentialStore");
 /**
  * Contains static read-only descriptors for MemoryCredentialStore (as well as a default "credential-store" descriptor).
  *
- * @see Factory
+ * @see [[Factory]]
  */
 class DefaultCredentialStoreFactory extends Factory_1.Factory {
     /**
      * Adds an object factory for MemoryCredentialStore to this Factory.
-     *
-     * @see Factory#Factory
      */
     constructor() {
         super();

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module count */
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const NullCounters_1 = require("./NullCounters");
 const LogCounters_1 = require("./LogCounters");

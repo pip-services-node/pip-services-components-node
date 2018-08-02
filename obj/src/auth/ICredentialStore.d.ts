@@ -1,14 +1,15 @@
+/** @module auth */
 import { CredentialParams } from './CredentialParams';
 /**
  * The role of a Credential store is to maintain a registry of various credential parameters (what usernames and
  * passwords to use when connecting to certain end-points). These parameters are necessary for authentication and
  * authorization (when connecting to other services) and do not contain infomation about the end-points themselves
- * (host's address, port, etc. - see {@link ConnectionParams}).
+ * (host's address, port, etc. - see [[ConnectionParams]]).
  *
  * This interface can be used for creating credential stores, which can save and retrieve various credential parameters.
  *
- * @see CredentialParams
- * @see ConnectionParams
+ * @see [[CredentialParams]]
+ * @see [[ConnectionParams]]
  */
 export interface ICredentialStore {
     /**
@@ -18,7 +19,7 @@ export interface ICredentialStore {
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param key               key to store the credentials by.
      * @param credential        CredentialParams of the credential to be stored.
-     * @param callback          callback function that will be called with an error, if one is raised.
+     * @param callback          callback function that will be called with an error if one is raised.
      */
     store(correlationId: string, key: String, credential: CredentialParams, callback: (err: any) => void): void;
     /**

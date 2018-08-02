@@ -2,11 +2,11 @@ import { ConfigParams } from 'pip-services-commons-node';
 import { IReferences } from 'pip-services-commons-node';
 import { CredentialParams } from './CredentialParams';
 /**
- * Helper class that stores credential parameters ({@link CredentialParams}) and is capable of acquiring parameters
+ * Helper class that stores credential parameters ([[CredentialParams]]) and is capable of acquiring parameters
  * from various credential stores.
  *
- * @see CredentialParams
- * @see ICredentialStore
+ * @see [[CredentialParams]]
+ * @see [[ICredentialStore]]
  */
 export declare class CredentialResolver {
     private readonly _credentials;
@@ -15,8 +15,8 @@ export declare class CredentialResolver {
      * @param config        ConfigParams (credentials) to configure this object with.
      * @param references    references to the credential stores that should be used by this CredentialResolver.
      *
-     * @see #configure
-     * @see #setReferences
+     * @see [[configure]]
+     * @see [[setReferences]]
      */
     constructor(config?: ConfigParams, references?: IReferences);
     /**
@@ -31,10 +31,10 @@ export declare class CredentialResolver {
      *
      * @param config    credentials to add to this CredentialResolver's list of credentials.
      *
-     * @see CredentialParams#manyFromConfig
-     * @see CredentialParams
-     * @see ConfigParams
-     * @see IConfigurable
+     * @see [[CredentialParams.manyFromConfig]]
+     * @see [[CredentialParams]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipService's "Commons" Package)
      */
     configure(config: ConfigParams): void;
     /**
@@ -44,9 +44,9 @@ export declare class CredentialResolver {
     /**
      * Adds a new credential to this CredentialResolver's list of credentials.
      *
-     * @param credential    CredentialParams for the credential that is to be added.
+     * @param credential    [[CredentialParams]] for the credential that is to be added.
      *
-     * @see CredentialParams
+     * @see [[CredentialParams]]
      */
     add(credential: CredentialParams): void;
     /**
@@ -59,12 +59,12 @@ export declare class CredentialResolver {
      * @param callback          callback function that will be called with an error or with the
      *                          first CredentialParams found. Null will be returned if the credential
      *                          does not have a key, or there are no references set.
-     * @throws a ReferenceException, if no valid "credential-store" services are referenced.
+     * @throws a ReferenceException if no valid "credential-store" services are referenced.
      */
     lookupInStores(correlationId: string, credential: CredentialParams, callback: (err: any, result: CredentialParams) => void): void;
     /**
-     * Looks up a credential in this CredentialResolver using its list of credentials ({@link CredentialParams})
-     * and the credential stores ({@link ICredentialStore}) referenced.
+     * Looks up a credential in this CredentialResolver using its list of credentials ([[CredentialParams]])
+     * and the credential stores ([[ICredentialStore]]) referenced.
      *
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param callback          callback function that will be called with an error or with the

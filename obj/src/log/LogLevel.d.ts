@@ -1,3 +1,4 @@
+/** @module log */
 export declare enum LogLevel {
     None = 0,
     Fatal = 1,

@@ -1,3 +1,4 @@
+/** @module lock */
 import { ConfigParams } from 'pip-services-commons-node';
 import { IReconfigurable } from 'pip-services-commons-node';
 import { ILock } from './ILock';

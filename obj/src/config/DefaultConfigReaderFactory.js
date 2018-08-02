@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module config */
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const Factory_1 = require("../build/Factory");
 const MemoryConfigReader_1 = require("./MemoryConfigReader");
@@ -8,13 +9,11 @@ const YamlConfigReader_1 = require("./YamlConfigReader");
 /**
  * Contains static read-only descriptors for the Memory, JSON, and YAML ConfigReaders (as well as a default config-reader descriptor).
  *
- * @see Factory
+ * @see [[Factory]]
  */
 class DefaultConfigReaderFactory extends Factory_1.Factory {
     /**
      * Adds object factories for MemoryConfigReader, JsonConfigReader, and YamlConfigReader to this Factory.
-     *
-     * @see Factory#Factory
      */
     constructor() {
         super();

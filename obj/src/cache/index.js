@@ -1,5 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @module cache
+ * @preferred
+ * Abstract implementation of various distributed caches. We can save an object
+ * to cache and retrieve it object by its key, using various implementations.
+ */
 var CacheEntry_1 = require("./CacheEntry");
 exports.CacheEntry = CacheEntry_1.CacheEntry;
 var NullCache_1 = require("./NullCache");

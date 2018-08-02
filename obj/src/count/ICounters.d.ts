@@ -1,3 +1,4 @@
+/** @module count */
 import { Timing } from './Timing';
 export interface ICounters {
     beginTiming(name: string): Timing;

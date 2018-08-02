@@ -1,3 +1,4 @@
+/** @module log */
 import { ConfigParams } from 'pip-services-commons-node';
 import { LogLevel } from './LogLevel';
 import { Logger } from './Logger';

@@ -1,3 +1,4 @@
+/** @module count */
 import { IReferenceable } from 'pip-services-commons-node';
 import { IReferences } from 'pip-services-commons-node';
 import { ICounters } from './ICounters';

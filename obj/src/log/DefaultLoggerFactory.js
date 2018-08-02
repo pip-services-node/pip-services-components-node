@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module log */
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const NullLogger_1 = require("./NullLogger");
 const ConsoleLogger_1 = require("./ConsoleLogger");

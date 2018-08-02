@@ -1,3 +1,4 @@
+/** @module log */
 import { IReferences } from 'pip-services-commons-node';
 import { IReferenceable } from 'pip-services-commons-node';
 import { Logger } from './Logger';

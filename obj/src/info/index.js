@@ -1,5 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @module info
+ * @preferred
+ * Contains a simple object that defines the context of execution. For various
+ * logging functions we need to know what source we are logging from – what is
+ * the processes name, what the process is/does.
+ */
 var ContextInfo_1 = require("./ContextInfo");
 exports.ContextInfo = ContextInfo_1.ContextInfo;
 var DefaultInfoFactory_1 = require("./DefaultInfoFactory");

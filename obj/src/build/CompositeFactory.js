@@ -1,13 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module build */
+/** @hidden */
 let _ = require('lodash');
 const CreateException_1 = require("./CreateException");
 /**
- * Class that can add and/or remove various Factory (classes that implement {@link IFactory}) to its list
+ * Class that can add and/or remove various Factory (classes that implement [[IFactory]]) to its list
  * of factories. Using this class, multiple factories can be collected into one object for ease of use.
  * Added factories are called via their unique locators.
  *
- * @see IFactory
+ * @see [[IFactory]]
  */
 class CompositeFactory {
     /**

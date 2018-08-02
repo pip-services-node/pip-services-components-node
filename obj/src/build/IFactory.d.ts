@@ -1,3 +1,4 @@
+/** @module build */
 /**
  * Interface for creating component factories. IFactory is part of the "factory design pattern",
  * which is used to make factory classes. Factory classes are capable of creating instances of
@@ -21,7 +22,7 @@ export interface IFactory {
      * @return 			an instance of the created component.
      * @throws 			a CreateException, when component creation fails.
      *
-     * @see CreateException
+     * @see [[CreateException]]
      */
     create(locator: any): any;
 }

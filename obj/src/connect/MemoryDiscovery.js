@@ -1,40 +1,42 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module connect */
+/** @hidden */
 let async = require('async');
 const ConnectionParams_1 = require("./ConnectionParams");
 class DiscoveryItem {
 }
 /**
- * Discovery service (see {@link IDiscovery}) that stores its registry of connections ({@link ConnectionParams}) in memory.
+ * Discovery service (see [[IDiscovery]]) that stores its registry of connections ([[ConnectionParams]]) in memory.
  *
  * Supports both static and dynamic discovery.
  *
  * - Static discovery: all services have static IP addresses (like a DNS, which also works using static discovery)
- * that are registered from the start (using {@link #configure}) and don't change along the way. As of late,
+ * that are registered from the start (using [[configure]]) and don't change along the way. As of late,
  * static discovery has been used more often than dynamic, as it is simpler to use and more reliable
  * (infrastructure does all of the hard work right out of the box).
  *
  *
  * - Dynamic discovery: every time a service starts, it registers its address in the discovery service ("Service name"
- * is available at "IP address") using {@link #register}. Clients then ask to resolve the address by which the requested
+ * is available at "IP address") using [[register]]. Clients then ask to resolve the address by which the requested
  * service can be reached. Dynamic discovery is more challenging to use than static discovery: if a service stops working,
  * its address needs to be refreshed, stale addresses need to be cleaned, heartbeats must be used – many problems and
  * challenges occur along the way.
  *
- * @see IDiscovery
- * @see ConnectionParams
+ * @see [[IDiscovery]]
+ * @see [[ConnectionParams]]
  */
 class MemoryDiscovery {
     /**
      * Creates a MemoryDiscovery object and configures it for static discovery using the given ConfigParams. If no
-     * ConfigParams are given, then the object must be configured using the {@link #configure} method, or it must
-     * be used in dynamic discovery mode (using the {@link #register} method).
+     * ConfigParams are given, then the object must be configured using the [[configure]] method, or it must
+     * be used in dynamic discovery mode (using the [[register]] method).
      *
      * @param config    ConfigParams to configure the new object with.
      *
-     * @see #configure
-     * @see #register
-     * @see ConfigParams
+     * @see [[configure]]
+     * @see [[register]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     constructor(config = null) {
         this._items = [];
@@ -42,13 +44,13 @@ class MemoryDiscovery {
             this.configure(config);
     }
     /**
-     * Configures this object by calling {@link #readConnections}. Used to set the discovery service's static registery.
+     * Configures this object by calling [[readConnections]]. Used to set the discovery service's static registery.
      *
      * @param config    ConfigParams to configure this object with.
      *
-     * @see #readConnections
-     * @see ConfigParams
-     * @see IConfigurable
+     * @see [[readConnections]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
      */
     configure(config) {
         this.readConnections(config);
@@ -59,7 +61,7 @@ class MemoryDiscovery {
      *
      * @param connections   ConfigParams containing connection information.
      *
-     * @see ConfigParams
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     readConnections(connections) {
         this._items = [];

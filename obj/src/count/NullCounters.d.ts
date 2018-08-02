@@ -1,3 +1,4 @@
+/** @module count */
 import { Timing } from './Timing';
 import { ICounters } from './ICounters';
 export declare class NullCounters implements ICounters {

@@ -1,17 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module config */
+/** @hidden */
 let _ = require('lodash');
+/** @hidden */
 let handlebars = require('handlebars');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 /**
- * Combination of the {@link IConfigReader} and {@link IConfigurable} interfaces. Allows for object
- * configuration using {@link ConfigParams} via the {@link #configure} method, and contains the abstract
- * method {@link #readConfig}, which, upon implementation, should contain the logic necessary for reading
- * and parsing ConfigParams. Also contains the {@link #parameterize} method.
+ * Combination of the [[IConfigReader]] and
+ * [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]]
+ * (in the PipServices "Commons" Package) interfaces. Allows for object configuration using ConfigParams via the [[configure]] method,
+ * and contains the abstract method [[readConfig]], which, upon implementation, should contain the logic necessary for reading and
+ * parsing ConfigParams. Also contains the [[parameterize]] method.
  *
- * @see IConfigReader
- * @see IConfigurable
- * @see ConfigParams
+ * @see [[IConfigReader]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
  */
 class ConfigReader {
     constructor() {
@@ -21,12 +25,12 @@ class ConfigReader {
      * Sets this object's configuration parameters.
      *
      * @param config    ConfigParams that contain a section named "parameters",
-     *                  which will be used when {@link #parameterize parameterizing}
+     *                  which will be used when [[parameterize parameterizing]]
      *                  configurations that are passed to this ConfigReader.
      *
-     * @see #parameterize
-     * @see IConfigurable
-     * @see ConfigParams
+     * @see [[parameterize]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      */
     configure(config) {
         let parameters = config.getSection("parameters");
@@ -34,7 +38,7 @@ class ConfigReader {
             this._parameters = parameters;
     }
     /**
-     * Protected method for parameterizing ConfigReaders, which allows using {@link https://handlebarsjs.com/ handlebars}
+     * Protected method for parameterizing ConfigReaders, which allows using [[https://handlebarsjs.com/ handlebars]]
      * to create parameterized configurations.
      *
      * The idea behind using parameterized configurations: handlebars allows us to take a templated configuration and

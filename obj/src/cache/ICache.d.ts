@@ -1,3 +1,4 @@
+/** @module cache */
 /**
  * Interface that can be used for creating various distributed caches. We can save
  * an object to cache and retrieve it by its key, using various implementations.
@@ -22,7 +23,7 @@ export interface ICache {
      * @param value             value to be stored in the cache.
      * @param timeout           timeout for storing the key-value pair in the cache.
      * @param callback          (optional) callback function that will be called with
-     *                          an error, if one is raised.
+     *                          an error (if one is raised).
      */
     store(correlationId: string, key: string, value: any, timeout: number, callback?: (err: any) => void): void;
     /**
@@ -32,7 +33,7 @@ export interface ICache {
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param key               key to delete key-value pair by.
      * @param callback          (optional) callback function that will be called with
-     *                          an error, if one is raised.
+     *                          an error (if one is raised).
      */
     remove(correlationId: string, key: string, callback?: (err: any) => void): any;
 }
