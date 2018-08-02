@@ -8,7 +8,7 @@ export declare class Shutdown implements IConfigurable, IOpenable {
     private _maxTimeout;
     constructor();
     configure(config: ConfigParams): void;
-    isOpened(): boolean;
+    isOpen(): boolean;
     open(correlationId: string, callback: (err: any) => void): void;
     close(correlationId: string, callback: (err: any) => void): void;
     shutdown(): void;

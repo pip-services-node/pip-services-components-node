@@ -1,6 +1,6 @@
 {
     "name": "pip-services-components-node",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "author": "Conceptual Vision Consulting LLC",
     "description": "Component definitions for Pip.Services in Node.js",
     "contributors": [
