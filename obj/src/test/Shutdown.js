@@ -16,7 +16,7 @@ class Shutdown {
         this._minTimeout = config.getAsIntegerWithDefault('min_timeout', this._minTimeout);
         this._maxTimeout = config.getAsIntegerWithDefault('max_timeout', this._maxTimeout);
     }
-    isOpen() {
+    isOpened() {
         return this._interval != null;
     }
     open(correlationId, callback) {

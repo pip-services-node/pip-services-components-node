@@ -22,7 +22,7 @@ export class Shutdown implements IConfigurable, IOpenable {
         this._maxTimeout = config.getAsIntegerWithDefault('max_timeout', this._maxTimeout);
     }
 
-    public isOpen(): boolean {
+    public isOpened(): boolean {
         return this._interval != null;
     }
 
