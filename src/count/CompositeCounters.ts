@@ -8,8 +8,8 @@ import { Timing } from './Timing';
 import { ITimingCallback } from './ITimingCallback';
 
 /**
- * Helper class for grouping multiple [[ICounters counters]] together and updating them all 
- * at once with one method call.
+ * Helper class for grouping multiple [[ICounters counters]] together and updating all of them 
+ * at once using a single method call.
  * 
  * @see [[ICounters]]
  */
