@@ -55,7 +55,7 @@ export abstract class CachedCounters implements ICounters, IReconfigurable, ITim
     /**
      * Configures this object using the parameters provided. Looks for parameters with the 
      * keys "interval" and "reset_timeout" and sets them for this object. If a key is not found, 
-     * this object's previously set value will be used as a default value.
+     * the corresponding value will default to the value that was previously set for this object.
      * 
      * @param config    ConfigParams, containing "interval" and/or "reset_timeout" items.
      * 
@@ -234,7 +234,7 @@ export abstract class CachedCounters implements ICounters, IReconfigurable, ITim
     }
 
     /**
-	 * Updates the named [[CounterType.LastCounter Last Counter]] by setting 
+	 * Updates the named [[CounterType.LastValue Last Counter]] by setting 
      * its last value to the value given.
 	 * 
 	 * @param name 		the name of the counter to update.

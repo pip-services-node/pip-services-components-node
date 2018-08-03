@@ -144,7 +144,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="log.logger.html">Logger</a>.<a href="log.logger.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/CompositeLogger.ts#L11">log/CompositeLogger.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/CompositeLogger.ts#L11">log/CompositeLogger.ts:11</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -167,7 +167,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#_level">_level</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L17">log/Logger.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L26">log/Logger.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -177,7 +177,7 @@
 					<div class="tsd-signature tsd-kind-icon">_loggers<span class="tsd-signature-symbol">:</span> <a href="../interfaces/log.ilogger.html" class="tsd-signature-type">ILogger</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/CompositeLogger.ts#L11">log/CompositeLogger.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/CompositeLogger.ts#L11">log/CompositeLogger.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -188,7 +188,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#_source">_source</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L18">log/Logger.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L27">log/Logger.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -206,16 +206,26 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#composeerror">composeError</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L96">log/Logger.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L259">log/Logger.ts:259</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Composes an Error string, which can be used in a log entry.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>error: <span class="tsd-signature-type">Error</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the Error to compose a string with.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the string created using the information from the Error. Example error string:
+							&quot;&lt;error&#39;s message&gt; StackTrace: &lt;error&#39;s stack&gt;&quot;</p>
 						</li>
 					</ul>
 				</section>
@@ -230,13 +240,28 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#configure">configure</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L22">log/Logger.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L43">log/Logger.ts:43</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Configures this object using the parameters provided. Looks for parameters with the
+										keys &quot;level&quot; and &quot;source&quot; and sets them for this object. If a key is not found,
+									the corresponding value will default to the value that was previously set for this object.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; Package)</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>ConfigParams, containing &quot;level&quot; and/or &quot;source&quot; items.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -255,19 +280,42 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#debug">debug</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#debug">debug</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L88">log/Logger.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L233">log/Logger.ts:233</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Logs a message using the <a href="../enums/log.loglevel.html#debug">debug</a> log level. Calls this class&#39;s <a href="log.compositelogger.html#formatandwrite">formatAndWrite</a>
+									method with level set to <a href="../enums/log.loglevel.html#debug">LogLevel.Debug</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="log.compositelogger.html#formatandwrite">formatAndWrite</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>unique business transaction id to trace calls across components.</p>
+									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the message to log as debug or the format string to use for formatting.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -286,22 +334,48 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#error">error</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#error">error</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L76">log/Logger.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L188">log/Logger.ts:188</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Logs a message using the <a href="../enums/log.loglevel.html#error">error</a> log level. Calls this class&#39;s <a href="log.compositelogger.html#formatandwrite">formatAndWrite</a>
+									method with level set to <a href="../enums/log.loglevel.html#error">LogLevel.Error</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="log.compositelogger.html#formatandwrite">formatAndWrite</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>unique business transaction id to trace calls across components.</p>
+									</div>
 								</li>
 								<li>
 									<h5>error: <span class="tsd-signature-type">Error</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the Error to include in the log entry.</p>
+									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the message to log as error or the format string to use for formatting.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -320,22 +394,48 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#fatal">fatal</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#fatal">fatal</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L72">log/Logger.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L172">log/Logger.ts:172</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Logs a message using the <a href="../enums/log.loglevel.html#fatal">fatal</a> log level. Calls this class&#39;s <a href="log.compositelogger.html#formatandwrite">formatAndWrite</a>
+									method with level set to <a href="../enums/log.loglevel.html#fatal">LogLevel.Fatal</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="log.compositelogger.html#formatandwrite">formatAndWrite</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>unique business transaction id to trace calls across components.</p>
+									</div>
 								</li>
 								<li>
 									<h5>error: <span class="tsd-signature-type">Error</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the Error to include in the log entry.</p>
+									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the message to log as fatal or the format string to use for formatting.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -353,25 +453,54 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#formatandwrite">formatAndWrite</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L56">log/Logger.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L132">log/Logger.ts:132</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>If <code>message</code> is a <code>printf</code>-like format string, then this method formats it
+									using the provided arguments and calls <a href="log.compositelogger.html#write">write</a> with the newly formatted string.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="log.compositelogger.html#write">write</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>level: <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the LogLevel to use.</p>
+									</div>
 								</li>
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>unique business transaction id to trace calls across components.</p>
+									</div>
 								</li>
 								<li>
 									<h5>error: <span class="tsd-signature-type">Error</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the Error to include in the log entry for fatal and error logs.</p>
+									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the message to log or the format string to use for formatting.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the arguments to format <code>message</code> with.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -390,10 +519,21 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#getlevel">getLevel</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#getlevel">getLevel</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L38">log/Logger.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L75">log/Logger.ts:75</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieves the <a href="../enums/log.loglevel.html">LogLevel</a> that is currently set.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h4>
+							<p>this logger&#39;s LogLevel.</p>
 						</li>
 					</ul>
 				</section>
@@ -408,10 +548,16 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#getsource">getSource</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L46">log/Logger.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L95">log/Logger.ts:95</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieves the source (context) for which this logger is logging.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>this logger&#39;s source (context).</p>
 						</li>
 					</ul>
 				</section>
@@ -427,19 +573,42 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#info">info</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#info">info</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L84">log/Logger.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L218">log/Logger.ts:218</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Logs a message using the <a href="../enums/log.loglevel.html#info">info</a> log level. Calls this class&#39;s <a href="log.compositelogger.html#formatandwrite">formatAndWrite</a>
+									method with level set to <a href="../enums/log.loglevel.html#info">LogLevel.Info</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="log.compositelogger.html#formatandwrite">formatAndWrite</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>unique business transaction id to trace calls across components.</p>
+									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the message to log as info or the format string to use for formatting.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -458,25 +627,51 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#log">log</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#log">log</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L68">log/Logger.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L156">log/Logger.ts:156</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Logs a message using the given <a href="../enums/log.loglevel.html">LogLevel</a> and parameters. Uses this class&#39;s <a href="log.compositelogger.html#formatandwrite">formatAndWrite</a>
+									method.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="log.compositelogger.html#formatandwrite">formatAndWrite</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>level: <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the LogLevel to use.</p>
+									</div>
 								</li>
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>unique business transaction id to trace calls across components.</p>
+									</div>
 								</li>
 								<li>
 									<h5>error: <span class="tsd-signature-type">Error</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the Error to include in the log entry for fatal and error logs.</p>
+									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the message to log or the format string to use for formatting.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -495,13 +690,26 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#setlevel">setLevel</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#setlevel">setLevel</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L42">log/Logger.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L86">log/Logger.ts:86</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets this logger&#39;s <a href="../enums/log.loglevel.html">LogLevel</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the LogLevel to set this logger to.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -519,7 +727,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="log.logger.html">Logger</a>.<a href="log.logger.html#setreferences">setReferences</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/CompositeLogger.ts#L20">log/CompositeLogger.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/CompositeLogger.ts#L20">log/CompositeLogger.ts:20</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -543,13 +751,21 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#setsource">setSource</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L50">log/Logger.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L104">log/Logger.ts:104</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the source (context) for which this logger will be logging.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the source (context) to set.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -568,19 +784,42 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#trace">trace</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#trace">trace</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L92">log/Logger.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L248">log/Logger.ts:248</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Logs a message using the <a href="../enums/log.loglevel.html#trace">trace</a> log level. Calls this class&#39;s <a href="log.compositelogger.html#formatandwrite">formatAndWrite</a>
+									method with level set to <a href="../enums/log.loglevel.html#trace">LogLevel.Trace</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="log.compositelogger.html#formatandwrite">formatAndWrite</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>unique business transaction id to trace calls across components.</p>
+									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the message to log as trace or the format string to use for formatting.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -599,19 +838,42 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#warn">warn</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#warn">warn</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/Logger.ts#L80">log/Logger.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/Logger.ts#L203">log/Logger.ts:203</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Logs a message using the <a href="../enums/log.loglevel.html#warn">warn</a> log level. Calls this class&#39;s <a href="log.compositelogger.html#formatandwrite">formatAndWrite</a>
+									method with level set to <a href="../enums/log.loglevel.html#warn">LogLevel.Warn</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="log.compositelogger.html#formatandwrite">formatAndWrite</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>unique business transaction id to trace calls across components.</p>
+									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the message to log as warn or the format string to use for formatting.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -629,7 +891,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="log.logger.html">Logger</a>.<a href="log.logger.html#write">write</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/58c54af/src/log/CompositeLogger.ts#L33">log/CompositeLogger.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6a6563e/src/log/CompositeLogger.ts#L33">log/CompositeLogger.ts:33</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>

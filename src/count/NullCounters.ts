@@ -16,6 +16,8 @@ export class NullCounters implements ICounters {
 	public NullCounters() { }
 
 	/**
+	 * Null call to the [[ICounters.beginTiming beginTiming]] method.
+	 * 
 	 * @param name 	not used.
 	 * @returns a new Timing, created using the default constructor.
 	 * 
@@ -26,7 +28,7 @@ export class NullCounters implements ICounters {
 	}
 
 	/**
-	 * Null call to the stats method.
+	 * Null call to the [[ICounters.stats stats]] method.
 	 * 
 	 * @param name 		not used.
 	 * @param value 	not used.
@@ -34,7 +36,7 @@ export class NullCounters implements ICounters {
 	public stats(name: string, value: number): void { }
 
 	/**
-	 * Null call to the last method.
+	 * Null call to the [[ICounters.last last]] method.
 	 * 
 	 * @param name 		not used.
 	 * @param value 	not used.
@@ -42,14 +44,14 @@ export class NullCounters implements ICounters {
 	public last(name: string, value: number): void { }
 
 	/**
-	 * Null call to the timestampNow method.
+	 * Null call to the [[ICounters.timestampNow timestampNow]] method.
 	 * 
 	 * @param name 		not used.
 	 */
 	public timestampNow(name: string): void { }
 
 	/**
-	 * Null call to the timestamp method.
+	 * Null call to the [[ICounters.timestamp timestamp]] method.
 	 * 
 	 * @param name 		not used.
 	 * @param value 	not used.
@@ -57,14 +59,14 @@ export class NullCounters implements ICounters {
 	public timestamp(name: string, value: Date): void { }
 
 	/**
-	 * Null call to the incrementOne method.
+	 * Null call to the [[ICounters.incrementOne incrementOne]] method.
 	 * 
 	 * @param name 		not used.
 	 */
 	public incrementOne(name: string): void { }
 
 	/**
-	 * Null call to the increment method.
+	 * Null call to the [[ICounters.increment increment]] method.
 	 * 
 	 * @param name 		not used.
 	 * @param value 	not used.

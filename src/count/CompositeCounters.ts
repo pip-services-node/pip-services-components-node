@@ -30,12 +30,12 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
     }
 
     /**
-     * Retrieves all "counters" [[IReferences references]] from the passed references and 
-     * adds them to this object's list of counters.
+     * Retrieves all "counters" references from the passed references and adds them to this 
+     * object's list of counters.
      * 
      * @param references    the "counters" references to set.
      * 
-     * @see [[IReferences]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package.)
      */
     public setReferences(references: IReferences): void {
         var counters = references.getOptional<ICounters>(new Descriptor(null, "counters", null, null, null));
@@ -97,7 +97,7 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
 
     /**
 	 * Calls the <code>last</code> method for all included counters. <code>last</code> updates the 
-     * named [[CounterType.LastCounter Last Counter]] by setting its last value to the value given.
+     * named [[CounterType.LastValue Last Counter]] by setting its last value to the value given.
 	 * 
 	 * @param name 		the name of the counter to update.
 	 * @param value		the value to update the counter with.

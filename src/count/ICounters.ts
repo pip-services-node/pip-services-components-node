@@ -26,7 +26,7 @@ export interface ICounters {
 
 	/**
 	 * Abstract method that will contain the logic for updating a 
-	 * [[CounterType.LastCounter Last Counter]].
+	 * [[CounterType.LastValue Last Counter]].
 	 * 
 	 * @param name 		the name of the counter to update.
 	 * @param value		the value to update the counter with.
