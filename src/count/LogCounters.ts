@@ -7,11 +7,31 @@ import { Counter } from './Counter';
 import { CachedCounters } from './CachedCounters';
 import { CompositeLogger } from '../log/CompositeLogger';
 
+//TODO: return to after finishing the "log" package.
+/**
+ * Helper class for working with [[Counter Counters]] and logging them.
+ * 
+ * @see [[Counter]]
+ * @see [[CachedCounters]]
+ * @see [[CompositeLogger]]
+ */
 export class LogCounters extends CachedCounters implements IReferenceable {
     private readonly _logger: CompositeLogger = new CompositeLogger();
 
+    /**
+     * Creates a new LogCounters object, which can be used for logging CachedCounters.
+     */
     public LogCounters() { }
 
+    /**
+     * Sets this object's [[CompositeLogger logger's]] references using 
+     * [[CompositeLogger.setReferences]].
+     * 
+     * @param references    the references to set in the logger.
+     * 
+     * @see [[CompositeLogger]]
+     * @see [[IReferences]]
+     */
     public setReferences(references: IReferences): void {
         this._logger.setReferences(references);
     }
@@ -35,6 +55,15 @@ export class LogCounters extends CachedCounters implements IReferenceable {
         return result;
     }
 
+    //TODO: are the counters be "logged"?
+    /**
+     * Sorts the passed counters and passes them to the logger's
+     * [[CompositeLogger.info info]] method.
+     * 
+     * @param counters      the counters to log.
+     * 
+     * @see [[CompositeLogger.info]]
+     */
     protected save(counters: Counter[]): void {
         if (this._logger == null || counters == null)
             return;

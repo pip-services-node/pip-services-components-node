@@ -1,18 +1,40 @@
 /** @module count */
 import { CounterType } from './CounterType';
 
+/**
+ * Used as performance counters. A Counter can show non-functional characteristics, 
+ * such as: times called, response time, objects saved/processed. 
+ */
 export class Counter {
+    /** The counter's name, which should give an idea as to what is being counted. */
+    public name: string;
+    /** The counter's [[CounterType type]], which defines what the counter keeps track of. */
+    public type: CounterType;
+    /** The last value added to the counter. */
+    public last: number;
+    /** The number of values added to this counter. */
+    public count: number;
+    /** The minimum value added to this counter. */
+    public min: number;
+    /** The maximum value added to this counter. */
+    public max: number;
+    /** The average of the values added to this counter. */
+    public average: number;
+    /** The time set in this counter, which can be used to indicate when it was last updated. */ //TODO: correct?
+    public time: Date;
+    
+    /**
+     * Creates a new Counter object.
+     * 
+     * @param name      the counter's name.
+     * @param type      the counter's type.
+     * 
+     * @see [[CounterType]]
+     */
     public constructor(name: string, type: CounterType) {
         this.name = name;
         this.type = type;
     }
 
-    public name: string;
-    public type: CounterType;
-    public last: number;
-    public count: number;
-    public min: number;
-    public max: number;
-    public average: number;
-    public time: Date;
+
 }
