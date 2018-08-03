@@ -23,7 +23,7 @@ export class MemoryCache implements ICache, IReconfigurable {
     private _maxSize: number = MemoryCache._defaultMaxSize;
 
 	/**
-	 * Creates an instance of this local in-memory cache component.
+	 * Creates a local in-memory cache component.
 	 */
     public constructor() { }
 
