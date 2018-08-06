@@ -8,6 +8,9 @@ import { IReconfigurable } from 'pip-services-commons-node';
 import { ConnectionParams } from './ConnectionParams';
 import { IDiscovery } from './IDiscovery';
 
+/**
+ * Used to store key-identifiable information about connections.
+ */
 class DiscoveryItem {
     public key: string;
     public connection: ConnectionParams;
