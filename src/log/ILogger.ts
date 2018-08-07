@@ -45,6 +45,7 @@ export interface ILogger {
      * [[LogLevel.Fatal fatal log level]]. 
      * 
      * @param correlationId     unique business transaction id to trace calls across components.
+     * @param error             the Error to include in the log entry.
      * @param message           the message to log as a fatal message.
      * @param args              the arguments to add to the log entry. 
      * 
@@ -60,6 +61,7 @@ export interface ILogger {
      * [[LogLevel.Error error log level]]. 
      * 
      * @param correlationId     unique business transaction id to trace calls across components.
+     * @param error             the Error to include in the log entry.
      * @param message           the message to log as an error.
      * @param args              the arguments to add to the log entry. 
      * 

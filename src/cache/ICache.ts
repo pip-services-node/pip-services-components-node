@@ -23,8 +23,8 @@ export interface ICache {
      * 
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param key               key to store the value by in the cache.
-     * @param value             value to be stored in the cache.
-     * @param timeout           timeout for storing the key-value pair in the cache.
+     * @param value             the value to store in the cache.
+     * @param timeout           expiration timeout for the cache entry.
      * @param callback          (optional) callback function that will be called with 
      *                          an error (if one is raised).
      */

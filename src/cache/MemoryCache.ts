@@ -114,12 +114,13 @@ export class MemoryCache implements ICache, IReconfigurable {
     }
 
 	/**
-	 * Stores value identified by unique key in the cache. 
+	 * Stores a value, identified by its unique key, in the cache. 
 	 * Cache entry's expiration timeout is configured in the component's options. 
      * 
 	 * @param correlationId     unique business transaction id to trace calls across components.
 	 * @param key               unique key to locate the value by in the cache.
-	 * @param value             value to store.
+	 * @param value             the value to store.
+     * @param timeout           expiration timeout for the cache entry.
 	 * @param callback          callback function that will be called with an error or the stored value.
 	 */
     public store(correlationId: string, key: string, value: any, timeout: number, callback: (err: any, value: any) => void): void {

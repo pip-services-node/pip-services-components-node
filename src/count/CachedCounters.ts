@@ -88,6 +88,7 @@ export abstract class CachedCounters implements ICounters, IReconfigurable, ITim
      * method once timing stops.
      * 
      * @param name  the name of the counter to include in the callback.
+     * @returns the new Timing with the given name.
      * 
      * @see [[Timing]]
      */

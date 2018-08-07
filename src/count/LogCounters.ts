@@ -19,17 +19,17 @@ export class LogCounters extends CachedCounters implements IReferenceable {
     private readonly _logger: CompositeLogger = new CompositeLogger();
 
     /**
-     * Creates a new LogCounters object, which can be used for logging CachedCounters.
+     * Creates a new LogCounters object, which can be used for logging [[CachedCounters]].
      */
     public LogCounters() { }
 
     /**
-     * Sets this object's [[CompositeLogger logger's]] references using 
+     * Sets the [[CompositeLogger logger's]] references using 
      * [[CompositeLogger.setReferences]].
      * 
      * @param references    the references to set in the logger.
      * 
-     * @see [[CompositeLogger]]
+     * @see [[CompositeLogger.setReferences]]
      * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package.)
      */
     public setReferences(references: IReferences): void {

@@ -2,7 +2,7 @@
 import { ITimingCallback } from './ITimingCallback';
 //TODO: are counters being timed?
 /**
- * Times counters.
+ * Callback object to complete timing to execution blocks.
  */
 export class Timing {
 	private _start: number;

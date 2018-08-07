@@ -2,7 +2,7 @@
 import { ILogger } from './ILogger';
 import { LogLevel } from './LogLevel';
 /**
- * Null implementation of the [[ILogger]] interface. Methods do not contain any logic and  
+ * Dummy implementation of the [[ILogger]] interface. Methods do not contain any logic and  
  * simply accept the parameters passed to them. Can be used to cut dependecies while testing.
  * 
  * @see [[ILogger]]
@@ -15,83 +15,101 @@ export class NullLogger implements ILogger {
 	public constructor() { }
 
 	/**
-	 * Null call to the [[ILogger.getLevel getLevel]] method.
-	 * 
-	 * @returns the None LogLevel
-	 * 
-	 * @see [[LogLevel.None]]
-	 */
+     * Retrieves the [[LogLevel]] that is currently set.
+     * 
+     * @returns this logger's LogLevel. Dummy implementation 
+	 * 			will always return <code>LogLevel.None</code>.
+     * 
+     * @see [[LogLevel]]
+     */
 	public getLevel(): LogLevel { return LogLevel.None; }
 
 	/**
-	 * Null call to the [[ILogger.setLevel setLevel]] method.
-	 * 
-	 * @param value		not used.
-	 */
+     * Sets this logger's [[LogLevel]].
+     * 
+     * @param value     the LogLevel to set this logger to.
+     * 
+     * @see [[LogLevel]]
+     */
 	public setLevel(value: LogLevel): void { }
 
 	/**
-	 * Null call to the [[ILogger.log log]] method.
-	 * 
-	 * @param level				not used.
-	 * @param correlationId 	not used.
-	 * @param error				not used.
-	 * @param message 			not used.
-	 * @param args				not used.
-	 */
+     * Logs a message using the given [[LogLevel]] and parameters.
+     * 
+     * @param level             the LogLevel to use.
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param error             the Error to include in the log entry for fatal and error logs.
+     * @param message           the message to log or the format string to use for formatting.
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     */
 	public log(level: LogLevel, correlationId: string, error: Error, message: string, ...args: any[]): void { }
 
 	/**
-	 * Null call to the [[ILogger.fatal fatal]] method.
+     * Logs a message using the [[LogLevel.Fatal fatal]] log level.
+     * 
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param error             the Error to include in the log entry.
+     * @param message           the message to log as fatal or the format string to use for formatting. 
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
 	 * 
-	 * @param correlationId 	not used.
-	 * @param message 			not used.
-	 * @param args				not used.
-	 */
+     * @see [[LogLevel]]
+     */
 	public fatal(correlationId: string, error: Error, message: string, ...args: any[]): void { }
 
-	/**
-	 * Null call to the [[ILogger.error error]] method.
-	 * 
-	 * @param correlationId 	not used.
-	 * @param message 			not used.
-	 * @param args				not used.
-	 */
+    /**
+     * Logs a message using the [[LogLevel.Error error]] log level.
+     * 
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param error             the Error to include in the log entry.
+     * @param message           the message to log as error or the format string to use for formatting. 
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     * 
+     * @see [[LogLevel]]
+     */
 	public error(correlationId: string, error: Error, message: string, ...args: any[]): void { }
 
-	/**
-	 * Null call to the [[ILogger.warn warn]] method.
-	 * 
-	 * @param correlationId 	not used.
-	 * @param message 			not used.
-	 * @param args				not used.
-	 */
+    /**
+     * Logs a message using the [[LogLevel.Warn warn]] log level.
+     * 
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param message           the message to log as warn or the format string to use for formatting. 
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     * 
+     * @see [[LogLevel]]
+     */
 	public warn(correlationId: string, message: string, ...args: any[]): void { }
 
-	/**
-	 * Null call to the [[ILogger.info info]] method.
-	 * 
-	 * @param correlationId 	not used.
-	 * @param message 			not used.
-	 * @param args				not used.
-	 */
+
+    /**
+     * Logs a message using the [[LogLevel.Info info]] log level.
+     * 
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param message           the message to log as info or the format string to use for formatting. 
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     * 
+     * @see [[LogLevel]]
+     */
 	public info(correlationId: string, message: string, ...args: any[]): void { }
 
-	/**
-	 * Null call to the [[ILogger.debug debug]] method.
-	 * 
-	 * @param correlationId 	not used.
-	 * @param message 			not used.
-	 * @param args				not used.
-	 */
+    /**
+     * Logs a message using the [[LogLevel.Debug debug]] log level.
+     * 
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param message           the message to log as debug or the format string to use for formatting. 
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     * 
+     * @see [[LogLevel]]
+     */
 	public debug(correlationId: string, message: string, ...args: any[]): void { }
 	
-	/**
-	 * Null call to the [[ILogger.trace trace]] method.
-	 * 
-	 * @param correlationId 	not used.
-	 * @param message 			not used.
-	 * @param args				not used.
-	 */
+    /**
+     * Logs a message using the [[LogLevel.Trace trace]] log level.
+     * 
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param message           the message to log as trace or the format string to use for formatting. 
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     * 
+     * @see [[LogLevel]]
+     */
 	public trace(correlationId: string, message: string, ...args: any[]): void { }
 }

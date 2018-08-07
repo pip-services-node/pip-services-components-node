@@ -3,8 +3,8 @@ import { Timing } from './Timing';
 import { ICounters } from './ICounters';
 
 /**
- * Null implementation of the [[ICounters]] interface. Methods do not contain any logic and  
- * simply accept the parameters passed to them. Can be used to cut dependecies while testing.
+ * Dummy implementation of the [[ICounters]] interface. Methods do not contain any logic and  
+ * simply accept the parameters passed to them. Can be used to cut dependencies while testing.
  * 
  * @see [[ICounters]]
  */
@@ -16,60 +16,79 @@ export class NullCounters implements ICounters {
 	public NullCounters() { }
 
 	/**
-	 * Null call to the [[ICounters.beginTiming beginTiming]] method.
-	 * 
-	 * @param name 	not used.
-	 * @returns a new Timing, created using the default constructor.
-	 * 
-	 * @see [[Timing]]
-	 */
+     * Creates and starts a new [[Timing]], which will call this object's [[endTiming]] 
+     * method once timing stops.
+     * 
+     * @param name  the name of the counter to include in the callback.
+     * 
+     * @see [[Timing]]
+     */
 	public beginTiming(name: string): Timing {
 		return new Timing();
 	}
 
 	/**
-	 * Null call to the [[ICounters.stats stats]] method.
+	 * Adds the given value to the named [[CounterType.Statistics Statistics Counter]] 
+     * and recalculates its statistics, taking into account the new value. 
 	 * 
-	 * @param name 		not used.
-	 * @param value 	not used.
+	 * @param name 		the name of the counter to update.
+	 * @param value		the value to update the counter with.
+     * 
+     * @see [[CounterType]]
 	 */
 	public stats(name: string, value: number): void { }
 
 	/**
-	 * Null call to the [[ICounters.last last]] method.
+	 * Updates the named [[CounterType.LastValue Last Counter]] by setting 
+     * its last value to the value given.
 	 * 
-	 * @param name 		not used.
-	 * @param value 	not used.
+	 * @param name 		the name of the counter to update.
+	 * @param value		the value to update the counter with.
+     * 
+     * @see [[CounterType]]
 	 */
 	public last(name: string, value: number): void { }
 
 	/**
-	 * Null call to the [[ICounters.timestampNow timestampNow]] method.
+	 * Updates the named [[CounterType.Timestamp Timestamp Counter's]] time to 
+     * the current time.
 	 * 
-	 * @param name 		not used.
+	 * @param name 		the name of the counter to update.
+     * 
+     * @see [[CounterType]]
+     * @see [[timestamp]]
 	 */
 	public timestampNow(name: string): void { }
 
 	/**
-	 * Null call to the [[ICounters.timestamp timestamp]] method.
+	 * Updates the named [[CounterType.Timestamp Timestamp Counter's]] time to 
+     * the time given.
 	 * 
-	 * @param name 		not used.
-	 * @param value 	not used.
+	 * @param name 		the name of the counter to update.
+	 * @param value		the timestamp to update the counter to.
+     * 
+     * @see [[CounterType]]
 	 */
 	public timestamp(name: string, value: Date): void { }
 
 	/**
-	 * Null call to the [[ICounters.incrementOne incrementOne]] method.
+	 * Incrementes the named [[CounterType.Increment Incremental Counter]] by 1.
 	 * 
-	 * @param name 		not used.
+	 * @param name 		the name of the counter to increment.
+     * 
+     * @see [[CounterType]]
+     * @see [[increment]]
 	 */
 	public incrementOne(name: string): void { }
 
 	/**
-	 * Null call to the [[ICounters.increment increment]] method.
+	 * Increments the named [[CounterType.Increment Incremental Counter]] by the 
+	 * given value.
 	 * 
-	 * @param name 		not used.
-	 * @param value 	not used.
+	 * @param name 		the name of the counter to increment.
+	 * @param value		the value to increment the counter by.
+     * 
+     * @see [[CounterType]]
 	 */
 	public increment(name: string, value: number): void { }
 }

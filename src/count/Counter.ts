@@ -20,7 +20,7 @@ export class Counter {
     public max: number;
     /** The average of the values added to this counter. */
     public average: number;
-    /** The time set in this counter, which can be used to indicate when it was last updated. */ //TODO: correct?
+    /** The time set in this counter, which can be used to track when an event last happened. */ //TODO: check again.
     public time: Date;
     
     /**

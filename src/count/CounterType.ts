@@ -18,9 +18,9 @@ export enum CounterType {
      */
     Statistics = 2,
     /**
-     * Counter that is used to keep track of time using 
-     * timestamps.
-     */
+     * Counter that is used to keep track of when an event 
+     * last happened using timestamps.
+     */ //TODO: counter timestamps - check again
     Timestamp = 3,
     /**
      * Counter that incrementally keeps track of a value.
