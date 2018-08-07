@@ -5,7 +5,18 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
 const NullLock_1 = require("./NullLock");
 const MemoryLock_1 = require("./MemoryLock");
 const Factory_1 = require("../build/Factory");
+/**
+ * Contains static read-only descriptors for [[NullLock]] and [[MemoryLock]] (as well as a default "lock" descriptor).
+ *
+ * @see [[Factory]]
+ */
 class DefaultLockFactory extends Factory_1.Factory {
+    /**
+     * Create a new DefaultLockFactory object, containing [[NullLock]] and [[MemoryLock]] object factories.
+     *
+     * @see [[NullLock]]
+     * @see [[MemoryLock]]
+     */
     constructor() {
         super();
         this.registerAsType(DefaultLockFactory.NullLockDescriptor, NullLock_1.NullLock);

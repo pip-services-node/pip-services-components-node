@@ -6,7 +6,21 @@ const NullLogger_1 = require("./NullLogger");
 const ConsoleLogger_1 = require("./ConsoleLogger");
 const CompositeLogger_1 = require("./CompositeLogger");
 const Factory_1 = require("../build/Factory");
+/**
+ * Contains static read-only descriptors for the [[NullLogger Null]], [[ConsoleLogger Console]],
+ * and [[CompositeLogger Composite]] Loggers (as well as a default "logger" descriptor).
+ *
+ * @see [[Factory]]
+ */
 class DefaultLoggerFactory extends Factory_1.Factory {
+    /**
+     * Create a new DefaultLoggerFactory object, containing [[NullLogger]], [[ConsoleLogger]],
+     * and [[CompositeLogger]] object factories.
+     *
+     * @see [[NullLogger]]
+     * @see [[ConsoleLogger]]
+     * @see [[CompositeLogger]]
+     */
     constructor() {
         super();
         this.registerAsType(DefaultLoggerFactory.NullLoggerDescriptor, NullLogger_1.NullLogger);

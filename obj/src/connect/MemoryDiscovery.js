@@ -4,6 +4,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /** @hidden */
 let async = require('async');
 const ConnectionParams_1 = require("./ConnectionParams");
+/**
+ * Used to store key-identifiable information about connections.
+ */
 class DiscoveryItem {
 }
 /**

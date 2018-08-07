@@ -6,33 +6,99 @@ let util = require('util');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const LogLevel_1 = require("./LogLevel");
 const LogLevelConverter_1 = require("./LogLevelConverter");
+/**
+ * Abstract class for creating loggers that are configurable, have a source (reference a context), and
+ * are capable of logging messages of various [[LogLevel log levels]].
+ *
+ * @see [[ILogger]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferenceable.html IReferenceable]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.ireconfigurable.html IReconfigurable]]
+ */
 class Logger {
+    /**
+     * Creates a new Logger object.
+     */
     constructor() {
         this._level = LogLevel_1.LogLevel.Info;
         this._source = null;
     }
+    /**
+     * Configures this object using the parameters provided. Looks for parameters with the
+     * keys "level" and "source" and sets them for this object. If a key is not found,
+     * the corresponding value will default to the value that was previously set for this object.
+     *
+     * @param config    ConfigParams, containing "level" and/or "source" items.
+     *
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     */
     configure(config) {
         this._level = LogLevelConverter_1.LogLevelConverter.toLogLevel(config.getAsObject("level"), this._level);
         this._source = config.getAsStringWithDefault("source", this._source);
     }
+    /**
+     * Retrieves a "context-info" reference from the passed references and, if source
+     * has not already been set, sets the context-info as this object's source.
+     *
+     * @param references    the "context-info" reference to set.
+     *
+     * @see [[ContextInfo]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package.)
+     */
     setReferences(references) {
         let contextInfo = references.getOneOptional(new pip_services_commons_node_1.Descriptor("pip-services", "context-info", "*", "*", "1.0"));
         if (contextInfo != null && this._source == null) {
             this._source = contextInfo.name;
         }
     }
+    /**
+     * Retrieves the [[LogLevel]] that is currently set.
+     *
+     * @returns this logger's LogLevel.
+     *
+     * @see [[LogLevel]]
+     */
     getLevel() {
         return this._level;
     }
+    /**
+     * Sets this logger's [[LogLevel]].
+     *
+     * @param value     the LogLevel to set this logger to.
+     *
+     * @see [[LogLevel]]
+     */
     setLevel(value) {
         this._level = value;
     }
+    /**
+     * Retrieves the source (context) for which this logger is logging.
+     *
+     * @returns this logger's source (context).
+     */
     getSource() {
         return this._source;
     }
+    /**
+     * Sets the source (context) for which this logger will be logging.
+     *
+     * @param value     the source (context) to set.
+     */
     setSource(value) {
         this._source = value;
     }
+    /**
+     * If <code>message</code> is a <code>printf</code>-like format string, then this method formats it
+     * using the provided arguments and calls [[write]] with the newly formatted string.
+     *
+     * @param level             the LogLevel to use.
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param error             the Error to include in the log entry for fatal and error logs.
+     * @param message           the message to log or the format string to use for formatting.
+     * @param args              the arguments to format <code>message</code> with.
+     *
+     * @see [[LogLevel]]
+     * @see [[write]]
+     */
     formatAndWrite(level, correlationId, error, message, ...args) {
         message = message != null ? message : "";
         if (args != null && args.length > 0) {
@@ -43,31 +109,116 @@ class Logger {
         }
         this.write(level, correlationId, error, message);
     }
+    /**
+     * Logs a message using the given [[LogLevel]] and parameters. Uses this class's [[formatAndWrite]]
+     * method.
+     *
+     * @param level             the LogLevel to use.
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param error             the Error to include in the log entry for fatal and error logs.
+     * @param message           the message to log or the format string to use for formatting.
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     *
+     * @see [[formatAndWrite]]
+     */
     log(level, correlationId, error, message, ...args) {
         this.formatAndWrite(level, correlationId, error, message, ...args);
     }
+    /**
+     * Logs a message using the [[LogLevel.Fatal fatal]] log level. Calls this class's [[formatAndWrite]]
+     * method with level set to [[LogLevel.Fatal]].
+     *
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param error             the Error to include in the log entry.
+     * @param message           the message to log as fatal or the format string to use for formatting.
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     *
+     * @see [[formatAndWrite]]
+     * @see [[LogLevel]]
+     */
     fatal(correlationId, error, message, ...args) {
         this.formatAndWrite(LogLevel_1.LogLevel.Fatal, correlationId, error, message, ...args);
     }
+    /**
+     * Logs a message using the [[LogLevel.Error error]] log level. Calls this class's [[formatAndWrite]]
+     * method with level set to [[LogLevel.Error]].
+     *
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param error             the Error to include in the log entry.
+     * @param message           the message to log as error or the format string to use for formatting.
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     *
+     * @see [[formatAndWrite]]
+     * @see [[LogLevel]]
+     */
     error(correlationId, error, message, ...args) {
         this.formatAndWrite(LogLevel_1.LogLevel.Error, correlationId, error, message, ...args);
     }
+    /**
+     * Logs a message using the [[LogLevel.Warn warn]] log level. Calls this class's [[formatAndWrite]]
+     * method with level set to [[LogLevel.Warn]].
+     *
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param message           the message to log as warn or the format string to use for formatting.
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     *
+     * @see [[formatAndWrite]]
+     * @see [[LogLevel]]
+     */
     warn(correlationId, message, ...args) {
         this.formatAndWrite(LogLevel_1.LogLevel.Warn, correlationId, null, message, ...args);
     }
+    /**
+     * Logs a message using the [[LogLevel.Info info]] log level. Calls this class's [[formatAndWrite]]
+     * method with level set to [[LogLevel.Info]].
+     *
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param message           the message to log as info or the format string to use for formatting.
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     *
+     * @see [[formatAndWrite]]
+     * @see [[LogLevel]]
+     */
     info(correlationId, message, ...args) {
         this.formatAndWrite(LogLevel_1.LogLevel.Info, correlationId, null, message, ...args);
     }
+    /**
+     * Logs a message using the [[LogLevel.Debug debug]] log level. Calls this class's [[formatAndWrite]]
+     * method with level set to [[LogLevel.Debug]].
+     *
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param message           the message to log as debug or the format string to use for formatting.
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     *
+     * @see [[formatAndWrite]]
+     * @see [[LogLevel]]
+     */
     debug(correlationId, message, ...args) {
         this.formatAndWrite(LogLevel_1.LogLevel.Debug, correlationId, null, message, ...args);
     }
+    /**
+     * Logs a message using the [[LogLevel.Trace trace]] log level. Calls this class's [[formatAndWrite]]
+     * method with level set to [[LogLevel.Trace]].
+     *
+     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param message           the message to log as trace or the format string to use for formatting.
+     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     *
+     * @see [[formatAndWrite]]
+     * @see [[LogLevel]]
+     */
     trace(correlationId, message, ...args) {
         this.formatAndWrite(LogLevel_1.LogLevel.Trace, correlationId, null, message, ...args);
     }
+    /**
+     * Composes an Error string, which can be used in a log entry.
+     *
+     * @param error     the Error to compose a string with.
+     * @returns the string created using the information from the Error. Example error string:
+     *          "<error's message> StackTrace: <error's stack>"
+     */
     composeError(error) {
         let builder = "";
-        if (builder.length > 0)
-            builder += " Caused by error: ";
         builder += error.message;
         builder += " StackTrace: ";
         builder += error.stack;
