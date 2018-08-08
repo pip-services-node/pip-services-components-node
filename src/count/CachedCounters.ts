@@ -9,7 +9,12 @@ import { CounterType } from './CounterType';
 import { Counter } from './Counter';
 
 /**
- * Helper class for working with [[Counter Counters]] and caching them.
+ * Abstract class for working with various cached [[Counter Counters]].
+ * 
+ * Can be configured by passing ConfigParams, containing "interval" and/or "reset_timeout" 
+ * items, to the [[configure]] method. Interval defines the update interval (used to dump 
+ * the cache to memory at regular intervals), and reset timeout defines when the cache should 
+ * be reset.
  * 
  * @see [[Counter]]
  */
@@ -84,13 +89,15 @@ export abstract class CachedCounters implements ICounters, IReconfigurable, ITim
     }
 
     /**
-     * Creates and starts a new [[Timing]], which will call this object's [[endTiming]] 
-     * method once timing stops.
+     * Creates a new [[Timing]] callback object, which will call this object's [[endTiming]] 
+     * method once it receives the command to [[Timing.endTiming stop timing]].
      * 
-     * @param name  the name of the counter to include in the callback.
-     * @returns the new Timing with the given name.
+     * @param name  the name of the Interval Counter, for which a Timing is to be created.
+     * @returns the Timing callback object that was created.
      * 
      * @see [[Timing]]
+     * @see [[endTiming]]
+     * @see [[CounterType.Interval]]
      */
     public beginTiming(name: string): Timing {
         return new Timing(name, this);
@@ -115,7 +122,7 @@ export abstract class CachedCounters implements ICounters, IReconfigurable, ITim
 
     /**
      * Checks whether or not the update interval has passed (since the last 
-     * [[dump]] was performed) and, if it has, performs a [[dump]].
+     * [[dump]]) and, if it has, performs a new [[dump]].
      * 
      * @see [[dump]]
      */
@@ -202,14 +209,17 @@ export abstract class CachedCounters implements ICounters, IReconfigurable, ITim
             ? (counter.average * (counter.count - 1) + value) / counter.count : value);
     }
 
-    //TODO: is the counter being timed?
     /**
-     * Method that is called by a [[Timing Timing]] once timing has ended.
+     * Called by a [[Timing Timing]] callback object once its 
+     * [[Timing.endTiming endTiming]] method has been called. The resulting 
+     * time interval will be used to update timing statistics.
      * 
-     * @param name      the name of the counter that was being timed.
+     * @param name      the name of the Interval Counter that created the 
+     *                  Timing object.
      * @param elapsed   the time elapsed since timing began.
      * 
      * @see [[beginTiming]]
+     * @see [[Timing.endTiming]]
      */
     public endTiming(name: string, elapsed: number): void {
         let counter: Counter = this.get(name, CounterType.Interval);

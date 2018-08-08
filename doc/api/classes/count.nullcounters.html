@@ -126,7 +126,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/NullCounters.ts#L16">count/NullCounters.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/NullCounters.ts#L16">count/NullCounters.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -149,17 +149,24 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#begintiming">beginTiming</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/NullCounters.ts#L26">count/NullCounters.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/NullCounters.ts#L30">count/NullCounters.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates and starts a new <a href="count.timing.html">Timing</a>, which will call this object&#39;s <a href="../interfaces/count.itimingcallback.html#endtiming">endTiming</a>
-									method once timing stops.</p>
+									<p>Creates a new <a href="count.timing.html">Timing</a> callback object, which will call an ITimingCallback&#39;s
+										<a href="../interfaces/count.itimingcallback.html#endtiming">endTiming</a> method once it receives the command to
+									<a href="count.timing.html#endtiming">stop timing</a>.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
 									<dd><p><a href="count.timing.html">Timing</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="../interfaces/count.itimingcallback.html">ITimingCallback</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="../enums/count.countertype.html#interval">CounterType.Interval</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -168,11 +175,12 @@
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to include in the callback.</p>
+										<p>the name of the Interval Counter, for which a Timing is to be created.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="count.timing.html" class="tsd-signature-type">Timing</a></h4>
+							<p>the Timing callback object that was created.</p>
 						</li>
 					</ul>
 				</section>
@@ -187,7 +195,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#increment">increment</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/NullCounters.ts#L93">count/NullCounters.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/NullCounters.ts#L97">count/NullCounters.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -231,7 +239,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#incrementone">incrementOne</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/NullCounters.ts#L82">count/NullCounters.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/NullCounters.ts#L86">count/NullCounters.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -271,7 +279,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#last">last</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/NullCounters.ts#L50">count/NullCounters.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/NullCounters.ts#L54">count/NullCounters.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -315,7 +323,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#stats">stats</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/NullCounters.ts#L39">count/NullCounters.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/NullCounters.ts#L43">count/NullCounters.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -359,7 +367,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#timestamp">timestamp</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/NullCounters.ts#L72">count/NullCounters.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/NullCounters.ts#L76">count/NullCounters.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -403,7 +411,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#timestampnow">timestampNow</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/NullCounters.ts#L61">count/NullCounters.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/NullCounters.ts#L65">count/NullCounters.ts:65</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

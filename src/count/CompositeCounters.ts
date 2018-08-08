@@ -48,27 +48,34 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
     }
 
     /**
-     * Creates and starts a new [[Timing]], which will call this object's [[endTiming]] 
-     * method once timing stops.
+     * Creates a new [[Timing]] callback object, which will call this object's [[endTiming]] 
+     * method once it receives the command to [[Timing.endTiming stop timing]].
      * 
-     * @param name  the name of the counter to include in the callback.
+     * @param name  the name of the Interval Counter, for which a Timing is to be created.
+     * @returns the Timing callback object that was created.
      * 
      * @see [[Timing]]
+     * @see [[endTiming]]
+     * @see [[CounterType.Interval]]
      */
     public beginTiming(name: string): Timing {
         return new Timing(name, this);
     }
 
     /**
-     * Method that is called by a [[Timing Timing]] once timing has ended. 
-     * If any counters in this object are instances of [[ITimingCallback]], 
-     * then their endTiming methods will also be called.
+     * [[ITimingCallback.endTiming Ends timing]] for all counters that are instances 
+     * of [[ITimingCallback]].
      * 
-     * @param name      the name of the counter that was being timed.
+     * This method will be called by a [[Timing Timing]] callback object 
+     * once its [[Timing.endTiming endTiming]] method has been called. 
+     * 
+     * @param name      the Interval Counter name used to created the 
+     *                  Timing object.
      * @param elapsed   the time elapsed since timing began.
      * 
+     * @see [[ITimingCallback.endTiming]]
+     * @see [[Timing.endTiming]]
      * @see [[beginTiming]]
-     * @see [[ITimingCallback]]
      */
     public endTiming(name: string, elapsed: number): void {
         for (let i = 0; i < this._counters.length; i++) {

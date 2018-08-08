@@ -3,7 +3,8 @@ import { CounterType } from './CounterType';
 
 /**
  * Used as performance counters. A Counter can show non-functional characteristics, 
- * such as: times called, response time, objects saved/processed. 
+ * such as: times called, response time, objects saved/processed. They collect information 
+ * that can be used to answer such questions as: how much, how often, how long.
  */
 export class Counter {
     /** The counter's name, which should give an idea as to what is being counted. */
@@ -18,9 +19,9 @@ export class Counter {
     public min: number;
     /** The maximum value added to this counter. */
     public max: number;
-    /** The average of the values added to this counter. */
+    /** The average of the values that were added to this counter. */ 
     public average: number;
-    /** The time set in this counter, which can be used to track when an event last happened. */ //TODO: check again.
+    /** The (last) time set in this counter. */
     public time: Date;
     
     /**

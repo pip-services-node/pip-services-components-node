@@ -70,8 +70,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Interface for classes that need to be called once
-						a <a href="../classes/count.timing.html">Timing</a> has ended.</p>
+						<p>Interface for classes that need to process finished timings.</p>
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
@@ -121,12 +120,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/ITimingCallback.ts#L18">count/ITimingCallback.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/ITimingCallback.ts#L20">count/ITimingCallback.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Method that is called by a <a href="../classes/count.timing.html">Timing</a> once timing has ended.</p>
+									<p>Abstract method that will contain the logic for processing the result
+										of a timing. This method will be called by a <a href="../classes/count.timing.html">Timing</a> callback
+										object once its <a href="../classes/count.timing.html#endtiming">endTiming</a> method has been called.
+									The resulting time interval can be used to update timing statistics.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
@@ -139,7 +141,8 @@
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter that was being timed.</p>
+										<p>the name of the Interval Counter that created the
+										Timing object.</p>
 									</div>
 								</li>
 								<li>

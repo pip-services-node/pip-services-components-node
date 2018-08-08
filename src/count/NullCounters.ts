@@ -16,12 +16,16 @@ export class NullCounters implements ICounters {
 	public NullCounters() { }
 
 	/**
-     * Creates and starts a new [[Timing]], which will call this object's [[endTiming]] 
-     * method once timing stops.
+     * Creates a new [[Timing]] callback object, which will call an ITimingCallback's 
+	 * [[ITimingCallback.endTiming endTiming]] method once it receives the command to 
+	 * [[Timing.endTiming stop timing]].
      * 
-     * @param name  the name of the counter to include in the callback.
+     * @param name  the name of the Interval Counter, for which a Timing is to be created.
+     * @returns the Timing callback object that was created.
      * 
      * @see [[Timing]]
+	 * @see [[ITimingCallback]]
+	 * @see [[CounterType.Interval]]
      */
 	public beginTiming(name: string): Timing {
 		return new Timing();

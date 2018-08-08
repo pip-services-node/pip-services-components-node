@@ -7,9 +7,11 @@ import { Counter } from './Counter';
 import { CachedCounters } from './CachedCounters';
 import { CompositeLogger } from '../log/CompositeLogger';
 
-//TODO: return to after finishing the "log" package.
 /**
- * Helper class for working with [[Counter Counters]] and logging them.
+ * Adds logging functionality to the [[CachedCounters]] class.
+ * 
+ * Loggers can be referenced by passing "logger" references to this class's
+ * [[setReferences]] method.
  * 
  * @see [[Counter]]
  * @see [[CachedCounters]]
@@ -19,15 +21,16 @@ export class LogCounters extends CachedCounters implements IReferenceable {
     private readonly _logger: CompositeLogger = new CompositeLogger();
 
     /**
-     * Creates a new LogCounters object, which can be used for logging [[CachedCounters]].
+     * Creates a new LogCounters object, which can be used for logging 
+     * [[CachedCounters counters]].
      */
     public LogCounters() { }
 
     /**
-     * Sets the [[CompositeLogger logger's]] references using 
-     * [[CompositeLogger.setReferences]].
+     * Retrieves all "logger" references from the passed references and adds them to this 
+     * object's [[CompositeLogger]].
      * 
-     * @param references    the references to set in the logger.
+     * @param references    the "logger" references to set.
      * 
      * @see [[CompositeLogger.setReferences]]
      * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package.)
@@ -55,10 +58,9 @@ export class LogCounters extends CachedCounters implements IReferenceable {
         return result;
     }
 
-    //TODO: are the counters be "logged"?
     /**
-     * Sorts the passed counters and passes them to the logger's
-     * [[CompositeLogger.info info]] method.
+     * Sorts the passed counters by their names and logs them using 
+     * the [[LogLevel.Info info]] log level.
      * 
      * @param counters      the counters to log.
      * 

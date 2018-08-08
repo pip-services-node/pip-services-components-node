@@ -132,7 +132,7 @@
 					<div class="tsd-signature tsd-kind-icon">_counters<span class="tsd-signature-symbol">:</span> <a href="../interfaces/count.icounters.html" class="tsd-signature-type">ICounters</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/CompositeCounters.ts#L17">count/CompositeCounters.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/CompositeCounters.ts#L17">count/CompositeCounters.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -149,7 +149,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/CompositeCounters.ts#L27">count/CompositeCounters.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/CompositeCounters.ts#L27">count/CompositeCounters.ts:27</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -187,17 +187,23 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#begintiming">beginTiming</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/CompositeCounters.ts#L58">count/CompositeCounters.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/CompositeCounters.ts#L61">count/CompositeCounters.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates and starts a new <a href="count.timing.html">Timing</a>, which will call this object&#39;s <a href="count.compositecounters.html#endtiming">endTiming</a>
-									method once timing stops.</p>
+									<p>Creates a new <a href="count.timing.html">Timing</a> callback object, which will call this object&#39;s <a href="count.compositecounters.html#endtiming">endTiming</a>
+									method once it receives the command to <a href="count.timing.html#endtiming">stop timing</a>.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
 									<dd><p><a href="count.timing.html">Timing</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.compositecounters.html#endtiming">endTiming</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="../enums/count.countertype.html#interval">CounterType.Interval</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -206,11 +212,12 @@
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to include in the callback.</p>
+										<p>the name of the Interval Counter, for which a Timing is to be created.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="count.timing.html" class="tsd-signature-type">Timing</a></h4>
+							<p>the Timing callback object that was created.</p>
 						</li>
 					</ul>
 				</section>
@@ -225,21 +232,25 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.itimingcallback.html">ITimingCallback</a>.<a href="../interfaces/count.itimingcallback.html#endtiming">endTiming</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/CompositeCounters.ts#L73">count/CompositeCounters.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/CompositeCounters.ts#L80">count/CompositeCounters.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Method that is called by a <a href="count.timing.html">Timing</a> once timing has ended.
-										If any counters in this object are instances of <a href="../interfaces/count.itimingcallback.html">ITimingCallback</a>,
-									then their endTiming methods will also be called.</p>
+									<p><a href="../interfaces/count.itimingcallback.html#endtiming">Ends timing</a> for all counters that are instances
+									of <a href="../interfaces/count.itimingcallback.html">ITimingCallback</a>.</p>
 								</div>
+								<p>This method will be called by a <a href="count.timing.html">Timing</a> callback object
+								once its <a href="count.timing.html#endtiming">endTiming</a> method has been called.</p>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p><a href="count.compositecounters.html#begintiming">beginTiming</a></p>
+									<dd><p><a href="../interfaces/count.itimingcallback.html#endtiming">ITimingCallback.endTiming</a></p>
 									</dd>
 									<dt>see</dt>
-									<dd><p><a href="../interfaces/count.itimingcallback.html">ITimingCallback</a></p>
+									<dd><p><a href="count.timing.html#endtiming">Timing.endTiming</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.compositecounters.html#begintiming">beginTiming</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -248,7 +259,8 @@
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter that was being timed.</p>
+										<p>the Interval Counter name used to created the
+										Timing object.</p>
 									</div>
 								</li>
 								<li>
@@ -273,7 +285,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#increment">increment</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/CompositeCounters.ts#L165">count/CompositeCounters.ts:165</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/CompositeCounters.ts#L172">count/CompositeCounters.ts:172</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -321,7 +333,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#incrementone">incrementOne</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/CompositeCounters.ts#L149">count/CompositeCounters.ts:149</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/CompositeCounters.ts#L156">count/CompositeCounters.ts:156</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -363,7 +375,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#last">last</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/CompositeCounters.ts#L107">count/CompositeCounters.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/CompositeCounters.ts#L114">count/CompositeCounters.ts:114</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -406,7 +418,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/CompositeCounters.ts#L40">count/CompositeCounters.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/CompositeCounters.ts#L40">count/CompositeCounters.ts:40</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -444,7 +456,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#stats">stats</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/CompositeCounters.ts#L93">count/CompositeCounters.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/CompositeCounters.ts#L100">count/CompositeCounters.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -490,7 +502,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#timestamp">timestamp</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/CompositeCounters.ts#L134">count/CompositeCounters.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/CompositeCounters.ts#L141">count/CompositeCounters.ts:141</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -534,7 +546,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#timestampnow">timestampNow</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6bfc447/src/count/CompositeCounters.ts#L121">count/CompositeCounters.ts:121</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/a7296cd/src/count/CompositeCounters.ts#L128">count/CompositeCounters.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
