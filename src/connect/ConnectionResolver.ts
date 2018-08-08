@@ -43,10 +43,10 @@ export class ConnectionResolver {
     }
 
     /**
-     * Configures this object by converting the passed ConfigParams into a list of ConnectionParams
-     * and adding them to this ConnectionResolver's list of connections.
+     * Configures this object by parsing the "connection(s)" section of the passed ConfigParams 
+     * into a list of ConnectionParams and adding them to this ConnectionResolver's list of connections.
      * 
-     * @param config    connections to add to this ConnectionResolver's list of connections.
+     * @param config    the "connection(s)" to add to this ConnectionResolver's list of connections.
      * 
      * @see [[ConnectionParams.manyFromConfig]]
      * @see [[ConnectionParams]]

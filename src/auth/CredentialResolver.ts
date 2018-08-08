@@ -43,10 +43,10 @@ export class CredentialResolver {
     }
 
     /**
-     * Configures this object by converting the passed ConfigParams into a list of CredentialParams
-     * and adding them to this CredentialResolver's list of credentials.
+     * Configures this object by parsing the "credential(s)" section of the passed ConfigParams 
+     * into a list of CredentialParams and adding them to this CredentialResolver's list of credentials.
      * 
-     * @param config    credentials to add to this CredentialResolver's list of credentials.
+     * @param config    the "credential(s)" to add to this CredentialResolver's list of credentials.
      * 
      * @see [[CredentialParams.manyFromConfig]]
      * @see [[CredentialParams]]

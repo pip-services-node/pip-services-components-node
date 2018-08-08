@@ -147,11 +147,15 @@ export class CredentialParams extends ConfigParams {
     }
 
     /**
-	 * Static method that converts a ConfigParams object's "credential(s)" section into 
+	 * Static method that converts a ConfigParams' "credential(s)" section into 
      * a list of CredentialParams.
+     * 
+     * If the section name "credentials" is used, then each subsection will be treated as a 
+     * separate credential, for which a separate CredentialParams object will be created and
+     * added to the list.
 	 * 
-	 * @param config 	ConfigParams with a section named "credential(s)".
-	 * @returns			generated list of CredentialParams.
+	 * @param config 	ConfigParams, containing a section named "credential(s)".
+	 * @returns			the generated list of CredentialParams.
 	 * 
      * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" Package)
      * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html#getsection ConfigParams.getSection]]
@@ -176,13 +180,14 @@ export class CredentialParams extends ConfigParams {
     }
 
     /**
-	 * Static method that converts a ConfigParams object into a list of CredentialParams 
-     * (using [[manyFromConfig]]) and returns the first one in the list.
+	 * Static method that retrieves the first CredentialParams found in the given ConfigParams.
+     * The ConfigParams' "credential(s)" section will be converted into a CredentialParams object.
 	 * 
-	 * @param config 	ConfigParams to convert into a credential parameters object.
-	 * @returns			generated CredentialParams.
+	 * @param config 	ConfigParams, containing a section named "credential(s)".
+	 * @returns			the generated CredentialParams object.
 	 * 
 	 * @see [[manyFromConfig]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
 	 */
     public static fromConfig(config: ConfigParams): CredentialParams {
         let credentials: CredentialParams[] = this.manyFromConfig(config);
