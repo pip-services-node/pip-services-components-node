@@ -144,8 +144,7 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
     }
 
     /**
-	 * Calls this class's [[increment]] method with a value of 1. The method [[increment]] calls all 
-     * included counters' <code>increment</code> methods and increments the named 
+	 * Calls all included counters' <code>increment</code> methods and increments the named 
      * [[CounterType.Increment Incremental Counter]] by a value of 1.
 	 * 
 	 * @param name 		the name of the counter to update.
@@ -158,9 +157,8 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
     }
 
     /**
-	 * Calls the <code>increment</code> method for all included counters. <code>increment</code> 
-     * increments the named [[CounterType.Increment Incremental Counter]] by the 
-	 * given value.
+	 * Calls all included counters' <code>increment</code> methods and increments the named 
+     * [[CounterType.Increment Incremental Counter]] by the value given.
 	 * 
 	 * @param name 		the name of the counter to increment. Cannot be null
 	 * @param value		the value to increment the counter by.
