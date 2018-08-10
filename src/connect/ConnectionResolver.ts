@@ -34,9 +34,11 @@ export class ConnectionResolver {
     }
 
     /**
-     * Sets the discovery services that this ConnectionResolver references.
+     * Sets the discovery service that this ConnectionResolver is to reference.
      * 
-     * @param references    references to set.
+     * @param references    an IReferences object, containing the "discovery" service reference to set.
+     * 
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     public setReferences(references: IReferences): void {
         this._references = references;
@@ -50,8 +52,8 @@ export class ConnectionResolver {
      * 
      * @see [[ConnectionParams.manyFromConfig]]
      * @see [[ConnectionParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
      */
     public configure(config: ConfigParams): void {
         let connections: ConnectionParams[] = ConnectionParams.manyFromConfig(config);

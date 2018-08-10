@@ -37,7 +37,7 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
      * 
      * @param config    ConfigParams, containing "level" and/or "source" items.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     public configure(config: ConfigParams): void {
         this._level = LogLevelConverter.toLogLevel(
@@ -48,13 +48,13 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
     }
 
     /**
-     * Retrieves a "context-info" reference from the passed references and, if source 
-     * has not already been set, sets the context-info as this object's source.
+     * Retrieves a context-info reference from the passed references and, if this object's
+     * <code>source</code> has not already been set, sets the context-info as this object's source.
      * 
-     * @param references    the "context-info" reference to set.
+     * @param references    an IReferences object, containing the "context-info" reference to set.
      * 
      * @see [[ContextInfo]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package.)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     public setReferences(references: IReferences) {
         let contextInfo = references.getOneOptional<ContextInfo>(

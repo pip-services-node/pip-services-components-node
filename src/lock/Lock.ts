@@ -19,7 +19,7 @@ export abstract class Lock implements ILock, IReconfigurable {
      * 
      * @param config    ConfigParams, containing a "options.retry_timeout" item.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     public configure(config: ConfigParams): void {
         this._retryTimeout = config.getAsIntegerWithDefault("options.retry_timeout", this._retryTimeout);

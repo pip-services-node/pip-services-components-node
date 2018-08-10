@@ -32,12 +32,11 @@ export class CompositeLogger extends Logger implements IReferenceable {
 	}
 
 	/**
-     * Retrieves all "logger" references from the passed references and adds them to this 
-     * object's list of loggers.
+     * Adds all referenced loggers to this object's list of loggers.
      * 
-     * @param references    the "logger" references to set.
+     * @param references    an IReferences object, containing the "logger" references to add.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package.)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
 	public setReferences(references: IReferences): void {
 		super.setReferences(references);

@@ -28,7 +28,7 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      * 
      * @see [[configure]]
      * @see [[store]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     public constructor(config: ConfigParams = null) {
         if (config != null)
@@ -41,8 +41,8 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      * @param config    ConfigParams to configure this object with.
      * 
      * @see [[readCredentials]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
      */
     public configure(config: ConfigParams): void {
         this.readCredentials(config);
@@ -54,7 +54,7 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      * 
      * @param credentials   ConfigParams containing credential information.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     public readCredentials(credentials: ConfigParams) {
         this._items.clear();

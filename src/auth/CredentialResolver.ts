@@ -34,9 +34,11 @@ export class CredentialResolver {
     }
 
     /**
-     * Sets the credential stores that this CredentialResolver references.
+     * Sets a reference to the credential store that is to be used in this CredentialResolver.
      * 
-     * @param references    references to set.
+     * @param references    an IReferences object, containing the "credential-store" reference to set. 
+     * 
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     public setReferences(references: IReferences): void {
         this._references = references;
@@ -50,8 +52,8 @@ export class CredentialResolver {
      * 
      * @see [[CredentialParams.manyFromConfig]]
      * @see [[CredentialParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" Package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipService's "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipService's "Commons" package)
      */
     public configure(config: ConfigParams): void {
         let credentials: CredentialParams[] = CredentialParams.manyFromConfig(config);

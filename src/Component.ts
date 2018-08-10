@@ -24,7 +24,7 @@ export class Component implements IConfigurable, IReferenceable {
      * 
      * @param config    the configuration parameters to use for configuration.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     public configure(config: ConfigParams): void {
         this._dependencyResolver.configure(config);
@@ -32,10 +32,11 @@ export class Component implements IConfigurable, IReferenceable {
     } 
 
     /**
-     * Uses the 'references' passed to set the dependency resolver's, logger's, and 
-     * counters' references.
+     * Sets references to this component's dependency resolver, logger, and performance counters.
      * 
-     * @param references    the references to set.
+     * @param references    an IReferences object, containing references to a dependency resolver, a "logger", and "counters".
+     * 
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     public setReferences(references: IReferences): void {
         this._dependencyResolver.setReferences(references);

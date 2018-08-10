@@ -27,13 +27,12 @@ export class LogCounters extends CachedCounters implements IReferenceable {
     public LogCounters() { }
 
     /**
-     * Retrieves all "logger" references from the passed references and adds them to this 
-     * object's [[CompositeLogger]].
+     * Adds all referenced loggers to this object's [[CompositeLogger]].
      * 
-     * @param references    the "logger" references to set.
+     * @param references    an IReferences object, containing the "logger" references to add.
      * 
      * @see [[CompositeLogger.setReferences]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package.)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     public setReferences(references: IReferences): void {
         this._logger.setReferences(references);

@@ -78,7 +78,7 @@ export abstract class CachedLogger extends Logger {
      *                  "options.max_cache_size" items.
      * 
      * @see [[Logger.configure]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     public configure(config: ConfigParams): void {
         super.configure(config);
