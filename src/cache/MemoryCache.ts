@@ -8,6 +8,12 @@ import { CacheEntry } from './CacheEntry';
 /**
  * Provides local in-memory cache support.
  * 
+ * __Configuration parameters__:
+ * Parameters to pass to the [[configure]] method for component configuration:
+ * 
+ * - "timeout" - cache entry's expiration timeout (deault is 60000);
+ * - "max_size" - the cache's maximum size (deault is 1000).
+ * 
  * @see [[ICache]]
  */
 export class MemoryCache implements ICache, IReconfigurable {
@@ -28,8 +34,12 @@ export class MemoryCache implements ICache, IReconfigurable {
     public constructor() { }
 
 	/**
-	 * Sets this object's 'timeout' and 'max_size' to the values that are 
-     * set in the passed configuration parameters.
+	 * Sets this object's <code>timeout</code> and <code>max_size</code> to the 
+     * values that are set in the passed configuration parameters.
+     * 
+     * __Configuration parameters__:
+     * - "timeout" - cache entry's expiration timeout (deault is 60000);
+     * - "max_size" - the cache's maximum size (deault is 1000).
      * 
 	 * @param config the component's configuration parameters.
 	 * @throws  MicroserviceError when component is in illegal state 

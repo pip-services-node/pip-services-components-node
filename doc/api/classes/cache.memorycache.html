@@ -72,6 +72,12 @@
 					<div class="lead">
 						<p>Provides local in-memory cache support.</p>
 					</div>
+					<p><strong>Configuration parameters</strong>:
+					Parameters to pass to the <a href="cache.memorycache.html#configure">configure</a> method for component configuration:</p>
+					<ul>
+						<li>&quot;timeout&quot; - cache entry&#39;s expiration timeout (deault is 60000);</li>
+						<li>&quot;max_size&quot; - the cache&#39;s maximum size (deault is 1000).</li>
+					</ul>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="../interfaces/cache.icache.html">ICache</a></p>
@@ -128,7 +134,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/cache/MemoryCache.ts#L23">cache/MemoryCache.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/cache/MemoryCache.ts#L29">cache/MemoryCache.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -153,14 +159,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/cache/MemoryCache.ts#L41">cache/MemoryCache.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/cache/MemoryCache.ts#L51">cache/MemoryCache.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets this object&#39;s &#39;timeout&#39; and &#39;max_size&#39; to the values that are
-									set in the passed configuration parameters.</p>
+									<p>Sets this object&#39;s <code>timeout</code> and <code>max_size</code> to the
+									values that are set in the passed configuration parameters.</p>
 								</div>
+								<p><strong>Configuration parameters</strong>:</p>
+								<ul>
+									<li>&quot;timeout&quot; - cache entry&#39;s expiration timeout (deault is 60000);</li>
+									<li>&quot;max_size&quot; - the cache&#39;s maximum size (deault is 1000).</li>
+								</ul>
 								<dl class="tsd-comment-tags">
 									<dt>throws</dt>
 									<dd><p>MicroserviceError when component is in illegal state
@@ -197,7 +208,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/cache/MemoryCache.ts#L173">cache/MemoryCache.ts:173</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/cache/MemoryCache.ts#L183">cache/MemoryCache.ts:183</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -258,7 +269,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/cache/MemoryCache.ts#L89">cache/MemoryCache.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/cache/MemoryCache.ts#L99">cache/MemoryCache.ts:99</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -326,7 +337,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/cache/MemoryCache.ts#L126">cache/MemoryCache.ts:126</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/cache/MemoryCache.ts#L136">cache/MemoryCache.ts:136</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

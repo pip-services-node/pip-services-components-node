@@ -15,6 +15,10 @@ import { IConfigurable } from 'pip-services-commons-node'
  * the logic necessary for reading and parsing ConfigParams. Also contains the [[parameterize]] 
  * method.
  * 
+ * ### Configuration parameters ###
+ * Parameters to pass to the [[configure]] method for component configuration:
+ * - "parameters.<...>" - the parameters to parameterize the configuration reader with.
+ * 
  * @see [[IConfigReader]]
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
@@ -26,6 +30,9 @@ export abstract class ConfigReader implements IConfigurable {
 
     /**
      * Sets this object's configuration parameters.
+     * 
+     * __Configuration parameters:__
+     * - "parameters.<...>" - the parameters to parameterize the configuration reader with.
      * 
      * @param config    ConfigParams that contain a section named "parameters", 
      *                  which will be used when [[parameterize parameterizing]] 

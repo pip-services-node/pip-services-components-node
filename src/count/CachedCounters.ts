@@ -16,6 +16,13 @@ import { Counter } from './Counter';
  * the cache to memory at regular intervals), and reset timeout defines when the cache should 
  * be reset.
  * 
+ * ### Configuration parameters ###
+ * Parameters to pass to the [[configure]] method for component configuration:
+ *
+ * - "interval" - this CachedCounters' update interval, which is used to dump the cache to memory 
+ * at regular intervals (default is 300000);
+ * - "reset_timeout" - the timeout for resetting the cache (default is 0, which turn off resetting).
+ * 
  * @see [[Counter]]
  */
 export abstract class CachedCounters implements ICounters, IReconfigurable, ITimingCallback {
@@ -61,6 +68,11 @@ export abstract class CachedCounters implements ICounters, IReconfigurable, ITim
      * Configures this object using the parameters provided. Looks for parameters with the 
      * keys "interval" and "reset_timeout" and sets them for this object. If a key is not found, 
      * the corresponding value will default to the value that was previously set for this object.
+     * 
+     * __Configuration parameters:__
+     * - "interval" - this CachedCounters' update interval, which is used to dump the cache to memory 
+     * at regular intervals (default is 300000);
+     * - "reset_timeout" - the timeout for resetting the cache (default is 0, which turn off resetting).
      * 
      * @param config    ConfigParams, containing "interval" and/or "reset_timeout" items.
      * 

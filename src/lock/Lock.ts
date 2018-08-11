@@ -8,6 +8,11 @@ import { ILock } from './ILock';
 /**
  * Abstract class that can be implemented by classes that need to be configurable and 
  * manage resoure locking.
+ * 
+ * ### Configuration parameters ###
+ * Parameters to pass to the [[configure]] method for component configuration:
+ * 
+ * - "options.retry_timeout" - the amount of time to retry lock acquisition (default is 100).
  */
 export abstract class Lock implements ILock, IReconfigurable {
     private _retryTimeout: number = 100;
@@ -16,6 +21,9 @@ export abstract class Lock implements ILock, IReconfigurable {
      * Configures this object using the parameters provided. Looks for a parameter with the 
      * key "options.retry_timeout" and sets it for this object. If the key is not found, 
      * the value will default to the value that was previously set for this object.
+     * 
+     * __Configuration parameters:__
+     * - "options.retry_timeout" - the amount of time to retry lock acquisition (default is 100).
      * 
      * @param config    ConfigParams, containing a "options.retry_timeout" item.
      * 

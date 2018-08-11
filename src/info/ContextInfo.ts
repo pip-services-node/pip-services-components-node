@@ -9,6 +9,14 @@ import { IReconfigurable } from 'pip-services-commons-node';
 /**
  * A simple class that defines the context of execution. Used for various logging functions, where information 
  * about the source that is being logging must be known (what's the process's name, what is it, what does it do). 
+ * 
+ * 
+ * ### Configuration parameters ###
+ * Parameters to pass to the [[configure]] method for component configuration:
+ * 
+ * - "name" - the context's name;
+ * - "description" - the context's description;
+ * - "properties.<...>" - additional properties of the context.
  */
 export class ContextInfo implements IReconfigurable {	
 	private _name: string = "unknown";
@@ -29,6 +37,11 @@ export class ContextInfo implements IReconfigurable {
 	/**
 	 * Sets this object's 'name' and 'description' to the values set in the passed configuration parameters. 
 	 * Also sets 'properties' to the values stored in the section named "properties".
+	 * 
+	 * __Configuration parameters:__
+     * - "name" - the context's name;
+     * - "description" - the context's description;
+	 * - "properties.<...>" - additional properties of the context.
 	 * 
 	 * @param config 	the ConfigParams to configure this object with.
 	 * 

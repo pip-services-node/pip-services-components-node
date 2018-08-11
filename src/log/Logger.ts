@@ -16,6 +16,12 @@ import { ContextInfo } from '../info/ContextInfo';
 /**
  * Abstract class for creating loggers that are configurable, have a source (reference a context), and 
  * are capable of logging messages of various [[LogLevel log levels]].
+ *
+ * ### Configuration parameters ###
+ * Parameters to pass to the [[configure]] method for component configuration:
+ *  
+ * - "level" - the [[LogLevel]] to set (default is LogLevel.Info);
+ * - "source" - the logger's source.
  * 
  * @see [[ILogger]]
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferenceable.html IReferenceable]]
@@ -34,6 +40,10 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
      * Configures this object using the parameters provided. Looks for parameters with the 
      * keys "level" and "source" and sets them for this object. If a key is not found, 
      * the corresponding value will default to the value that was previously set for this object.
+     * 
+     * __Configuration parameters:__
+     * - "level" - the [[LogLevel]] to set (default is LogLevel.Info);
+     * - "source" - the logger's source.
      * 
      * @param config    ConfigParams, containing "level" and/or "source" items.
      * 

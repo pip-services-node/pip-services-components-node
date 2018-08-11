@@ -13,6 +13,13 @@ import { StringValueMap } from 'pip-services-commons-node';
  * (like [[CredentialResolver]]) can be used to acquiring these parameters and discover objects 
  * or components that store and retrieve credential parameters (credential stores - see [[ICredentialStore]]). 
  * 
+ * ### Possible configuration parameters: ###
+ * - "name" - the username to use for authentication;
+ * - "pass" - the user's password;
+ * - "store_key" - the key to use in the credential store;
+ * - "access_id" - the access ID to use;
+ * - "access_key" - the access key to use;
+ * 
  * @see [[ConnectionParams]]
  * @see [[CredentialResolver]]
  * @see [[ICredentialStore]]

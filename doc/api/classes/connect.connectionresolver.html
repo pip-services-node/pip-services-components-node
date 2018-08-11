@@ -73,6 +73,21 @@
 						<p>Helper class that stores connection parameters (<a href="connect.connectionparams.html">ConnectionParams</a>) and is capable of acquiring parameters
 						from various discovery services.</p>
 					</div>
+					<h3 id="configuration-parameters">Configuration parameters</h3>
+					<p>Parameters to pass to the <a href="connect.connectionresolver.html#configure">configure</a> method for component configuration:</p>
+					<ul>
+						<li>&quot;connection.discovery_key&quot; - the key to use for connection resolving in a discovery service;</li>
+						<li>&quot;connection.protocol&quot; - the connection&#39;s protocol;</li>
+						<li>&quot;connection.host&quot; - the target host;</li>
+						<li>&quot;connection.port&quot; - the target port;</li>
+						<li>&quot;connection.uri&quot; - the target URI.</li>
+					</ul>
+					<h3 id="references">References</h3>
+					<p>A discovery service can be referenced by passing the following reference
+					to the object&#39;s <a href="connect.connectionresolver.html#setreferences">setReferences</a> method:</p>
+					<ul>
+						<li><code>&quot;*:discovery:*:*:1.0&quot;</code></li>
+					</ul>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="connect.connectionparams.html">ConnectionParams</a></p>
@@ -128,7 +143,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/connect/ConnectionResolver.ts#L22">connect/ConnectionResolver.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/connect/ConnectionResolver.ts#L37">connect/ConnectionResolver.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -177,7 +192,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/connect/ConnectionResolver.ts#L77">connect/ConnectionResolver.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/connect/ConnectionResolver.ts#L99">connect/ConnectionResolver.ts:99</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -213,7 +228,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/connect/ConnectionResolver.ts#L58">connect/ConnectionResolver.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/connect/ConnectionResolver.ts#L80">connect/ConnectionResolver.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -221,6 +236,14 @@
 									<p>Configures this object by parsing the &quot;connection(s)&quot; section of the passed ConfigParams
 									into a list of ConnectionParams and adding them to this ConnectionResolver&#39;s list of connections.</p>
 								</div>
+								<p><strong>Connection parameters:</strong></p>
+								<ul>
+									<li>&quot;connection.discovery_key&quot; - the key to use for connection resolving in a discovery service;</li>
+									<li>&quot;connection.protocol&quot; - the connection&#39;s protocol;</li>
+									<li>&quot;connection.host&quot; - the target host;</li>
+									<li>&quot;connection.port&quot; - the target port;</li>
+									<li>&quot;connection.uri&quot; - the target URI.</li>
+								</ul>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
 									<dd><p><a href="connect.connectionparams.html#manyfromconfig">ConnectionParams.manyFromConfig</a></p>
@@ -259,7 +282,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/connect/ConnectionResolver.ts#L66">connect/ConnectionResolver.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/connect/ConnectionResolver.ts#L88">connect/ConnectionResolver.ts:88</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -279,7 +302,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/connect/ConnectionResolver.ts#L347">connect/ConnectionResolver.ts:347</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/connect/ConnectionResolver.ts#L369">connect/ConnectionResolver.ts:369</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -346,7 +369,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/connect/ConnectionResolver.ts#L147">connect/ConnectionResolver.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/connect/ConnectionResolver.ts#L169">connect/ConnectionResolver.ts:169</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -409,7 +432,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/connect/ConnectionResolver.ts#L256">connect/ConnectionResolver.ts:256</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/connect/ConnectionResolver.ts#L278">connect/ConnectionResolver.ts:278</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -473,7 +496,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/5351ca2/src/connect/ConnectionResolver.ts#L43">connect/ConnectionResolver.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/6023b13/src/connect/ConnectionResolver.ts#L58">connect/ConnectionResolver.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

@@ -14,6 +14,21 @@ import { ICredentialStore } from './ICredentialStore';
  * Helper class that stores credential parameters ([[CredentialParams]]) and is capable of acquiring parameters 
  * from various credential stores.
  * 
+ * ### Configuration parameters ###
+ * Parameters to pass to the [[configure]] method for component configuration:
+ * 
+ * - "credential.name" - the username to use for authentication;
+ * - "credential.pass" - the user's password;
+ * - "credential.store_key" - the key to use in the credential store;
+ * - "credential.access_id" - the access ID to use;
+ * - "credential.access_key" - the access key to use;
+ * 
+ * ### References ###
+ * A credential store can be referenced by passing the following reference
+ * to the object's [[setReferences]] method:
+ * 
+ * - <code>"\*:credential-store:\*:\*:1.0"</code>
+ * 
  * @see [[CredentialParams]]
  * @see [[ICredentialStore]]
  */
@@ -47,6 +62,13 @@ export class CredentialResolver {
     /**
      * Configures this object by parsing the "credential(s)" section of the passed ConfigParams 
      * into a list of CredentialParams and adding them to this CredentialResolver's list of credentials.
+     * 
+     * __Credential parameters:__
+     * - "credential.name" - the username to use for authentication;
+     * - "credential.pass" - the user's password;
+     * - "credential.store_key" - the key to use in the credential store;
+     * - "credential.access_id" - the access ID to use;
+     * - "credential.access_key" - the access key to use;
      * 
      * @param config    the "credential(s)" to add to this CredentialResolver's list of credentials.
      * 

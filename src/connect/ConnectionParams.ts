@@ -12,6 +12,13 @@ import { StringValueMap } from 'pip-services-commons-node';
  * (like [[ConnectionResolver]]) can be used to acquiring these parameters and discover objects 
  * or components that store and retrieve connection parameters (discovery services - see [[IDiscovery]]). 
  * 
+ * ### Possible configuration parameters: ###
+ * - "discovery_key" - the key to use for connection resolving in a discovery service;
+ * - "protocol" - the connection's protocol;
+ * - "host" - the target host;
+ * - "port" - the target port;
+ * - "uri" - the target URI.
+ * 
  * @see [[CredentialParams]]
  * @see [[ConnectionResolver]]
  * @see [[IDiscovery]]
