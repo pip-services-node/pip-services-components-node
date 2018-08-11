@@ -17,8 +17,8 @@ import { ICredentialStore } from './ICredentialStore';
  * ### Configuration parameters ###
  * Parameters to pass to the [[configure]] method for component configuration:
  * 
- * - "credential.name" - the username to use for authentication;
- * - "credential.pass" - the user's password;
+ * - "credential.username" - the username to use for authentication;
+ * - "credential.password" - the user's password;
  * - "credential.store_key" - the key to use in the credential store;
  * - "credential.access_id" - the access ID to use;
  * - "credential.access_key" - the access key to use;
@@ -64,8 +64,8 @@ export class CredentialResolver {
      * into a list of CredentialParams and adding them to this CredentialResolver's list of credentials.
      * 
      * __Credential parameters:__
-     * - "credential.name" - the username to use for authentication;
-     * - "credential.pass" - the user's password;
+     * - "credential.username" - the username to use for authentication;
+     * - "credential.password" - the user's password;
      * - "credential.store_key" - the key to use in the credential store;
      * - "credential.access_id" - the access ID to use;
      * - "credential.access_key" - the access key to use;
