@@ -7,7 +7,7 @@ import { FileConfigReader } from './FileConfigReader';
  */
 export declare class JsonConfigReader extends FileConfigReader {
     /**
-     * @param path (optional) path to the target file containing configuration parameters in JSON format.
+     * @param path (optional) path to the target file, containing configuration parameters in JSON format.
      *              If 'path' is omitted in the constructor, then it must be set otherwise
      *              (for example, calling the [[setPath]] method before using the new object).
      *
@@ -56,8 +56,11 @@ export declare class JsonConfigReader extends FileConfigReader {
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param path              location of the target JSON file.
      * @param parameters        used to parameterize the reader.
+     * @returns the ConfigParams that were read from the file.
      *
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
      * @see [[readConfig]]
+     * @see [[readObject]]
      */
     static readConfig(correlationId: string, path: string, parameters: ConfigParams): ConfigParams;
 }

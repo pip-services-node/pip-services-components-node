@@ -8,6 +8,9 @@ import { IReconfigurable } from 'pip-services-commons-node';
 import { ConnectionParams } from './ConnectionParams';
 import { IDiscovery } from './IDiscovery';
 
+/**
+ * Used to store key-identifiable information about connections.
+ */
 class DiscoveryItem {
     public key: string;
     public connection: ConnectionParams;
@@ -45,7 +48,7 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
      * 
      * @see [[configure]]
      * @see [[register]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     public constructor(config: ConfigParams = null) {
         if (config != null)
@@ -53,13 +56,14 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
     }
 
     /**
-     * Configures this object by calling [[readConnections]]. Used to set the discovery service's static registery.
+     * Configures this object by calling [[readConnections]] and setting the connections that were read. 
+     * Used to set the discovery service's static registery.
      * 
-     * @param config    ConfigParams to configure this object with.
+     * @param config    ConfigParams that contain connection information.
      * 
      * @see [[readConnections]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
      */
     public configure(config: ConfigParams): void {
         this.readConnections(config);
@@ -69,9 +73,9 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
      * Parses the connections passed as ConfigParams into this object's registry, which is used for
      * static discovery. The registry's keys will be identical to the ConfigParams' keys.
      * 
-     * @param connections   ConfigParams containing connection information.
+     * @param connections   ConfigParams that contain connection information.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     public readConnections(connections: ConfigParams) {
         this._items = [];

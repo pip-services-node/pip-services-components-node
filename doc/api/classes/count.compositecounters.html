@@ -67,6 +67,19 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Helper class for grouping multiple <a href="../interfaces/count.icounters.html">counters</a> together and updating all of them
+						at once using a single method call.</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>see</dt>
+						<dd><p><a href="../interfaces/count.icounters.html">ICounters</a></p>
+						</dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -119,7 +132,7 @@
 					<div class="tsd-signature tsd-kind-icon">_counters<span class="tsd-signature-symbol">:</span> <a href="../interfaces/count.icounters.html" class="tsd-signature-type">ICounters</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/CompositeCounters.ts#L11">count/CompositeCounters.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CompositeCounters.ts#L17">count/CompositeCounters.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -136,13 +149,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/CompositeCounters.ts#L13">count/CompositeCounters.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CompositeCounters.ts#L27">count/CompositeCounters.ts:27</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new CompositeCounters object. If &quot;counters&quot; references are given, they will be
+									set in the new object. If omitted - they can be set later on using <a href="count.compositecounters.html#setreferences">setReferences</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="count.compositecounters.html#setreferences">setReferences</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> references: <span class="tsd-signature-type">IReferences</span><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the &quot;counters&quot; references to set.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -160,16 +187,37 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#begintiming">beginTiming</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/CompositeCounters.ts#L28">count/CompositeCounters.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CompositeCounters.ts#L61">count/CompositeCounters.ts:61</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new <a href="count.timing.html">Timing</a> callback object, which will call this object&#39;s <a href="count.compositecounters.html#endtiming">endTiming</a>
+									method once it receives the command to <a href="count.timing.html#endtiming">stop timing</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="count.timing.html">Timing</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.compositecounters.html#endtiming">endTiming</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="../enums/count.countertype.html#interval">CounterType.Interval</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the Interval Counter, for which a Timing is to be created.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="count.timing.html" class="tsd-signature-type">Timing</a></h4>
+							<p>the Timing callback object that was created.</p>
 						</li>
 					</ul>
 				</section>
@@ -184,16 +232,42 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.itimingcallback.html">ITimingCallback</a>.<a href="../interfaces/count.itimingcallback.html#endtiming">endTiming</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/CompositeCounters.ts#L32">count/CompositeCounters.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CompositeCounters.ts#L80">count/CompositeCounters.ts:80</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p><a href="../interfaces/count.itimingcallback.html#endtiming">Ends timing</a> for all counters that are instances
+									of <a href="../interfaces/count.itimingcallback.html">ITimingCallback</a>.</p>
+								</div>
+								<p>This method will be called by a <a href="count.timing.html">Timing</a> callback object
+								once its <a href="count.timing.html#endtiming">endTiming</a> method has been called.</p>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../interfaces/count.itimingcallback.html#endtiming">ITimingCallback.endTiming</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.timing.html#endtiming">Timing.endTiming</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.compositecounters.html#begintiming">beginTiming</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the Interval Counter name used to created the
+										Timing object.</p>
+									</div>
 								</li>
 								<li>
 									<h5>elapsed: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the time elapsed since timing began.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -211,16 +285,36 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#increment">increment</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/CompositeCounters.ts#L64">count/CompositeCounters.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CompositeCounters.ts#L170">count/CompositeCounters.ts:170</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calls all included counters&#39; <code>increment</code> methods and increments the named
+									<a href="../enums/count.countertype.html#increment">Incremental Counter</a> by the value given.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>an Error if name is null.</p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to increment. Cannot be null</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the value to increment the counter by.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -238,13 +332,30 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#incrementone">incrementOne</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/CompositeCounters.ts#L60">count/CompositeCounters.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CompositeCounters.ts#L155">count/CompositeCounters.ts:155</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calls all included counters&#39; <code>increment</code> methods and increments the named
+									<a href="../enums/count.countertype.html#increment">Incremental Counter</a> by a value of 1.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.compositecounters.html#increment">increment</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -262,16 +373,33 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#last">last</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/CompositeCounters.ts#L46">count/CompositeCounters.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CompositeCounters.ts#L114">count/CompositeCounters.ts:114</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calls the <code>last</code> method for all included counters. <code>last</code> updates the
+									named <a href="../enums/count.countertype.html#lastvalue">Last Counter</a> by setting its last value to the value given.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the value to update the counter with.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -288,13 +416,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/CompositeCounters.ts#L18">count/CompositeCounters.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CompositeCounters.ts#L40">count/CompositeCounters.ts:40</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds all referenced counters to this object&#39;s list of counters.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html" class="external">IReferences</a> (in the PipServices &quot;Commons&quot; package)</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>references: <span class="tsd-signature-type">IReferences</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>an IReferences object, containing references to the &quot;counters&quot;
+										that are to be added.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -312,16 +454,35 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#stats">stats</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/CompositeCounters.ts#L41">count/CompositeCounters.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CompositeCounters.ts#L100">count/CompositeCounters.ts:100</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calls the <code>stats</code> method for all included counters. <code>stats</code> adds the
+										given value to the named <a href="../enums/count.countertype.html#statistics">Statistics Counter</a> and recalculates its
+										statistics, taking into account the new value. Statistics include last, count, min, max, and
+									average.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the value to update the counter with.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -339,16 +500,33 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#timestamp">timestamp</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/CompositeCounters.ts#L55">count/CompositeCounters.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CompositeCounters.ts#L141">count/CompositeCounters.ts:141</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calls the <code>timestamp</code> method for all included counters. <code>timestamp</code>
+									updates the named <a href="../enums/count.countertype.html#timestamp">Timestamp Counter&#39;s</a> time to the time given.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">Date</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the timestamp to update the counter to.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -366,13 +544,30 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#timestampnow">timestampNow</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/CompositeCounters.ts#L51">count/CompositeCounters.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CompositeCounters.ts#L128">count/CompositeCounters.ts:128</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calls this class&#39;s <a href="count.compositecounters.html#timestamp">timestamp</a> method with the current time, which calls all included
+									counters&#39; <code>timestamp</code> methods with the current time.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.compositecounters.html#timestamp">timestamp</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

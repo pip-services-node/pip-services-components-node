@@ -72,6 +72,12 @@
 					<div class="lead">
 						<p>Provides local in-memory cache support.</p>
 					</div>
+					<p><strong>Configuration parameters</strong>:
+					Parameters to pass to the <a href="cache.memorycache.html#configure">configure</a> method for component configuration:</p>
+					<ul>
+						<li>&quot;timeout&quot; - cache entry&#39;s expiration timeout (deault is 60000);</li>
+						<li>&quot;max_size&quot; - the cache&#39;s maximum size (deault is 1000).</li>
+					</ul>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="../interfaces/cache.icache.html">ICache</a></p>
@@ -104,21 +110,9 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="cache.memorycache.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="cache.memorycache.html#_cache" class="tsd-kind-icon">_cache</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="cache.memorycache.html#_count" class="tsd-kind-icon">_count</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="cache.memorycache.html#_maxsize" class="tsd-kind-icon">_max<wbr>Size</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="cache.memorycache.html#_timeout" class="tsd-kind-icon">_timeout</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="cache.memorycache.html#_defaultmaxsize" class="tsd-kind-icon">_default<wbr>Max<wbr>Size</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="cache.memorycache.html#_defaulttimeout" class="tsd-kind-icon">_default<wbr>Timeout</a></li>
-							</ul>
-						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="cache.memorycache.html#cleanup" class="tsd-kind-icon">cleanup</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cache.memorycache.html#configure" class="tsd-kind-icon">configure</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cache.memorycache.html#remove" class="tsd-kind-icon">remove</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cache.memorycache.html#retrieve" class="tsd-kind-icon">retrieve</a></li>
@@ -140,12 +134,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/cache/MemoryCache.ts#L23">cache/MemoryCache.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/MemoryCache.ts#L29">cache/MemoryCache.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates an instance of this local in-memory cache component.</p>
+									<p>Creates a local in-memory cache component.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="cache.memorycache.html" class="tsd-signature-type">MemoryCache</a></h4>
@@ -153,95 +147,8 @@
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_cache" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _cache</h3>
-					<div class="tsd-signature tsd-kind-icon">_cache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/cache/MemoryCache.ts#L18">cache/MemoryCache.ts:18</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_count" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _count</h3>
-					<div class="tsd-signature tsd-kind-icon">_count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/cache/MemoryCache.ts#L19">cache/MemoryCache.ts:19</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_maxsize" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _max<wbr>Size</h3>
-					<div class="tsd-signature tsd-kind-icon">_max<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;MemoryCache._defaultMaxSize</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/cache/MemoryCache.ts#L23">cache/MemoryCache.ts:23</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_timeout" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _timeout</h3>
-					<div class="tsd-signature tsd-kind-icon">_timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;MemoryCache._defaultTimeout</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/cache/MemoryCache.ts#L22">cache/MemoryCache.ts:22</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="_defaultmaxsize" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> _default<wbr>Max<wbr>Size</h3>
-					<div class="tsd-signature tsd-kind-icon">_default<wbr>Max<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;1000</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/cache/MemoryCache.ts#L16">cache/MemoryCache.ts:16</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="_defaulttimeout" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> _default<wbr>Timeout</h3>
-					<div class="tsd-signature tsd-kind-icon">_default<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;60000</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/cache/MemoryCache.ts#L15">cache/MemoryCache.ts:15</a></li>
-						</ul>
-					</aside>
-				</section>
-			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="cleanup" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> cleanup</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">cleanup<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/cache/MemoryCache.ts#L51">cache/MemoryCache.ts:51</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Cleans up cache from obsolete values and shrinks the cache
-										to fit into allowed max size by dropping values that were not
-									accessed for a long time.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="configure" class="tsd-anchor"></a>
 					<h3>configure</h3>
@@ -252,24 +159,29 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/cache/MemoryCache.ts#L41">cache/MemoryCache.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/MemoryCache.ts#L51">cache/MemoryCache.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets this object&#39;s &#39;timeout&#39; and &#39;max_size&#39; to the values that are
-									set in the passed configuration parameters.</p>
+									<p>Sets this object&#39;s <code>timeout</code> and <code>max_size</code> to the
+									values that are set in the passed configuration parameters.</p>
 								</div>
+								<p><strong>Configuration parameters</strong>:</p>
+								<ul>
+									<li>&quot;timeout&quot; - cache entry&#39;s expiration timeout (deault is 60000);</li>
+									<li>&quot;max_size&quot; - the cache&#39;s maximum size (deault is 1000).</li>
+								</ul>
 								<dl class="tsd-comment-tags">
 									<dt>throws</dt>
 									<dd><p>MicroserviceError when component is in illegal state
 										or configuration validation fails.</p>
 									</dd>
 									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; Package)</p>
+									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
 									</dd>
 									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html" class="external">IConfigurable</a> (in the PipServices &quot;Commons&quot; Package)</p>
+									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html" class="external">IConfigurable</a> (in the PipServices &quot;Commons&quot; package)</p>
 									</dd>
 								</dl>
 							</div>
@@ -296,7 +208,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/cache/MemoryCache.ts#L172">cache/MemoryCache.ts:172</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/MemoryCache.ts#L183">cache/MemoryCache.ts:183</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -357,7 +269,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/cache/MemoryCache.ts#L89">cache/MemoryCache.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/MemoryCache.ts#L99">cache/MemoryCache.ts:99</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -425,12 +337,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/cache/MemoryCache.ts#L125">cache/MemoryCache.ts:125</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/MemoryCache.ts#L136">cache/MemoryCache.ts:136</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Stores value identified by unique key in the cache.
+									<p>Stores a value, identified by its unique key, in the cache.
 									Cache entry&#39;s expiration timeout is configured in the component&#39;s options.</p>
 								</div>
 							</div>
@@ -451,11 +363,14 @@
 								<li>
 									<h5>value: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>value to store.</p>
+										<p>the value to store.</p>
 									</div>
 								</li>
 								<li>
 									<h5>timeout: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>expiration timeout for the cache entry.</p>
+									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
@@ -550,27 +465,6 @@
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="cache.memorycache.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="cache.memorycache.html#_cache" class="tsd-kind-icon">_cache</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="cache.memorycache.html#_count" class="tsd-kind-icon">_count</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="cache.memorycache.html#_maxsize" class="tsd-kind-icon">_max<wbr>Size</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="cache.memorycache.html#_timeout" class="tsd-kind-icon">_timeout</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="cache.memorycache.html#_defaultmaxsize" class="tsd-kind-icon">_default<wbr>Max<wbr>Size</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="cache.memorycache.html#_defaulttimeout" class="tsd-kind-icon">_default<wbr>Timeout</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="cache.memorycache.html#cleanup" class="tsd-kind-icon">cleanup</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="cache.memorycache.html#configure" class="tsd-kind-icon">configure</a>

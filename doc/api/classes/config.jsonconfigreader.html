@@ -137,7 +137,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="config.fileconfigreader.html">FileConfigReader</a>.<a href="config.fileconfigreader.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/config/JsonConfigReader.ts#L17">config/JsonConfigReader.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/JsonConfigReader.ts#L17">config/JsonConfigReader.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -156,7 +156,7 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> path: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>(optional) path to the target file containing configuration parameters in JSON format.
+											<p>(optional) path to the target file, containing configuration parameters in JSON format.
 												If &#39;path&#39; is omitted in the constructor, then it must be set otherwise
 											(for example, calling the <a href="config.jsonconfigreader.html#setpath">setPath</a> method before using the new object).</p>
 										</div>
@@ -182,7 +182,7 @@
 								<p>Inherited from <a href="config.fileconfigreader.html">FileConfigReader</a>.<a href="config.fileconfigreader.html#configure">configure</a></p>
 								<p>Overrides <a href="config.configreader.html">ConfigReader</a>.<a href="config.configreader.html#configure">configure</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/config/FileConfigReader.ts#L57">config/FileConfigReader.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/FileConfigReader.ts#L67">config/FileConfigReader.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -190,6 +190,11 @@
 									<p>Sets this object&#39;s configuration parameters and &#39;path&#39; to the values
 									set in the passed configuration parameters.</p>
 								</div>
+								<p><strong>Configuration parameters:</strong></p>
+								<ul>
+									<li>&quot;path&quot; - the path to the target file.</li>
+									<li>&quot;parameters.&lt;...&gt;&quot; - the parameters to parameterize the configuration reader with.</li>
+								</ul>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
 									<dd><p><a href="config.configreader.html#configure">ConfigReader.configure</a></p>
@@ -222,7 +227,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="config.fileconfigreader.html">FileConfigReader</a>.<a href="config.fileconfigreader.html#getpath">getPath</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/config/FileConfigReader.ts#L34">config/FileConfigReader.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/FileConfigReader.ts#L40">config/FileConfigReader.ts:40</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -246,7 +251,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="config.configreader.html">ConfigReader</a>.<a href="config.configreader.html#parameterize">parameterize</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/config/ConfigReader.ts#L78">config/ConfigReader.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/ConfigReader.ts#L86">config/ConfigReader.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -299,7 +304,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="config.configreader.html">ConfigReader</a>.<a href="config.configreader.html#readconfig">readConfig</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/config/JsonConfigReader.ts#L74">config/JsonConfigReader.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/JsonConfigReader.ts#L74">config/JsonConfigReader.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -309,7 +314,7 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; Package)</p>
+									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
 									</dd>
 									<dt>see</dt>
 									<dd><p><a href="config.jsonconfigreader.html#readobject-1">readObject</a></p>
@@ -373,7 +378,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/config/JsonConfigReader.ts#L42">config/JsonConfigReader.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/JsonConfigReader.ts#L42">config/JsonConfigReader.ts:42</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -386,7 +391,7 @@
 									<dd><p><a href="config.configreader.html#parameterize">ConfigReader.parameterize</a></p>
 									</dd>
 									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/convert.jsonconverter.html#tonullablemap" class="external">JsonConverter.toNullableMap</a> (in the PipServices &quot;Commons&quot; Package)</p>
+									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/convert.jsonconverter.html#tonullablemap" class="external">JsonConverter.toNullableMap</a> (in the PipServices &quot;Commons&quot; package)</p>
 									</dd>
 								</dl>
 							</div>
@@ -421,7 +426,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="config.fileconfigreader.html">FileConfigReader</a>.<a href="config.fileconfigreader.html#setpath">setPath</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/config/FileConfigReader.ts#L43">config/FileConfigReader.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/FileConfigReader.ts#L49">config/FileConfigReader.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -452,7 +457,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/config/JsonConfigReader.ts#L107">config/JsonConfigReader.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/JsonConfigReader.ts#L110">config/JsonConfigReader.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -461,7 +466,13 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
+									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
+									</dd>
+									<dt>see</dt>
 									<dd><p><a href="config.jsonconfigreader.html#readconfig-1">readConfig</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="config.jsonconfigreader.html#readobject-1">readObject</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -487,6 +498,7 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ConfigParams</span></h4>
+							<p>the ConfigParams that were read from the file.</p>
 						</li>
 					</ul>
 				</section>
@@ -500,7 +512,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/config/JsonConfigReader.ts#L94">config/JsonConfigReader.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/JsonConfigReader.ts#L94">config/JsonConfigReader.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

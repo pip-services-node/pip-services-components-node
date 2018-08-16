@@ -67,6 +67,17 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Callback object that is used to end the timing for a block of code.</p>
+					</div>
+					<p>An <a href="../enums/count.countertype.html#interval">interval</a> counter can create a new Timing and use it
+						to measure the amount of time it takes a block of code to execute. The measured
+						interval can additionally be added to a statistical counter to gather information
+					about the minimum, maximum, and average time it takes for the block of code to execute.</p>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -83,14 +94,6 @@
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="count.timing.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="count.timing.html#_callback" class="tsd-kind-icon">_callback</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="count.timing.html#_counter" class="tsd-kind-icon">_counter</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="count.timing.html#_start" class="tsd-kind-icon">_start</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -114,54 +117,47 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/Timing.ts#L7">count/Timing.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/Timing.ts#L14">count/Timing.ts:14</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new Timing object and starts timing. To end timing, call this
+									object&#39;s <a href="count.timing.html#endtiming">endTiming</a> method.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../enums/count.countertype.html#interval">CounterType.Interval</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.timing.html#endtiming">endTiming</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> counter: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the name of the Interval Counter, for which a new
+											Timing is being created.</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> callback: <a href="../interfaces/count.itimingcallback.html" class="tsd-signature-type">ITimingCallback</a><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the function to call with the elapsed time once
+											<a href="count.timing.html#endtiming">endTiming</a> is called.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="count.timing.html" class="tsd-signature-type">Timing</a></h4>
 						</li>
 					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_callback" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _callback</h3>
-					<div class="tsd-signature tsd-kind-icon">_callback<span class="tsd-signature-symbol">:</span> <a href="../interfaces/count.itimingcallback.html" class="tsd-signature-type">ITimingCallback</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/Timing.ts#L6">count/Timing.ts:6</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_counter" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _counter</h3>
-					<div class="tsd-signature tsd-kind-icon">_counter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/Timing.ts#L7">count/Timing.ts:7</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_start" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _start</h3>
-					<div class="tsd-signature tsd-kind-icon">_start<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/Timing.ts#L5">count/Timing.ts:5</a></li>
-						</ul>
-					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -176,9 +172,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/Timing.ts#L15">count/Timing.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/Timing.ts#L38">count/Timing.ts:38</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calls the <a href="../interfaces/count.itimingcallback.html">Timing Callback</a> that was set for this object and
+									passes it the time elapsed since this Timing object was created.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -259,15 +261,6 @@
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="count.timing.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="count.timing.html#_callback" class="tsd-kind-icon">_callback</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="count.timing.html#_counter" class="tsd-kind-icon">_counter</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="count.timing.html#_start" class="tsd-kind-icon">_start</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="count.timing.html#endtiming" class="tsd-kind-icon">end<wbr>Timing</a>

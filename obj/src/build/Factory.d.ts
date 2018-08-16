@@ -34,7 +34,7 @@ export declare class Factory implements IFactory {
      */
     register(locator: any, factory: (locator: any) => any): void;
     /**
-     * Registers a factory that can create instance of 'objectFactory' classes.
+     * Registers a factory that can create instances of 'objectFactory' classes.
      *
      * @param locator 			the locator that is used to identify the object factory. Cannot be null.
      * @param objectFactory 	the object type that can be created by this factory. Cannot be null.

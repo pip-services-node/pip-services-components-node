@@ -14,6 +14,21 @@ import { ICredentialStore } from './ICredentialStore';
  * Helper class that stores credential parameters ([[CredentialParams]]) and is capable of acquiring parameters 
  * from various credential stores.
  * 
+ * ### Configuration parameters ###
+ * Parameters to pass to the [[configure]] method for component configuration:
+ * 
+ * - "credential.username" - the username to use for authentication;
+ * - "credential.password" - the user's password;
+ * - "credential.store_key" - the key to use in the credential store;
+ * - "credential.access_id" - the access ID to use;
+ * - "credential.access_key" - the access key to use;
+ * 
+ * ### References ###
+ * A credential store can be referenced by passing the following reference
+ * to the object's [[setReferences]] method:
+ * 
+ * - <code>"\*:credential-store:\*:\*:1.0"</code>
+ * 
  * @see [[CredentialParams]]
  * @see [[ICredentialStore]]
  */
@@ -34,24 +49,33 @@ export class CredentialResolver {
     }
 
     /**
-     * Sets the credential stores that this CredentialResolver references.
+     * Sets a reference to the credential store that is to be used in this CredentialResolver.
      * 
-     * @param references    references to set.
+     * @param references    an IReferences object, containing the "credential-store" reference to set. 
+     * 
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     public setReferences(references: IReferences): void {
         this._references = references;
     }
 
     /**
-     * Configures this object by converting the passed ConfigParams into a list of CredentialParams
-     * and adding them to this CredentialResolver's list of credentials.
+     * Configures this object by parsing the "credential(s)" section of the passed ConfigParams 
+     * into a list of CredentialParams and adding them to this CredentialResolver's list of credentials.
      * 
-     * @param config    credentials to add to this CredentialResolver's list of credentials.
+     * __Credential parameters:__
+     * - "credential.username" - the username to use for authentication;
+     * - "credential.password" - the user's password;
+     * - "credential.store_key" - the key to use in the credential store;
+     * - "credential.access_id" - the access ID to use;
+     * - "credential.access_key" - the access key to use;
+     * 
+     * @param config    the "credential(s)" to add to this CredentialResolver's list of credentials.
      * 
      * @see [[CredentialParams.manyFromConfig]]
      * @see [[CredentialParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" Package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipService's "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipService's "Commons" package)
      */
     public configure(config: ConfigParams): void {
         let credentials: CredentialParams[] = CredentialParams.manyFromConfig(config);

@@ -5,7 +5,7 @@ import { Factory } from '../build/Factory';
 import { MemoryDiscovery } from './MemoryDiscovery';
 
 /**
- * Contains static read-only descriptors for MemoryDiscovery (as well as a default discovery descriptor).
+ * Contains a static read-only descriptor for [[MemoryDiscovery]] and the default "discovery" descriptor.
  * 
  * @see [[Factory]]
  */
@@ -13,8 +13,10 @@ export class DefaultDiscoveryFactory extends Factory {
 	public static readonly Descriptor = new Descriptor("pip-services", "factory", "discovery", "default", "1.0");
 	public static readonly MemoryDiscoveryDescriptor = new Descriptor("pip-services", "discovery", "memory", "*", "1.0");
 	
-    /**
-	 * Adds an object factory for MemoryDiscovery to this Factory.
+	/**
+	 * Create a new DefaultDiscoveryFactory object, containing a [[MemoryDiscovery]] object factory.
+	 * 
+	 * @see [[MemoryDiscovery]]
 	 */
 	public constructor() {
         super();

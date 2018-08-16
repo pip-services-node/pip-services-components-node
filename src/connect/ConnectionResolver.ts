@@ -14,6 +14,21 @@ import { IDiscovery } from './IDiscovery';
  * Helper class that stores connection parameters ([[ConnectionParams]]) and is capable of acquiring parameters 
  * from various discovery services.
  * 
+ * ### Configuration parameters ###
+ * Parameters to pass to the [[configure]] method for component configuration:
+ * 
+ * - "connection.discovery_key" - the key to use for connection resolving in a discovery service;
+ * - "connection.protocol" - the connection's protocol;
+ * - "connection.host" - the target host;
+ * - "connection.port" - the target port;
+ * - "connection.uri" - the target URI.
+ * 
+ * ### References ###
+ * A discovery service can be referenced by passing the following reference
+ * to the object's [[setReferences]] method:
+ * 
+ * - <code>"\*:discovery:\*:\*:1.0"</code>
+ * 
  * @see [[ConnectionParams]]
  * @see [[IDiscovery]]
  */
@@ -34,24 +49,33 @@ export class ConnectionResolver {
     }
 
     /**
-     * Sets the discovery services that this ConnectionResolver references.
+     * Sets the discovery service that this ConnectionResolver is to reference.
      * 
-     * @param references    references to set.
+     * @param references    an IReferences object, containing the "discovery" service reference to set.
+     * 
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     public setReferences(references: IReferences): void {
         this._references = references;
     }
 
     /**
-     * Configures this object by converting the passed ConfigParams into a list of ConnectionParams
-     * and adding them to this ConnectionResolver's list of connections.
+     * Configures this object by parsing the "connection(s)" section of the passed ConfigParams 
+     * into a list of ConnectionParams and adding them to this ConnectionResolver's list of connections.
      * 
-     * @param config    connections to add to this ConnectionResolver's list of connections.
+     * __Connection parameters:__
+     * - "connection.discovery_key" - the key to use for connection resolving in a discovery service;
+     * - "connection.protocol" - the connection's protocol;
+     * - "connection.host" - the target host;
+     * - "connection.port" - the target port;
+     * - "connection.uri" - the target URI.
+     * 
+     * @param config    the "connection(s)" to add to this ConnectionResolver's list of connections.
      * 
      * @see [[ConnectionParams.manyFromConfig]]
      * @see [[ConnectionParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
      */
     public configure(config: ConfigParams): void {
         let connections: ConnectionParams[] = ConnectionParams.manyFromConfig(config);

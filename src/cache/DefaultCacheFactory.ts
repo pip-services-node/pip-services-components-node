@@ -6,7 +6,8 @@ import { NullCache } from './NullCache';
 import { MemoryCache } from './MemoryCache';
 
 /**
- * Contains static read-only descriptors for the Null and Memory caches (as well as a default cache descriptor).
+ * Contains static read-only descriptors for the [[NullCache Null]] and [[MemoryCache Memory]] caches 
+ * (as well as a default "cache" descriptor).
  * 
  * @see [[Factory]]
  */
@@ -15,8 +16,12 @@ export class DefaultCacheFactory extends Factory {
     public static readonly NullCacheDescriptor: Descriptor = new Descriptor("pip-services", "cache", "null", "*", "1.0");
     public static readonly MemoryCacheDescriptor: Descriptor = new Descriptor("pip-services", "cache", "memory", "*", "1.0");
 
-    /**
-	 * Adds object factories for NullCache and MemoryCache to this Factory.
+	/**
+	 * Create a new DefaultCacheFactory object, containing [[NullCache]] and [[MemoryCache]] 
+	 * object factories.
+	 * 
+	 * @see [[NullCache]]
+	 * @see [[MemoryCache]] 
 	 */
 	public constructor() {
         super();

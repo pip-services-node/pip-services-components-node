@@ -67,6 +67,14 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Can be used to serialize log messages, which allows for cross-service and
+						cross-language logging over REST interfaces.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -101,9 +109,14 @@
 					<div class="tsd-signature tsd-kind-icon">correlation_<wbr>id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/log/LogMessage.ts#L8">log/LogMessage.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/LogMessage.ts#L16">log/LogMessage.ts:16</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Unique business transaction id to trace calls across components.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="error" class="tsd-anchor"></a>
@@ -111,9 +124,18 @@
 					<div class="tsd-signature tsd-kind-icon">error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ErrorDescription</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/log/LogMessage.ts#L9">log/LogMessage.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/LogMessage.ts#L24">log/LogMessage.ts:24</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The
+								<a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/errors.errordescription.html" class="external">ErrorDescription</a>
+								of the
+								<a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/errors.applicationexception.html" class="external">ApplicationException</a>
+							that is to be included with this message.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="level" class="tsd-anchor"></a>
@@ -121,9 +143,14 @@
 					<div class="tsd-signature tsd-kind-icon">level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/log/LogMessage.ts#L7">log/LogMessage.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/LogMessage.ts#L14">log/LogMessage.ts:14</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This message&#39;s log level.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="message" class="tsd-anchor"></a>
@@ -131,9 +158,14 @@
 					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/log/LogMessage.ts#L10">log/LogMessage.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/LogMessage.ts#L26">log/LogMessage.ts:26</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The message&#39;s main message text.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="source" class="tsd-anchor"></a>
@@ -141,9 +173,14 @@
 					<div class="tsd-signature tsd-kind-icon">source<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/log/LogMessage.ts#L6">log/LogMessage.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/LogMessage.ts#L12">log/LogMessage.ts:12</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The source (context) of the logger that created this message.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="time" class="tsd-anchor"></a>
@@ -151,9 +188,14 @@
 					<div class="tsd-signature tsd-kind-icon">time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/log/LogMessage.ts#L5">log/LogMessage.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/LogMessage.ts#L10">log/LogMessage.ts:10</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The message&#39;s timestamp.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>

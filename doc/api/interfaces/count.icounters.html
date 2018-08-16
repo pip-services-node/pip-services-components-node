@@ -67,6 +67,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Interface for creating classes that work with counters.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -115,16 +122,37 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/ICounters.ts#L5">count/ICounters.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/ICounters.ts#L19">count/ICounters.ts:19</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Abstract method that will contain the logic for
+									creating a new <a href="../classes/count.timing.html">Timing</a> callback object.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="../classes/count.timing.html">Timing</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.itimingcallback.html#endtiming">ITimingCallback.endTiming</a></p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="../enums/count.countertype.html#interval">CounterType.Interval</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the Interval Counter, for which a Timing is to be created.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../classes/count.timing.html" class="tsd-signature-type">Timing</a></h4>
+							<p>the Timing callback object that was created.</p>
 						</li>
 					</ul>
 				</section>
@@ -138,16 +166,29 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/ICounters.ts#L11">count/ICounters.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/ICounters.ts#L72">count/ICounters.ts:72</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Abstract method that will contain the logic for incrementing an
+										<a href="../enums/count.countertype.html#increment">Incremental Counter</a> by the
+									given value.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to increment.</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the value to increment the counter by.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -164,13 +205,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/ICounters.ts#L10">count/ICounters.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/ICounters.ts#L62">count/ICounters.ts:62</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Abstract method that will contain the logic for incrementing an
+									<a href="../enums/count.countertype.html#increment">Incremental Counter</a> by 1.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to increment.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -187,16 +237,28 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/ICounters.ts#L7">count/ICounters.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/ICounters.ts#L37">count/ICounters.ts:37</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Abstract method that will contain the logic for updating a
+									<a href="../enums/count.countertype.html#lastvalue">Last Counter</a>.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the value to update the counter with.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -213,16 +275,28 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/ICounters.ts#L6">count/ICounters.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/ICounters.ts#L28">count/ICounters.ts:28</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Abstract method that will contain the logic for updating a
+									<a href="../enums/count.countertype.html#statistics">Statistics Counter</a>.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the value to update the counter with.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -239,16 +313,28 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/ICounters.ts#L9">count/ICounters.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/ICounters.ts#L54">count/ICounters.ts:54</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Abstract method that will contain the logic for updating a
+									<a href="../enums/count.countertype.html#timestamp">Timestamp Counter</a> to the given time.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">Date</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the timestamp to update the counter to.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -265,13 +351,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/0830926/src/count/ICounters.ts#L8">count/ICounters.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/ICounters.ts#L45">count/ICounters.ts:45</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Abstract method that will contain the logic for updating a
+									<a href="../enums/count.countertype.html#timestamp">Timestamp Counter</a> to the current time.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

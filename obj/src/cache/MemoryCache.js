@@ -8,7 +8,7 @@ const CacheEntry_1 = require("./CacheEntry");
  */
 class MemoryCache {
     /**
-     * Creates an instance of this local in-memory cache component.
+     * Creates a local in-memory cache component.
      */
     constructor() {
         this._cache = {};

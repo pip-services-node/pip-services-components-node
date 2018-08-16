@@ -12,6 +12,13 @@ import { StringValueMap } from 'pip-services-commons-node';
  * (like [[ConnectionResolver]]) can be used to acquiring these parameters and discover objects 
  * or components that store and retrieve connection parameters (discovery services - see [[IDiscovery]]). 
  * 
+ * ### Possible configuration parameters: ###
+ * - "discovery_key" - the key to use for connection resolving in a discovery service;
+ * - "protocol" - the connection's protocol;
+ * - "host" - the target host;
+ * - "port" - the target port;
+ * - "uri" - the target URI.
+ * 
  * @see [[CredentialParams]]
  * @see [[ConnectionResolver]]
  * @see [[IDiscovery]]
@@ -25,8 +32,8 @@ export class ConnectionParams extends ConfigParams {
      * 
      * @param values    values to fill these ConnectionParams with. Defaults to null.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#constructor StringValueMap's constructor]] (in the PipServices "Commons" Package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#constructor StringValueMap's constructor]] (in the PipServices "Commons" package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     public constructor(values: any = null) {
         super(values);
@@ -136,7 +143,7 @@ export class ConnectionParams extends ConfigParams {
      * @param line  parameterized string that contains the connection's parameters.
      * @returns     ConnectionParams that were generated.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#fromstring StringValueMap.fromString]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#fromstring StringValueMap.fromString]] (in the PipServices "Commons" package)
      */
     public static fromString(line: string): ConnectionParams {
         let map: StringValueMap = StringValueMap.fromString(line);
@@ -144,19 +151,19 @@ export class ConnectionParams extends ConfigParams {
     }
 
     /**
-     * Static method for creating a list of ConnectionParams from a ConfigParams object.
-     * Parses the values found in the section named "connection(s)" into a ConnectionParams 
-     * object and adds it to the list. 
+	 * Static method that converts a ConfigParams' "connection(s)" section into 
+     * a list of ConnectionParams.
      * 
      * If the section name "connections" is used, then each subsection will be treated as a 
      * separate connection, for which a separate ConnectionParams object will be created and
      * added to the list.
-     * 
-     * @param config    ConfigParams that are to be transformed into a list of ConnectionParams.
-     * @returns         the list of ConnectionParams that were successfully generated.
-     * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
-     */
+	 * 
+	 * @param config 	ConfigParams, containing a section named "connection(s)".
+	 * @returns			the generated list of ConnectionParams.
+	 * 
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html#getsection ConfigParams.getSection]]
+	 */
     public static manyFromConfig(config: ConfigParams): ConnectionParams[] {
         let result: ConnectionParams[] = [];
         let connections: ConfigParams = config.getSection("connections");
@@ -177,15 +184,15 @@ export class ConnectionParams extends ConfigParams {
     }
 
     /**
-     * Static method that converts ConfigParams into ConnectionParams. Uses static method
-     * [[manyFromConfig]].
-     * 
-     * @param config    ConfigParams to convert into a ConnectionParams object.
-     * @returns         generated ConnectionParams (if successful) or null otherwise.
-     * 
-     * @see [[manyFromConfig]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
-     */
+	 * Static method that retrieves the first ConnectionParams found in the given ConfigParams.
+     * The ConfigParams' "connection(s)" section will be converted into a ConnectionParams object.
+	 * 
+	 * @param config 	ConfigParams, containing a section named "connection(s)".
+	 * @returns			the generated ConnectionParams object (or null).
+	 * 
+	 * @see [[manyFromConfig]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+	 */
     public static fromConfig(config: ConfigParams) {
         let connections: ConnectionParams[] = this.manyFromConfig(config);
         return connections.length > 0 ? connections[0] : null;

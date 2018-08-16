@@ -17,7 +17,7 @@ import { FileConfigReader } from './FileConfigReader';
 export class JsonConfigReader extends FileConfigReader {
 
     /** 
-     * @param path (optional) path to the target file containing configuration parameters in JSON format. 
+     * @param path (optional) path to the target file, containing configuration parameters in JSON format. 
      *              If 'path' is omitted in the constructor, then it must be set otherwise 
      *              (for example, calling the [[setPath]] method before using the new object).
      * 
@@ -37,7 +37,7 @@ export class JsonConfigReader extends FileConfigReader {
      * @returns                 NullableMap with data from the JSON file.
      * 
      * @see [[ConfigReader.parameterize]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/convert.jsonconverter.html#tonullablemap JsonConverter.toNullableMap]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/convert.jsonconverter.html#tonullablemap JsonConverter.toNullableMap]] (in the PipServices "Commons" package)
      */
     public readObject(correlationId: string, parameters: ConfigParams): any {
         if (super.getPath() == null)
@@ -68,7 +68,7 @@ export class JsonConfigReader extends FileConfigReader {
      * @param callback          callback function that will be called with an error or with the
      *                          ConfigParams that were read.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      * @see [[readObject]]
      */
     public readConfig(correlationId: string, parameters: ConfigParams,
@@ -101,8 +101,11 @@ export class JsonConfigReader extends FileConfigReader {
      * @param correlationId     unique business transaction id to trace calls across components.
      * @param path              location of the target JSON file.
      * @param parameters        used to parameterize the reader.
+     * @returns the ConfigParams that were read from the file.
      * 
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      * @see [[readConfig]]
+     * @see [[readObject]]
      */
     public static readConfig(correlationId: string, path: string, parameters: ConfigParams): ConfigParams {
         let value: any = new JsonConfigReader(path).readObject(correlationId, parameters);
