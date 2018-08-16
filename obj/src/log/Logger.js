@@ -66,11 +66,16 @@ class Logger {
     }
     composeError(error) {
         let builder = "";
-        if (builder.length > 0)
-            builder += " Caused by error: ";
         builder += error.message;
-        builder += " StackTrace: ";
-        builder += error.stack;
+        let appError = error;
+        if (appError.cause) {
+            builder += " Caused by: ";
+            builder += appError.cause;
+        }
+        if (error.stack) {
+            builder += " Stack trace: ";
+            builder += error.stack;
+        }
         return builder;
     }
 }

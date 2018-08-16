@@ -96,12 +96,18 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
     protected composeError(error: Error): string {
         let builder: string = "";
 
-        if (builder.length > 0)
-            builder += " Caused by error: ";
-
         builder += error.message;
-        builder += " StackTrace: ";
-        builder += error.stack;
+
+        let appError: any = error;
+        if (appError.cause) {
+            builder += " Caused by: ";
+            builder += appError.cause;
+        }
+
+        if (error.stack) {
+            builder += " Stack trace: ";
+            builder += error.stack;
+        }
 
         return builder;
     }
