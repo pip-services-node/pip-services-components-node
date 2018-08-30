@@ -26,6 +26,14 @@ import { ContextInfo } from '../info/ContextInfo';
  * @see [[ILogger]]
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferenceable.html IReferenceable]]
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.ireconfigurable.html IReconfigurable]]
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod() {
+ *      let logger = new Logger();
+ *      logger.log(LogLevel.Error, "123", null, "error...");
+ *      ...
+ * }
  */
 export abstract class Logger implements ILogger, IReconfigurable, IReferenceable {
     protected _level: LogLevel = LogLevel.Info;

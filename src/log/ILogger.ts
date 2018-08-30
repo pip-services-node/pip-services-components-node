@@ -4,6 +4,14 @@ import { LogLevel } from './LogLevel';
 // Todo: solve issue with overloaded methods. Look at Python implementation
 /**
  * Interface for creating classes that can log messages of various log levels.
+ * 
+ * ### Examples ###
+ * 
+ * export class MyLogger implements ILogger {
+ *      public log(level: LogLevel, correlationId: string, error: Error, message: string, ...args: any[]) : void {...}
+ *      public fatal(correlationId: string, error: Error, message: string, ...args: any[]) : void {...}
+ *      ...
+ * }
  */
 export interface ILogger {
     /**

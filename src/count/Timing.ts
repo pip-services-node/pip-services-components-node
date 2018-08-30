@@ -7,6 +7,13 @@ import { ITimingCallback } from './ITimingCallback';
  * to measure the amount of time it takes a block of code to execute. The measured 
  * interval can additionally be added to a statistical counter to gather information 
  * about the minimum, maximum, and average time it takes for the block of code to execute.
+ * 
+ * ### Examples ###
+ * public MyMethod(references: IReferences) {
+ *      let _counters = new CompositeCounters(references);
+ *      Timing timing = _counters.beginTiming("Timing");
+ *      ...
+ * }
  */
 export class Timing {
 	private _start: number;

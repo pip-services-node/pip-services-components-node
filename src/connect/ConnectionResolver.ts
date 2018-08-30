@@ -31,6 +31,24 @@ import { IDiscovery } from './IDiscovery';
  * 
  * @see [[ConnectionParams]]
  * @see [[IDiscovery]]
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod() {
+ *      let config = ConfigParams.fromTuples(
+        "connection.protocol", "http",
+        "connection.host", "localhost",
+        "connection.port", 3000
+    );
+    
+        let conectionResolver = new ConnectionResolver(config);
+        ...
+
+        let connection = new ConnectionParams();
+        conectionResolver.register("correlationId", connection);
+        ...
+
+ * }
  */
 export class ConnectionResolver {
     private readonly _connections: ConnectionParams[] = [];

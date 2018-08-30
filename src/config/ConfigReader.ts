@@ -22,6 +22,21 @@ import { IConfigurable } from 'pip-services-commons-node'
  * @see [[IConfigReader]]
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod(): string{
+ *      let config = "{{#if A}}{{B}}{{/if}}";
+        let values = Parameters.fromTuples(
+        		"A", "true",
+        		"B", "XYZ"
+    		);
+        
+        let parameters = new ConfigParams();
+        parameters.append(values);
+      
+        return ConfigReader.parameterize(config, parameters));
+ * }
  */
 export abstract class ConfigReader implements IConfigurable {
     private _parameters: ConfigParams = new ConfigParams();

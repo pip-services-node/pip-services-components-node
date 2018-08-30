@@ -2,7 +2,15 @@
 import { Timing } from './Timing';
 
 /**
- * Interface for creating classes that work with counters. 
+ * Interface for creating classes that work with counters.
+ * 
+ * ### Examples ###
+ * 
+ * export class MyCounters implements ICounters {
+ * 		public beginTiming(name: string) : Timing {...}
+ * 		public stats(name: string, value: number) : void {...}
+ * 		...
+ * }
  */
 export interface ICounters {
 	/**

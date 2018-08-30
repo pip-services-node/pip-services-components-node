@@ -22,6 +22,19 @@ import { StringValueMap } from 'pip-services-commons-node';
  * @see [[CredentialParams]]
  * @see [[ConnectionResolver]]
  * @see [[IDiscovery]]
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod() {
+ *      let connection = new ConnectionParams();
+ *      connection.setDiscoveryKey("Discovery key");
+        connection.setProtocol("https");
+        connection.setHost("localhost");
+        connection.setPort("8080");
+        connection.setUri("http://localhost:0");
+        ...
+ *      
+ * }
  */
 export class ConnectionParams extends ConfigParams {
 

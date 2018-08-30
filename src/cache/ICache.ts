@@ -2,6 +2,21 @@
 /**
  * Interface that can be used for creating various distributed caches. We can save 
  * an object to cache and retrieve it by its key, using various implementations. 
+ * 
+ * ### Examples ###
+ * 
+ * export class MyCache implements ICache {
+ *      public retrieve(correlationId: string, key: string,
+        callback: (err: any, value: any) => void): void {...}
+
+        public store(correlationId: string, key: string, value: any, timeout: number,
+        callback?: (err: any) => void): void {...}
+
+        public remove(correlationId: string, key: string,
+        callback?: (err: any) => void) {...}
+
+        ...
+ * }
  */
 export interface ICache {
 

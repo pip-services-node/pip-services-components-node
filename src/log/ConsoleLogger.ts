@@ -9,6 +9,15 @@ import { LogLevelConverter } from './LogLevelConverter';
  * Used to write log entries to the console.
  * 
  * @see [[Logger]]
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod() {
+ *      let logger = new ConsoleLogger();
+ *      logger.info(null, "Press Control-C to stop the microservice...");
+ *      logger.write(LogLevel.Info, "correlationId", null, "message info");     
+ *      ...
+ * }
  */
 export class ConsoleLogger extends Logger {
     

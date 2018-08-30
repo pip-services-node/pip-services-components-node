@@ -12,6 +12,17 @@ import { ITimingCallback } from './ITimingCallback';
  * at once using a single method call.
  * 
  * @see [[ICounters]]
+ * 
+ * ### Examples ###
+ * public MyMethod(references: IReferences) {
+ *      let _counters = new CompositeCounters(references); * 
+ *      _counters.stats("Statistics", 1);
+ *      Counter counter = _counters.get("Statistics", CounterType.Statistics);
+ *      ...
+ * 
+ *      Timing timing = _counters.beginTiming("Timing");
+ *      ...
+ * }
  */
 export class CompositeCounters implements ICounters, ITimingCallback, IReferenceable {
     protected readonly _counters: ICounters[] = [];

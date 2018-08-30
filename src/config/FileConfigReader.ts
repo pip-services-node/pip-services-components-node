@@ -20,6 +20,14 @@ import { ConfigReader } from './ConfigReader'
  * @see [[ConfigReader]]
  * @see [[ConfigReader.readConfig]]
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod(path: string) {
+ *      let fileConfigReader = new FileConfigReader(path);
+ *      fileConfigReader.configure(new ConfigParams());
+ *      ...
+ * }
  */
 export abstract class FileConfigReader extends ConfigReader {
     private _path: string;

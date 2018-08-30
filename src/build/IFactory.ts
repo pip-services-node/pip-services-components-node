@@ -4,7 +4,17 @@
  * which is used to make factory classes. Factory classes are capable of creating instances of 
  * components that are requested using component locators.
  * 
- * Allows for implementaion of various factory types in a portable manner.  
+ * Allows for implementaion of various factory types in a portable manner.
+ * 
+ * ### Examples ###
+ * 
+ * export class MyFactory implements IFactory {
+ * 		public canCreate(locator: any): any {...}
+ * 
+ * 		public create(locator: any): any {...}
+ * 
+ * 		...
+ * }  
  */
 export interface IFactory {
 	/**

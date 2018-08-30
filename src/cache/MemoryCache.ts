@@ -6,7 +6,7 @@ import { ICache } from './ICache';
 import { CacheEntry } from './CacheEntry';
 
 /**
- * Provides local in-memory cache support.
+ * Local in-memory cache that can be used in non-scaled deployments or for testing.
  * 
  * __Configuration parameters__:
  * Parameters to pass to the [[configure]] method for component configuration:
@@ -15,6 +15,16 @@ import { CacheEntry } from './CacheEntry';
  * - "max_size" - the cache's maximum size (deault is 1000).
  * 
  * @see [[ICache]]
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod() {
+ *      let cache = new MemoryCache();
+ *      ...
+ * 
+ *      cache.store("correlationId", "Key", 1, 1, (err)=>{callback();});
+ *      ...
+ * }
  */
 export class MemoryCache implements ICache, IReconfigurable {
     //milliseconds

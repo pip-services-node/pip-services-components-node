@@ -1,6 +1,15 @@
 /** @module cache */
 /**
  * Simplifies working with key-value pairs in/from the cache.
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod(ICache cache, string key): any {
+ *      let entry = cache.get(key);
+ *      ...
+ * 
+ *      return entry.getValue();
+ * }
  */
 export class CacheEntry {
     private _key: string;

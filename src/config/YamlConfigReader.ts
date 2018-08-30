@@ -14,6 +14,13 @@ import { FileConfigReader } from './FileConfigReader';
  * Provides methods for reading configuration parameters from a YAML file.
  * 
  * @see [[FileConfigReader]]
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod() {
+ *      ConfigParams config = YamlConfigReader.readConfig(null, "data/config.yaml");
+ *      ...
+ * }
  */
 export class YamlConfigReader extends FileConfigReader {
 

@@ -24,6 +24,19 @@ import { Counter } from './Counter';
  * - "reset_timeout" - the timeout for resetting the cache (default is 0, which turn off resetting).
  * 
  * @see [[Counter]]
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod() {
+ *      let _counters = new CachedCounters();
+ *      _counters.last("LastValue", 123);
+ *      Counter counter = _counters.get("LastValue", CounterType.LastValue);
+ *      ...
+ * 
+ *      _counters.stats("Statistics", 1);
+ *      counter = _counters.get("Statistics", CounterType.Statistics);
+ *      ...
+ * }
  */
 export abstract class CachedCounters implements ICounters, IReconfigurable, ITimingCallback {
     protected _interval: number = 300000;

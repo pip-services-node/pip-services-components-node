@@ -13,6 +13,13 @@ import { FileConfigReader } from './FileConfigReader';
  * Provides methods for reading configuration parameters from a JSON file.
  * 
  * @see [[FileConfigReader]]
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod() {
+ *      ConfigParams config = JsonConfigReader.readConfig(null, "data/config.json");
+ *      ...
+ * }
  */
 export class JsonConfigReader extends FileConfigReader {
 

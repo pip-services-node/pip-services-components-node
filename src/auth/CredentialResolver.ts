@@ -31,6 +31,24 @@ import { ICredentialStore } from './ICredentialStore';
  * 
  * @see [[CredentialParams]]
  * @see [[ICredentialStore]]
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod() {
+ *      let config = ConfigParams.fromTuples(
+        "credential.username", "name",
+        "credential.password", "password",
+        "credential.access_key", "access key",
+        "credential.store_key", "store key"
+    );
+    
+        let credentialResolver = new CredentialResolver(config);
+        ...
+
+        CredentialParams credential = credentialResolver.lookup("correlationId");
+        ...
+
+ * }
  */
 export class CredentialResolver {
     private readonly _credentials: CredentialParams[] = [];

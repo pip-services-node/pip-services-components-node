@@ -12,6 +12,18 @@ import { LogLevel } from './LogLevel';
  * of them at once using a single method call.
  * 
  * @see [[ILogger]]
+ * 
+ * ### Examples ###
+ * 
+ * public MyMethod(references: IReferences) {
+ * 		let logger = new CompositeLogger();
+ * 		logger.setReferences(references);
+ * 		...
+ * 
+ * 		logger.info(...);
+ * 		...
+ * 		logger.error(...);
+ * }
  */
 export class CompositeLogger extends Logger implements IReferenceable {
 	private readonly _loggers: ILogger[] = [];
