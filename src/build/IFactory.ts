@@ -8,13 +8,15 @@
  * 
  * ### Examples ###
  * 
- * export class MyFactory implements IFactory {
- * 		public canCreate(locator: any): any {...}
+ * Example implementation of the IFactory interface:
  * 
- * 		public create(locator: any): any {...}
- * 
- * 		...
- * }  
+ *     export class MyFactory implements IFactory {
+ *         public canCreate(locator: any): any {...}
+ *         
+ *         public create(locator: any): any {...}
+ *         
+ *         ...
+ *     }  
  */
 export interface IFactory {
 	/**

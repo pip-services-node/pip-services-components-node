@@ -20,23 +20,27 @@ import { IReconfigurable } from 'pip-services-commons-node';
  * 
  * ### Examples ###
  * 
- * public MyMethod() {
- * 		let contextInfo1 = new ContextInfo();
- * 		contextInfo.setName("new name");
- * 		contextInfo.setDescription("new description");
- * 		contextInfo.setContextId("new context id");
- * 		...
- * 		
- * 		let config = ConfigParams.fromTuples(
-             "info.name", "new name",
-             "info.description", "new description",
-             "properties.access_key", "key",
-             "properties.store_key", "store key"
-             );
-
-		let contextInfo2 = ContextInfo.fromConfig(config);
-		...
- * }
+ * Examples of ContextInfo object creation:
+ * 
+ *     public MyMethod1() {
+ *         let contextInfo = new ContextInfo();
+ *         contextInfo.setName("new name");
+ *         contextInfo.setDescription("new description");
+ *         contextInfo.setContextId("new context id");
+ *         ...
+ *     }
+ * 
+ *     public MyMethod2() {
+ *         let config = ConfigParams.fromTuples(
+ *             "info.name", "new name",
+ *             "info.description", "new description",
+ *             "properties.access_key", "key",
+ *             "properties.store_key", "store key"
+ *         );
+ *         
+ *         let contextInfo = ContextInfo.fromConfig(config);
+ *         ...
+ *     }
  */
 export class ContextInfo implements IReconfigurable {	
 	private _name: string = "unknown";

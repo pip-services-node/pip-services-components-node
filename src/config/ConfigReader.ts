@@ -25,18 +25,20 @@ import { IConfigurable } from 'pip-services-commons-node'
  * 
  * ### Examples ###
  * 
- * public MyMethod(): string{
- *      let config = "{{#if A}}{{B}}{{/if}}";
-        let values = Parameters.fromTuples(
-        		"A", "true",
-        		"B", "XYZ"
-    		);
-        
-        let parameters = new ConfigParams();
-        parameters.append(values);
-      
-        return ConfigReader.parameterize(config, parameters));
- * }
+ * Example usage:
+ * 
+ *     public MyMethod(): string {
+ *         let config = "{{#if A}}{{B}}{{/if}}";
+ *         let values = Parameters.fromTuples(
+ *             "A", "true",
+ *             "B", "XYZ"
+ *         );
+ *            
+ *         let parameters = new ConfigParams();
+ *         parameters.append(values);
+ *          
+ *         return ConfigReader.parameterize(config, parameters));
+ *     }
  */
 export abstract class ConfigReader implements IConfigurable {
     private _parameters: ConfigParams = new ConfigParams();

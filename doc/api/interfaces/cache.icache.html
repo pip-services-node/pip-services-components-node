@@ -73,6 +73,21 @@
 						<p>Interface that can be used for creating various distributed caches. We can save
 						an object to cache and retrieve it by its key, using various implementations.</p>
 					</div>
+					<h3 id="examples">Examples</h3>
+					<p>Example implementation of the ICache interface:</p>
+					<pre><code><span class="hljs-keyword">export</span> class <span class="hljs-type">MyCache</span> implements <span class="hljs-type">ICache</span> {
+    public retrieve(correlationId: <span class="hljs-built_in">string</span>, key: <span class="hljs-built_in">string</span>,
+       callback: (err: <span class="hljs-built_in">any</span>, value: <span class="hljs-built_in">any</span>) =&gt; <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span> <span class="hljs-meta">{...}</span>
+
+    public store(correlationId: <span class="hljs-built_in">string</span>, key: <span class="hljs-built_in">string</span>, value: <span class="hljs-built_in">any</span>, timeout: number,
+       callback?: (err: <span class="hljs-built_in">any</span>) =&gt; <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span> <span class="hljs-meta">{...}</span>
+
+    public remove(correlationId: <span class="hljs-built_in">string</span>, key: <span class="hljs-built_in">string</span>,
+       callback?: (err: <span class="hljs-built_in">any</span>) =&gt; <span class="hljs-built_in">void</span>) <span class="hljs-meta">{...}</span>
+
+    ...
+}
+</code></pre>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -117,7 +132,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/ICache.ts#L43">cache/ICache.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/cache/ICache.ts#L60">cache/ICache.ts:60</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -180,7 +195,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/ICache.ts#L17">cache/ICache.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/cache/ICache.ts#L34">cache/ICache.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -246,7 +261,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/ICache.ts#L31">cache/ICache.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/cache/ICache.ts#L48">cache/ICache.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

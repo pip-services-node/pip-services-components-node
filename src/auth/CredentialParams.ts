@@ -26,15 +26,16 @@ import { StringValueMap } from 'pip-services-commons-node';
  * 
  * ### Examples ###
  * 
- * public MyMethod() {
- *      let сredential = new CredentialParams();
- *      credential.setStoreKey("Store key");
-        сredential.setUsername("Store name");
-        сredential.setPassword("Store password");
-        сredential.setAccessKey("Access key");
-        ...
- *      
- * }
+ * A FilterParams object can be created and used in the following way:
+ * 
+ *     public MyMethod() {
+ *         let сredential = new CredentialParams();
+ *         credential.setStoreKey("Store key");
+ *         сredential.setUsername("Store name");
+ *         сredential.setPassword("Store password");
+ *         сredential.setAccessKey("Access key");
+ *         ...
+ *     }
  */
 export class CredentialParams extends ConfigParams {
 

@@ -94,7 +94,23 @@
 						</dd>
 						<dt>see</dt>
 						<dd><p><a href="../interfaces/connect.idiscovery.html">IDiscovery</a></p>
-						</dd>
+							<h3 id="examples">Examples</h3>
+							<p>Example ConnectionResolver object usage:</p>
+							<pre><code>public MyMethod() {
+    let<span class="hljs-built_in"> config </span>= ConfigParams.fromTuples(
+        <span class="hljs-string">"connection.protocol"</span>, <span class="hljs-string">"http"</span>,
+        <span class="hljs-string">"connection.host"</span>, <span class="hljs-string">"localhost"</span>,
+        <span class="hljs-string">"connection.port"</span>, 3000
+    );
+
+    let conectionResolver = new ConnectionResolver(config);
+    <span class="hljs-built_in">..</span>.
+
+    let<span class="hljs-built_in"> connection </span>= new ConnectionParams();
+    conectionResolver.register(<span class="hljs-string">"correlationId"</span>, connection);
+    <span class="hljs-built_in">..</span>.
+}
+</code></pre></dd>
 					</dl>
 				</div>
 			</section>
@@ -143,7 +159,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/connect/ConnectionResolver.ts#L37">connect/ConnectionResolver.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/connect/ConnectionResolver.ts#L56">connect/ConnectionResolver.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -192,7 +208,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/connect/ConnectionResolver.ts#L99">connect/ConnectionResolver.ts:99</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/connect/ConnectionResolver.ts#L118">connect/ConnectionResolver.ts:118</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -228,7 +244,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/connect/ConnectionResolver.ts#L80">connect/ConnectionResolver.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/connect/ConnectionResolver.ts#L99">connect/ConnectionResolver.ts:99</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -282,7 +298,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/connect/ConnectionResolver.ts#L88">connect/ConnectionResolver.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/connect/ConnectionResolver.ts#L107">connect/ConnectionResolver.ts:107</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -302,7 +318,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/connect/ConnectionResolver.ts#L369">connect/ConnectionResolver.ts:369</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/connect/ConnectionResolver.ts#L388">connect/ConnectionResolver.ts:388</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -369,7 +385,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/connect/ConnectionResolver.ts#L169">connect/ConnectionResolver.ts:169</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/connect/ConnectionResolver.ts#L188">connect/ConnectionResolver.ts:188</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -432,7 +448,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/connect/ConnectionResolver.ts#L278">connect/ConnectionResolver.ts:278</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/connect/ConnectionResolver.ts#L297">connect/ConnectionResolver.ts:297</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -496,7 +512,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/connect/ConnectionResolver.ts#L58">connect/ConnectionResolver.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/connect/ConnectionResolver.ts#L77">connect/ConnectionResolver.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

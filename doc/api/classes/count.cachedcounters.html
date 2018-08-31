@@ -86,7 +86,19 @@
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="count.counter.html">Counter</a></p>
-						</dd>
+							<h3 id="examples">Examples</h3>
+							<p>Example CachedCounters object usage:</p>
+							<pre><code> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyMethod</span>(<span class="hljs-params"></span>) </span>{
+     <span class="hljs-keyword">let</span> _counters = <span class="hljs-keyword">new</span> CachedCounters();
+     _counters.last(<span class="hljs-string">"LastValue"</span>, <span class="hljs-number">123</span>);
+     Counter counter = _counters.<span class="hljs-keyword">get</span>(<span class="hljs-string">"LastValue"</span>, CounterType.LastValue);
+     ...
+
+     _counters.stats(<span class="hljs-string">"Statistics"</span>, <span class="hljs-number">1</span>);
+     counter = _counters.<span class="hljs-keyword">get</span>(<span class="hljs-string">"Statistics"</span>, CounterType.Statistics);
+     ...
+ }
+</code></pre></dd>
 					</dl>
 				</div>
 			</section>
@@ -161,7 +173,7 @@
 					<div class="tsd-signature tsd-kind-icon">_cache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L31">count/CachedCounters.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L46">count/CachedCounters.ts:46</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -179,7 +191,7 @@
 					<div class="tsd-signature tsd-kind-icon">_interval<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;300000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L29">count/CachedCounters.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L44">count/CachedCounters.ts:44</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -189,7 +201,7 @@
 					<div class="tsd-signature tsd-kind-icon">_last<wbr>Dump<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;new Date().getTime()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L33">count/CachedCounters.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L48">count/CachedCounters.ts:48</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -199,7 +211,7 @@
 					<div class="tsd-signature tsd-kind-icon">_last<wbr>Reset<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;new Date().getTime()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L34">count/CachedCounters.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L49">count/CachedCounters.ts:49</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -209,7 +221,7 @@
 					<div class="tsd-signature tsd-kind-icon">_reset<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L30">count/CachedCounters.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L45">count/CachedCounters.ts:45</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -219,7 +231,7 @@
 					<div class="tsd-signature tsd-kind-icon">_updated<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L32">count/CachedCounters.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L47">count/CachedCounters.ts:47</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -236,7 +248,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L39">count/CachedCounters.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L54">count/CachedCounters.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -259,7 +271,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#begintiming">beginTiming</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L114">count/CachedCounters.ts:114</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L129">count/CachedCounters.ts:129</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -303,7 +315,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L91">count/CachedCounters.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L106">count/CachedCounters.ts:106</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -334,7 +346,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L98">count/CachedCounters.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L113">count/CachedCounters.ts:113</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -356,7 +368,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L81">count/CachedCounters.ts:81</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L96">count/CachedCounters.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -400,7 +412,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L124">count/CachedCounters.ts:124</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L139">count/CachedCounters.ts:139</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -429,7 +441,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.itimingcallback.html">ITimingCallback</a>.<a href="../interfaces/count.itimingcallback.html#endtiming">endTiming</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L236">count/CachedCounters.ts:236</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L251">count/CachedCounters.ts:251</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -477,7 +489,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L196">count/CachedCounters.ts:196</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L211">count/CachedCounters.ts:211</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -524,7 +536,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L171">count/CachedCounters.ts:171</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L186">count/CachedCounters.ts:186</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -549,7 +561,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L45">count/CachedCounters.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L60">count/CachedCounters.ts:60</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -571,7 +583,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#increment">increment</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L326">count/CachedCounters.ts:326</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L341">count/CachedCounters.ts:341</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -618,7 +630,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#incrementone">incrementOne</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L312">count/CachedCounters.ts:312</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L327">count/CachedCounters.ts:327</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -658,7 +670,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#last">last</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L269">count/CachedCounters.ts:269</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L284">count/CachedCounters.ts:284</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -704,7 +716,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L65">count/CachedCounters.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L80">count/CachedCounters.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -736,7 +748,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L55">count/CachedCounters.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L70">count/CachedCounters.ts:70</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -769,7 +781,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#stats">stats</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L253">count/CachedCounters.ts:253</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L268">count/CachedCounters.ts:268</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -817,7 +829,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#timestamp">timestamp</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L298">count/CachedCounters.ts:298</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L313">count/CachedCounters.ts:313</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -864,7 +876,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#timestampnow">timestampNow</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L284">count/CachedCounters.ts:284</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L299">count/CachedCounters.ts:299</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -904,7 +916,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/CachedCounters.ts#L141">count/CachedCounters.ts:141</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/CachedCounters.ts#L156">count/CachedCounters.ts:156</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

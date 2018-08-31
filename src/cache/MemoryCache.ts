@@ -18,13 +18,15 @@ import { CacheEntry } from './CacheEntry';
  * 
  * ### Examples ###
  * 
- * public MyMethod() {
- *      let cache = new MemoryCache();
- *      ...
+ * Storing data in a MemoryCache object:
  * 
- *      cache.store("correlationId", "Key", 1, 1, (err)=>{callback();});
- *      ...
- * }
+ *     public MyMethod() {
+ *         let cache = new MemoryCache();
+ *         ...
+ *         
+ *         cache.store("correlationId", "Key", 1, 1, (err)=>{callback();});
+ *         ...
+ *     }
  */
 export class MemoryCache implements ICache, IReconfigurable {
     //milliseconds

@@ -76,6 +76,14 @@
 						to measure the amount of time it takes a block of code to execute. The measured
 						interval can additionally be added to a statistical counter to gather information
 					about the minimum, maximum, and average time it takes for the block of code to execute.</p>
+					<h3 id="examples">Examples</h3>
+					<p>Using Timing objects:</p>
+					<pre><code> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyMethod</span>(<span class="hljs-params">references: IReferences</span>) </span>{
+     <span class="hljs-keyword">let</span> _counters = <span class="hljs-keyword">new</span> CompositeCounters(references);
+     Timing timing = _counters.beginTiming(<span class="hljs-string">"Timing"</span>);
+     ...
+ }
+</code></pre>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -117,7 +125,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/Timing.ts#L14">count/Timing.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/Timing.ts#L25">count/Timing.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -172,7 +180,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/count/Timing.ts#L38">count/Timing.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/count/Timing.ts#L49">count/Timing.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

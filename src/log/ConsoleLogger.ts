@@ -12,12 +12,14 @@ import { LogLevelConverter } from './LogLevelConverter';
  * 
  * ### Examples ###
  * 
- * public MyMethod() {
- *      let logger = new ConsoleLogger();
- *      logger.info(null, "Press Control-C to stop the microservice...");
- *      logger.write(LogLevel.Info, "correlationId", null, "message info");     
- *      ...
- * }
+ * ConsoleLogger object creation and usage:
+ * 
+ *      public MyMethod() {
+ *          let logger = new ConsoleLogger();
+ *          logger.info(null, "Press Control-C to stop the microservice...");
+ *          logger.write(LogLevel.Info, "correlationId", null, "message info");     
+ *          ...
+ *      }
  */
 export class ConsoleLogger extends Logger {
     

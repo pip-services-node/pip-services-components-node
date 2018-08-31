@@ -91,7 +91,21 @@
 						</dd>
 						<dt>see</dt>
 						<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-						</dd>
+							<h3 id="examples">Examples</h3>
+							<p>Example usage:</p>
+							<pre><code>public MyMethod(): string {
+    let<span class="hljs-built_in"> config </span>= <span class="hljs-string">"{{#if A}}{{B}}{{/if}}"</span>;
+    let values = Parameters.fromTuples(
+        <span class="hljs-string">"A"</span>, <span class="hljs-string">"true"</span>,
+        <span class="hljs-string">"B"</span>, <span class="hljs-string">"XYZ"</span>
+    );
+
+    let parameters = new ConfigParams();
+    parameters.append(values);
+
+    return ConfigReader.parameterize(config, parameters));
+}
+</code></pre></dd>
 					</dl>
 				</div>
 			</section>
@@ -147,7 +161,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/ConfigReader.ts#L27">config/ConfigReader.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/config/ConfigReader.ts#L44">config/ConfigReader.ts:44</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="config.configreader.html" class="tsd-signature-type">ConfigReader</a></h4>
@@ -167,7 +181,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/ConfigReader.ts#L45">config/ConfigReader.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/config/ConfigReader.ts#L62">config/ConfigReader.ts:62</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -215,7 +229,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/ConfigReader.ts#L86">config/ConfigReader.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/config/ConfigReader.ts#L103">config/ConfigReader.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -267,7 +281,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/config/ConfigReader.ts#L60">config/ConfigReader.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/config/ConfigReader.ts#L77">config/ConfigReader.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

@@ -15,15 +15,17 @@ import { LogLevel } from './LogLevel';
  * 
  * ### Examples ###
  * 
- * public MyMethod(references: IReferences) {
- * 		let logger = new CompositeLogger();
- * 		logger.setReferences(references);
- * 		...
+ * CompositeLogger object creation and usage:
  * 
- * 		logger.info(...);
- * 		...
- * 		logger.error(...);
- * }
+ *      public MyMethod(references: IReferences) {
+ *          let logger = new CompositeLogger();
+ *          logger.setReferences(references);
+ *          ...
+ *          
+ *          logger.info(...);
+ *          ...
+ *          logger.error(...);
+ *      }
  */
 export class CompositeLogger extends Logger implements IReferenceable {
 	private readonly _loggers: ILogger[] = [];

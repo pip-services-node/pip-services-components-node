@@ -7,11 +7,15 @@ import { LogLevel } from './LogLevel';
  * 
  * ### Examples ###
  * 
- * export class MyLogger implements ILogger {
- *      public log(level: LogLevel, correlationId: string, error: Error, message: string, ...args: any[]) : void {...}
- *      public fatal(correlationId: string, error: Error, message: string, ...args: any[]) : void {...}
- *      ...
- * }
+ * Example implementation of the ILogger interface:
+ * 
+ *     export class MyLogger implements ILogger {
+ *         public log(level: LogLevel, correlationId: string, error: Error, message: string, 
+ *             ...args: any[]) : void {...}
+ *         public fatal(correlationId: string, error: Error, message: string, 
+ *             ...args: any[]) : void {...}
+ *         ...
+ *     }
  */
 export interface ILogger {
     /**

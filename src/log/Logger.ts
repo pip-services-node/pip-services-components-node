@@ -29,11 +29,13 @@ import { ContextInfo } from '../info/ContextInfo';
  * 
  * ### Examples ###
  * 
- * public MyMethod() {
- *      let logger = new Logger();
- *      logger.log(LogLevel.Error, "123", null, "error...");
- *      ...
- * }
+ * Example usage:
+ * 
+ *     public MyMethod() {
+ *         let logger = new Logger();
+ *         logger.log(LogLevel.Error, "123", null, "error...");
+ *         ...
+ *     }
  */
 export abstract class Logger implements ILogger, IReconfigurable, IReferenceable {
     protected _level: LogLevel = LogLevel.Info;

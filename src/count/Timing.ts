@@ -1,5 +1,6 @@
 /** @module count */
 import { ITimingCallback } from './ITimingCallback';
+//TODO: add "endTiming" call to the example?
 /**
  * Callback object that is used to end the timing for a block of code. 
  * 
@@ -9,11 +10,14 @@ import { ITimingCallback } from './ITimingCallback';
  * about the minimum, maximum, and average time it takes for the block of code to execute.
  * 
  * ### Examples ###
- * public MyMethod(references: IReferences) {
- *      let _counters = new CompositeCounters(references);
- *      Timing timing = _counters.beginTiming("Timing");
- *      ...
- * }
+ * 
+ * Using Timing objects:
+ * 
+ *      public MyMethod(references: IReferences) {
+ *          let _counters = new CompositeCounters(references);
+ *          Timing timing = _counters.beginTiming("Timing");
+ *          ...
+ *      }
  */
 export class Timing {
 	private _start: number;

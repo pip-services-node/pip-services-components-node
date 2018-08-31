@@ -27,16 +27,18 @@ import { Counter } from './Counter';
  * 
  * ### Examples ###
  * 
- * public MyMethod() {
- *      let _counters = new CachedCounters();
- *      _counters.last("LastValue", 123);
- *      Counter counter = _counters.get("LastValue", CounterType.LastValue);
- *      ...
+ * Example CachedCounters object usage:
  * 
- *      _counters.stats("Statistics", 1);
- *      counter = _counters.get("Statistics", CounterType.Statistics);
- *      ...
- * }
+ *      public MyMethod() {
+ *          let _counters = new CachedCounters();
+ *          _counters.last("LastValue", 123);
+ *          Counter counter = _counters.get("LastValue", CounterType.LastValue);
+ *          ...
+ *          
+ *          _counters.stats("Statistics", 1);
+ *          counter = _counters.get("Statistics", CounterType.Statistics);
+ *          ...
+ *      }
  */
 export abstract class CachedCounters implements ICounters, IReconfigurable, ITimingCallback {
     protected _interval: number = 300000;

@@ -16,10 +16,12 @@ import { FileConfigReader } from './FileConfigReader';
  * 
  * ### Examples ###
  * 
- * public MyMethod() {
- *      ConfigParams config = JsonConfigReader.readConfig(null, "data/config.json");
- *      ...
- * }
+ * Example usage:
+ * 
+ *      public MyMethod() {
+ *          ConfigParams config = JsonConfigReader.readConfig(null, "data/config.json");
+ *          ...
+ *      }
  */
 export class JsonConfigReader extends FileConfigReader {
 

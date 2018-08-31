@@ -70,7 +70,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Provides local in-memory cache support.</p>
+						<p>Local in-memory cache that can be used in non-scaled deployments or for testing.</p>
 					</div>
 					<p><strong>Configuration parameters</strong>:
 					Parameters to pass to the <a href="cache.memorycache.html#configure">configure</a> method for component configuration:</p>
@@ -81,7 +81,16 @@
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="../interfaces/cache.icache.html">ICache</a></p>
-						</dd>
+							<h3 id="examples">Examples</h3>
+							<p>Storing data in a MemoryCache object:</p>
+							<pre><code><span class="hljs-keyword">public</span> MyMethod() {
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">cache</span> = <span class="hljs-literal">new</span> MemoryCache();
+    <span class="hljs-params">...</span>
+
+    <span class="hljs-keyword">cache</span>.store(<span class="hljs-string">"correlationId"</span>, <span class="hljs-string">"Key"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, (err)=&gt;{callback();});
+    <span class="hljs-params">...</span>
+}
+</code></pre></dd>
 					</dl>
 				</div>
 			</section>
@@ -134,7 +143,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/MemoryCache.ts#L29">cache/MemoryCache.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/cache/MemoryCache.ts#L41">cache/MemoryCache.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -159,7 +168,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/MemoryCache.ts#L51">cache/MemoryCache.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/cache/MemoryCache.ts#L63">cache/MemoryCache.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -208,7 +217,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/MemoryCache.ts#L183">cache/MemoryCache.ts:183</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/cache/MemoryCache.ts#L195">cache/MemoryCache.ts:195</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -269,7 +278,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/MemoryCache.ts#L99">cache/MemoryCache.ts:99</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/cache/MemoryCache.ts#L111">cache/MemoryCache.ts:111</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -337,7 +346,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/cache/MemoryCache.ts#L136">cache/MemoryCache.ts:136</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/cache/MemoryCache.ts#L148">cache/MemoryCache.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

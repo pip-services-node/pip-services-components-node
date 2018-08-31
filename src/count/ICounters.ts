@@ -6,11 +6,13 @@ import { Timing } from './Timing';
  * 
  * ### Examples ###
  * 
- * export class MyCounters implements ICounters {
- * 		public beginTiming(name: string) : Timing {...}
- * 		public stats(name: string, value: number) : void {...}
- * 		...
- * }
+ * Example implementation of the ICounters interface:
+ * 
+ *      export class MyCounters implements ICounters {
+ *          public beginTiming(name: string) : Timing {...}
+ *          public stats(name: string, value: number) : void {...}
+ *          ...
+ *      }
  */
 export interface ICounters {
 	/**

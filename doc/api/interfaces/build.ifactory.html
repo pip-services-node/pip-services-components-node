@@ -75,6 +75,16 @@
 						components that are requested using component locators.</p>
 					</div>
 					<p>Allows for implementaion of various factory types in a portable manner.</p>
+					<h3 id="examples">Examples</h3>
+					<p>Example implementation of the IFactory interface:</p>
+					<pre><code><span class="hljs-keyword">export</span> class <span class="hljs-type">MyFactory</span> implements <span class="hljs-type">IFactory</span> {
+    public canCreate(locator: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">any</span> <span class="hljs-meta">{...}</span>
+
+    public create(locator: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">any</span> <span class="hljs-meta">{...}</span>
+
+    ...
+}
+</code></pre>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -127,7 +137,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/build/IFactory.ts#L17">build/IFactory.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/build/IFactory.ts#L29">build/IFactory.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -160,7 +170,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/build/IFactory.ts#L28">build/IFactory.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/build/IFactory.ts#L40">build/IFactory.ts:40</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

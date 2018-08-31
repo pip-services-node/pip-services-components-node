@@ -17,10 +17,12 @@ import { FileConfigReader } from './FileConfigReader';
  * 
  * ### Examples ###
  * 
- * public MyMethod() {
- *      ConfigParams config = YamlConfigReader.readConfig(null, "data/config.yaml");
- *      ...
- * }
+ * Example usage:
+ * 
+ *     public MyMethod() {
+ *         ConfigParams config = YamlConfigReader.readConfig(null, "data/config.yaml");
+ *         ...
+ *     }
  */
 export class YamlConfigReader extends FileConfigReader {
 

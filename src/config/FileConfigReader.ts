@@ -23,11 +23,13 @@ import { ConfigReader } from './ConfigReader'
  * 
  * ### Examples ###
  * 
- * public MyMethod(path: string) {
- *      let fileConfigReader = new FileConfigReader(path);
- *      fileConfigReader.configure(new ConfigParams());
- *      ...
- * }
+ * Example usage:
+ * 
+ *     public MyMethod(path: string) {
+ *         let fileConfigReader = new FileConfigReader(path);
+ *         fileConfigReader.configure(new ConfigParams());
+ *         ...
+ *     }
  */
 export abstract class FileConfigReader extends ConfigReader {
     private _path: string;

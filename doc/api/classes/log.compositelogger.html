@@ -76,7 +76,18 @@
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="../interfaces/log.ilogger.html">ILogger</a></p>
-						</dd>
+							<h3 id="examples">Examples</h3>
+							<p>CompositeLogger object creation and usage:</p>
+							<pre><code> public MyMethod(references: IReferences) {
+     let logger = new CompositeLogger();
+     logger.setReferences(references);
+     <span class="hljs-built_in">..</span>.
+
+     logger.<span class="hljs-builtin-name">info</span>(<span class="hljs-built_in">..</span>.);
+     <span class="hljs-built_in">..</span>.
+     logger.<span class="hljs-builtin-name">error</span>(<span class="hljs-built_in">..</span>.);
+ }
+</code></pre></dd>
 					</dl>
 				</div>
 			</section>
@@ -156,7 +167,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="log.logger.html">Logger</a>.<a href="log.logger.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/CompositeLogger.ts#L17">log/CompositeLogger.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/CompositeLogger.ts#L31">log/CompositeLogger.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -195,7 +206,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#_level">_level</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L31">log/Logger.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L41">log/Logger.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -206,7 +217,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#_source">_source</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L32">log/Logger.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L42">log/Logger.ts:42</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -224,7 +235,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#composeerror">composeError</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L268">log/Logger.ts:268</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L278">log/Logger.ts:278</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -258,7 +269,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#configure">configure</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L52">log/Logger.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L62">log/Logger.ts:62</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -303,7 +314,7 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#debug">debug</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#debug">debug</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L242">log/Logger.ts:242</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L252">log/Logger.ts:252</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -357,7 +368,7 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#error">error</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#error">error</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L197">log/Logger.ts:197</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L207">log/Logger.ts:207</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -417,7 +428,7 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#fatal">fatal</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#fatal">fatal</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L181">log/Logger.ts:181</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L191">log/Logger.ts:191</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -476,7 +487,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#formatandwrite">formatAndWrite</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L141">log/Logger.ts:141</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L151">log/Logger.ts:151</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -542,7 +553,7 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#getlevel">getLevel</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#getlevel">getLevel</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L84">log/Logger.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L94">log/Logger.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -571,7 +582,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#getsource">getSource</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L104">log/Logger.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L114">log/Logger.ts:114</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -596,7 +607,7 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#info">info</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#info">info</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L227">log/Logger.ts:227</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L237">log/Logger.ts:237</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -650,7 +661,7 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#log">log</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#log">log</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L165">log/Logger.ts:165</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L175">log/Logger.ts:175</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -713,7 +724,7 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#setlevel">setLevel</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#setlevel">setLevel</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L95">log/Logger.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L105">log/Logger.ts:105</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -750,7 +761,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="log.logger.html">Logger</a>.<a href="log.logger.html#setreferences">setReferences</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/CompositeLogger.ts#L41">log/CompositeLogger.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/CompositeLogger.ts#L55">log/CompositeLogger.ts:55</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -787,7 +798,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#setsource">setSource</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L113">log/Logger.ts:113</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L123">log/Logger.ts:123</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -820,7 +831,7 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#trace">trace</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#trace">trace</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L257">log/Logger.ts:257</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L267">log/Logger.ts:267</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -874,7 +885,7 @@
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#warn">warn</a></p>
 								<p>Inherited from <a href="log.logger.html">Logger</a>.<a href="log.logger.html#warn">warn</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/Logger.ts#L212">log/Logger.ts:212</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/Logger.ts#L222">log/Logger.ts:222</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -927,7 +938,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="log.logger.html">Logger</a>.<a href="log.logger.html#write">write</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/CompositeLogger.ts#L67">log/CompositeLogger.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/CompositeLogger.ts#L81">log/CompositeLogger.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

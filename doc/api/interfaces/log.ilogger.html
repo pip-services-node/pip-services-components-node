@@ -72,6 +72,16 @@
 					<div class="lead">
 						<p>Interface for creating classes that can log messages of various log levels.</p>
 					</div>
+					<h3 id="examples">Examples</h3>
+					<p>Example implementation of the ILogger interface:</p>
+					<pre><code><span class="hljs-keyword">export</span> class <span class="hljs-type">MyLogger</span> implements <span class="hljs-type">ILogger</span> {
+    public log(level: <span class="hljs-type">LogLevel</span>, correlationId: <span class="hljs-built_in">string</span>, error: <span class="hljs-type">Error</span>, message: <span class="hljs-built_in">string</span>,
+        ...args: <span class="hljs-built_in">any</span>[]) : <span class="hljs-built_in">void</span> <span class="hljs-meta">{...}</span>
+    public fatal(correlationId: <span class="hljs-built_in">string</span>, error: <span class="hljs-type">Error</span>, message: <span class="hljs-built_in">string</span>,
+        ...args: <span class="hljs-built_in">any</span>[]) : <span class="hljs-built_in">void</span> <span class="hljs-meta">{...}</span>
+    ...
+}
+</code></pre>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -125,7 +135,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/ILogger.ts#L109">log/ILogger.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/ILogger.ts#L121">log/ILogger.ts:121</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -174,7 +184,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/ILogger.ts#L70">log/ILogger.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/ILogger.ts#L82">log/ILogger.ts:82</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -229,7 +239,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/ILogger.ts#L54">log/ILogger.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/ILogger.ts#L66">log/ILogger.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -284,7 +294,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/ILogger.ts#L17">log/ILogger.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/ILogger.ts#L29">log/ILogger.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -313,7 +323,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/ILogger.ts#L97">log/ILogger.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/ILogger.ts#L109">log/ILogger.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -362,7 +372,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/ILogger.ts#L41">log/ILogger.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/ILogger.ts#L53">log/ILogger.ts:53</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -423,7 +433,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/ILogger.ts#L27">log/ILogger.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/ILogger.ts#L39">log/ILogger.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -460,7 +470,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/ILogger.ts#L121">log/ILogger.ts:121</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/ILogger.ts#L133">log/ILogger.ts:133</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -509,7 +519,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/87474ca/src/log/ILogger.ts#L85">log/ILogger.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/df39232/src/log/ILogger.ts#L97">log/ILogger.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
