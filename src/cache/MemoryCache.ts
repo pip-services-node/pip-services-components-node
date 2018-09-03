@@ -6,7 +6,7 @@ import { ICache } from './ICache';
 import { CacheEntry } from './CacheEntry';
 
 /**
- * Local in-memory cache that can be used in non-scaled deployments or for testing.
+ * Local in-memory cache that can be used for non-scalable deployments or testing.
  * 
  * __Configuration parameters__:
  * Parameters to pass to the [[configure]] method for component configuration:

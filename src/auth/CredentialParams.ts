@@ -3,10 +3,10 @@ import { ConfigParams } from 'pip-services-commons-node';
 import { StringValueMap } from 'pip-services-commons-node';
 
 /**
- * Class is used to storing various credentials, such as passwords, logins, application keys, and secrets. 
- * This information is usually linked with connection parameters (@see [[ConnectionParams]] for more info).  
- * Separating credentials from connection parameters allow to store them in secure location and share among multiple
- * connections.
+ * Used to store various credentials, such as passwords, logins, application keys, and secrets. 
+ * This information is usually linked with connection parameters (see [[ConnectionParams]] for more info).  
+ * Separating credentials parameters from connection parameters allows for storage of credentials in a secure 
+ * location, as well as sharing common credentials across multiple connections.
  * 
  * If a service needs to authenticate itself on a certain connection, then the username, password, 
  * and other parameters can be set using a CredentialParams object. Relevant helper classes 
