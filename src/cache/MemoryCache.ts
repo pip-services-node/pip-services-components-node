@@ -46,8 +46,7 @@ export class MemoryCache implements ICache, IReconfigurable {
     public constructor() { }
 
 	/**
-	 * Sets this object's <code>timeout</code> and <code>max_size</code> to the 
-     * values that are set in the passed configuration parameters.
+	 * Configures this object using the provided configuration parameters. 
      * 
      * __Configuration parameters__:
      * - "timeout" - cache entry's expiration timeout (deault is 60000);

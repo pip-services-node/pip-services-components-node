@@ -25,10 +25,11 @@ export class MemoryConfigReader implements IConfigReader, IReconfigurable {
         this._config = config;
     }
 
+    //TODO: example of parameters should be added.
     /**
-     * Sets the parameters to use for parameterizing the configuration reader.
+     * Sets the parameters with which this configuration reader should be parameterized.
      * 
-     * @param config    the ConfigParams to save in memory.
+     * @param config    the ConfigParams to use for reader parameterization.
      * 
      * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)

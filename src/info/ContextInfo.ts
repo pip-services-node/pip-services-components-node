@@ -12,6 +12,7 @@ import { IReconfigurable } from 'pip-services-commons-node';
  * 
  * 
  * ### Configuration parameters ###
+ * 
  * Parameters to pass to the [[configure]] method for component configuration:
  * 
  * - "name" - the context's name;

@@ -12,6 +12,7 @@ import { ConfigReader } from './ConfigReader'
  * [[ConfigReader.readConfig]].
  * 
  * ### Configuration parameters ###
+ * 
  * Parameters to pass to the [[configure]] method for component configuration:
  * 
  * - "path" - the path to the target file. 

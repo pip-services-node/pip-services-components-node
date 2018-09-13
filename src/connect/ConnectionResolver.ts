@@ -15,15 +15,18 @@ import { IDiscovery } from './IDiscovery';
  * from various discovery services.
  * 
  * ### Configuration parameters ###
+ * 
  * Parameters to pass to the [[configure]] method for component configuration:
  * 
- * - "connection.discovery_key" - the key to use for connection resolving in a discovery service;
- * - "connection.protocol" - the connection's protocol;
- * - "connection.host" - the target host;
- * - "connection.port" - the target port;
- * - "connection.uri" - the target URI.
+ * - __"connection(s)"__
+ *     - "connection.discovery_key" - the key to use for connection resolving in a discovery service;
+ *     - "connection.protocol" - the connection's protocol;
+ *     - "connection.host" - the target host;
+ *     - "connection.port" - the target port;
+ *     - "connection.uri" - the target URI.
  * 
  * ### References ###
+ * 
  * A discovery service can be referenced by passing the following reference
  * to the object's [[setReferences]] method:
  * 
@@ -68,9 +71,12 @@ export class ConnectionResolver {
     }
 
     /**
-     * Sets the discovery service that this ConnectionResolver is to reference.
+     * Sets a reference to this ConnectionResolver's discovery service.
      * 
-     * @param references    an IReferences object, containing the "discovery" service reference to set.
+     * __References:__
+     * - <code>"\*:discovery:\*:\*:1.0"</code>
+     * 
+     * @param references    an IReferences object, containing the discovery service reference to set.
      * 
      * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
@@ -83,11 +89,12 @@ export class ConnectionResolver {
      * into a list of ConnectionParams and adding them to this ConnectionResolver's list of connections.
      * 
      * __Connection parameters:__
-     * - "connection.discovery_key" - the key to use for connection resolving in a discovery service;
-     * - "connection.protocol" - the connection's protocol;
-     * - "connection.host" - the target host;
-     * - "connection.port" - the target port;
-     * - "connection.uri" - the target URI.
+     * - __"connection(s)"__
+     *     - "connection.discovery_key" - the key to use for connection resolving in a discovery service;
+     *     - "connection.protocol" - the connection's protocol;
+     *     - "connection.host" - the target host;
+     *     - "connection.port" - the target port;
+     *     - "connection.uri" - the target URI.
      * 
      * @param config    the "connection(s)" to add to this ConnectionResolver's list of connections.
      * 

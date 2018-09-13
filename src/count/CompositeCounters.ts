@@ -11,6 +11,13 @@ import { ITimingCallback } from './ITimingCallback';
  * Helper class for grouping multiple [[ICounters counters]] together and updating all of them 
  * at once using a single method call.
  * 
+ * ### References ###
+ * 
+ * Counters can be referenced by passing the following reference
+ * to the object's [[setReferences]] method:
+ * 
+ * - <code>"\*:counters:\*:\*:1.0"</code>
+ * 
  * @see [[ICounters]]
  * 
  * ### Examples ###
@@ -44,9 +51,12 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
     }
 
     /**
-     * Adds all referenced counters to this object's list of counters.
+     * Adds all counter references to this object's list of counters.
      * 
-     * @param references    an IReferences object, containing references to the "counters" 
+     * __References:__
+     * - <code>"\*:counters:\*:\*:1.0"</code>
+     * 
+     * @param references    an IReferences object, containing references to the counters 
      *                      that are to be added.
      * 
      * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)

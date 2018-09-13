@@ -18,10 +18,18 @@ import { ContextInfo } from '../info/ContextInfo';
  * are capable of logging messages of various [[LogLevel log levels]].
  *
  * ### Configuration parameters ###
+ * 
  * Parameters to pass to the [[configure]] method for component configuration:
  *  
  * - "level" - the [[LogLevel]] to set (default is LogLevel.Info);
  * - "source" - the logger's source.
+ * 
+ * ### References ###
+ * 
+ * A context can be referenced by passing the following reference
+ * to the object's [[setReferences]] method:
+ * 
+ * - context: <code>"\*:context-info:\*:\*:1.0"</code>;
  * 
  * @see [[ILogger]]
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferenceable.html IReferenceable]]
@@ -74,6 +82,17 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
      * @param references    an IReferences object, containing the "context-info" reference to set.
      * 
      * @see [[ContextInfo]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
+     */
+
+    /**
+     * Sets a reference to this logger's source (context).
+     * 
+     * __References:__
+     * - context: <code>"\*:context-info:\*:\*:1.0"</code>;
+     * 
+     * @param references    an IReferences object, containing a reference to a context.
+     * 
      * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     public setReferences(references: IReferences) {

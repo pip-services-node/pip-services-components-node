@@ -15,15 +15,18 @@ import { ICredentialStore } from './ICredentialStore';
  * from various credential stores.
  * 
  * ### Configuration parameters ###
+ * 
  * Parameters to pass to the [[configure]] method for component configuration:
  * 
- * - "credential.username" - the username to use for authentication;
- * - "credential.password" - the user's password;
- * - "credential.store_key" - the key to use in the credential store;
- * - "credential.access_id" - the access ID to use;
- * - "credential.access_key" - the access key to use;
+ * - __"credential(s)"__
+ *     - "credential.username" - the username to use for authentication;
+ *     - "credential.password" - the user's password;
+ *     - "credential.store_key" - the key to use in the credential store;
+ *     - "credential.access_id" - the access ID to use;
+ *     - "credential.access_key" - the access key to use;
  * 
  * ### References ###
+ * 
  * A credential store can be referenced by passing the following reference
  * to the object's [[setReferences]] method:
  * 
@@ -68,9 +71,12 @@ export class CredentialResolver {
     }
 
     /**
-     * Sets a reference to the credential store that is to be used in this CredentialResolver.
+     * Sets a reference to this CredentialResolver's credential store.
      * 
-     * @param references    an IReferences object, containing the "credential-store" reference to set. 
+     * __References:__
+     * - <code>"\*:credential-store:\*:\*:1.0"</code>
+     * 
+     * @param references    an IReferences object, containing the credential store reference to set.
      * 
      * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
@@ -83,11 +89,12 @@ export class CredentialResolver {
      * into a list of CredentialParams and adding them to this CredentialResolver's list of credentials.
      * 
      * __Credential parameters:__
-     * - "credential.username" - the username to use for authentication;
-     * - "credential.password" - the user's password;
-     * - "credential.store_key" - the key to use in the credential store;
-     * - "credential.access_id" - the access ID to use;
-     * - "credential.access_key" - the access key to use;
+     * - __"credential(s)"__
+     *     - "credential.username" - the username to use for authentication;
+     *     - "credential.password" - the user's password;
+     *     - "credential.store_key" - the key to use in the credential store;
+     *     - "credential.access_id" - the access ID to use;
+     *     - "credential.access_key" - the access key to use;
      * 
      * @param config    the "credential(s)" to add to this CredentialResolver's list of credentials.
      * 

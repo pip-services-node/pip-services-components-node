@@ -10,8 +10,13 @@ import { CompositeLogger } from '../log/CompositeLogger';
 /**
  * Adds logging functionality to the [[CachedCounters]] class.
  * 
- * Loggers can be referenced by passing "logger" references to this class's
- * [[setReferences]] method.
+ * ### References ###
+ * 
+ * Loggers, along with their context, can be referenced by passing the following references
+ * to the object's [[setReferences]] method:
+ * 
+ * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>
+ * - Context (source): <code>"\*:context-info:\*:\*:1.0"</code>.
  * 
  * @see [[Counter]]
  * @see [[CachedCounters]]
@@ -27,9 +32,14 @@ export class LogCounters extends CachedCounters implements IReferenceable {
     public LogCounters() { }
 
     /**
-     * Adds all referenced loggers to this object's [[CompositeLogger]].
+     * Adds all logger references to this object's [[CompositeLogger]] and sets its context.
      * 
-     * @param references    an IReferences object, containing the "logger" references to add.
+     * __References:__
+     * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>;
+     * - Context (source): <code>"\*:context-info:\*:\*:1.0"</code>.
+     * 
+     * @param references    an IReferences object, containing references to a context and to 
+     *                      the loggers that are to be added.
      * 
      * @see [[CompositeLogger.setReferences]]
      * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)

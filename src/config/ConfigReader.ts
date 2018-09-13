@@ -16,6 +16,7 @@ import { IConfigurable } from 'pip-services-commons-node'
  * method.
  * 
  * ### Configuration parameters ###
+ * 
  * Parameters to pass to the [[configure]] method for component configuration:
  * - "parameters.<...>" - the parameters to parameterize the configuration reader with.
  * 

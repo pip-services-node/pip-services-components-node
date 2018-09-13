@@ -10,6 +10,7 @@ import { ILock } from './ILock';
  * manage resoure locking.
  * 
  * ### Configuration parameters ###
+ * 
  * Parameters to pass to the [[configure]] method for component configuration:
  * 
  * - "options.retry_timeout" - the amount of time to retry lock acquisition (default is 100).
