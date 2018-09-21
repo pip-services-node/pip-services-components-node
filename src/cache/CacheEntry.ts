@@ -1,17 +1,7 @@
 /** @module cache */
+
 /**
- * Simplifies working with key-value pairs in/from the cache.
- * 
- * ### Example ###
- * 
- * Example usage:
- * 
- *     public MyMethod(ICache cache, string key): any {
- *         let entry = cache.get(key);
- *         ...
- *         
- *         return entry.getValue();
- *     }
+ * Data object to store cached values with their keys used by [[MemoryCache]]
  */
 export class CacheEntry {
     private _key: string;
@@ -19,9 +9,11 @@ export class CacheEntry {
     private _expiration: number;
 
     /**
-     * @param key       unique key to locate the value by in the cache.
-     * @param value     value to be stored in (or retrieved from) the cache.
-     * @param timeout   expiration timeout for this cache entry.
+     * Creates a new instance of the cache entry and assigns its values.
+     * 
+     * @param key       a unique key to locate the value.
+     * @param value     a value to be stored.
+     * @param timeout   expiration timeout in milliseconds.
      */
     public constructor(key: string, value: any, timeout: number) {
         this._key = key;
@@ -30,30 +22,37 @@ export class CacheEntry {
     }
 
     /**
-     * @returns the unique key by which this cache entry's value can be 
-     *          located in the cache.
+     * Gets the key to locate the cached value.
+     * 
+     * @returns the value key.
      */
     public getKey(): string {
         return this._key;
     }
 
     /**
-     * @returns the value of this cache entry. 
+     * Gets the cached value.
+     * 
+     * @returns the value object.
      */
     public getValue(): any {
         return this._value;
     }
 
     /**
-     * @returns the expiration timeout for this cache entry.
+     * Gets the expiration timeout.
+     * 
+     * @returns the expiration timeout in milliseconds.
      */
     public getExpiration(): number {
         return this._expiration;
     }
 
     /**
-     * @param value     the value to be stored in (or retrieved from) the cache by this cache entry's key.
-     * @param timeout   expiration timeout for this cache entry.
+     * Sets a new value and extends its expiration.
+     * 
+     * @param value     a new cached value.
+     * @param timeout   a expiration timeout in milliseconds.
      */
     public setValue(value: any, timeout: number): void {
         this._value = value;
@@ -61,7 +60,9 @@ export class CacheEntry {
     }
 
     /**
-     * @returns whether or not this cache entry's timeout has expired.
+     * Checks if this value already expired.
+     * 
+     * @returns true if the value already expires and false otherwise.
      */
     public isExpired(): boolean {
         return this._expiration < new Date().getTime();

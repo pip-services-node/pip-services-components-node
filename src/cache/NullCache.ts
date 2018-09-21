@@ -1,46 +1,46 @@
 /** @module cache */
 import { ICache } from './ICache';
+
 /**
- * Dummy implementation of the [[ICache]] interface. Returns null instead of real values. 
- * Can be used for cutting dependecies while testing.
+ * Dummy cache implementation that doesn't do anything.
+ * 
+ * It can be used in testing or in situations when cache is required
+ * but shall be disabled.
  * 
  * @see [[ICache]]
  */
 export class NullCache implements ICache {
     /**
-	 * Retrieves a value from the cache by its unique key.
-	 * It is recommended to use either string GUIDs (for example: '123456789abc')
-	 * or unique natural keys prefixed with the functional group (for example: 
-	 * 'pip-services-storage:block-123'). 
+     * Retrieves cached value from the cache using its key.
+     * If value is missing in the cache or expired it returns null.
      * 
-	 * @param correlationId     (optional) transaction id to trace execution through call chain.
-	 * @param key               unique key to locate the value by in the cache.
-	 * @param callback          callback function that will be called with an error or the retrieved value. 
-     *                          Returns <b>null</b> if the value was not found.
-	 */
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param key               a unique value key.
+     * @param callback          callback function that receives cached value or error.
+     */
     public retrieve(correlationId: string, key: string, callback: (err: any, value: any) => void): void {
         callback(null, null);
     }
 
     /**
-	 * Stores a value, identified by its unique key, in the cache. 
+     * Stores value in the cache with expiration time.
      * 
-	 * @param correlationId     (optional) transaction id to trace execution through call chain.
-	 * @param key               unique key to locate the value by in the cache.
-	 * @param value             the value to store.
-     * @param timeout           expiration timeout for the cache entry.
-	 * @param callback          callback function that will be called with an error or the stored value.
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param key               a unique value key.
+     * @param value             a value to store.
+     * @param timeout           expiration timeout in milliseconds.
+     * @param callback          (optional) callback function that receives an error or null for success
 	 */
     public store(correlationId: string, key: string, value: any, timeout: number, callback: (err: any, value: any) => void): void {
         callback(null, value);
     }
 
 	/**
-	 * Removes a value from the cache using its key.
+     * Removes a value from the cache by its key.
      * 
-	 * @param correlationId     (optional) transaction id to trace execution through call chain.
-	 * @param key               unique key to locate the value by in the cache.
-	 * @param callback          callback function that will be called with an error or success.
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param key               a unique value key.
+     * @param callback          (optional) callback function that receives an error or null for success
 	 */
     public remove(correlationId: string, key: string, callback: (err: any) => void): void {
         callback(null);
