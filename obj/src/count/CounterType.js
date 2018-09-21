@@ -1,21 +1,20 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /** @module count */
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Enumeration that is used to specify a counter's type and
- * its purpose.
+ * Types of counters that measure different types of metrics
  */
 var CounterType;
 (function (CounterType) {
-    /** Counter that keeps track of elapsed time using [[Timing]] objects. */
+    /** Counters that measure execution time intervals */
     CounterType[CounterType["Interval"] = 0] = "Interval";
-    /** Counter that keeps track of the last (most recent) value. */
+    /** Counters that keeps the latest measured value */
     CounterType[CounterType["LastValue"] = 1] = "LastValue";
-    /** Counter that is used to calculate and keep track of statistics. */
+    /** Counters that measure min/average/max statistics */
     CounterType[CounterType["Statistics"] = 2] = "Statistics";
-    /** Counter that is used to keep track of when an event last happened. */
+    /** Counter that record timestamps */
     CounterType[CounterType["Timestamp"] = 3] = "Timestamp";
-    /** Counter that incrementally keeps track of a value. */
+    /** Counter that increment counters */
     CounterType[CounterType["Increment"] = 4] = "Increment";
 })(CounterType = exports.CounterType || (exports.CounterType = {}));
 //# sourceMappingURL=CounterType.js.map

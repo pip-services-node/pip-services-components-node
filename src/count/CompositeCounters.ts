@@ -8,42 +8,45 @@ import { Timing } from './Timing';
 import { ITimingCallback } from './ITimingCallback';
 
 /**
- * Helper class for grouping multiple [[ICounters counters]] together and updating all of them 
- * at once using a single method call.
+ * Aggregates all counters from component references under a single component.
+ * 
+ * It allows to capture metrics and conveniently send them to multiple destinations. 
  * 
  * ### References ###
  * 
- * Counters can be referenced by passing the following reference
- * to the object's [[setReferences]] method:
- * 
- * - <code>"\*:counters:\*:\*:1.0"</code>
+ * - *:counters:*:*:1.0         (optional) [[ICounters]] components to pass collected measurements
  * 
  * @see [[ICounters]]
  * 
  * ### Example ###
  * 
- * Example CompositeCounters object usage:
+ * class MyComponent implements IReferenceable {
+ *     private _counters: CompositeCounters = new CompositeCounters();
  * 
- *      public MyMethod(references: IReferences) {
- *          let _counters = new CompositeCounters(references); 
- *          _counters.stats("Statistics", 1);
- *          Counter counter = _counters.get("Statistics", CounterType.Statistics);
- *          ...
- *          
- *          Timing timing = _counters.beginTiming("Timing");
- *          ...
- *      }
+ *     public setReferences(references: IReferences): void {
+ *         this._counters.setReferences(references);
+ *         ...
+ *     }
+ * 
+ *     public myMethod(): void {
+ *         this._counters.increment("mycomponent.mymethod.calls");
+ *         var timing = this._counters.beginTiming("mycomponent.mymethod.exec_time");
+ *         try {
+ *            ...
+ *         } finally {
+ *             timing.endTiming();
+ *         }
+ *     }
+ * }
+ * 
  */
 export class CompositeCounters implements ICounters, ITimingCallback, IReferenceable {
     protected readonly _counters: ICounters[] = [];
 
     /**
-     * Creates a new CompositeCounters object. If "counters" references are given, they will be 
-     * set in the new object. If omitted - they can be set later on using [[setReferences]].
+     * Creates a new instance of the counters.
      * 
-     * @param references    the "counters" references to set.
-     * 
-     * @see [[setReferences]]
+	 * @param references 	references to locate the component dependencies. 
      */
     public CompositeCounters(references: IReferences = null) {
         if (references != null)
@@ -51,15 +54,10 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
     }
 
     /**
-     * Adds all counter references to this object's list of counters.
-     * 
-     * __References:__
-     * - <code>"\*:counters:\*:\*:1.0"</code>
-     * 
-     * @param references    an IReferences object, containing references to the counters 
-     *                      that are to be added.
-     * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
+	 * Sets references to dependent components.
+	 * 
+	 * @param references 	references to locate the component dependencies. 
+	 * @see [[IReferences]]
      */
     public setReferences(references: IReferences): void {
         var counters = references.getOptional<ICounters>(new Descriptor(null, "counters", null, null, null));
@@ -72,34 +70,24 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
     }
 
     /**
-     * Creates a new [[Timing]] callback object, which will call this object's [[endTiming]] 
-     * method once it receives the command to [[Timing.endTiming stop timing]].
-     * 
-     * @param name  the name of the Interval Counter, for which a Timing is to be created.
-     * @returns the Timing callback object that was created.
-     * 
-     * @see [[Timing]]
-     * @see [[endTiming]]
-     * @see [[CounterType.Interval]]
+	 * Begins measurement of execution time interval.
+	 * It returns [[Timing]] object which has to be called at
+	 * [[Timing.endTiming]] to end the measurement and update the counter.
+	 * 
+	 * @param name 	a counter name of Interval type.
+	 * @returns a [[Timing]] callback object to end timing.
      */
     public beginTiming(name: string): Timing {
         return new Timing(name, this);
     }
 
     /**
-     * [[ITimingCallback.endTiming Ends timing]] for all counters that are instances 
-     * of [[ITimingCallback]].
+     * Ends measurement of execution elapsed time and updates specified counter.
      * 
-     * This method will be called by a [[Timing Timing]] callback object 
-     * once its [[Timing.endTiming endTiming]] method has been called. 
+     * @param name      a counter name
+     * @param elapsed   execution elapsed time in milliseconds to update the counter.
      * 
-     * @param name      the Interval Counter name used to created the 
-     *                  Timing object.
-     * @param elapsed   the time elapsed since timing began.
-     * 
-     * @see [[ITimingCallback.endTiming]]
      * @see [[Timing.endTiming]]
-     * @see [[beginTiming]]
      */
     public endTiming(name: string, elapsed: number): void {
         for (let i = 0; i < this._counters.length; i++) {
@@ -111,15 +99,10 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
     }
 
     /**
-	 * Calls the <code>stats</code> method for all included counters. <code>stats</code> adds the 
-     * given value to the named [[CounterType.Statistics Statistics Counter]] and recalculates its 
-     * statistics, taking into account the new value. Statistics include last, count, min, max, and 
-     * average.
+	 * Calculates min/average/max statistics based on the current and previous values.
 	 * 
-	 * @param name 		the name of the counter to update.
-	 * @param value		the value to update the counter with.
-     * 
-     * @see [[CounterType]]
+	 * @param name 		a counter name of Statistics type
+	 * @param value		a value to update statistics
 	 */
     public stats(name: string, value: number): void {
         for (let i = 0; i < this._counters.length; i++)
@@ -127,13 +110,13 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
     }
 
     /**
-	 * Calls the <code>last</code> method for all included counters. <code>last</code> updates the 
-     * named [[CounterType.LastValue Last Counter]] by setting its last value to the value given.
+	 * Records the last calculated measurement value.
 	 * 
-	 * @param name 		the name of the counter to update.
-	 * @param value		the value to update the counter with.
-     * 
-     * @see [[CounterType]]
+	 * Usually this method is used by metrics calculated
+	 * externally.
+	 * 
+	 * @param name 		a counter name of Last type.
+	 * @param value		a last value to record.
 	 */
     public last(name: string, value: number): void {
         for (let i = 0; i < this._counters.length; i++)
@@ -141,26 +124,19 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
     }
 
     /**
-	 * Calls this class's [[timestamp]] method with the current time, which calls all included 
-     * counters' <code>timestamp</code> methods with the current time.
+	 * Records the current time as a timestamp.
 	 * 
-	 * @param name 		the name of the counter to update.
-     * 
-     * @see [[CounterType]]
-     * @see [[timestamp]]
+	 * @param name 		a counter name of Timestamp type.
 	 */
     public timestampNow(name: string): void {
         this.timestamp(name, new Date());
     }
 
     /**
-	 * Calls the <code>timestamp</code> method for all included counters. <code>timestamp</code> 
-     * updates the named [[CounterType.Timestamp Timestamp Counter's]] time to the time given.
+	 * Records the given timestamp.
 	 * 
-	 * @param name 		the name of the counter to update.
-	 * @param value		the timestamp to update the counter to.
-     * 
-     * @see [[CounterType]]
+	 * @param name 		a counter name of Timestamp type.
+	 * @param value		a timestamp to record.
 	 */
     public timestamp(name: string, value: Date): void {
         for (let i = 0; i < this._counters.length; i++)
@@ -168,28 +144,19 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
     }
 
     /**
-	 * Calls all included counters' <code>increment</code> methods and increments the named 
-     * [[CounterType.Increment Incremental Counter]] by a value of 1.
+	 * Increments counter by 1.
 	 * 
-	 * @param name 		the name of the counter to update.
-     * 
-     * @see [[CounterType]]
-     * @see [[increment]]
+	 * @param name 		a counter name of Increment type.
 	 */
     public incrementOne(name: string): void {
         this.increment(name, 1);
     }
 
     /**
-	 * Calls all included counters' <code>increment</code> methods and increments the named 
-     * [[CounterType.Increment Incremental Counter]] by the value given.
+	 * Increments counter by given value.
 	 * 
-	 * @param name 		the name of the counter to increment. Cannot be null
-	 * @param value		the value to increment the counter by.
-     * 
-     * @throws an Error if name is null.
-     * 
-     * @see [[CounterType]]
+	 * @param name 		a counter name of Increment type.
+	 * @param value		a value to add to the counter.
 	 */
     public increment(name: string, value: number): void {
         if (!name)

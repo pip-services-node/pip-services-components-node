@@ -1,17 +1,17 @@
 /** @module count */
+
 /**
- * Enumeration that is used to specify a counter's type and 
- * its purpose.
+ * Types of counters that measure different types of metrics
  */
 export enum CounterType {
-    /** Counter that keeps track of elapsed time using [[Timing]] objects. */
+    /** Counters that measure execution time intervals */
     Interval = 0,
-    /** Counter that keeps track of the last (most recent) value. */
+    /** Counters that keeps the latest measured value */
     LastValue = 1,
-    /** Counter that is used to calculate and keep track of statistics. */
+    /** Counters that measure min/average/max statistics */
     Statistics = 2,
-    /** Counter that is used to keep track of when an event last happened. */
+    /** Counter that record timestamps */
     Timestamp = 3,
-    /** Counter that incrementally keeps track of a value. */
+    /** Counter that increment counters */
     Increment = 4
 }

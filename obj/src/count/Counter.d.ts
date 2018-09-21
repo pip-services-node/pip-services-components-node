@@ -1,34 +1,31 @@
 /** @module count */
 import { CounterType } from './CounterType';
 /**
- * Used as performance counters. A Counter can show non-functional characteristics,
- * such as: times called, response time, objects saved/processed. They collect information
- * that can be used to answer such questions as: how much, how often, how long.
+ * Data object to store measurement for a performance counter.
+ * This object is used by [[CachedCounters]] to store counters.
  */
 export declare class Counter {
-    /** The counter's name, which should give an idea as to what is being counted. */
+    /** The counter unique name */
     name: string;
-    /** The counter's [[CounterType type]], which defines what the counter keeps track of. */
+    /** The counter type that defines measurement algorithm */
     type: CounterType;
-    /** The last value added to the counter. */
+    /** The last recorded value */
     last: number;
-    /** The number of values added to this counter. */
+    /** The total count */
     count: number;
-    /** The minimum value added to this counter. */
+    /** The minimum value */
     min: number;
-    /** The maximum value added to this counter. */
+    /** The maximum value */
     max: number;
-    /** The average of the values that were added to this counter. */
+    /** The average value */
     average: number;
-    /** The (last) time set in this counter. */
+    /** The recorded timestamp */
     time: Date;
     /**
-     * Creates a new Counter object.
+     * Creates a instance of the data obejct
      *
-     * @param name      the counter's name.
-     * @param type      the counter's type.
-     *
-     * @see [[CounterType]]
+     * @param name      a counter name.
+     * @param type      a counter type.
      */
     constructor(name: string, type: CounterType);
 }

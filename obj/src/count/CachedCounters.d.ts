@@ -7,37 +7,14 @@ import { ITimingCallback } from './ITimingCallback';
 import { CounterType } from './CounterType';
 import { Counter } from './Counter';
 /**
- * Abstract class for working with various cached [[Counter Counters]].
- *
- * Can be configured by passing ConfigParams, containing "interval" and/or "reset_timeout"
- * items, to the [[configure]] method. Interval defines the update interval (used to dump
- * the cache to memory at regular intervals), and reset timeout defines when the cache should
- * be reset.
+ * Abstract implementation of performance counters that measures and stores counters in memory.
+ * Child classes implement saving of the counters into various destinations.
  *
  * ### Configuration parameters ###
  *
- * Parameters to pass to the [[configure]] method for component configuration:
- *
- * - "interval" - the interval of time after which the cache should be dumped to memory (default
- * is 300000);
- * - "reset_timeout" - the timeout for resetting the cache (default is 0, which turn off resetting).
- *
- * @see [[Counter]]
- *
- * ### Example ###
- *
- * Example CachedCounters object usage:
- *
- *      public MyMethod() {
- *          let _counters = new CachedCounters();
- *          _counters.last("LastValue", 123);
- *          Counter counter = _counters.get("LastValue", CounterType.LastValue);
- *          ...
- *
- *          _counters.stats("Statistics", 1);
- *          counter = _counters.get("Statistics", CounterType.Statistics);
- *          ...
- *      }
+ * - options:
+ *   - interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
+ *   - reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
  */
 export declare abstract class CachedCounters implements ICounters, IReconfigurable, ITimingCallback {
     protected _interval: number;
@@ -53,176 +30,129 @@ export declare abstract class CachedCounters implements ICounters, IReconfigurab
      */
     CachedCounters(): void;
     /**
-     * @returns this CachedCounters' update interval. Used to dump the cache to memory at
-     *          regular intervals.
-     */
-    getInterval(): number;
-    /**
-     * Sets this CachedCounters' update interval, which is used to dump the cache to memory
-     * at regular intervals.
+     * Configures component by passing configuration parameters.
      *
-     * @param value     the value to set this CachedCounters' update interval to.
-     */
-    setInterval(value: number): void;
-    /**
-     * Abstract method that will contain the logic for saving an array of [[Counter counters]]
-     * to memory.
-     *
-     * @param counters  the Counters to save.
-     */
-    protected abstract save(counters: Counter[]): void;
-    /**
-     * Configures this object using the parameters provided. Looks for parameters with the
-     * keys "interval" and "reset_timeout" and sets them for this object. If a key is not found,
-     * the corresponding value will default to the value that was previously set for this object.
-     *
-     * __Configuration parameters:__
-     * - "interval" - the interval of time after which the cache should be dumped to memory (default
-     * is 300000);
-     * - "reset_timeout" - the timeout for resetting the cache (default is 0, which turn off resetting).
-     *
-     * @param config    ConfigParams, containing "interval" and/or "reset_timeout" items.
-     *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @param config    configuration parameters to be set.
      */
     configure(config: ConfigParams): void;
     /**
-     * Removes the [[Counter]] with the given name from this object's cache.
+     * Gets the counters dump/save interval.
      *
-     * @param name  the name of the counter to remove.
+     * @returns the interval in milliseconds.
+     */
+    getInterval(): number;
+    /**
+     * Sets the counters dump/save interval.
+     *
+     * @param value    a new interval in milliseconds.
+     */
+    setInterval(value: number): void;
+    /**
+     * Saves the current counters measurements.
+     *
+     * @param counters      current counters measurements to be saves.
+     */
+    protected abstract save(counters: Counter[]): void;
+    /**
+     * Clears (resets) a counter specified by its name.
+     *
+     * @param name  a counter name to clear.
      */
     clear(name: string): void;
     /**
-     * Removes all [[Counter Counters]] from this object's cache.
+     * Clears (resets) all counters.
      */
     clearAll(): void;
     /**
-     * Creates a new [[Timing]] callback object, which will call this object's [[endTiming]]
-     * method once it receives the command to [[Timing.endTiming stop timing]].
+     * Begins measurement of execution time interval.
+     * It returns [[Timing]] object which has to be called at
+     * [[Timing.endTiming]] to end the measurement and update the counter.
      *
-     * @param name  the name of the Interval Counter, for which a Timing is to be created.
-     * @returns the Timing callback object that was created.
-     *
-     * @see [[Timing]]
-     * @see [[endTiming]]
-     * @see [[CounterType.Interval]]
+     * @param name 	a counter name of Interval type.
+     * @returns a [[Timing]] callback object to end timing.
      */
     beginTiming(name: string): Timing;
     /**
-     * Dumps the [[Counter Counters]] that are stored in this object's
-     * cache to memory.
+     * Dumps (saves) the current values of counters.
      *
      * @see [[save]]
      */
     dump(): void;
     /**
-     * Checks whether or not the update interval has passed (since the last
-     * [[dump]]) and, if it has, performs a new [[dump]].
+     * Makes counter measurements as updated
+     * and dumps them when timeout expires.
      *
      * @see [[dump]]
      */
     protected update(): void;
     private resetIfNeeded;
     /**
-     * Retrieves the [[Counter Counters]] that are stored in this object's cache.
+     * Gets all captured counters.
      *
-     * If the need for cache resetting is detected, calling this method will
-     * trigger the reset.
-     *
-     * @returns an array, containing all cached Counters.
+     * @returns a list with counters.
      */
     getAll(): Counter[];
     /**
-     * Looks for a [[Counter]] with the given name and type within this object's
-     * cache. If none are found, then a new [[Counter]] of the given
-     * [[CounterType type]] is created, added to the cache, and returned.
+     * Gets a counter specified by its name.
+     * It counter does not exist or its type doesn't match the specified type
+     * it creates a new one.
      *
-     * If the need for cache resetting is detected, calling this method will
-     * trigger the reset.
-     *
-     * @param name  the name of the counter to retrieve.
-     * @param type  the counter's type.
-     * @returns the counter found in the cache or the one created (if none were found).
-     *
-     * @throws an Error if name is <code>null</code>
+     * @param name  a counter name to retrieve.
+     * @param type  a counter type.
+     * @returns an existing or newly created counter of the specified type.
      */
     get(name: string, type: CounterType): Counter;
     private calculateStats;
     /**
-     * Called by a [[Timing Timing]] callback object once its
-     * [[Timing.endTiming endTiming]] method has been called. The resulting
-     * time interval will be used to update timing statistics.
+     * Ends measurement of execution elapsed time and updates specified counter.
      *
-     * @param name      the name of the Interval Counter that created the
-     *                  Timing object.
-     * @param elapsed   the time elapsed since timing began.
+     * @param name      a counter name
+     * @param elapsed   execution elapsed time in milliseconds to update the counter.
      *
-     * @see [[beginTiming]]
      * @see [[Timing.endTiming]]
      */
     endTiming(name: string, elapsed: number): void;
     /**
-     * Adds the given value to the named [[CounterType.Statistics Statistics Counter]]
-     * and recalculates its statistics, taking into account the new value.
-     * Statistics include last, count, min, max, and average.
+     * Calculates min/average/max statistics based on the current and previous values.
      *
-     * @param name 		the name of the counter to update.
-     * @param value		the value to update the counter with.
-     *
-     * @see [[CounterType]]
-     * @see [[get]]
+     * @param name 		a counter name of Statistics type
+     * @param value		a value to update statistics
      */
     stats(name: string, value: number): void;
     /**
-     * Updates the named [[CounterType.LastValue Last Counter]] by setting
-     * its last value to the value given.
+     * Records the last calculated measurement value.
      *
-     * @param name 		the name of the counter to update.
-     * @param value		the value to update the counter with.
+     * Usually this method is used by metrics calculated
+     * externally.
      *
-     * @see [[CounterType]]
-     * @see [[get]]
+     * @param name 		a counter name of Last type.
+     * @param value		a last value to record.
      */
     last(name: string, value: number): void;
     /**
-     * Updates the named [[CounterType.Timestamp Timestamp Counter's]] time to
-     * the current time.
+     * Records the current time as a timestamp.
      *
-     * @param name 		the name of the counter to update.
-     *
-     * @see [[CounterType]]
-     * @see [[timestamp]]
+     * @param name 		a counter name of Timestamp type.
      */
     timestampNow(name: string): void;
     /**
-     * Updates the named [[CounterType.Timestamp Timestamp Counter's]] time to
-     * the time given.
+     * Records the given timestamp.
      *
-     * @param name 		the name of the counter to update.
-     * @param value		the timestamp to update the counter to.
-     *
-     * @see [[CounterType]]
-     * @see [[get]]
+     * @param name 		a counter name of Timestamp type.
+     * @param value		a timestamp to record.
      */
     timestamp(name: string, value: Date): void;
     /**
-     * Incrementes the named [[CounterType.Increment Incremental Counter]] by 1.
+     * Increments counter by 1.
      *
-     * @param name 		the name of the counter to increment.
-     *
-     * @see [[CounterType]]
-     * @see [[increment]]
+     * @param name 		a counter name of Increment type.
      */
     incrementOne(name: string): void;
     /**
-     * Increments the named [[CounterType.Increment Incremental Counter]] by the
-     * given value.
+     * Increments counter by given value.
      *
-     * @param name 		the name of the counter to increment.
-     * @param value		the value to increment the counter by.
-     *
-     * @see [[CounterType]]
-     * @see [[get]]
+     * @param name 		a counter name of Increment type.
+     * @param value		a value to add to the counter.
      */
     increment(name: string, value: number): void;
 }

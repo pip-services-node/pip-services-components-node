@@ -2,86 +2,68 @@
 import { Timing } from './Timing';
 import { ICounters } from './ICounters';
 /**
- * Dummy implementation of the [[ICounters]] interface. Methods do not contain any logic and
- * simply accept the parameters passed to them. Can be used to cut dependencies while testing.
+ * Dummy implementation of performance counters that doesn't do anything.
+ *
+ * It can be used in testing or in situations when counters is required
+ * but shall be disabled.
  *
  * @see [[ICounters]]
  */
 export declare class NullCounters implements ICounters {
     /**
-     * Creates a new NullCounters object.
+     * Creates a new instance of the counter.
      */
     NullCounters(): void;
     /**
-     * Creates a new [[Timing]] callback object, which will call an ITimingCallback's
-     * [[ITimingCallback.endTiming endTiming]] method once it receives the command to
-     * [[Timing.endTiming stop timing]].
+     * Begins measurement of execution time interval.
+     * It returns [[Timing]] object which has to be called at
+     * [[Timing.endTiming]] to end the measurement and update the counter.
      *
-     * @param name  the name of the Interval Counter, for which a Timing is to be created.
-     * @returns the Timing callback object that was created.
-     *
-     * @see [[Timing]]
-     * @see [[ITimingCallback]]
-     * @see [[CounterType.Interval]]
+     * @param name 	a counter name of Interval type.
+     * @returns a [[Timing]] callback object to end timing.
      */
     beginTiming(name: string): Timing;
     /**
-     * Adds the given value to the named [[CounterType.Statistics Statistics Counter]]
-     * and recalculates its statistics, taking into account the new value.
+     * Calculates min/average/max statistics based on the current and previous values.
      *
-     * @param name 		the name of the counter to update.
-     * @param value		the value to update the counter with.
-     *
-     * @see [[CounterType]]
+     * @param name 		a counter name of Statistics type
+     * @param value		a value to update statistics
      */
     stats(name: string, value: number): void;
     /**
-     * Updates the named [[CounterType.LastValue Last Counter]] by setting
-     * its last value to the value given.
+     * Records the last calculated measurement value.
      *
-     * @param name 		the name of the counter to update.
-     * @param value		the value to update the counter with.
+     * Usually this method is used by metrics calculated
+     * externally.
      *
-     * @see [[CounterType]]
+     * @param name 		a counter name of Last type.
+     * @param value		a last value to record.
      */
     last(name: string, value: number): void;
     /**
-     * Updates the named [[CounterType.Timestamp Timestamp Counter's]] time to
-     * the current time.
+     * Records the current time as a timestamp.
      *
-     * @param name 		the name of the counter to update.
-     *
-     * @see [[CounterType]]
-     * @see [[timestamp]]
+     * @param name 		a counter name of Timestamp type.
      */
     timestampNow(name: string): void;
     /**
-     * Updates the named [[CounterType.Timestamp Timestamp Counter's]] time to
-     * the time given.
+     * Records the given timestamp.
      *
-     * @param name 		the name of the counter to update.
-     * @param value		the timestamp to update the counter to.
-     *
-     * @see [[CounterType]]
+     * @param name 		a counter name of Timestamp type.
+     * @param value		a timestamp to record.
      */
     timestamp(name: string, value: Date): void;
     /**
-     * Incrementes the named [[CounterType.Increment Incremental Counter]] by 1.
+     * Increments counter by 1.
      *
-     * @param name 		the name of the counter to increment.
-     *
-     * @see [[CounterType]]
-     * @see [[increment]]
+     * @param name 		a counter name of Increment type.
      */
     incrementOne(name: string): void;
     /**
-     * Increments the named [[CounterType.Increment Incremental Counter]] by the
-     * given value.
+     * Increments counter by given value.
      *
-     * @param name 		the name of the counter to increment.
-     * @param value		the value to increment the counter by.
-     *
-     * @see [[CounterType]]
+     * @param name 		a counter name of Increment type.
+     * @param value		a value to add to the counter.
      */
     increment(name: string, value: number): void;
 }

@@ -7,10 +7,12 @@ import { CompositeCounters } from './CompositeCounters';
 import { Factory } from '../build/Factory';
 
 /**
- * Contains static read-only descriptors for the [[NullCounters Null]], [[LogCounters Log]], 
- * and [[CompositeCounters Composite]] Counters (as well as a default "counters" descriptor).
+ * Creates [[ICounters]] components by their descriptors.
  * 
  * @see [[Factory]]
+ * @see [[NullCounters]]
+ * @see [[LogCounters]]
+ * @see [[CompositeCounters]]
  */
 export class DefaultCountersFactory extends Factory {
 	public static readonly Descriptor = new Descriptor("pip-services", "factory", "counters", "default", "1.0");
@@ -19,12 +21,7 @@ export class DefaultCountersFactory extends Factory {
 	public static readonly CompositeCountersDescriptor = new Descriptor("pip-services", "counters", "composite", "*", "1.0");
 
 	/**
-	 * Create a new DefaultCountersFactory object, containing [[NullCounters]], [[LogCounters]], 
-	 * and [[CompositeCounters]] object factories.
-	 * 
-	 * @see [[NullCounters]]
-	 * @see [[LogCounters]]
-	 * @see [[CompositeCounters]]
+	 * Create a new instance of the factory.
 	 */
 	public constructor() {
         super();

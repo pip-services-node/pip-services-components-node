@@ -7,19 +7,16 @@ const LogCounters_1 = require("./LogCounters");
 const CompositeCounters_1 = require("./CompositeCounters");
 const Factory_1 = require("../build/Factory");
 /**
- * Contains static read-only descriptors for the [[NullCounters Null]], [[LogCounters Log]],
- * and [[CompositeCounters Composite]] Counters (as well as a default "counters" descriptor).
+ * Creates [[ICounters]] components by their descriptors.
  *
  * @see [[Factory]]
+ * @see [[NullCounters]]
+ * @see [[LogCounters]]
+ * @see [[CompositeCounters]]
  */
 class DefaultCountersFactory extends Factory_1.Factory {
     /**
-     * Create a new DefaultCountersFactory object, containing [[NullCounters]], [[LogCounters]],
-     * and [[CompositeCounters]] object factories.
-     *
-     * @see [[NullCounters]]
-     * @see [[LogCounters]]
-     * @see [[CompositeCounters]]
+     * Create a new instance of the factory.
      */
     constructor() {
         super();

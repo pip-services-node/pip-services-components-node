@@ -4,49 +4,58 @@ import { IReferences } from 'pip-services-commons-node';
 import { Counter } from './Counter';
 import { CachedCounters } from './CachedCounters';
 /**
- * Adds logging functionality to the [[CachedCounters]] class.
+ * Performance counters that periodically dumps counters measurements to logger.
+ *
+ * ### Configuration parameters ###
+ *
+ * - options:
+ *   - interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
+ *   - reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
  *
  * ### References ###
  *
- * Loggers, along with their context, can be referenced by passing the following references
- * to the object's [[setReferences]] method:
- *
- * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>
- * - Context (source): <code>"\*:context-info:\*:\*:1.0"</code>.
+ * - *:logger:*:*:1.0           [[ILogger]] components to dump the captured counters
+ * - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
  *
  * @see [[Counter]]
  * @see [[CachedCounters]]
  * @see [[CompositeLogger]]
+ *
+ * ### Example ###
+ *
+ * let counters = new LogCounters();
+ * counters.setReferences(References.fromTuples(
+ *     new Descriptor("pip-services", "logger", "console", "default", "1.0"), new ConsoleLogger()
+ * ));
+ *
+ * counters.increment("mycomponent.mymethod.calls");
+ * let timing = counters.beginTiming("mycomponent.mymethod.exec_time");
+ * try {
+ *     ...
+ * } finally {
+ *     timing.endTiming();
+ * }
+ *
+ * counters.dump();
  */
 export declare class LogCounters extends CachedCounters implements IReferenceable {
     private readonly _logger;
     /**
-     * Creates a new LogCounters object, which can be used for logging
-     * [[CachedCounters counters]].
+     * Creates a new instance of the counters.
      */
     LogCounters(): void;
     /**
-     * Adds all logger references to this object's [[CompositeLogger]] and sets its context.
+     * Sets references to dependent components.
      *
-     * __References:__
-     * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>;
-     * - Context (source): <code>"\*:context-info:\*:\*:1.0"</code>.
-     *
-     * @param references    an IReferences object, containing references to a context and to
-     *                      the loggers that are to be added.
-     *
-     * @see [[CompositeLogger.setReferences]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
+     * @param references 	references to locate the component dependencies.
+     * @see [[IReferences]]
      */
     setReferences(references: IReferences): void;
     private counterToString;
     /**
-     * Sorts the passed counters by their names and logs them using
-     * the [[LogLevel.Info info]] log level.
+     * Saves the current counters measurements.
      *
-     * @param counters      the counters to log.
-     *
-     * @see [[CompositeLogger.info]]
+     * @param counters      current counters measurements to be saves.
      */
     protected save(counters: Counter[]): void;
 }
