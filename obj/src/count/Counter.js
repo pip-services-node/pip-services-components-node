@@ -2,7 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Used as performance counters. A Counter can show non-functional characteristics,
- * such as: times called, response time, objects saved/processed.
+ * such as: times called, response time, objects saved/processed. They collect information
+ * that can be used to answer such questions as: how much, how often, how long.
  */
 class Counter {
     /**

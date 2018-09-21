@@ -42,7 +42,7 @@ export class MemoryConfigReader implements IConfigReader, IReconfigurable {
      * Reads the ConfigParams stored in this object and returns them as a parameterized 
      * ConfigParams object. Reader's ConfigParams must be set.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param parameters        used to parameterize the reader.
      * @param callback          callback function that will be called with an error or with the
      *                          ConfigParams that were read. 

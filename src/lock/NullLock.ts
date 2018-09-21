@@ -10,7 +10,7 @@ export class NullLock implements ILock {
     /**
      * Attempts to acquire a lock for the resource that is identified by the given key.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param key               the key to identify the lock by.
      * @param ttl               the lock's time-to-live.
      * @param callback          the function that will be called with the result of the attempt or 
@@ -24,7 +24,7 @@ export class NullLock implements ILock {
     /**
      * Acquiring a lock for a certain resource, identifiable by the lock's key.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain.. 
+     * @param correlationId     (optional) transaction id to trace execution through call chain. 
      * @param key               the key to identify the lock by.
      * @param ttl               the lock's time-to-live.
      * @param timeout           the acquisition's retry interval.

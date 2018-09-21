@@ -1,41 +1,43 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Null implementation of the [[ILock]] interface. Methods do not contain any logic and
+ * Dummy implementation of the [[ILock]] interface. Methods do not contain any logic and
  * simply accept the parameters passed to them. Can be used to cut dependecies while testing.
  *
  * @see [[ILock]]
  */
 class NullLock {
     /**
-     * Null call to the [[ILock.tryAcquireLock tryAcquireLock]] method.
+     * Attempts to acquire a lock for the resource that is identified by the given key.
      *
-     * @param correlationId     not used.
-     * @param key               not used.
-     * @param ttl               not used.
-     * @param callback          will be called with <code>null, true<code>.
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param key               the key to identify the lock by.
+     * @param ttl               the lock's time-to-live.
+     * @param callback          the function that will be called with the result of the attempt or
+     *                          with an error (if one is raised).
      */
     tryAcquireLock(correlationId, key, ttl, callback) {
         callback(null, true);
     }
     /**
-     * Null call to the [[ILock.acquireLock acquireLock]] method.
+     * Acquiring a lock for a certain resource, identifiable by the lock's key.
      *
-     * @param correlationId     not used.
-     * @param key               not used.
-     * @param ttl               not used.
-     * @param timeout           not used.
-     * @param callback          will be called with <code>null<code>.
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param key               the key to identify the lock by.
+     * @param ttl               the lock's time-to-live.
+     * @param timeout           the acquisition's retry interval.
+     * @param callback          the function to call once the lock has been acquired. Will be called
+     *                          with an error if one is raised.
      */
     acquireLock(correlationId, key, ttl, timeout, callback) {
         callback(null);
     }
     /**
-     * Null call to the [[ILock.releaseLock releaseLock]] method.
+     * Releases the lock with the given key.
      *
      * @param correlationId     not used.
-     * @param key               not used.
-     * @param callback          if given - will be called with <code>null<code>.
+     * @param key               the key of the lock that is to be released.
+     * @param callback          (optional) the function to call once the lock has been released.
      */
     releaseLock(correlationId, key, callback) {
         if (callback)

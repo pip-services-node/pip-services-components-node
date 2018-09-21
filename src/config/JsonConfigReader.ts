@@ -41,7 +41,7 @@ export class JsonConfigReader extends FileConfigReader {
      * Reads the JSON data from the file and returns it as a parameterized nullable map. 
      * Reader's path must be set.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param parameters        used to parameterize the reader.
      * @returns                 NullableMap with data from the JSON file.
      * 
@@ -72,7 +72,7 @@ export class JsonConfigReader extends FileConfigReader {
      * Reads the JSON data from the file and returns it as a parameterized ConfigParams object. 
      * Reader's path must be set.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param parameters        used to parameterize the reader.
      * @param callback          callback function that will be called with an error or with the
      *                          ConfigParams that were read.
@@ -94,7 +94,7 @@ export class JsonConfigReader extends FileConfigReader {
     /**
      * Static implementation of JsonConfigReader's non-static [[readObject]].
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param path              location of the target JSON file.
      * @param parameters        used to parameterize the reader.
      * 
@@ -107,7 +107,7 @@ export class JsonConfigReader extends FileConfigReader {
     /**
      * Static implementation of JsonConfigReader's non-static [[readConfig]].
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param path              location of the target JSON file.
      * @param parameters        used to parameterize the reader.
      * @returns the ConfigParams that were read from the file.

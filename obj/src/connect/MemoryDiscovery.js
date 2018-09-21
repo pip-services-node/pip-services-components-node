@@ -39,7 +39,7 @@ class MemoryDiscovery {
      *
      * @see [[configure]]
      * @see [[register]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     constructor(config = null) {
         this._items = [];
@@ -47,13 +47,14 @@ class MemoryDiscovery {
             this.configure(config);
     }
     /**
-     * Configures this object by calling [[readConnections]]. Used to set the discovery service's static registery.
+     * Configures this object by calling [[readConnections]] and setting the connections that were read.
+     * Used to set the discovery service's static registery.
      *
-     * @param config    ConfigParams to configure this object with.
+     * @param config    ConfigParams that contain connection information.
      *
      * @see [[readConnections]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
      */
     configure(config) {
         this.readConnections(config);
@@ -62,9 +63,9 @@ class MemoryDiscovery {
      * Parses the connections passed as ConfigParams into this object's registry, which is used for
      * static discovery. The registry's keys will be identical to the ConfigParams' keys.
      *
-     * @param connections   ConfigParams containing connection information.
+     * @param connections   ConfigParams that contain connection information.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     readConnections(connections) {
         this._items = [];
@@ -81,7 +82,7 @@ class MemoryDiscovery {
     /**
      * Registers a connection to an end-point, using the key provided. Used for dynamic discovery.
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param key               key to register the connection by.
      * @param connection        ConnectionParams for the given connection.
      * @param callback          callback function that will be called with an error or with the
@@ -98,7 +99,7 @@ class MemoryDiscovery {
     /**
      * Resolves and returns a connection (the first one found) to the end-point that is registered by the given key.
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param key               the key to search for a connection by.
      * @param callback          callback function that will be called with an error or with the
      *                          ConnectionParams that were found.
@@ -117,7 +118,7 @@ class MemoryDiscovery {
     /**
      * Resolves and returns all connections to the end-point that is registered by the given key.
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param key               the connection's key to search for.
      * @param callback          callback function that will be called with an error or with the
      *                          list of ConnectionParams that were found.

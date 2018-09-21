@@ -2,6 +2,18 @@
 import { LogLevel } from './LogLevel';
 /**
  * Interface for creating classes that can log messages of various log levels.
+ *
+ * ### Example ###
+ *
+ * Example implementation of the ILogger interface:
+ *
+ *     export class MyLogger implements ILogger {
+ *         public log(level: LogLevel, correlationId: string, error: Error, message: string,
+ *             ...args: any[]) : void {...}
+ *         public fatal(correlationId: string, error: Error, message: string,
+ *             ...args: any[]) : void {...}
+ *         ...
+ *     }
  */
 export interface ILogger {
     /**
@@ -27,7 +39,7 @@ export interface ILogger {
      * given [[LogLevel]] and parameters.
      *
      * @param level             the LogLevel to use.
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param error             the Error to include in the log entry.
      * @param message           the message to log.
      * @param args              the arguments to add to the log entry.
@@ -39,7 +51,8 @@ export interface ILogger {
      * Abstract method that will contain the logic for logging a message using the
      * [[LogLevel.Fatal fatal log level]].
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param error             the Error to include in the log entry.
      * @param message           the message to log as a fatal message.
      * @param args              the arguments to add to the log entry.
      *
@@ -50,7 +63,8 @@ export interface ILogger {
      * Abstract method that will contain the logic for logging a message using the
      * [[LogLevel.Error error log level]].
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param error             the Error to include in the log entry.
      * @param message           the message to log as an error.
      * @param args              the arguments to add to the log entry.
      *
@@ -61,7 +75,7 @@ export interface ILogger {
      * Abstract method that will contain the logic for logging a message using the
      * [[LogLevel.Warn warn log level]].
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param message           the message to log as a warning.
      * @param args              the arguments to add to the log entry.
      *
@@ -72,7 +86,7 @@ export interface ILogger {
      * Abstract method that will contain the logic for logging a message using the
      * [[LogLevel.Info info log level]].
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param message           the message to log as an informational message.
      * @param args              the arguments to add to the log entry.
      *
@@ -83,7 +97,7 @@ export interface ILogger {
      * Abstract method that will contain the logic for logging a message using the
      * [[LogLevel.Debug debug log level]].
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param message           the message to log as a debug message.
      * @param args              the arguments to add to the log entry.
      *
@@ -94,7 +108,7 @@ export interface ILogger {
      * Abstract method that will contain the logic for logging a message using the
      * [[LogLevel.Trace trace log level]].
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param message           the message to log as a trace message.
      * @param args              the arguments to add to the log entry.
      *

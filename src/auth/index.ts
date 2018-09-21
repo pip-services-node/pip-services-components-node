@@ -1,6 +1,9 @@
 /** 
  * @module auth 
  * @preferred
+ * 
+ * Todo: Rewrite this description
+ * 
  * Contains credentials implementation. 
  * 
  * Credentials – passwords, logins, application keys, secrets. This information is usually linked with connection parameters. 

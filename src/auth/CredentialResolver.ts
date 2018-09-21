@@ -11,59 +11,56 @@ import { CredentialParams } from './CredentialParams';
 import { ICredentialStore } from './ICredentialStore';
 
 /**
- * Helper class that stores credential parameters ([[CredentialParams]]) and is capable of acquiring parameters 
- * from various credential stores.
+ * Helper class to retrieve component credentials.
+ * 
+ * If credentials are configured to be retrieved from [[CredentialStore]],
+ * it automatically locates [[CredentialStore]] in component references
+ * and retrieve credentials from there using store_key parameter.
  * 
  * ### Configuration parameters ###
  * 
- * Parameters to pass to the [[configure]] method for component configuration:
+ * - credential:    
+ *   - store_key:                   (optional) a key to retrieve the credentials from [[CredentialStore]]
+ *   - ...                          other credential parameters
  * 
- * - __"credential(s)"__
- *     - "credential.username" - the username to use for authentication;
- *     - "credential.password" - the user's password;
- *     - "credential.store_key" - the key to use in the credential store;
- *     - "credential.access_id" - the access ID to use;
- *     - "credential.access_key" - the access key to use;
+ * - credentials:                   alternative to credential
+ *   - [credential params 1]:       first credential parameters
+ *     - ...
+ *   - [credential params N]:       Nth credential parameters
+ *     - ...
  * 
  * ### References ###
  * 
- * A credential store can be referenced by passing the following reference
- * to the object's [[setReferences]] method:
- * 
- * - <code>"\*:credential-store:\*:\*:1.0"</code>
+ * - *:credential-store:*:*:1.0     (optional) Credential stores
  * 
  * @see [[CredentialParams]]
  * @see [[ICredentialStore]]
  * 
  * ### Example ###
  * 
- * Example CredentialResolver object usage:
+ * let config = ConfigParams.fromTuples(
+ *      "credential.user", "jdoe",
+ *      "credential.pass",  "pass123"
+ * );
  * 
- *     public MyMethod() {
- *         let config = ConfigParams.fromTuples(
- *             "credential.username", "name",
- *             "credential.password", "password",
- *             "credential.access_key", "access key",
- *             "credential.store_key", "store key"
- *         );
- *         
- *         let credentialResolver = new CredentialResolver(config);
- *         ...
- *         
- *         CredentialParams credential = credentialResolver.lookup("correlationId");
- *         ...
- *     }   
+ * let credentialResolver = new CredentialResolver();
+ * credentialResolver.configure(config);
+ * credentialResolver.setReferences(references);
+ * 
+ * credentialResolver.lookup("123", (err, credential) => {
+ *      // Now use credential...
+ * });
+ * 
  */
 export class CredentialResolver {
     private readonly _credentials: CredentialParams[] = [];
     private _references: IReferences = null;
 
     /**
-     * @param config        ConfigParams (credentials) to configure this object with.
-     * @param references    references to the credential stores that should be used by this CredentialResolver.
+     * Creates a new instance of credentials resolver and sets its values.
      * 
-     * @see [[configure]]
-     * @see [[setReferences]]
+     * @param config        (optional) component configuration parameters
+     * @param references    (optional) component references
      */
     public constructor(config: ConfigParams = null, references: IReferences = null) {
         if (config != null) this.configure(config);
@@ -71,37 +68,18 @@ export class CredentialResolver {
     }
 
     /**
-     * Sets a reference to this CredentialResolver's credential store.
-     * 
-     * __References:__
-     * - <code>"\*:credential-store:\*:\*:1.0"</code>
-     * 
-     * @param references    an IReferences object, containing the credential store reference to set.
-     * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
+	 * Sets references to dependent components.
+	 * 
+	 * @param references 	references to locate the component dependencies. 
      */
     public setReferences(references: IReferences): void {
         this._references = references;
     }
 
     /**
-     * Configures this object by parsing the "credential(s)" section of the passed ConfigParams 
-     * into a list of CredentialParams and adding them to this CredentialResolver's list of credentials.
+     * Configures object by passing configuration parameters.
      * 
-     * __Credential parameters:__
-     * - __"credential(s)"__
-     *     - "credential.username" - the username to use for authentication;
-     *     - "credential.password" - the user's password;
-     *     - "credential.store_key" - the key to use in the credential store;
-     *     - "credential.access_id" - the access ID to use;
-     *     - "credential.access_key" - the access key to use;
-     * 
-     * @param config    the "credential(s)" to add to this CredentialResolver's list of credentials.
-     * 
-     * @see [[CredentialParams.manyFromConfig]]
-     * @see [[CredentialParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipService's "Commons" package)
+     * @param config    configuration parameters to be set.
      */
     public configure(config: ConfigParams): void {
         let credentials: CredentialParams[] = CredentialParams.manyFromConfig(config);
@@ -109,34 +87,33 @@ export class CredentialResolver {
     }
 
     /**
-     * @returns a list of all credentials that are stored in this CredentialResolver.
+     * Gets all credentials configured in component configuration.
+     * 
+     * Redirect to CredentialStores is not done at this point.
+     * If you need fully fleshed credential use [[lookup]] method instead.
+     * 
+     * @returns a list credential parameters
      */
     public getAll(): CredentialParams[] {
         return this._credentials;
     }
 
     /**
-     * Adds a new credential to this CredentialResolver's list of credentials.
+     * Adds a new credential to component credentials
      * 
-     * @param credential    [[CredentialParams]] for the credential that is to be added.
-     * 
-     * @see [[CredentialParams]]
+     * @param credential    new credential parameters to be added
      */
     public add(credential: CredentialParams): void {
         this._credentials.push(credential);
     }
 
     /**
-     * Looks up a credential for a given connection using the 'credential' parameter's 
-     * store key in the credential stores referenced.
+     * Looks up a credential in CredentialStores is store_key is set.
+     * If store_key is null, it returnes credential parameters "as is".
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
-     * @param credential        CredentialParams that contain a store key, which will be used for 
-     *                          looking up credentials.
-     * @param callback          callback function that will be called with an error or with the 
-     *                          first CredentialParams found. Null will be returned if the credential
-     *                          does not have a key, or there are no references set.
-     * @throws a ReferenceException if no valid "credential-store" services are referenced.
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param credential        credential parameters to lookup
+     * @param callback 			callback function that receives resolved credential parameters or error.
      */
     public lookupInStores(correlationId: string, credential: CredentialParams, 
         callback: (err: any, result: CredentialParams) => void): void {
@@ -183,15 +160,11 @@ export class CredentialResolver {
     }
 
     /**
-     * Looks up a credential in this CredentialResolver using its list of credentials ([[CredentialParams]]) 
-     * and the credential stores ([[ICredentialStore]]) referenced.
+     * Looks up component credential parameters. If credentials are configured to be retrieved
+     * from CredentialStore it finds a CredentialStore and lookups credentials there.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
-     * @param callback          callback function that will be called with an error or with the 
-     *                          return value. Returns: the first credential found that does not 
-     *                          need to be looked up in a credential store or the first credential 
-     *                          successfully looked up in a credential store. Returns null 
-     *                          if no credentials were found.
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param callback 			callback function that receives resolved credential parameters or error.
      */
     public lookup(correlationId: string, callback: (err: any, result: CredentialParams) => void): void {
 

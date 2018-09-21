@@ -7,6 +7,17 @@ import { LogMessage } from './LogMessage';
  * Abstract class that can be used to create loggers that
  * write [[LogMessage log messages]] to the cache.
  *
+ * ### Configuration parameters ###
+ *
+ * Parameters to pass to the [[configure]] method for component configuration:
+ *
+ * - "level" - the [[LogLevel]] to set (default is LogLevel.Info);
+ * - "source" - the logger's source;
+ * - __"options"__
+ *     - "options.interval" - the interval of time after which the cache should be dumped to
+ * memory (default is 10000).
+ *     - "options.max_cache_size" - the cache's maximum size limit (default is 100).
+ *
  * @see [[Logger]]
  * @see [[LogMessage]]
  */
@@ -26,7 +37,7 @@ export declare abstract class CachedLogger extends Logger {
      * source, respectively.
      *
      * @param level             the [[LogLevel]] of the log entry.
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param ex                the Exception (Error) to include in the log entry.
      * @param message           the message to log.
      *
@@ -44,16 +55,21 @@ export declare abstract class CachedLogger extends Logger {
      */
     protected abstract save(messages: LogMessage[], callback: (err: any) => void): void;
     /**
-     * Configures this object using the parameters provided. Calls Logger's [[Logger.configure configure]]
-     * and additionally looks for parameters with the keys "options.interval" and "options.max_cache_size".
-     * If they are found, then they will be set for this object. Otherwise, the corresponding values will
-     * default to the values that were previously set for this object.
+     * Configures this object using the parameters provided. Looks for parameters with the
+     * keys "level" and "source" and sets them for this object. If a key is not found,
+     * the corresponding value will default to the value that was previously set for this object.
      *
-     * @param config    ConfigParams, containing "options.interval" and/or
-     *                  "options.max_cache_size" items.
+     * __Configuration parameters:__
+     * - "level" - the [[LogLevel]] to set (default is LogLevel.Info);
+     * - "source" - the logger's source;
+     * - __"options"__
+     *     - "options.interval" - the interval of time after which the cache should be dumped to
+     * memory (default is 10000).
+     *     - "options.max_cache_size" - the cache's maximum size limit (default is 100).
      *
-     * @see [[Logger.configure]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @param config    the ConfigParams to configure this object with.
+     *
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     configure(config: ConfigParams): void;
     /**

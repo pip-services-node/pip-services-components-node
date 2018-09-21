@@ -2,20 +2,33 @@
 import { Timing } from './Timing';
 /**
  * Interface for creating classes that work with counters.
+ *
+ * ### Example ###
+ *
+ * Example implementation of the ICounters interface:
+ *
+ *      export class MyCounters implements ICounters {
+ *          public beginTiming(name: string) : Timing {...}
+ *          public stats(name: string, value: number) : void {...}
+ *          ...
+ *      }
  */
 export interface ICounters {
     /**
-     * Abstract method that will contain the logic necessary for
-     * starting a [[Timing]].
+     * Abstract method that will contain the logic for
+     * creating a new [[Timing]] callback object.
      *
-     * @param name 	the name of the event that is to be timed.
+     * @param name 	the name of the Interval Counter, for which a Timing is to be created.
+     * @returns the Timing callback object that was created.
      *
-     * @returns the Timing object that was started.
+     * @see [[Timing]]
+     * @see [[ITimingCallback.endTiming]]
+     * @see [[CounterType.Interval]]
      */
     beginTiming(name: string): Timing;
     /**
      * Abstract method that will contain the logic for updating a
-     * [[CounterType.Statistics Statistics]] counter.
+     * [[CounterType.Statistics Statistics Counter]].
      *
      * @param name 		the name of the counter to update.
      * @param value		the value to update the counter with.

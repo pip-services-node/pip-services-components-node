@@ -10,9 +10,31 @@ import { CredentialParams } from './CredentialParams';
 import { ICredentialStore } from './ICredentialStore';
 
 /**
- * Credential store (see [[ICredentialStore]]) that maintains its registry of credentials ([[CredentialParams]]) 
- * in memory. 
+ * Credential store that keeps credentials in memory.
  * 
+ * ### Configuration parameters ###
+ * 
+ * - [credential key 1]:            
+ *   - ...                          credential parameters for key 1
+ * - [credential key 2]:            
+ *   - ...                          credential parameters for key N
+ * 
+ * ### Example ###
+ * 
+ * let config = ConfigParams.fromTuples(
+ *      "key1.user", "jdoe",
+ *      "key1.pass", "pass123",
+ *      "key2.user", "bsmith",
+ *      "key2.pass", "mypass"
+ * );
+ *
+ * let credentialStore = new MemoryCredentialStore();
+ * credentialStore.readCredentials(config);
+ * 
+ * credentialStore.lookup("123", "key1", (err, credential) => {
+ *      // Result: user=jdoe;pass=pass123
+ * });
+ *  
  * @see [[ICredentialStore]]
  * @see [[CredentialParams]]
  */
@@ -20,15 +42,9 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
     private readonly _items: StringValueMap = new StringValueMap();
 
     /**
-     * Creates a MemoryCredentialStore object and configures it using the given ConfigParams. If no 
-     * ConfigParams are given, then the object must be configured using the [[configure]] method, 
-     * or credentials must be stored using the [[store]] method.
+     * Creates a new instance of the credential store.
      * 
-     * @param config    ConfigParams to configure the new object with.
-     * 
-     * @see [[configure]]
-     * @see [[store]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @param config    (optional) configuration with credential parameters.
      */
     public constructor(config: ConfigParams = null) {
         if (config != null)
@@ -36,45 +52,40 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
     }
 
     /**
-     * Configures this object by calling [[readCredentials]]. Used to set the store's registery of credentials.
+     * Configures object by passing configuration parameters.
      * 
-     * @param config    ConfigParams to configure this object with.
-     * 
-     * @see [[readCredentials]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
+     * @param config    configuration parameters to be set.
      */
     public configure(config: ConfigParams): void {
         this.readCredentials(config);
     }
 
     /**
-     * Parses the credentials passed as ConfigParams into this object's store, which is used for
-     * looking up credentials. The store's keys will be identical to the ConfigParams' keys.
+     * Reads credentials from configuration parameters.
+     * Each section represents an individual CredentialParams
      * 
-     * @param credentials   ConfigParams containing credential information.
-     * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @param config   configuration parameters to be read
      */
-    public readCredentials(credentials: ConfigParams) {
+    public readCredentials(config: ConfigParams) {
         this._items.clear();
-        let keys = credentials.getKeys();
+        let keys = config.getKeys();
         for (let index = 0; index < keys.length; index++) {
             let key = keys[index];
-            let value = credentials.getAsNullableString(key);
+            let value = config.getAsNullableString(key);
             this._items.put(key, CredentialParams.fromTuplesArray([key, value]));
         }
     }
 
     /**
-     * Stores credentials for a certain connection, using the key provided. 
-     * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
-     * @param key               key to register the credential by.
-     * @param credential        CredentialParams for the given credential.
-     * @param callback          callback function that will be called with an error (if one is raised).
+     * Stores credential parameters into the store.
+     *
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param key               a key to uniquely identify the credential parameters.
+     * @param credential        a credential parameters to be stored.
+     * @param callback 			callback function that receives an error or null for success.
      */
-    public store(correlationId: string, key: string, credential: CredentialParams, callback: (err: any) => void): void {
+    public store(correlationId: string, key: string, credential: CredentialParams,
+        callback: (err: any) => void): void {
         if (credential != null)
             this._items.put(key, credential);
         else
@@ -84,14 +95,14 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
     }
 
     /**
-     * Looks up and returns the credentials (the first ones found) for the connection that is registered by the given key.
+     * Lookups credential parameters by its key.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
-     * @param key               the key to search for a credential by.
-     * @param callback          callback function that will be called with an error or with the 
-     *                          CredentialParams that were found.
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param key               a key to uniquely identify the credential parameters.
+     * @param callback          callback function that receives found credential parameters or error.
      */
-    public lookup(correlationId: string, key: string, callback: (err: any, result: CredentialParams) => void): void {
+    public lookup(correlationId: string, key: string,
+        callback: (err: any, result: CredentialParams) => void): void {
         let credential: any = this._items.getAsObject(key);
         callback(null, <CredentialParams>credential);
     }

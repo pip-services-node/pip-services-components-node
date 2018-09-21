@@ -10,9 +10,33 @@ const LogLevelConverter_1 = require("./LogLevelConverter");
  * Abstract class for creating loggers that are configurable, have a source (reference a context), and
  * are capable of logging messages of various [[LogLevel log levels]].
  *
+ * ### Configuration parameters ###
+ *
+ * Parameters to pass to the [[configure]] method for component configuration:
+ *
+ * - "level" - the [[LogLevel]] to set (default is LogLevel.Info);
+ * - "source" - the logger's source.
+ *
+ * ### References ###
+ *
+ * A context can be referenced by passing the following reference
+ * to the object's [[setReferences]] method:
+ *
+ * - context: <code>"\*:context-info:\*:\*:1.0"</code>;
+ *
  * @see [[ILogger]]
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferenceable.html IReferenceable]]
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.ireconfigurable.html IReconfigurable]]
+ *
+ * ### Example ###
+ *
+ * Example usage:
+ *
+ *     public MyMethod() {
+ *         let logger = new Logger();
+ *         logger.log(LogLevel.Error, "123", null, "error...");
+ *         ...
+ *     }
  */
 class Logger {
     /**
@@ -27,22 +51,36 @@ class Logger {
      * keys "level" and "source" and sets them for this object. If a key is not found,
      * the corresponding value will default to the value that was previously set for this object.
      *
+     * __Configuration parameters:__
+     * - "level" - the [[LogLevel]] to set (default is LogLevel.Info);
+     * - "source" - the logger's source.
+     *
      * @param config    ConfigParams, containing "level" and/or "source" items.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     configure(config) {
         this._level = LogLevelConverter_1.LogLevelConverter.toLogLevel(config.getAsObject("level"), this._level);
         this._source = config.getAsStringWithDefault("source", this._source);
     }
     /**
-     * Retrieves a "context-info" reference from the passed references and, if source
-     * has not already been set, sets the context-info as this object's source.
+     * Retrieves a context-info reference from the passed references and, if this object's
+     * <code>source</code> has not already been set, sets the context-info as this object's source.
      *
-     * @param references    the "context-info" reference to set.
+     * @param references    an IReferences object, containing the "context-info" reference to set.
      *
      * @see [[ContextInfo]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package.)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
+     */
+    /**
+     * Sets a reference to this logger's source (context).
+     *
+     * __References:__
+     * - context: <code>"\*:context-info:\*:\*:1.0"</code>;
+     *
+     * @param references    an IReferences object, containing a reference to a context.
+     *
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     setReferences(references) {
         let contextInfo = references.getOneOptional(new pip_services_commons_node_1.Descriptor("pip-services", "context-info", "*", "*", "1.0"));
@@ -91,7 +129,7 @@ class Logger {
      * using the provided arguments and calls [[write]] with the newly formatted string.
      *
      * @param level             the LogLevel to use.
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param error             the Error to include in the log entry for fatal and error logs.
      * @param message           the message to log or the format string to use for formatting.
      * @param args              the arguments to format <code>message</code> with.
@@ -114,7 +152,7 @@ class Logger {
      * method.
      *
      * @param level             the LogLevel to use.
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param error             the Error to include in the log entry for fatal and error logs.
      * @param message           the message to log or the format string to use for formatting.
      * @param args              the arguments to format <code>message</code> with if it is a format string.
@@ -128,7 +166,7 @@ class Logger {
      * Logs a message using the [[LogLevel.Fatal fatal]] log level. Calls this class's [[formatAndWrite]]
      * method with level set to [[LogLevel.Fatal]].
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param error             the Error to include in the log entry.
      * @param message           the message to log as fatal or the format string to use for formatting.
      * @param args              the arguments to format <code>message</code> with if it is a format string.
@@ -143,7 +181,7 @@ class Logger {
      * Logs a message using the [[LogLevel.Error error]] log level. Calls this class's [[formatAndWrite]]
      * method with level set to [[LogLevel.Error]].
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param error             the Error to include in the log entry.
      * @param message           the message to log as error or the format string to use for formatting.
      * @param args              the arguments to format <code>message</code> with if it is a format string.
@@ -158,7 +196,7 @@ class Logger {
      * Logs a message using the [[LogLevel.Warn warn]] log level. Calls this class's [[formatAndWrite]]
      * method with level set to [[LogLevel.Warn]].
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param message           the message to log as warn or the format string to use for formatting.
      * @param args              the arguments to format <code>message</code> with if it is a format string.
      *
@@ -172,7 +210,7 @@ class Logger {
      * Logs a message using the [[LogLevel.Info info]] log level. Calls this class's [[formatAndWrite]]
      * method with level set to [[LogLevel.Info]].
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param message           the message to log as info or the format string to use for formatting.
      * @param args              the arguments to format <code>message</code> with if it is a format string.
      *
@@ -186,7 +224,7 @@ class Logger {
      * Logs a message using the [[LogLevel.Debug debug]] log level. Calls this class's [[formatAndWrite]]
      * method with level set to [[LogLevel.Debug]].
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param message           the message to log as debug or the format string to use for formatting.
      * @param args              the arguments to format <code>message</code> with if it is a format string.
      *
@@ -200,7 +238,7 @@ class Logger {
      * Logs a message using the [[LogLevel.Trace trace]] log level. Calls this class's [[formatAndWrite]]
      * method with level set to [[LogLevel.Trace]].
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param message           the message to log as trace or the format string to use for formatting.
      * @param args              the arguments to format <code>message</code> with if it is a format string.
      *

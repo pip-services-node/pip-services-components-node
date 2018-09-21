@@ -4,7 +4,15 @@ import { IReferences } from 'pip-services-commons-node';
 import { Counter } from './Counter';
 import { CachedCounters } from './CachedCounters';
 /**
- * Helper class for working with [[Counter Counters]] and logging them.
+ * Adds logging functionality to the [[CachedCounters]] class.
+ *
+ * ### References ###
+ *
+ * Loggers, along with their context, can be referenced by passing the following references
+ * to the object's [[setReferences]] method:
+ *
+ * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>
+ * - Context (source): <code>"\*:context-info:\*:\*:1.0"</code>.
  *
  * @see [[Counter]]
  * @see [[CachedCounters]]
@@ -13,23 +21,28 @@ import { CachedCounters } from './CachedCounters';
 export declare class LogCounters extends CachedCounters implements IReferenceable {
     private readonly _logger;
     /**
-     * Creates a new LogCounters object, which can be used for logging CachedCounters.
+     * Creates a new LogCounters object, which can be used for logging
+     * [[CachedCounters counters]].
      */
     LogCounters(): void;
     /**
-     * Sets this object's [[CompositeLogger logger's]] references using
-     * [[CompositeLogger.setReferences]].
+     * Adds all logger references to this object's [[CompositeLogger]] and sets its context.
      *
-     * @param references    the references to set in the logger.
+     * __References:__
+     * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>;
+     * - Context (source): <code>"\*:context-info:\*:\*:1.0"</code>.
      *
-     * @see [[CompositeLogger]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package.)
+     * @param references    an IReferences object, containing references to a context and to
+     *                      the loggers that are to be added.
+     *
+     * @see [[CompositeLogger.setReferences]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     setReferences(references: IReferences): void;
     private counterToString;
     /**
-     * Sorts the passed counters and passes them to the logger's
-     * [[CompositeLogger.info info]] method.
+     * Sorts the passed counters by their names and logs them using
+     * the [[LogLevel.Info info]] log level.
      *
      * @param counters      the counters to log.
      *

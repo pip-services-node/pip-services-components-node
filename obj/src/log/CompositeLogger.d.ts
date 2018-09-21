@@ -7,7 +7,29 @@ import { LogLevel } from './LogLevel';
  * Helper class for grouping multiple [[ILogger loggers]] together and writing to all
  * of them at once using a single method call.
  *
+ * ### References ###
+ *
+ * Loggers and a context can be referenced by passing the following references
+ * to the object's [[setReferences]] method:
+ *
+ * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>;
+ * - Context (source): <code>"\*:context-info:\*:\*:1.0"</code>.
+ *
  * @see [[ILogger]]
+ *
+ * ### Example ###
+ *
+ * CompositeLogger object creation and usage:
+ *
+ *      public MyMethod(references: IReferences) {
+ *          let logger = new CompositeLogger();
+ *          logger.setReferences(references);
+ *          ...
+ *
+ *          logger.info(...);
+ *          ...
+ *          logger.error(...);
+ *      }
  */
 export declare class CompositeLogger extends Logger implements IReferenceable {
     private readonly _loggers;
@@ -21,12 +43,16 @@ export declare class CompositeLogger extends Logger implements IReferenceable {
      */
     constructor(references?: IReferences);
     /**
-     * Retrieves all "logger" references from the passed references and adds them to this
-     * object's list of loggers.
+     * Set a context reference and adds all logger references to this object's list of loggers.
      *
-     * @param references    the "logger" references to set.
+     * __References:__
+     * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>;
+     * - Context (source): <code>"\*:context-info:\*:\*:1.0"</code>.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package.)
+     * @param references    an IReferences object, containing references to a context and to
+     *                      the loggers that are to be added.
+     *
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     setReferences(references: IReferences): void;
     /**
@@ -35,7 +61,7 @@ export declare class CompositeLogger extends Logger implements IReferenceable {
      * error, and message.
      *
      * @param level             the [[LogLevel]] of the log entry.
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param error             the Error to include in the log entry.
      * @param message           the message to log.
      *

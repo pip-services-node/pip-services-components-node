@@ -12,24 +12,58 @@ import { CompositeLogger } from './log/CompositeLogger';
 import { CompositeCounters } from './count/CompositeCounters';
 /**
  * The root package of pip-services-components.
+ *
+ * ### Configuration parameters ###
+ *
+ * Parameters to pass to the [[configure]] method for component configuration:
+ *
+ * - "level" - the component logger's [[LogLevel]] (default is LogLevel.Info);
+ * - "source" - the component logger's source.
+ * - "dependencies" - section that is used to configure this service's dependency resolver. Should contain
+ * locators to dependencies.
+ *
+ * ### References ###
+ *
+ * Loggers (along with their context) and counters can be referenced by passing the
+ * following references to the object's [[setReferences]] method:
+ *
+ * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>;
+ *     - Their context (source): <code>"\*:context-info:\*:\*:1.0"</code>;
+ * - Counters: <code>"\*:counters:\*:\*:1.0"</code>;
+ * - Other references that should be set in this object's dependency resolver.
  */
 export declare class Component implements IConfigurable, IReferenceable {
     protected _dependencyResolver: DependencyResolver;
     protected _logger: CompositeLogger;
     protected _counters: CompositeCounters;
     /**
-     * Uses the configuration parameters passed to configure the dependency resolver and logger.
+     * Configures this component using the parameters provided.
      *
-     * @param config    the configuration parameters to use for configuration.
+     * __Configuration parameters:__
+     * - "level" - the component logger's [[LogLevel]] (default is LogLevel.Info);
+     * - "source" - the component logger's source;
+     * - "dependencies" - section that is used to configure this service's dependency resolver. Should contain
+     * locators to dependencies.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @param config    the ConfigParams to use for component configuration.
+     *
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     configure(config: ConfigParams): void;
     /**
-     * Uses the 'references' passed to set the dependency resolver's, logger's, and
-     * counters' references.
+     * Sets references to this component's loggers (along their context), counters, and adds
+     * references to this object's dependency resolver.
      *
-     * @param references    the references to set.
+     * __References:__
+     * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>;
+     *     - Their context (source): <code>"\*:context-info:\*:\*:1.0"</code>;
+     * - Counters: <code>"\*:counters:\*:\*:1.0"</code>;
+     * - Other references that should be set in this object's dependency resolver.
+     *
+     * @param references    an IReferences object, containing references to a logger, a context,
+     *                      counters, and the references to set in the dependency resolver.
+     *
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     setReferences(references: IReferences): void;
 }

@@ -14,54 +14,77 @@ class NullCounters {
      */
     NullCounters() { }
     /**
-     * Dummy call to the [[ICounters.beginTiming beginTiming]] method.
+     * Creates a new [[Timing]] callback object, which will call an ITimingCallback's
+     * [[ITimingCallback.endTiming endTiming]] method once it receives the command to
+     * [[Timing.endTiming stop timing]].
      *
-     * @param name 	not used.
-     * @returns a new Timing, created using the default constructor.
+     * @param name  the name of the Interval Counter, for which a Timing is to be created.
+     * @returns the Timing callback object that was created.
      *
      * @see [[Timing]]
+     * @see [[ITimingCallback]]
+     * @see [[CounterType.Interval]]
      */
     beginTiming(name) {
         return new Timing_1.Timing();
     }
     /**
-     * Null call to the [[ICounters.stats stats]] method.
+     * Adds the given value to the named [[CounterType.Statistics Statistics Counter]]
+     * and recalculates its statistics, taking into account the new value.
      *
-     * @param name 		not used.
-     * @param value 	not used.
+     * @param name 		the name of the counter to update.
+     * @param value		the value to update the counter with.
+     *
+     * @see [[CounterType]]
      */
     stats(name, value) { }
     /**
-     * Null call to the [[ICounters.last last]] method.
+     * Updates the named [[CounterType.LastValue Last Counter]] by setting
+     * its last value to the value given.
      *
-     * @param name 		not used.
-     * @param value 	not used.
+     * @param name 		the name of the counter to update.
+     * @param value		the value to update the counter with.
+     *
+     * @see [[CounterType]]
      */
     last(name, value) { }
     /**
-     * Null call to the [[ICounters.timestampNow timestampNow]] method.
+     * Updates the named [[CounterType.Timestamp Timestamp Counter's]] time to
+     * the current time.
      *
-     * @param name 		not used.
+     * @param name 		the name of the counter to update.
+     *
+     * @see [[CounterType]]
+     * @see [[timestamp]]
      */
     timestampNow(name) { }
     /**
-     * Null call to the [[ICounters.timestamp timestamp]] method.
+     * Updates the named [[CounterType.Timestamp Timestamp Counter's]] time to
+     * the time given.
      *
-     * @param name 		not used.
-     * @param value 	not used.
+     * @param name 		the name of the counter to update.
+     * @param value		the timestamp to update the counter to.
+     *
+     * @see [[CounterType]]
      */
     timestamp(name, value) { }
     /**
-     * Null call to the [[ICounters.incrementOne incrementOne]] method.
+     * Incrementes the named [[CounterType.Increment Incremental Counter]] by 1.
      *
-     * @param name 		not used.
+     * @param name 		the name of the counter to increment.
+     *
+     * @see [[CounterType]]
+     * @see [[increment]]
      */
     incrementOne(name) { }
     /**
-     * Null call to the [[ICounters.increment increment]] method.
+     * Increments the named [[CounterType.Increment Incremental Counter]] by the
+     * given value.
      *
-     * @param name 		not used.
-     * @param value 	not used.
+     * @param name 		the name of the counter to increment.
+     * @param value		the value to increment the counter by.
+     *
+     * @see [[CounterType]]
      */
     increment(name, value) { }
 }

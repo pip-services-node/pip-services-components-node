@@ -1,125 +1,156 @@
 /** @module auth */
 import { ConfigParams } from 'pip-services-commons-node';
 /**
- * Used for storing various credentials, such as passwords, logins, application keys, and secrets.
- * This information is usually linked with connection parameters (see [[ConnectionParams]] for more info).
- * Connection parameters and authentication parameters are separated, due to the fact that credentials need to
- * be saved as secrects with added security and protection.
+ * Contains credentials to authenticate against external services.
+ * They are used together with connection parameters, but usually stored
+ * in a separate store, protected from unauthorized access.
  *
- * If a service needs to authenticate itself on a certain connection, then the username, password,
- * and other parameters can be set using a CredentialParams object. Relevant helper classes
- * (like [[CredentialResolver]]) can be used to acquiring these parameters and discover objects
- * or components that store and retrieve credential parameters (credential stores - see [[ICredentialStore]]).
+ * ### Configuration parameters ###
+ * - store_key:     key to retrieve parameters from credential store
+ * - username:      user name
+ * - user:          alternative to username
+ * - password:      user password
+ * - pass:          alternative to password
+ * - access_id:     application access id
+ * - client_id:     alternative to access_id
+ * - access_key:    application secret key
+ * - client_key:    alternative to access_key
+ * - secret_key:    alternative to access_key
  *
+ * In addition to standard parameters Credentials may contain any number of custom parameters
+ *
+ * @see [[ConfigParams]]
  * @see [[ConnectionParams]]
  * @see [[CredentialResolver]]
  * @see [[ICredentialStore]]
+ *
+ * ### Example ###
+ *
+ * let credentials = CredentialParams.fromTuples(
+ *  "user", "jdoe",
+ *  "pass", "pass123",
+ *  "pin", "321"
+ * );
+ *
+ * let username = credentials.getUsername();    // Result: "jdoe"
+ * let password = credentials.getPassword();    // Result: "pass123"
+ * let pin = credentials.getAsNullableString(); // Result: 321
  */
 export declare class CredentialParams extends ConfigParams {
     /**
-     * Creates a new CredentialParams object from an array of tuples, a parameterized string
-     * (example: "username=ABC;password=123"), or from an object with credential parameters
-     * stored as properties.
+     * Creates a new ConfigParams and fills it with values.
      *
-     * @param values    credential parameters to store in this object. Defaults to null.
-     *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html#constructor ConfigParams' constructor]] (in the PipService's "Commons" Package)
+     * @param values 	(optional) an object to be converted into key-value pairs to initialize these credentials.
      */
     constructor(values?: any);
     /**
-     * @returns     whether or not these CredentialParams contain a key that can be
-     *              used in a credential store ("store_key" is not null?).
+     * Checks if these credential parameters shall be retrieved from [[CredentialStore]].
+     * The credential parameters are redirected to [[CredentialStore]] when store_key parameter is set.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @returns     true if credentials shall be retrieved from [[CredentialStore]]
+     *
+     * @see [[getStoreKey]]
      */
     useCredentialStore(): boolean;
     /**
-     * @returns     the key to use for getting credentials from a credential store.
+     * Gets the key to retrieve these credentials from [[CredentialStore]].
+     * If this key is null, than all parameters are already present.
+     *
+     * @returns     the store key to retrieve credentials.
      *
      * @see [[useCredentialStore]]
      */
     getStoreKey(): string;
     /**
-     * @param value     the key to use for getting credentials from a credential store.
+     * Sets the key to retrieve these parameters from [[CredentialStore]].
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @param value     a new key to retrieve credentials.
      */
     setStoreKey(value: string): void;
     /**
-     * @returns     the "username" (or "user") value stored in these CredentialParams.
+     * Gets the user name.
+     * The value can be stored in parameters "username" or "user".
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @returns     the user name.
      */
     getUsername(): string;
     /**
-     * @param value     the username to store in these CredentialParams.
+     * Sets the user name.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @param value     a new user name.
      */
     setUsername(value: string): void;
     /**
-     * @returns     the "password" (or "pass") value stored in these CredentialParams.
+     * Get the user password.
+     * The value can be stored in parameters "password" or "pass".
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @returns     the user password.
      */
     getPassword(): string;
     /**
-     * @param value     the password to store in these CredentialParams.
+     * Sets the user password.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @param value     a new user password.
      */
     setPassword(value: string): void;
     /**
-     * @returns     the "access_id" (or "client_id") value stored in these CredentialParams.
+     * Gets the application access id.
+     * The value can be stored in parameters "access_id" pr "client_id"
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @returns     the application access id.
      */
     getAccessId(): string;
     /**
-     * @param value     the access id to store in these CredentialParams.
+     * Sets the application access id.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @param value     a new application access id.
      */
     setAccessId(value: string): void;
     /**
-     * @returns     the "access_key" (or "client_key") value stored in these CredentialParams.
+     * Gets the application secret key.
+     * The value can be stored in parameters "access_key", "client_key" or "secret_key".
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @returns     the application secret key.
      */
     getAccessKey(): string;
     /**
-     * @param value     the access key to store in these CredentialParams.
+     * Sets the application secret key.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @param value     a new application secret key.
      */
     setAccessKey(value: string): void;
     /**
-     * Static method that creates a CredentialParams object from a parameterized string.
+     * Creates a new CredentialParams object filled with key-value pairs serialized as a string.
      *
-     * @param line 		credential parameters in the form of a parameterized string.
+     * @param line 		a string with serialized key-value pairs as "key1=value1;key2=value2;..."
      * 					Example: "Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z"
-     * @returns			generated CredentialParams.
-     *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#fromstring StringValueMap.fromString]] (in the PipService's "Commons" Package)
+     * @returns			a new CredentialParams object.
      */
     static fromString(line: string): CredentialParams;
     /**
-     * Static method that converts a ConfigParams object's "credential(s)" section into
-     * a list of CredentialParams.
+     * Creates a new CredentialParams object filled with provided key-value pairs called tuples.
+     * Tuples parameters contain a sequence of key1, value1, key2, value2, ... pairs.
      *
-     * @param config 	ConfigParams with a section named "credential(s)".
-     * @returns			generated list of CredentialParams.
+     * @param tuples	the tuples to fill a new CredentialParams object.
+     * @returns			a new CredentialParams object.
+     */
+    static fromTuples(...tuples: any[]): CredentialParams;
+    /**
+     * Retrieves all CredentialParams from configuration parameters
+     * from "credentials" section. If "credential" section is present instead,
+     * than it returns a list with only one CredentialParams.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" Package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html#getsection ConfigParams.getSection]]
+     * @param config 	a configuration parameters to retrieve credentials
+     * @returns			a list of retrieved CredentialParams
      */
     static manyFromConfig(config: ConfigParams): CredentialParams[];
     /**
-     * Static method that converts a ConfigParams object into a list of CredentialParams
-     * (using [[manyFromConfig]]) and returns the first one in the list.
+     * Retrieves a single CredentialParams from configuration parameters
+     * from "credential" section. If "credentials" section is present instead,
+     * then is returns only the first credential element.
      *
-     * @param config 	ConfigParams to convert into a credential parameters object.
-     * @returns			generated CredentialParams.
+     * @param config 	ConfigParams, containing a section named "credential(s)".
+     * @returns			the generated CredentialParams object.
      *
      * @see [[manyFromConfig]]
      */

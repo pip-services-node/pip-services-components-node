@@ -38,7 +38,7 @@ export abstract class Lock implements ILock, IReconfigurable {
      * Abstract method that will contain the logic for attempting to 
      * acquire a lock.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param key               the key to identify the lock by.
      * @param ttl               the lock's time-to-live.
      * @param callback          the function that will be called with the result of the attempt or 
@@ -52,7 +52,7 @@ export abstract class Lock implements ILock, IReconfigurable {
      * Abstract method that will contain the logic for releasing the lock 
      * with the given key.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param key               the key of the lock that is to be released.
      * @param callback          (optional) the function to call once the lock has been released. Will be called 
      *                          with an error if one is raised.
@@ -64,7 +64,7 @@ export abstract class Lock implements ILock, IReconfigurable {
     /**
      * Acquiring a lock for a certain resource, identifiable by the lock's key.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain.. 
+     * @param correlationId     (optional) transaction id to trace execution through call chain. 
      * @param key               the key to identify the lock by.
      * @param ttl               the lock's time-to-live.
      * @param timeout           the acquisition's retry interval.

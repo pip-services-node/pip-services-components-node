@@ -148,7 +148,7 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
      * provided level, correlation id, error, and message.
      * 
      * @param level             the LogLevel of the log entry.
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param error             the Error to include in the log entry.
      * @param message           the message to log.
      */
@@ -159,7 +159,7 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
      * using the provided arguments and calls [[write]] with the newly formatted string.
      * 
      * @param level             the LogLevel to use.
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param error             the Error to include in the log entry for fatal and error logs.
      * @param message           the message to log or the format string to use for formatting.
      * @param args              the arguments to format <code>message</code> with.
@@ -184,7 +184,7 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
      * method.
      * 
      * @param level             the LogLevel to use.
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param error             the Error to include in the log entry for fatal and error logs.
      * @param message           the message to log or the format string to use for formatting.
      * @param args              the arguments to format <code>message</code> with if it is a format string.
@@ -199,7 +199,7 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
      * Logs a message using the [[LogLevel.Fatal fatal]] log level. Calls this class's [[formatAndWrite]]
      * method with level set to [[LogLevel.Fatal]].
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param error             the Error to include in the log entry.
      * @param message           the message to log as fatal or the format string to use for formatting. 
      * @param args              the arguments to format <code>message</code> with if it is a format string.
@@ -215,7 +215,7 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
      * Logs a message using the [[LogLevel.Error error]] log level. Calls this class's [[formatAndWrite]]
      * method with level set to [[LogLevel.Error]].
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param error             the Error to include in the log entry.
      * @param message           the message to log as error or the format string to use for formatting. 
      * @param args              the arguments to format <code>message</code> with if it is a format string.
@@ -231,7 +231,7 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
      * Logs a message using the [[LogLevel.Warn warn]] log level. Calls this class's [[formatAndWrite]]
      * method with level set to [[LogLevel.Warn]].
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param message           the message to log as warn or the format string to use for formatting. 
      * @param args              the arguments to format <code>message</code> with if it is a format string.
      * 
@@ -246,7 +246,7 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
      * Logs a message using the [[LogLevel.Info info]] log level. Calls this class's [[formatAndWrite]]
      * method with level set to [[LogLevel.Info]].
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param message           the message to log as info or the format string to use for formatting. 
      * @param args              the arguments to format <code>message</code> with if it is a format string.
      * 
@@ -261,7 +261,7 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
      * Logs a message using the [[LogLevel.Debug debug]] log level. Calls this class's [[formatAndWrite]]
      * method with level set to [[LogLevel.Debug]].
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param message           the message to log as debug or the format string to use for formatting. 
      * @param args              the arguments to format <code>message</code> with if it is a format string.
      * 
@@ -276,7 +276,7 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
      * Logs a message using the [[LogLevel.Trace trace]] log level. Calls this class's [[formatAndWrite]]
      * method with level set to [[LogLevel.Trace]].
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param message           the message to log as trace or the format string to use for formatting. 
      * @param args              the arguments to format <code>message</code> with if it is a format string.
      * 

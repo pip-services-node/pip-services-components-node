@@ -2,9 +2,27 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const CacheEntry_1 = require("./CacheEntry");
 /**
- * Provides local in-memory cache support.
+ * Local in-memory cache that can be used for non-scalable deployments or testing.
+ *
+ * __Configuration parameters__:
+ * Parameters to pass to the [[configure]] method for component configuration:
+ *
+ * - "timeout" - cache entry's expiration timeout (deault is 60000);
+ * - "max_size" - the cache's maximum size (deault is 1000).
  *
  * @see [[ICache]]
+ *
+ * ### Example ###
+ *
+ * Storing data in a MemoryCache object:
+ *
+ *     public MyMethod() {
+ *         let cache = new MemoryCache();
+ *         ...
+ *
+ *         cache.store("correlationId", "Key", 1, 1, (err)=>{callback();});
+ *         ...
+ *     }
  */
 class MemoryCache {
     /**
@@ -18,15 +36,18 @@ class MemoryCache {
         this._maxSize = MemoryCache._defaultMaxSize;
     }
     /**
-     * Sets this object's 'timeout' and 'max_size' to the values that are
-     * set in the passed configuration parameters.
+     * Configures this object using the provided configuration parameters.
+     *
+     * __Configuration parameters__:
+     * - "timeout" - cache entry's expiration timeout (deault is 60000);
+     * - "max_size" - the cache's maximum size (deault is 1000).
      *
      * @param config the component's configuration parameters.
      * @throws  MicroserviceError when component is in illegal state
      *          or configuration validation fails.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
      */
     configure(config) {
         this._timeout = config.getAsLongWithDefault("timeout", this._timeout);
@@ -67,7 +88,7 @@ class MemoryCache {
      * or unique natural keys prefixed with the functional group (for example:
      * 'pip-services-storage:block-123').
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param key               unique key to locate the value by in the cache.
      * @param callback          callback function that will be called with an error or the retrieved value.
      *                          Returns <b>null</b> if the value was not found.
@@ -95,12 +116,13 @@ class MemoryCache {
         callback(null, entry.getValue());
     }
     /**
-     * Stores value identified by unique key in the cache.
+     * Stores a value, identified by its unique key, in the cache.
      * Cache entry's expiration timeout is configured in the component's options.
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param key               unique key to locate the value by in the cache.
-     * @param value             value to store.
+     * @param value             the value to store.
+     * @param timeout           expiration timeout for the cache entry.
      * @param callback          callback function that will be called with an error or the stored value.
      */
     store(correlationId, key, value, timeout, callback) {
@@ -142,7 +164,7 @@ class MemoryCache {
     /**
      * Removes a value from the cache using its key.
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param key               unique key to locate the value by in the cache.
      * @param callback          callback function that will be called with an error or success.
      */

@@ -7,9 +7,37 @@ import { ITimingCallback } from './ITimingCallback';
 import { CounterType } from './CounterType';
 import { Counter } from './Counter';
 /**
- * Helper class for working with [[Counter Counters]] and caching them.
+ * Abstract class for working with various cached [[Counter Counters]].
+ *
+ * Can be configured by passing ConfigParams, containing "interval" and/or "reset_timeout"
+ * items, to the [[configure]] method. Interval defines the update interval (used to dump
+ * the cache to memory at regular intervals), and reset timeout defines when the cache should
+ * be reset.
+ *
+ * ### Configuration parameters ###
+ *
+ * Parameters to pass to the [[configure]] method for component configuration:
+ *
+ * - "interval" - the interval of time after which the cache should be dumped to memory (default
+ * is 300000);
+ * - "reset_timeout" - the timeout for resetting the cache (default is 0, which turn off resetting).
  *
  * @see [[Counter]]
+ *
+ * ### Example ###
+ *
+ * Example CachedCounters object usage:
+ *
+ *      public MyMethod() {
+ *          let _counters = new CachedCounters();
+ *          _counters.last("LastValue", 123);
+ *          Counter counter = _counters.get("LastValue", CounterType.LastValue);
+ *          ...
+ *
+ *          _counters.stats("Statistics", 1);
+ *          counter = _counters.get("Statistics", CounterType.Statistics);
+ *          ...
+ *      }
  */
 export declare abstract class CachedCounters implements ICounters, IReconfigurable, ITimingCallback {
     protected _interval: number;
@@ -48,9 +76,14 @@ export declare abstract class CachedCounters implements ICounters, IReconfigurab
      * keys "interval" and "reset_timeout" and sets them for this object. If a key is not found,
      * the corresponding value will default to the value that was previously set for this object.
      *
+     * __Configuration parameters:__
+     * - "interval" - the interval of time after which the cache should be dumped to memory (default
+     * is 300000);
+     * - "reset_timeout" - the timeout for resetting the cache (default is 0, which turn off resetting).
+     *
      * @param config    ConfigParams, containing "interval" and/or "reset_timeout" items.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     configure(config: ConfigParams): void;
     /**
@@ -64,12 +97,15 @@ export declare abstract class CachedCounters implements ICounters, IReconfigurab
      */
     clearAll(): void;
     /**
-     * Creates and starts a new [[Timing]], which will call this object's [[endTiming]]
-     * method once timing stops.
+     * Creates a new [[Timing]] callback object, which will call this object's [[endTiming]]
+     * method once it receives the command to [[Timing.endTiming stop timing]].
      *
-     * @param name  the name of the counter to include in the callback.
+     * @param name  the name of the Interval Counter, for which a Timing is to be created.
+     * @returns the Timing callback object that was created.
      *
      * @see [[Timing]]
+     * @see [[endTiming]]
+     * @see [[CounterType.Interval]]
      */
     beginTiming(name: string): Timing;
     /**
@@ -81,7 +117,7 @@ export declare abstract class CachedCounters implements ICounters, IReconfigurab
     dump(): void;
     /**
      * Checks whether or not the update interval has passed (since the last
-     * [[dump]] was performed) and, if it has, performs a [[dump]].
+     * [[dump]]) and, if it has, performs a new [[dump]].
      *
      * @see [[dump]]
      */
@@ -113,12 +149,16 @@ export declare abstract class CachedCounters implements ICounters, IReconfigurab
     get(name: string, type: CounterType): Counter;
     private calculateStats;
     /**
-     * Method that is called by a [[Timing Timing]] once timing has ended.
+     * Called by a [[Timing Timing]] callback object once its
+     * [[Timing.endTiming endTiming]] method has been called. The resulting
+     * time interval will be used to update timing statistics.
      *
-     * @param name      the name of the counter that was being timed.
+     * @param name      the name of the Interval Counter that created the
+     *                  Timing object.
      * @param elapsed   the time elapsed since timing began.
      *
      * @see [[beginTiming]]
+     * @see [[Timing.endTiming]]
      */
     endTiming(name: string, elapsed: number): void;
     /**

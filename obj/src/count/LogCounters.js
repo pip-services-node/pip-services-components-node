@@ -3,9 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const CachedCounters_1 = require("./CachedCounters");
 const CompositeLogger_1 = require("../log/CompositeLogger");
-//TODO: return to after finishing the "log" package.
 /**
- * Helper class for working with [[Counter Counters]] and logging them.
+ * Adds logging functionality to the [[CachedCounters]] class.
+ *
+ * ### References ###
+ *
+ * Loggers, along with their context, can be referenced by passing the following references
+ * to the object's [[setReferences]] method:
+ *
+ * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>
+ * - Context (source): <code>"\*:context-info:\*:\*:1.0"</code>.
  *
  * @see [[Counter]]
  * @see [[CachedCounters]]
@@ -17,17 +24,22 @@ class LogCounters extends CachedCounters_1.CachedCounters {
         this._logger = new CompositeLogger_1.CompositeLogger();
     }
     /**
-     * Creates a new LogCounters object, which can be used for logging CachedCounters.
+     * Creates a new LogCounters object, which can be used for logging
+     * [[CachedCounters counters]].
      */
     LogCounters() { }
     /**
-     * Sets this object's [[CompositeLogger logger's]] references using
-     * [[CompositeLogger.setReferences]].
+     * Adds all logger references to this object's [[CompositeLogger]] and sets its context.
      *
-     * @param references    the references to set in the logger.
+     * __References:__
+     * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>;
+     * - Context (source): <code>"\*:context-info:\*:\*:1.0"</code>.
      *
-     * @see [[CompositeLogger]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package.)
+     * @param references    an IReferences object, containing references to a context and to
+     *                      the loggers that are to be added.
+     *
+     * @see [[CompositeLogger.setReferences]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     setReferences(references) {
         this._logger.setReferences(references);
@@ -50,10 +62,9 @@ class LogCounters extends CachedCounters_1.CachedCounters {
         result += " }";
         return result;
     }
-    //TODO: are the counters be "logged"?
     /**
-     * Sorts the passed counters and passes them to the logger's
-     * [[CompositeLogger.info info]] method.
+     * Sorts the passed counters by their names and logs them using
+     * the [[LogLevel.Info info]] log level.
      *
      * @param counters      the counters to log.
      *

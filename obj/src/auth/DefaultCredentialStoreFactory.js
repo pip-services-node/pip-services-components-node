@@ -5,15 +5,14 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
 const Factory_1 = require("../build/Factory");
 const MemoryCredentialStore_1 = require("./MemoryCredentialStore");
 /**
- * Contains a static read-only descriptor for [[MemoryCredentialStore]] and the default "credential-store" descriptor.
+ * Creates [[ICredentialStore]] components by their descriptors.
  *
- * @see [[Factory]]
+ * @see [[IFactory]]
+ * @see [[ICredentialStore]]
  */
 class DefaultCredentialStoreFactory extends Factory_1.Factory {
     /**
-     * Create a new DefaultCredentialStoreFactory object, containing a [[MemoryCredentialStore]] object factory.
-     *
-     * @see [[MemoryCredentialStore]]
+     * Create a new instance of the factory.
      */
     constructor() {
         super();

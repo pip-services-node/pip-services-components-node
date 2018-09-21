@@ -5,6 +5,18 @@
  * components that are requested using component locators.
  *
  * Allows for implementaion of various factory types in a portable manner.
+ *
+ * ### Example ###
+ *
+ * Example implementation of the IFactory interface:
+ *
+ *     export class MyFactory implements IFactory {
+ *         public canCreate(locator: any): any {...}
+ *
+ *         public create(locator: any): any {...}
+ *
+ *         ...
+ *     }
  */
 export interface IFactory {
     /**

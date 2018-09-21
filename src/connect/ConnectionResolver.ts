@@ -130,7 +130,7 @@ export class ConnectionResolver {
      * Private method that resolves a connection to a given end-point using the 'connection' parameter's 
      * discovery key in the discovery services referenced.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param connection        ConnectionParams that contain a discovery key, which will be used for 
      *                          resolving connections.
      * @param callback          callback function that will be called with an error or with the 
@@ -185,7 +185,7 @@ export class ConnectionResolver {
      * Resolves a connection in this ConnectionResolver using its list of connections ([[ConnectionParams]]) 
      * and the discovery services ([[IDiscovery]]) referenced.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param callback          callback function that will be called with an error or with the 
      *                          return value. Returns: the first connection found that does not 
      *                          need to be resolved in a discovery service or the first connection 
@@ -239,7 +239,7 @@ export class ConnectionResolver {
      * Private method that resolves all of the connections to a given end-point using the 'connection' 
      * parameter's discovery key in the discovery services referenced.
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param connection        ConnectionParams that contain a discovery key, which will be used for 
      *                          resolving connections.
      * @param callback          callback function that will be called with an error or with the 
@@ -297,7 +297,7 @@ export class ConnectionResolver {
      * - are resolved in referenced discovery services ([[IDiscovery]]) using the discovery keys stored in the ConnectionResolver's 
      * connections ([[ConnectionParams]]).
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param callback          callback function that will be called with an error or with the 
      *                          list of ConnectionParams resolved.
      */
@@ -342,7 +342,7 @@ export class ConnectionResolver {
      * Private method that registers the given connection in all referenced discovery services. 
      * Used for dynamic discovery (described in [[MemoryDiscovery]]).
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param connection        connection to register in the discovery services.
      * @param callback          callback function that will be called with an error or with a 
      *                          boolean result (successful or not).
@@ -386,7 +386,7 @@ export class ConnectionResolver {
      * Registers the given connection in all referenced discovery services. Used for dynamic discovery 
      * (described in [[MemoryDiscovery]]).
      * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param connection        connection to register in the discovery services.
      * @param callback          callback function that will be called with an error (if one is raised).
      * 

@@ -35,7 +35,7 @@ export class ConsoleLogger extends Logger {
      * 
      * @param level             the LogLevel of the log entry. If it is less than the level set 
      *                          in this logger, then the message will not be logged.
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param ex                the Exception (Error) to include in the log entry.
      * @param message           the message to log.
      */

@@ -4,6 +4,12 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
 /**
  * Abstract class that can be implemented by classes that need to be configurable and
  * manage resoure locking.
+ *
+ * ### Configuration parameters ###
+ *
+ * Parameters to pass to the [[configure]] method for component configuration:
+ *
+ * - "options.retry_timeout" - the amount of time to retry lock acquisition (default is 100).
  */
 class Lock {
     constructor() {
@@ -14,9 +20,12 @@ class Lock {
      * key "options.retry_timeout" and sets it for this object. If the key is not found,
      * the value will default to the value that was previously set for this object.
      *
+     * __Configuration parameters:__
+     * - "options.retry_timeout" - the amount of time to retry lock acquisition (default is 100).
+     *
      * @param config    ConfigParams, containing a "options.retry_timeout" item.
      *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" Package)
+     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
      */
     configure(config) {
         this._retryTimeout = config.getAsIntegerWithDefault("options.retry_timeout", this._retryTimeout);
@@ -25,7 +34,7 @@ class Lock {
     /**
      * Acquiring a lock for a certain resource, identifiable by the lock's key.
      *
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param key               the key to identify the lock by.
      * @param ttl               the lock's time-to-live.
      * @param timeout           the acquisition's retry interval.

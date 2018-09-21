@@ -84,7 +84,7 @@ export class CompositeLogger extends Logger implements IReferenceable {
 	 * error, and message.
 	 * 
      * @param level             the [[LogLevel]] of the log entry.
-     * @param correlationId     (optional) transaction id to trace execution through call chain..
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param error             the Error to include in the log entry.
      * @param message           the message to log.
 	 * 
