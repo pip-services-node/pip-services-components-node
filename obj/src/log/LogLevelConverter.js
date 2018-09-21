@@ -4,23 +4,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const LogLevel_1 = require("./LogLevel");
 /**
- * Helper class that contains static methods for converting [[LogLevel LogLevels]]
- * to and from string values.
+ * Helper class to convert log level values.
  *
  * @see [[LogLevel]]
  */
 class LogLevelConverter {
     /**
-     * Static method that converts integers and strings to their corresponding [[LogLevel LogLevels]].
+     * Converts numbers and strings to standard log level values.
      *
-     * @param value         the integer or string value to convert.
-     *                      Example values: 0/"NOTHING"/"NONE"; 1/"FATAL"; 6/"TRACE".
-     * @param defaultValue  the default LogLevel to use if conversion is not possible.
-     *                      Defaults to LogLevel.Info if omitted.
-     *
-     * @returns the LogLevel that corresponds to the given value.
-     *
-     * @see [[LogLevel]]
+     * @param value         a value to be converted
+     * @param defaultValue  a default value if conversion is not possible
+     * @returns converted log level
      */
     static toLogLevel(value, defaultValue = LogLevel_1.LogLevel.Info) {
         if (value == null)
@@ -44,11 +38,10 @@ class LogLevelConverter {
             return defaultValue;
     }
     /**
-     * Static method that converts a [[LogLevel]] to its string
-     * equivalent (its name in CAPS).
+     * Converts log level to a string.
      *
-     * @param level     the LogLevel to convert.
-     * @returns the LogLevel's name or "UNDEF" (if the level is undefined).
+     * @param level     a log level to convert
+     * @returns log level name string.
      *
      * @see [[LogLevel]]
      */
@@ -68,13 +61,10 @@ class LogLevelConverter {
         return "UNDEF";
     }
     /**
-     * Static method that converts a [[LogLevel]] to its numeric
-     * equivalent. Fatal is 1 and Trace is 6.
+     * Converts log level to a number.
      *
-     * @param level     the LogLevel to convert.
-     * @returns the LogLevel as an integer.
-     *
-     * @see [[LogLevel]]
+     * @param level     a log level to convert.
+     * @returns log level number value.
      */
     static toInteger(level) {
         if (level == LogLevel_1.LogLevel.Fatal)

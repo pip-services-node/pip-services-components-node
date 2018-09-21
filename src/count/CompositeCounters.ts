@@ -57,7 +57,6 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
 	 * Sets references to dependent components.
 	 * 
 	 * @param references 	references to locate the component dependencies. 
-	 * @see [[IReferences]]
      */
     public setReferences(references: IReferences): void {
         var counters = references.getOptional<ICounters>(new Descriptor(null, "counters", null, null, null));

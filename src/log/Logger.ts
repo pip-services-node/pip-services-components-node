@@ -14,58 +14,35 @@ import { LogLevelConverter } from './LogLevelConverter';
 import { ContextInfo } from '../info/ContextInfo';
 
 /**
- * Abstract class for creating loggers that are configurable, have a source (reference a context), and 
- * are capable of logging messages of various [[LogLevel log levels]].
+ * Abstract logger that captures and formats log messages.
+ * Child classes take the captured messages and write them to their specific destinations.
  *
  * ### Configuration parameters ###
  * 
  * Parameters to pass to the [[configure]] method for component configuration:
  *  
- * - "level" - the [[LogLevel]] to set (default is LogLevel.Info);
- * - "source" - the logger's source.
+ * - level:             maximum log level to capture
+ * - source:            source (context) name
  * 
  * ### References ###
  * 
- * A context can be referenced by passing the following reference
- * to the object's [[setReferences]] method:
- * 
- * - context: <code>"\*:context-info:\*:\*:1.0"</code>;
+ * - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
  * 
  * @see [[ILogger]]
- * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferenceable.html IReferenceable]]
- * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.ireconfigurable.html IReconfigurable]]
- * 
- * ### Example ###
- * 
- * Example usage:
- * 
- *     public MyMethod() {
- *         let logger = new Logger();
- *         logger.log(LogLevel.Error, "123", null, "error...");
- *         ...
- *     }
  */
 export abstract class Logger implements ILogger, IReconfigurable, IReferenceable {
     protected _level: LogLevel = LogLevel.Info;
     protected _source: string = null;
 
     /**
-     * Creates a new Logger object.
+     * Creates a new instance of the logger.
      */
     protected constructor() { }
 
     /**
-     * Configures this object using the parameters provided. Looks for parameters with the 
-     * keys "level" and "source" and sets them for this object. If a key is not found, 
-     * the corresponding value will default to the value that was previously set for this object.
+     * Configures component by passing configuration parameters.
      * 
-     * __Configuration parameters:__
-     * - "level" - the [[LogLevel]] to set (default is LogLevel.Info);
-     * - "source" - the logger's source.
-     * 
-     * @param config    ConfigParams, containing "level" and/or "source" items.
-     * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @param config    configuration parameters to be set.
      */
     public configure(config: ConfigParams): void {
         this._level = LogLevelConverter.toLogLevel(
@@ -76,24 +53,9 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
     }
 
     /**
-     * Retrieves a context-info reference from the passed references and, if this object's
-     * <code>source</code> has not already been set, sets the context-info as this object's source.
-     * 
-     * @param references    an IReferences object, containing the "context-info" reference to set.
-     * 
-     * @see [[ContextInfo]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
-     */
-
-    /**
-     * Sets a reference to this logger's source (context).
-     * 
-     * __References:__
-     * - context: <code>"\*:context-info:\*:\*:1.0"</code>;
-     * 
-     * @param references    an IReferences object, containing a reference to a context.
-     * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
+	 * Sets references to dependent components.
+	 * 
+	 * @param references 	references to locate the component dependencies. 
      */
     public setReferences(references: IReferences) {
         let contextInfo = references.getOneOptional<ContextInfo>(
@@ -104,68 +66,60 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
     }
 
     /**
-     * Retrieves the [[LogLevel]] that is currently set.
+     * Gets the maximum log level. 
+     * Messages with higher log level are filtered out.
      * 
-     * @returns this logger's LogLevel.
-     * 
-     * @see [[LogLevel]]
+     * @returns the maximum log level.
      */
     public getLevel(): LogLevel {
         return this._level;
     }
 
     /**
-     * Sets this logger's [[LogLevel]].
+     * Set the maximum log level.
      * 
-     * @param value     the LogLevel to set this logger to.
-     * 
-     * @see [[LogLevel]]
+     * @param value     a new maximum log level.
      */
     public setLevel(value: LogLevel): void {
         this._level = value;
     }
 
     /**
-     * Retrieves the source (context) for which this logger is logging.
+     * Gets the source (context) name.
      * 
-     * @returns this logger's source (context).
+     * @returns the source (context) name.
      */
     public getSource(): string {
         return this._source;
     }
 
     /**
-     * Sets the source (context) for which this logger will be logging.
+     * Sets the source (context) name.
      * 
-     * @param value     the source (context) to set.
+     * @param value     a new source (context) name.
      */
     public setSource(value: string): void {
         this._source = value;
     }
     
     /**
-     * Abstract method that will contain the logic for writing a message to the log using the 
-     * provided level, correlation id, error, and message.
+     * Writes a log message to the logger destination.
      * 
-     * @param level             the LogLevel of the log entry.
+     * @param level             a log level.
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param error             the Error to include in the log entry.
-     * @param message           the message to log.
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
      */
     protected abstract write(level: LogLevel, correlationId: string, error: Error, message: string): void;
 
     /**
-     * If <code>message</code> is a <code>printf</code>-like format string, then this method formats it 
-     * using the provided arguments and calls [[write]] with the newly formatted string.
+     * Formats the log message and writes it to the logger destination.
      * 
-     * @param level             the LogLevel to use.
+     * @param level             a log level.
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param error             the Error to include in the log entry for fatal and error logs.
-     * @param message           the message to log or the format string to use for formatting.
-     * @param args              the arguments to format <code>message</code> with.
-     * 
-     * @see [[LogLevel]]
-     * @see [[write]]
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message. 
      */
     protected formatAndWrite(level: LogLevel, correlationId: string, error: Error, message: string, ...args: any[]): void {
         message = message != null ? message : "";
@@ -180,119 +134,91 @@ export abstract class Logger implements ILogger, IReconfigurable, IReferenceable
     }
 
     /**
-     * Logs a message using the given [[LogLevel]] and parameters. Uses this class's [[formatAndWrite]]
-     * method.
+     * Logs a message at specified log level.
      * 
-     * @param level             the LogLevel to use.
+     * @param level             a log level.
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param error             the Error to include in the log entry for fatal and error logs.
-     * @param message           the message to log or the format string to use for formatting.
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     * 
-     * @see [[formatAndWrite]]
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message. 
      */
     public log(level: LogLevel, correlationId: string, error: Error, message: string, ...args: any[]): void {
         this.formatAndWrite(level, correlationId, error, message, ...args);
     }
 
     /**
-     * Logs a message using the [[LogLevel.Fatal fatal]] log level. Calls this class's [[formatAndWrite]]
-     * method with level set to [[LogLevel.Fatal]].
+     * Logs fatal (unrecoverable) message that caused the process to crash.
      * 
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param error             the Error to include in the log entry.
-     * @param message           the message to log as fatal or the format string to use for formatting. 
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     * 
-     * @see [[formatAndWrite]]
-     * @see [[LogLevel]]
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message. 
      */
     public fatal(correlationId: string, error: Error, message: string, ...args: any[]): void {
         this.formatAndWrite(LogLevel.Fatal, correlationId, error, message, ...args);
     }
 
     /**
-     * Logs a message using the [[LogLevel.Error error]] log level. Calls this class's [[formatAndWrite]]
-     * method with level set to [[LogLevel.Error]].
+     * Logs recoverable application error.
      * 
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param error             the Error to include in the log entry.
-     * @param message           the message to log as error or the format string to use for formatting. 
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     * 
-     * @see [[formatAndWrite]]
-     * @see [[LogLevel]]
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message. 
      */
     public error(correlationId: string, error: Error, message: string, ...args: any[]): void {
         this.formatAndWrite(LogLevel.Error, correlationId, error, message, ...args);
     }
 
     /**
-     * Logs a message using the [[LogLevel.Warn warn]] log level. Calls this class's [[formatAndWrite]]
-     * method with level set to [[LogLevel.Warn]].
+     * Logs a warning that may or may not have a negative impact.
      * 
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param message           the message to log as warn or the format string to use for formatting. 
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     * 
-     * @see [[formatAndWrite]]
-     * @see [[LogLevel]]
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message. 
      */
     public warn(correlationId: string, message: string, ...args: any[]): void {
         this.formatAndWrite(LogLevel.Warn, correlationId, null, message, ...args);
     }
 
     /**
-     * Logs a message using the [[LogLevel.Info info]] log level. Calls this class's [[formatAndWrite]]
-     * method with level set to [[LogLevel.Info]].
+     * Logs an important information message
      * 
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param message           the message to log as info or the format string to use for formatting. 
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     * 
-     * @see [[formatAndWrite]]
-     * @see [[LogLevel]]
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message. 
      */
     public info(correlationId: string, message: string, ...args: any[]): void {
         this.formatAndWrite(LogLevel.Info, correlationId, null, message, ...args);
     }
 
     /**
-     * Logs a message using the [[LogLevel.Debug debug]] log level. Calls this class's [[formatAndWrite]]
-     * method with level set to [[LogLevel.Debug]].
+     * Logs a high-level debug information for troubleshooting.
      * 
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param message           the message to log as debug or the format string to use for formatting. 
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     * 
-     * @see [[formatAndWrite]]
-     * @see [[LogLevel]]
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message. 
      */
     public debug(correlationId: string, message: string, ...args: any[]): void {
         this.formatAndWrite(LogLevel.Debug, correlationId, null, message, ...args);
     }
 
     /**
-     * Logs a message using the [[LogLevel.Trace trace]] log level. Calls this class's [[formatAndWrite]]
-     * method with level set to [[LogLevel.Trace]].
+     * Logs a low-level debug information for troubleshooting. 
      * 
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param message           the message to log as trace or the format string to use for formatting. 
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     * 
-     * @see [[formatAndWrite]]
-     * @see [[LogLevel]]
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message. 
      */
     public trace(correlationId: string, message: string, ...args: any[]): void {
         this.formatAndWrite(LogLevel.Trace, correlationId, null, message, ...args);
     }
 
     /**
-     * Composes an Error string, which can be used in a log entry.
+     * Composes an human-readable error description
      * 
-     * @param error     the Error to compose a string with.
-     * @returns the string created using the information from the Error. Example error string: 
-     *          "<error's message> StackTrace: <error's stack>"
+     * @param error     an error to format.
+     * @returns a human-reable error description.
      */
     protected composeError(error: Error): string {
         let builder: string = "";

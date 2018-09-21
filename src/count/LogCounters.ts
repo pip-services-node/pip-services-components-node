@@ -54,7 +54,7 @@ export class LogCounters extends CachedCounters implements IReferenceable {
 	 * Sets references to dependent components.
 	 * 
 	 * @param references 	references to locate the component dependencies. 
-	 * @see [[IReferences]]
+	 * 
      */
     public setReferences(references: IReferences): void {
         this._logger.setReferences(references);

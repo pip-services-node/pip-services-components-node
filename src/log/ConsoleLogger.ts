@@ -6,40 +6,49 @@ import { Logger } from './Logger';
 import { LogLevelConverter } from './LogLevelConverter';
 
 /**
- * Used to write log entries to the console.
+ * Logger that writes log messages to console.
+ * 
+ * Errors are written to standard err stream
+ * and all other messages to standard out stream.
+ * 
+ * ### Configuration parameters ###
+ * 
+ * - level:             maximum log level to capture
+ * - source:            source (context) name
+ * 
+ * ### References ###
+ * 
+ * - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
  * 
  * @see [[Logger]]
  * 
  * ### Example ###
  * 
- * ConsoleLogger object creation and usage:
+ * let logger = new ConsoleLogger();
+ * logger.setLevel(LogLevel.debug);
  * 
- *      public MyMethod() {
- *          let logger = new ConsoleLogger();
- *          logger.info(null, "Press Control-C to stop the microservice...");
- *          logger.write(LogLevel.Info, "correlationId", null, "message info");     
- *          ...
- *      }
+ * logger.error("123", ex, "Error occured: %s", ex.message);
+ * logger.debug("123", "Everything is OK.");
+ * 
  */
 export class ConsoleLogger extends Logger {
     
     /**
-     * Creates a new ConsoleLogger object.
+     * Creates a new instance of the logger.
      */
     public constructor() {
         super();
     }
 
     /**
-     * Writes a log entry to the console using the provided level, correlation id, error, and message.
+     * Writes a log message to the logger destination.
      * 
-     * @param level             the LogLevel of the log entry. If it is less than the level set 
-     *                          in this logger, then the message will not be logged.
+     * @param level             a log level.
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param ex                the Exception (Error) to include in the log entry.
-     * @param message           the message to log.
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
      */
-	protected write(level: LogLevel, correlationId: string, ex: Error, message: string): void {
+	protected write(level: LogLevel, correlationId: string, error: Error, message: string): void {
         if (this.getLevel() < level) return;
 
         let result: string = '[';
@@ -52,13 +61,13 @@ export class ConsoleLogger extends Logger {
 
         result += message;
 
-        if (ex != null) {
+        if (error != null) {
             if (message.length == 0)
                 result += "Error: ";
             else
                 result += ": ";
 
-            result += this.composeError(ex);
+            result += this.composeError(error);
         }
 
         if (level == LogLevel.Fatal || level == LogLevel.Error || level == LogLevel.Warn)

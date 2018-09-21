@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Can be used to serialize log messages, which allows for cross-service and
- * cross-language logging over REST interfaces.
+ * Data object to store captured log messages.
+ * This object is used by [[CachedLogger]].
  */
 class LogMessage {
 }

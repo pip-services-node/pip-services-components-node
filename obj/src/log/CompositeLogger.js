@@ -3,41 +3,43 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const Logger_1 = require("./Logger");
 /**
- * Helper class for grouping multiple [[ILogger loggers]] together and writing to all
- * of them at once using a single method call.
+ * Aggregates all loggers from component references under a single component.
+ *
+ * It allows to log messages and conveniently send them to multiple destinations.
  *
  * ### References ###
  *
- * Loggers and a context can be referenced by passing the following references
- * to the object's [[setReferences]] method:
- *
- * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>;
- * - Context (source): <code>"\*:context-info:\*:\*:1.0"</code>.
+ * - *:logger:*:*:1.0         (optional) [[ILogger]] components to pass log messages
  *
  * @see [[ILogger]]
  *
  * ### Example ###
  *
- * CompositeLogger object creation and usage:
+ * class MyComponent implements IConfigurable, IReferenceable {
+ *     private _logger: CompositeLogger = new CompositeLogger();
  *
- *      public MyMethod(references: IReferences) {
- *          let logger = new CompositeLogger();
- *          logger.setReferences(references);
- *          ...
+ *     public configure(config: ConfigParams): void {
+ *        this._logger.configure(config);
+ *        ...
+ *     }
  *
- *          logger.info(...);
- *          ...
- *          logger.error(...);
- *      }
+ *     public setReferences(references: IReferences): void {
+ *         this._logger.setReferences(references);
+ *         ...
+ *     }
+ *
+ *     public myMethod(string correlationId): void {
+ *         this._logger.debug(correlationId, "Called method mycomponent.mymethod");
+ *         ...
+ *     }
+ * }
+ *
  */
 class CompositeLogger extends Logger_1.Logger {
     /**
-     * Creates a new CompositeLogger object. If "logger" references are given, they will be
-     * set in the new object. If omitted - they can be set later on using [[setReferences]].
+     * Creates a new instance of the logger.
      *
-     * @param references    the "logger" references to set.
-     *
-     * @see [[setReferences]]
+     * @param references 	references to locate the component dependencies.
      */
     constructor(references = null) {
         super();
@@ -46,16 +48,10 @@ class CompositeLogger extends Logger_1.Logger {
             this.setReferences(references);
     }
     /**
-     * Set a context reference and adds all logger references to this object's list of loggers.
+     * Sets references to dependent components.
      *
-     * __References:__
-     * - Loggers: <code>"\*:logger:\*:\*:1.0"</code>;
-     * - Context (source): <code>"\*:context-info:\*:\*:1.0"</code>.
+     * @param references 	references to locate the component dependencies.
      *
-     * @param references    an IReferences object, containing references to a context and to
-     *                      the loggers that are to be added.
-     *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
      */
     setReferences(references) {
         super.setReferences(references);
@@ -68,17 +64,12 @@ class CompositeLogger extends Logger_1.Logger {
         }
     }
     /**
-     * Calls the <code>log</code> method for all included loggers. The <code>log</code>
-     * method writes a message to the logger's log using the provided level, correlation id,
-     * error, and message.
+     * Writes a log message to the logger destination(s).
      *
-     * @param level             the [[LogLevel]] of the log entry.
+     * @param level             a log level.
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param error             the Error to include in the log entry.
-     * @param message           the message to log.
-     *
-     * @see [[Logger.write]]
-     * @see [[LogLevel]]
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
      */
     write(level, correlationId, error, message) {
         for (let index = 0; index < this._loggers.length; index++)

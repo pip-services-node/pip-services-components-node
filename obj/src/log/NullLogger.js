@@ -2,103 +2,89 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const LogLevel_1 = require("./LogLevel");
 /**
- * Dummy implementation of the [[ILogger]] interface. Methods do not contain any logic and
- * simply accept the parameters passed to them. Can be used to cut dependecies while testing.
+ * Dummy implementation of logger that doesn't do anything.
+ *
+ * It can be used in testing or in situations when logger is required
+ * but shall be disabled.
  *
  * @see [[ILogger]]
  */
 class NullLogger {
     /**
-     * Creates a new NullLogger object.
+     * Creates a new instance of the logger.
      */
     constructor() { }
     /**
-     * Retrieves the [[LogLevel]] that is currently set.
+     * Gets the maximum log level.
+     * Messages with higher log level are filtered out.
      *
-     * @returns this logger's LogLevel. Dummy implementation
-     * 			will always return <code>LogLevel.None</code>.
-     *
-     * @see [[LogLevel]]
+     * @returns the maximum log level.
      */
     getLevel() { return LogLevel_1.LogLevel.None; }
     /**
-     * Sets this logger's [[LogLevel]].
+     * Set the maximum log level.
      *
-     * @param value     the LogLevel to set this logger to.
-     *
-     * @see [[LogLevel]]
+     * @param value     a new maximum log level.
      */
     setLevel(value) { }
     /**
-     * Logs a message using the given [[LogLevel]] and parameters.
+     * Logs a message at specified log level.
      *
-     * @param level             the LogLevel to use.
+     * @param level             a log level.
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param error             the Error to include in the log entry for fatal and error logs.
-     * @param message           the message to log or the format string to use for formatting.
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     log(level, correlationId, error, message, ...args) { }
     /**
-     * Logs a message using the [[LogLevel.Fatal fatal]] log level.
+     * Logs fatal (unrecoverable) message that caused the process to crash.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param error             the Error to include in the log entry.
-     * @param message           the message to log as fatal or the format string to use for formatting.
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     *
-     * @see [[LogLevel]]
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     fatal(correlationId, error, message, ...args) { }
     /**
-     * Logs a message using the [[LogLevel.Error error]] log level.
+     * Logs recoverable application error.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param error             the Error to include in the log entry.
-     * @param message           the message to log as error or the format string to use for formatting.
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     *
-     * @see [[LogLevel]]
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     error(correlationId, error, message, ...args) { }
     /**
-     * Logs a message using the [[LogLevel.Warn warn]] log level.
+     * Logs a warning that may or may not have a negative impact.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param message           the message to log as warn or the format string to use for formatting.
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     *
-     * @see [[LogLevel]]
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     warn(correlationId, message, ...args) { }
     /**
-     * Logs a message using the [[LogLevel.Info info]] log level.
+     * Logs an important information message
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param message           the message to log as info or the format string to use for formatting.
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     *
-     * @see [[LogLevel]]
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     info(correlationId, message, ...args) { }
     /**
-     * Logs a message using the [[LogLevel.Debug debug]] log level.
+     * Logs a high-level debug information for troubleshooting.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param message           the message to log as debug or the format string to use for formatting.
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     *
-     * @see [[LogLevel]]
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     debug(correlationId, message, ...args) { }
     /**
-     * Logs a message using the [[LogLevel.Trace trace]] log level.
+     * Logs a low-level debug information for troubleshooting.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param message           the message to log as trace or the format string to use for formatting.
-     * @param args              the arguments to format <code>message</code> with if it is a format string.
-     *
-     * @see [[LogLevel]]
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     trace(correlationId, message, ...args) { }
 }

@@ -9,20 +9,22 @@ import { LogMessage } from './LogMessage';
 import { LogLevelConverter } from './LogLevelConverter';
 
 /**
- * Abstract class that can be used to create loggers that 
- * write [[LogMessage log messages]] to the cache.
+ * Abstract logger that caches captured log messages in memory and periodically dumps them.
+ * Child classes implement saving cached messages to their specified destinations.
  * 
  * ### Configuration parameters ###
  * 
- * Parameters to pass to the [[configure]] method for component configuration:
+ * - level:             maximum log level to capture
+ * - source:            source (context) name
+ * - options:
+ *   - interval:        interval in milliseconds to save log messages (default: 10 seconds)
+ *   - max_cache_size:  maximum number of messages stored in this cache (default: 100)        
  * 
- * - "level" - the [[LogLevel]] to set (default is LogLevel.Info);
- * - "source" - the logger's source;
- * - __"options"__
- *     - "options.interval" - the interval of time after which the cache should be dumped to 
- * memory (default is 10000).
- *     - "options.max_cache_size" - the cache's maximum size limit (default is 100).
+ * ### References ###
  * 
+ * - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
+ * 
+ * @see [[ILogger]]
  * @see [[Logger]]
  * @see [[LogMessage]]
  */
@@ -34,33 +36,28 @@ export abstract class CachedLogger extends Logger {
     protected _interval: number = 10000;
     
     /**
-     * Creates a new CachedLogger object.
+     * Creates a new instance of the logger.
      */
     public constructor() {
         super();
     }
 
     /**
-     * Writes a [[LogMessage]] to the cache using the provided level, correlation id, error, and message. 
-     * The [[LogMessage LogMessage's]] time and source will be set to the current time and this logger's 
-     * source, respectively.
+     * Writes a log message to the logger destination.
      * 
-     * @param level             the [[LogLevel]] of the log entry.
+     * @param level             a log level.
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param ex                the Exception (Error) to include in the log entry.
-     * @param message           the message to log.
-     * 
-     * @see [[LogMessage]]
-     * @see [[LogLevel]]
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
      */
-	protected write(level: LogLevel, correlationId: string, ex: Error, message: string): void {
-		let error: ErrorDescription = ex != null ? ErrorDescriptionFactory.create(ex) : null;
+	protected write(level: LogLevel, correlationId: string, error: Error, message: string): void {
+		let errorDesc: ErrorDescription = error != null ? ErrorDescriptionFactory.create(error) : null;
 		let logMessage: LogMessage = <LogMessage>{
             time: new Date(),
             level: LogLevelConverter.toString(level),
             source: this._source,
             correlation_id: correlationId,
-            error: error,
+            error: errorDesc,
             message: message
         };
 		
@@ -70,31 +67,17 @@ export abstract class CachedLogger extends Logger {
 	}
 
     /**
-     * Abstract method that will contain the logic for saving an array of [[LogMessage LogMessages]] 
-     * to memory.
+     * Saves log messages from the cache.
      * 
-     * @param messages  the array of [[LogMessage LogMessages]] to save.
-     * @param callback  the function to call once the saving process is complete. Will be called 
-     *                  with an error if one is raised.
+     * @param messages  a list with log messages
+     * @param callback  callback function that receives error or null for success.
      */
     protected abstract save(messages: LogMessage[], callback: (err: any) => void): void;
 
     /**
-     * Configures this object using the parameters provided. Looks for parameters with the 
-     * keys "level" and "source" and sets them for this object. If a key is not found, 
-     * the corresponding value will default to the value that was previously set for this object.
+     * Configures component by passing configuration parameters.
      * 
-     * __Configuration parameters:__
-     * - "level" - the [[LogLevel]] to set (default is LogLevel.Info);
-     * - "source" - the logger's source;
-     * - __"options"__
-     *     - "options.interval" - the interval of time after which the cache should be dumped to 
-     * memory (default is 10000).
-     *     - "options.max_cache_size" - the cache's maximum size limit (default is 100).
-     * 
-     * @param config    the ConfigParams to configure this object with.
-     * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @param config    configuration parameters to be set.
      */
     public configure(config: ConfigParams): void {
         super.configure(config);
@@ -104,7 +87,7 @@ export abstract class CachedLogger extends Logger {
     }
     
     /**
-     * Removes all [[LogMessage LogMessages]] from this object's cache.
+     * Clears (removes) all cached log messages.
      */
     public clear(): void {
         this._cache = [];
@@ -112,10 +95,9 @@ export abstract class CachedLogger extends Logger {
     }
 
     /**
-     * Dumps the [[LogMessage LogMessages]] that are stored in this object's 
-     * cache to memory.
+     * Dumps (writes) the currently cached log messages.
      * 
-     * @see [[save]]
+     * @see [[write]]
      */
     public dump(): void {
         if (this._updated) {
@@ -143,8 +125,8 @@ export abstract class CachedLogger extends Logger {
     }
 
     /**
-     * Checks whether or not the update interval has passed (since the last 
-     * [[dump]] was performed) and, if it has, performs a [[dump]].
+     * Makes message cache as updated
+     * and dumps it when timeout expires.
      * 
      * @see [[dump]]
      */

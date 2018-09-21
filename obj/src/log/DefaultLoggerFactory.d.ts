@@ -2,10 +2,12 @@
 import { Descriptor } from 'pip-services-commons-node';
 import { Factory } from '../build/Factory';
 /**
- * Contains static read-only descriptors for the [[NullLogger Null]], [[ConsoleLogger Console]],
- * and [[CompositeLogger Composite]] Loggers (as well as a default "logger" descriptor).
+ * Creates [[ILogger]] components by their descriptors.
  *
  * @see [[Factory]]
+ * @see [[NullLogger]]
+ * @see [[ConsoleLogger]]
+ * @see [[CompositeLogger]]
  */
 export declare class DefaultLoggerFactory extends Factory {
     static readonly Descriptor: Descriptor;
@@ -13,12 +15,7 @@ export declare class DefaultLoggerFactory extends Factory {
     static readonly ConsoleLoggerDescriptor: Descriptor;
     static readonly CompositeLoggerDescriptor: Descriptor;
     /**
-     * Create a new DefaultLoggerFactory object, containing [[NullLogger]], [[ConsoleLogger]],
-     * and [[CompositeLogger]] object factories.
-     *
-     * @see [[NullLogger]]
-     * @see [[ConsoleLogger]]
-     * @see [[CompositeLogger]]
+     * Create a new instance of the factory.
      */
     constructor();
 }

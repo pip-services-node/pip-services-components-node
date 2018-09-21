@@ -1,20 +1,25 @@
 /** @module log */
+
 /**
- * Enumeration for defining log levels.
+ * Standard log levels.
+ * 
+ * Logs at debug and trace levels are usually captured
+ * only locally for troubleshooting
+ * and never sent to consolidated log services.
  */
 export enum LogLevel {
-    /** Messages that do not have a log level. */
+    /** Nothing to log */
     None = 0,
-    /** Messages that contain information about very severe error events that will presumably cause an abort. */
+    /** Log only fatal errors that cause processes to crash */
     Fatal,
-    /** Messages that contain information about error events that can still allow a service to continue running. */
+    /** Log all errors. */
     Error,
-    /** Messages that contain information about potentially harmful situations. */
+    /** Log errors and warnings */
     Warn,
-    /** Designates informational messages that highlight the progress of the application at coarse-grained level. */
+    /** Log errors and important information messages */
     Info,
-    /** Messages that contain fine-grained informational events that can be useful during debugging. */
+    /** Log everything except traces */
     Debug,
-    /** Messages that contain finer-grained informational events than Debug. */
+    /** Log everything. */
     Trace
 }

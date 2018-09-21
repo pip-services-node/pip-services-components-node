@@ -1,118 +1,80 @@
 /** @module log */
 import { LogLevel } from './LogLevel';
 /**
- * Interface for creating classes that can log messages of various log levels.
- *
- * ### Example ###
- *
- * Example implementation of the ILogger interface:
- *
- *     export class MyLogger implements ILogger {
- *         public log(level: LogLevel, correlationId: string, error: Error, message: string,
- *             ...args: any[]) : void {...}
- *         public fatal(correlationId: string, error: Error, message: string,
- *             ...args: any[]) : void {...}
- *         ...
- *     }
+ * Interface for logger components that capture execution log messages.
  */
 export interface ILogger {
     /**
-     * Abstract method that will contain the logic for retrieving the current
-     * logger's [[LogLevel]].
+     * Gets the maximum log level.
+     * Messages with higher log level are filtered out.
      *
-     * @returns this logger's LogLevel.
-     *
-     * @see [[LogLevel]]
+     * @returns the maximum log level.
      */
     getLevel(): LogLevel;
     /**
-     * Abstract method that will contain the logic for setting the current
-     * logger's [[LogLevel]].
+     * Set the maximum log level.
      *
-     * @param value     the LogLevel to set this logger to.
-     *
-     * @see [[LogLevel]]
+     * @param value     a new maximum log level.
      */
     setLevel(value: LogLevel): void;
     /**
-     * Abstract method that will contain the logic for logging a message using the
-     * given [[LogLevel]] and parameters.
+     * Logs a message at specified log level.
      *
-     * @param level             the LogLevel to use.
+     * @param level             a log level.
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param error             the Error to include in the log entry.
-     * @param message           the message to log.
-     * @param args              the arguments to add to the log entry.
-     *
-     * @see [[LogLevel]]
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     log(level: LogLevel, correlationId: string, error: Error, message: string, ...args: any[]): void;
     /**
-     * Abstract method that will contain the logic for logging a message using the
-     * [[LogLevel.Fatal fatal log level]].
+     * Logs fatal (unrecoverable) message that caused the process to crash.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param error             the Error to include in the log entry.
-     * @param message           the message to log as a fatal message.
-     * @param args              the arguments to add to the log entry.
-     *
-     * @see [[LogLevel]]
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     fatal(correlationId: string, error: Error, message: string, ...args: any[]): void;
     /**
-     * Abstract method that will contain the logic for logging a message using the
-     * [[LogLevel.Error error log level]].
+     * Logs recoverable application error.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param error             the Error to include in the log entry.
-     * @param message           the message to log as an error.
-     * @param args              the arguments to add to the log entry.
-     *
-     * @see [[LogLevel]]
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     error(correlationId: string, error: Error, message: string, ...args: any[]): void;
     /**
-     * Abstract method that will contain the logic for logging a message using the
-     * [[LogLevel.Warn warn log level]].
+     * Logs a warning that may or may not have a negative impact.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param message           the message to log as a warning.
-     * @param args              the arguments to add to the log entry.
-     *
-     * @see [[LogLevel]]
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     warn(correlationId: string, message: string, ...args: any[]): void;
     /**
-     * Abstract method that will contain the logic for logging a message using the
-     * [[LogLevel.Info info log level]].
+     * Logs an important information message
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param message           the message to log as an informational message.
-     * @param args              the arguments to add to the log entry.
-     *
-     * @see [[LogLevel]]
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     info(correlationId: string, message: string, ...args: any[]): void;
     /**
-     * Abstract method that will contain the logic for logging a message using the
-     * [[LogLevel.Debug debug log level]].
+     * Logs a high-level debug information for troubleshooting.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param message           the message to log as a debug message.
-     * @param args              the arguments to add to the log entry.
-     *
-     * @see [[LogLevel]]
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     debug(correlationId: string, message: string, ...args: any[]): void;
     /**
-     * Abstract method that will contain the logic for logging a message using the
-     * [[LogLevel.Trace trace log level]].
+     * Logs a low-level debug information for troubleshooting.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param message           the message to log as a trace message.
-     * @param args              the arguments to add to the log entry.
-     *
-     * @see [[LogLevel]]
+     * @param message           a human-readable message to log.
+     * @param args              arguments to parameterize the message.
      */
     trace(correlationId: string, message: string, ...args: any[]): void;
 }

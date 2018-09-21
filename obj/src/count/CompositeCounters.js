@@ -52,7 +52,6 @@ class CompositeCounters {
      * Sets references to dependent components.
      *
      * @param references 	references to locate the component dependencies.
-     * @see [[IReferences]]
      */
     setReferences(references) {
         var counters = references.getOptional(new pip_services_commons_node_1.Descriptor(null, "counters", null, null, null));

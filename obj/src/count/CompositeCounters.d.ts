@@ -49,7 +49,6 @@ export declare class CompositeCounters implements ICounters, ITimingCallback, IR
      * Sets references to dependent components.
      *
      * @param references 	references to locate the component dependencies.
-     * @see [[IReferences]]
      */
     setReferences(references: IReferences): void;
     /**

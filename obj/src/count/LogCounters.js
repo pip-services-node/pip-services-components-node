@@ -51,7 +51,7 @@ class LogCounters extends CachedCounters_1.CachedCounters {
      * Sets references to dependent components.
      *
      * @param references 	references to locate the component dependencies.
-     * @see [[IReferences]]
+     *
      */
     setReferences(references) {
         this._logger.setReferences(references);

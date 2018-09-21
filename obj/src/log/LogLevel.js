@@ -1,24 +1,28 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /** @module log */
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Enumeration for defining log levels.
+ * Standard log levels.
+ *
+ * Logs at debug and trace levels are usually captured
+ * only locally for troubleshooting
+ * and never sent to consolidated log services.
  */
 var LogLevel;
 (function (LogLevel) {
-    /** Messages that do not have a log level. */
+    /** Nothing to log */
     LogLevel[LogLevel["None"] = 0] = "None";
-    /** Messages that contain information about very severe error events that will presumably cause an abort. */
+    /** Log only fatal errors that cause processes to crash */
     LogLevel[LogLevel["Fatal"] = 1] = "Fatal";
-    /** Messages that contain information about error events that can still allow a service to continue running. */
+    /** Log all errors. */
     LogLevel[LogLevel["Error"] = 2] = "Error";
-    /** Messages that contain information about potentially harmful situations. */
+    /** Log errors and warnings */
     LogLevel[LogLevel["Warn"] = 3] = "Warn";
-    /** Designates informational messages that highlight the progress of the application at coarse-grained level. */
+    /** Log errors and important information messages */
     LogLevel[LogLevel["Info"] = 4] = "Info";
-    /** Messages that contain fine-grained informational events that can be useful during debugging. */
+    /** Log everything except traces */
     LogLevel[LogLevel["Debug"] = 5] = "Debug";
-    /** Messages that contain finer-grained informational events than Debug. */
+    /** Log everything. */
     LogLevel[LogLevel["Trace"] = 6] = "Trace";
 })(LogLevel = exports.LogLevel || (exports.LogLevel = {}));
 //# sourceMappingURL=LogLevel.js.map
