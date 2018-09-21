@@ -26,7 +26,7 @@ import { Counter } from './Counter';
  * 
  * @see [[Counter]]
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * Example CachedCounters object usage:
  * 

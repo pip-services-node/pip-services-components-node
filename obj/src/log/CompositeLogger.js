@@ -47,7 +47,7 @@ class CompositeLogger extends Logger_1.Logger {
      * error, and message.
      *
      * @param level             the [[LogLevel]] of the log entry.
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param error             the Error to include in the log entry.
      * @param message           the message to log.
      *

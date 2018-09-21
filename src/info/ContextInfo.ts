@@ -19,7 +19,7 @@ import { IReconfigurable } from 'pip-services-commons-node';
  * - "description" - the context's description;
  * - "properties.<...>" - additional properties of the context.
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * Examples of ContextInfo object creation:
  * 

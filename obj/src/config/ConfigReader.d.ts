@@ -30,7 +30,7 @@ export declare abstract class ConfigReader implements IConfigurable {
      * Abstract method that will contain the logic of reading and parsing ConfigParams
      * in classes that implement this abstract class.
      *
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param parameters        ConfigParams to read.
      * @param callback          callback function that will be called with an error or with the
      *                          ConfigParams that were read.

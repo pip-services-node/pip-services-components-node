@@ -23,7 +23,7 @@ import { StringValueMap } from 'pip-services-commons-node';
  * @see [[ConnectionResolver]]
  * @see [[IDiscovery]]
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * Example ConnectionParams object usage:
  * 

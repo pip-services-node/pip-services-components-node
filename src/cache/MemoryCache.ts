@@ -16,7 +16,7 @@ import { CacheEntry } from './CacheEntry';
  * 
  * @see [[ICache]]
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * Storing data in a MemoryCache object:
  * 
@@ -102,7 +102,7 @@ export class MemoryCache implements ICache, IReconfigurable {
 	 * or unique natural keys prefixed with the functional group (for example: 
 	 * 'pip-services-storage:block-123'). 
      * 
-	 * @param correlationId     unique business transaction id to trace calls across components.
+	 * @param correlationId     (optional) transaction id to trace execution through call chain..
 	 * @param key               unique key to locate the value by in the cache.
 	 * @param callback          callback function that will be called with an error or the retrieved value. 
      *                          Returns <b>null</b> if the value was not found.
@@ -138,7 +138,7 @@ export class MemoryCache implements ICache, IReconfigurable {
 	 * Stores a value, identified by its unique key, in the cache. 
 	 * Cache entry's expiration timeout is configured in the component's options. 
      * 
-	 * @param correlationId     unique business transaction id to trace calls across components.
+	 * @param correlationId     (optional) transaction id to trace execution through call chain..
 	 * @param key               unique key to locate the value by in the cache.
 	 * @param value             the value to store.
      * @param timeout           expiration timeout for the cache entry.
@@ -187,7 +187,7 @@ export class MemoryCache implements ICache, IReconfigurable {
 	/**
 	 * Removes a value from the cache using its key.
      * 
-	 * @param correlationId     unique business transaction id to trace calls across components.
+	 * @param correlationId     (optional) transaction id to trace execution through call chain..
 	 * @param key               unique key to locate the value by in the cache.
 	 * @param callback          callback function that will be called with an error or success.
 	 */

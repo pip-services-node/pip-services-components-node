@@ -21,7 +21,7 @@ import { LogLevel } from './LogLevel';
  * 
  * @see [[ILogger]]
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * CompositeLogger object creation and usage:
  * 
@@ -84,7 +84,7 @@ export class CompositeLogger extends Logger implements IReferenceable {
 	 * error, and message.
 	 * 
      * @param level             the [[LogLevel]] of the log entry.
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param error             the Error to include in the log entry.
      * @param message           the message to log.
 	 * 

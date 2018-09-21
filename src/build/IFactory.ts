@@ -6,7 +6,7 @@
  * 
  * Allows for implementaion of various factory types in a portable manner.
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * Example implementation of the IFactory interface:
  * 

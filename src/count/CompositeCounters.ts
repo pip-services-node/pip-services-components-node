@@ -20,7 +20,7 @@ import { ITimingCallback } from './ITimingCallback';
  * 
  * @see [[ICounters]]
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * Example CompositeCounters object usage:
  * 

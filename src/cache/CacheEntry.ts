@@ -2,7 +2,7 @@
 /**
  * Simplifies working with key-value pairs in/from the cache.
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * Example usage:
  * 

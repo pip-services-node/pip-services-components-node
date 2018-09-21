@@ -17,7 +17,7 @@ export interface ICredentialStore {
      * Abstract method that will contain the logic for storing the credentials for a certain connection in this 
      * store, using the key provided.
      *
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               key to store the credentials by.
      * @param credential        CredentialParams of the credential to be stored.
      * @param callback          callback function that will be called with an error if one is raised.
@@ -27,7 +27,7 @@ export interface ICredentialStore {
     /**
      * Abstract method that will contain the logic for looking up credentials, using the key provided.
      * 
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               the credential's key to search for.
      * @param callback          callback function that will be called with an error or with the 
      *                          CredentialParams that were found.

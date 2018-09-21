@@ -93,7 +93,7 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
     /**
      * Registers a connection to an end-point, using the key provided. Used for dynamic discovery.
      * 
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               key to register the connection by.
      * @param connection        ConnectionParams for the given connection.
      * @param callback          callback function that will be called with an error or with the 
@@ -110,7 +110,7 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
     /**
      * Resolves and returns a connection (the first one found) to the end-point that is registered by the given key.
      * 
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               the key to search for a connection by.
      * @param callback          callback function that will be called with an error or with the 
      *                          ConnectionParams that were found.
@@ -130,7 +130,7 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
     /**
      * Resolves and returns all connections to the end-point that is registered by the given key.
      * 
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               the connection's key to search for.
      * @param callback          callback function that will be called with an error or with the 
      *                          list of ConnectionParams that were found.

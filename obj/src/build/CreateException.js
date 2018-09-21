@@ -10,7 +10,7 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
  */
 class CreateException extends pip_services_commons_node_1.InternalException {
     /**
-     * @param correlationId         unique business transaction id to trace calls across components.
+     * @param correlationId         (optional) transaction id to trace execution through call chain..
      * @param messageOrLocator      message to add to the exception, or the locator of the component
      *                              that was passed to the factory for component creation.
      *

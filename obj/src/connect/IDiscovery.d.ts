@@ -14,7 +14,7 @@ export interface IDiscovery {
     /**
      * Abstract method that will contain the logic for registering the connection to an end-point, using the key provided.
      *
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               key to register the connection by.
      * @param connection        ConnectionParams of the connection to be registered.
      * @param callback          callback function that will be called with an error or with the result.
@@ -23,7 +23,7 @@ export interface IDiscovery {
     /**
      * Abstract method that will contain the logic for resolving a connection (the first one found), using the key provided.
      *
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               the connection's key to search for.
      * @param callback          callback function that will be called with an error or with the
      *                          ConnectionParams that were found.
@@ -33,7 +33,7 @@ export interface IDiscovery {
      * Abstract method that will contain the logic for resolving all connections that are registered by the key provided
      * (since a service can have multiple corresponding addresses).
      *
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               the connection's key to search for.
      * @param callback          callback function that will be called with an error or with the
      *                          list of ConnectionParams that were found.

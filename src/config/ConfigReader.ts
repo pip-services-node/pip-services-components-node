@@ -24,7 +24,7 @@ import { IConfigurable } from 'pip-services-commons-node'
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * Example usage:
  * 
@@ -70,7 +70,7 @@ export abstract class ConfigReader implements IConfigurable {
      * Abstract method that will contain the logic of reading and parsing ConfigParams 
      * in classes that implement this abstract class.
      * 
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param parameters        ConfigParams to read.
      * @param callback          callback function that will be called with an error or with the
      *                          ConfigParams that were read.

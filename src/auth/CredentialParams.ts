@@ -3,60 +3,58 @@ import { ConfigParams } from 'pip-services-commons-node';
 import { StringValueMap } from 'pip-services-commons-node';
 
 /**
- * Used to store various credentials, such as passwords, logins, application keys, and secrets. 
- * This information is usually linked with connection parameters (see [[ConnectionParams]] for more info).  
- * Separating credentials parameters from connection parameters allows for storage of credentials in a secure 
- * location, as well as sharing common credentials across multiple connections.
+ * Contains credentials to authenticate against external services.
+ * They are used together with connection parameters, but usually stored
+ * in a separate store, protected from unauthorized access.
  * 
- * If a service needs to authenticate itself on a certain connection, then the username, password, 
- * and other parameters can be set using a CredentialParams object. Relevant helper classes 
- * (like [[CredentialResolver]]) can be used to acquiring these parameters and discover objects 
- * or components that store and retrieve credential parameters (credential stores - see [[ICredentialStore]]). 
+ * ### Configuration parameters ###
+ * - store_key:     key to retrieve parameters from credential store
+ * - username:      user name
+ * - user:          alternative to username
+ * - password:      user password
+ * - pass:          alternative to password
+ * - access_id:     application access id
+ * - client_id:     alternative to access_id
+ * - access_key:    application secret key
+ * - client_key:    alternative to access_key
  * 
- * ### Possible configuration parameters: ###
- * - "name" - the username to use for authentication;
- * - "pass" - the user's password;
- * - "store_key" - the key to use in the credential store;
- * - "access_id" - the access ID to use;
- * - "access_key" - the access key to use;
+ * In addition to standard parameters Credentials may contain any number of custom parameters
  * 
+ * @see [[ConfigParams]]
  * @see [[ConnectionParams]]
  * @see [[CredentialResolver]]
  * @see [[ICredentialStore]]
  * 
- * ### Examples ###
+ * ### Example ###
  * 
- * A FilterParams object can be created and used in the following way:
+ * let credentials = CredentialParams.fromTuples(
+ *  "user", "jdoe",
+ *  "pass", "pass123",
+ *  "pin", "321"
+ * );
  * 
- *     public MyMethod() {
- *         let сredential = new CredentialParams();
- *         credential.setStoreKey("Store key");
- *         сredential.setUsername("Store name");
- *         сredential.setPassword("Store password");
- *         сredential.setAccessKey("Access key");
- *         ...
- *     }
+ * let username = credentials.getUsername();    // Result: "jdoe"
+ * let password = credentials.getPassword();    // Result: "pass123"
+ * let pin = credentials.getAsNullableString(); // Result: 321   
  */
 export class CredentialParams extends ConfigParams {
 
     /**
-	 * Creates a new CredentialParams object from an array of tuples, a parameterized string 
-	 * (example: "username=ABC;password=123"), or from an object with credential parameters 
-     * stored as properties.
+	 * Creates a new ConfigParams and fills it with values.
      * 
-     * @param values    credential parameters to store in this object. Defaults to null.
-     * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html#constructor ConfigParams' constructor]] (in the PipService's "Commons" package)
+	 * @param values 	(optional) an object to be converted into key-value pairs to initialize these credentials.
      */
     public constructor(values: any = null) {
         super(values);
     }
 
     /**
-     * @returns     whether or not these CredentialParams contain a key that can be
-     *              used in a credential store ("store_key" is not null?).
+     * Checks if these credential parameters shall be retrieved from [[CredentialStore]].
+     * It is set by store_key parameter.
      * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @returns     true if credentials shall be
+     * 
+     * @see [[getStoreKey]]
      */
     public useCredentialStore(): boolean {
         return super.getAsNullableString("store_key") != null;

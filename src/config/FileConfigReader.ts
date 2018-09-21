@@ -22,7 +22,7 @@ import { ConfigReader } from './ConfigReader'
  * @see [[ConfigReader.readConfig]]
  * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * Example usage:
  * 

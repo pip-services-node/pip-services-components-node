@@ -35,7 +35,7 @@ import { ICredentialStore } from './ICredentialStore';
  * @see [[CredentialParams]]
  * @see [[ICredentialStore]]
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * Example CredentialResolver object usage:
  * 
@@ -130,7 +130,7 @@ export class CredentialResolver {
      * Looks up a credential for a given connection using the 'credential' parameter's 
      * store key in the credential stores referenced.
      * 
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param credential        CredentialParams that contain a store key, which will be used for 
      *                          looking up credentials.
      * @param callback          callback function that will be called with an error or with the 
@@ -186,7 +186,7 @@ export class CredentialResolver {
      * Looks up a credential in this CredentialResolver using its list of credentials ([[CredentialParams]]) 
      * and the credential stores ([[ICredentialStore]]) referenced.
      * 
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param callback          callback function that will be called with an error or with the 
      *                          return value. Returns: the first credential found that does not 
      *                          need to be looked up in a credential store or the first credential 

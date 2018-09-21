@@ -3,7 +3,7 @@
  * Interface that can be used for creating various distributed caches. We can save 
  * an object to cache and retrieve it by its key, using various implementations. 
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * Example implementation of the ICache interface:
  * 
@@ -26,7 +26,7 @@ export interface ICache {
      * Abstract method that will contain the logic for retrieving key-value pairs
      * from the cache.
      * 
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               key to retrieve value by.
      * @param callback          callback function that will be called with an error 
      *                          or the retrieved value.
@@ -38,7 +38,7 @@ export interface ICache {
      * Abstract method that will contain the logic for storing key-value pairs
      * in the cache.
      * 
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               key to store the value by in the cache.
      * @param value             the value to store in the cache.
      * @param timeout           expiration timeout for the cache entry.
@@ -52,7 +52,7 @@ export interface ICache {
      * Abstract method that will contain the logic for removing key-value pairs
      * from the cache.
      * 
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               key to delete key-value pair by.
      * @param callback          (optional) callback function that will be called with 
      *                          an error (if one is raised).

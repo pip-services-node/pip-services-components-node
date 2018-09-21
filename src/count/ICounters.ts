@@ -4,7 +4,7 @@ import { Timing } from './Timing';
 /**
  * Interface for creating classes that work with counters.
  * 
- * ### Examples ###
+ * ### Example ###
  * 
  * Example implementation of the ICounters interface:
  * 

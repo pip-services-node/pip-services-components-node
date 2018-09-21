@@ -8,7 +8,7 @@ import { InternalException } from 'pip-services-commons-node';
  */
 export declare class CreateException extends InternalException {
     /**
-     * @param correlationId         unique business transaction id to trace calls across components.
+     * @param correlationId         (optional) transaction id to trace execution through call chain..
      * @param messageOrLocator      message to add to the exception, or the locator of the component
      *                              that was passed to the factory for component creation.
      *

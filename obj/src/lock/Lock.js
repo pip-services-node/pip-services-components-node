@@ -25,7 +25,7 @@ class Lock {
     /**
      * Acquiring a lock for a certain resource, identifiable by the lock's key.
      *
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               the key to identify the lock by.
      * @param ttl               the lock's time-to-live.
      * @param timeout           the acquisition's retry interval.

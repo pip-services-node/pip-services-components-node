@@ -69,7 +69,7 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
     /**
      * Stores credentials for a certain connection, using the key provided. 
      * 
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               key to register the credential by.
      * @param credential        CredentialParams for the given credential.
      * @param callback          callback function that will be called with an error (if one is raised).
@@ -86,7 +86,7 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
     /**
      * Looks up and returns the credentials (the first ones found) for the connection that is registered by the given key.
      * 
-     * @param correlationId     unique business transaction id to trace calls across components.
+     * @param correlationId     (optional) transaction id to trace execution through call chain..
      * @param key               the key to search for a credential by.
      * @param callback          callback function that will be called with an error or with the 
      *                          CredentialParams that were found.
