@@ -24,7 +24,7 @@ class ConfigReader {
         this._parameters = new pip_services_commons_node_1.ConfigParams();
     }
     /**
-     * Configures object by passing configuration parameters.
+     * Configures component by passing configuration parameters.
      *
      * @param config    configuration parameters to be set.
      */

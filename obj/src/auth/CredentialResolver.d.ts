@@ -54,7 +54,7 @@ export declare class CredentialResolver {
      */
     constructor(config?: ConfigParams, references?: IReferences);
     /**
-     * Configures object by passing configuration parameters.
+     * Configures component by passing configuration parameters.
      *
      * @param config    configuration parameters to be set.
      */

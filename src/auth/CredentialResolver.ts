@@ -68,7 +68,7 @@ export class CredentialResolver {
     }
 
     /**
-     * Configures object by passing configuration parameters.
+     * Configures component by passing configuration parameters.
      * 
      * @param config    configuration parameters to be set.
      */

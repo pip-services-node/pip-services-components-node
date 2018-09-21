@@ -34,7 +34,7 @@ class MemoryCache {
         this._maxSize = MemoryCache._defaultMaxSize;
     }
     /**
-     * Configures object by passing configuration parameters.
+     * Configures component by passing configuration parameters.
      *
      * @param config    configuration parameters to be set.
      */

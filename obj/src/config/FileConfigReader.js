@@ -26,7 +26,7 @@ class FileConfigReader extends ConfigReader_1.ConfigReader {
         this._path = path;
     }
     /**
-     * Configures object by passing configuration parameters.
+     * Configures component by passing configuration parameters.
      *
      * @param config    configuration parameters to be set.
      */
