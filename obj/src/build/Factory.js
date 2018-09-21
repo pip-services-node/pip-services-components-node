@@ -4,19 +4,25 @@ const CreateException_1 = require("./CreateException");
 class Registration {
 }
 /**
- * Base factory class that can be extended for creating more specific factories. Usually, all that needs
- * to be added to a class that extends Factory is:
- * - a set of locators (PipServices uses [[Descriptor Descriptors]]) - one for each object type that needs to be included in this factory.
- * - a constructor (in which the object types are registered using the [[registerAsType]] method).
+ * Basic component factory that creates components using registered types and factory functions.
  *
- * #### Example Descriptor:
- *     public static readonly MyClassDescriptor: Descriptor = new Descriptor("my-services", "factory", "my-class", "default", "1.0");
+ * #### Example ###
  *
- * #### Example constructor:
- *     public constructor() {
- *         super();
- *         this.registerAsType(MyFactory.MyClassDescriptor, MyClass);
- *     }
+ * let factory = new Factory();
+ *
+ * factory.registerAsType(
+ * 		new Descriptor("mygroup", "mycomponent1", "default", "*", "1.0"),
+ * 		MyComponent1
+ * );
+ * factory.register(
+ * 		new Descriptor("mygroup", "mycomponent2", "default", "*", "1.0"),
+ * 		(locator) => {
+ * 			return new MyComponent2();
+ * 		}
+ * );
+ *
+ * factory.create(new Descriptor("mygroup", "mycomponent1", "default", "name1", "1.0"))
+ * factory.create(new Descriptor("mygroup", "mycomponent2", "default", "name2", "1.0"))
  *
  * @see [[Descriptor]]
  * @see [[IFactory]]
@@ -26,16 +32,10 @@ class Factory {
         this._registrations = [];
     }
     /**
-     * Registers a factory.
+     * Registers a component using a factory method.
      *
-     * Example factory:
-     *
-     *     (locator) => { return new myClass(); }
-     *
-     * @param locator 		the locator that is used to identify the factory. Cannot be null.
-     * @param factory 		the factory to add. Cannot be null.
-     *
-     * @throws Error, when locator or factory parameters are null.
+     * @param locator 	a locator to identify component to be created.
+     * @param factory   a factory function that receives a locator and returns a created component.
      */
     register(locator, factory) {
         if (locator == null)
@@ -48,28 +48,30 @@ class Factory {
         });
     }
     /**
-     * Registers a factory that can create instances of 'objectFactory' classes.
+     * Registers a component using its type (a constructor function).
      *
-     * @param locator 			the locator that is used to identify the object factory. Cannot be null.
-     * @param objectFactory 	the object type that can be created by this factory. Cannot be null.
-     *
-     * @throws Error, when locator or factory parameters are null.
+     * @param locator 		a locator to identify component to be created.
+     * @param type 			a component type.
      */
-    registerAsType(locator, objectFactory) {
+    registerAsType(locator, type) {
         if (locator == null)
             throw new Error("Locator cannot be null");
-        if (objectFactory == null)
+        if (type == null)
             throw new Error("Factory cannot be null");
         this._registrations.push({
             locator: locator,
-            factory: (locator) => { return new objectFactory(); }
+            factory: (locator) => { return new type(); }
         });
     }
     /**
-     * Checks if the factory contains the given locator.
+     * Checks if this factory is able to create component by given locator.
      *
-     * @param locator 	the locator to search for in this factory.
-     * @returns			the locator that was found or null otherwise.
+     * This method searches for all registered components and returns
+     * a locator for component it is able to create that matches the given locator.
+     * If the factory is not able to create a requested component is returns null.
+     *
+     * @param locator 	a locator to identify component to be created.
+     * @returns			a locator for a component that the factory is able to create.
      */
     canCreate(locator) {
         for (let index = 0; index < this._registrations.length; index++) {
@@ -81,12 +83,12 @@ class Factory {
         return null;
     }
     /**
-     * Creates an object using the given locator.
+     * Creates a component identified by given locator.
      *
-     * @param locator 	the locator of the factory that needs to be called.
-     * @returns the object that was created by the factory with the given locator.
+     * @param locator 	a locator to identify component to be created.
+     * @returns the created component.
      *
-     * @throws a CreateException if it fails to create an object using the given locator.
+     * @throws a CreateException if the factory is not able to create the component.
      */
     create(locator) {
         for (let index = 0; index < this._registrations.length; index++) {

@@ -1,48 +1,60 @@
 import { IFactory } from './IFactory';
 /**
- * Class that can add and/or remove various Factory (classes that implement [[IFactory]]) to its list
- * of factories. Using this class, multiple factories can be collected into one object for ease of use.
- * Added factories are called via their unique locators.
+ * Aggregates multiple factories into a single factory component.
+ * When a new component is requested, it iterates through
+ * factories to locate the one able to create the requested component.
  *
- * @see [[IFactory]]
+ * This component is used to conveniently keep all supported factories
+ * in a single place.
+ *
+ * ### Example ###
+ *
+ * let factory = new CompositeFactory();
+ * factory.add(new DefaultLoggerFactory());
+ * factory.add(new DefaultCountersFactory());
+ *
+ * let loggerLocator = new Descriptor("*", "logger", "*", "*", "1.0");
+ * factory.canCreate(loggerLocator); 		// Result: Descriptor("pip-service", "logger", "null", "default", "1.0")
+ * factory.create(loggerLocator); 			// Result: created NullLogger
  */
 export declare class CompositeFactory implements IFactory {
     private _factories;
     /**
-     * @param factories 	list of factories to add to this CompositeFactory.
+     * Creates a new instance of the factory.
+     *
+     * @param factories 	a list of factories to embed into this factory.
      */
     constructor(...factories: IFactory[]);
     /**
-     * Adds a factory to this CompositeFactory.
+     * Adds a factory into the list of embedded factories.
      *
-     * @param factory 	the factory to add. Cannot be null.
-     *
-     * @throws an Error if factory is null.
+     * @param factory 	a factory to be added.
      */
     add(factory: IFactory): void;
     /**
-     * Removes a factory from this CompositeFactory.
+     * Removes a factory from the list of embedded factories.
      *
      * @param factory 	the factory to remove.
      */
     remove(factory: IFactory): void;
     /**
-     * Checks if the factory contains the given locator.
+     * Checks if this factory is able to create component by given locator.
      *
-     * @param locator 	the locator to search for in this factory. Cannot be null.
-     * @returns			the locator that was found or null otherwise.
+     * This method searches for all registered components and returns
+     * a locator for component it is able to create that matches the given locator.
+     * If the factory is not able to create a requested component is returns null.
      *
-     * @throws an Error if the locator is null.
+     * @param locator 	a locator to identify component to be created.
+     * @returns			a locator for a component that the factory is able to create.
      */
     canCreate(locator: any): any;
     /**
-     * Creates an object using the given locator.
+     * Creates a component identified by given locator.
      *
-     * @param locator 	the locator of the factory that needs to be called. Cannot be null.
-     * @returns the object that was created by the factory with the given locator.
+     * @param locator 	a locator to identify component to be created.
+     * @returns the created component.
      *
-     * @throws a CreateException if it fails to create an object using the given locator,
-     * 			or an Error if the locator is null.
+     * @throws a CreateException if the factory is not able to create the component.
      */
     create(locator: any): any;
 }

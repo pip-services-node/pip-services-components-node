@@ -1,41 +1,34 @@
 /** @module build */
+
 /**
- * Interface for creating component factories. IFactory is part of the "factory design pattern", 
- * which is used to make factory classes. Factory classes are capable of creating instances of 
- * components that are requested using component locators.
+ * Interface for component factories.
  * 
- * Allows for implementaion of various factory types in a portable manner.
+ * Factories use locators to identify components to be created.
  * 
- * ### Example ###
- * 
- * Example implementation of the IFactory interface:
- * 
- *     export class MyFactory implements IFactory {
- *         public canCreate(locator: any): any {...}
- *         
- *         public create(locator: any): any {...}
- *         
- *         ...
- *     }  
+ * The locators are similar to those used to locate components in references.
+ * They can be of any type like strings or integers. However Pip.Services toolkit
+ * most often uses Descriptor objects as component locators.
  */
 export interface IFactory {
 	/**
-	 * Checks if the factory is able to create the requested component 
-	 * and returns its locator.
+	 * Checks if this factory is able to create component by given locator.
 	 * 
-	 * @param locator 		the locator of the requested component.
-	 * @return 				the locator of the object that is to be created.
+	 * This method searches for all registered components and returns
+	 * a locator for component it is able to create that matches the given locator.
+	 * If the factory is not able to create a requested component is returns null.
+	 * 
+	 * @param locator 	a locator to identify component to be created.
+	 * @returns			a locator for a component that the factory is able to create.
 	 */
 	canCreate(locator: any): any;
 
 	/**
-	 * Creates an instance of the component with the given locator.
+	 * Creates a component identified by given locator.
 	 * 
-	 * @param locator 	the requested component.
-	 * @return 			an instance of the created component.
-	 * @throws 			a CreateException, when component creation fails.
+	 * @param locator 	a locator to identify component to be created.
+	 * @returns the created component.
 	 * 
-	 * @see [[CreateException]]
+	 * @throws a CreateException if the factory is not able to create the component.
 	 */
 	create(locator: any): any;
 }
