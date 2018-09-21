@@ -9,14 +9,14 @@ const CredentialParams_1 = require("./CredentialParams");
 /**
  * Helper class to retrieve component credentials.
  *
- * If credentials are configured to be retrieved from [[CredentialStore]],
- * it automatically locates [[CredentialStore]] in component references
+ * If credentials are configured to be retrieved from [[ICredentialStore]],
+ * it automatically locates [[ICredentialStore]] in component references
  * and retrieve credentials from there using store_key parameter.
  *
  * ### Configuration parameters ###
  *
  * - credential:
- *   - store_key:                   (optional) a key to retrieve the credentials from [[CredentialStore]]
+ *   - store_key:                   (optional) a key to retrieve the credentials from [[ICredentialStore]]
  *   - ...                          other credential parameters
  *
  * - credentials:                   alternative to credential
@@ -50,7 +50,7 @@ const CredentialParams_1 = require("./CredentialParams");
  */
 class CredentialResolver {
     /**
-     * Creates a new instance of credentials resolver and sets its values.
+     * Creates a new instance of credentials resolver.
      *
      * @param config        (optional) component configuration parameters
      * @param references    (optional) component references
@@ -64,14 +64,6 @@ class CredentialResolver {
             this.setReferences(references);
     }
     /**
-     * Sets references to dependent components.
-     *
-     * @param references 	references to locate the component dependencies.
-     */
-    setReferences(references) {
-        this._references = references;
-    }
-    /**
      * Configures object by passing configuration parameters.
      *
      * @param config    configuration parameters to be set.
@@ -81,12 +73,20 @@ class CredentialResolver {
         this._credentials.push(...credentials);
     }
     /**
+     * Sets references to dependent components.
+     *
+     * @param references 	references to locate the component dependencies.
+     */
+    setReferences(references) {
+        this._references = references;
+    }
+    /**
      * Gets all credentials configured in component configuration.
      *
      * Redirect to CredentialStores is not done at this point.
      * If you need fully fleshed credential use [[lookup]] method instead.
      *
-     * @returns a list credential parameters
+     * @returns a list with credential parameters
      */
     getAll() {
         return this._credentials;
@@ -99,14 +99,6 @@ class CredentialResolver {
     add(credential) {
         this._credentials.push(credential);
     }
-    /**
-     * Looks up a credential in CredentialStores is store_key is set.
-     * If store_key is null, it returnes credential parameters "as is".
-     *
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param credential        credential parameters to lookup
-     * @param callback 			callback function that receives resolved credential parameters or error.
-     */
     lookupInStores(correlationId, credential, callback) {
         if (!credential.useCredentialStore()) {
             callback(null, null);
@@ -143,10 +135,10 @@ class CredentialResolver {
     }
     /**
      * Looks up component credential parameters. If credentials are configured to be retrieved
-     * from CredentialStore it finds a CredentialStore and lookups credentials there.
+     * from Credential store it finds a [[ICredentialStore]] and lookups credentials there.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param callback 			callback function that receives resolved credential parameters or error.
+     * @param callback 			callback function that receives resolved credential or error.
      */
     lookup(correlationId, callback) {
         if (this._credentials.length == 0) {

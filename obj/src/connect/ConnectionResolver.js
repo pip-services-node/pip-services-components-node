@@ -8,56 +8,52 @@ const pip_services_commons_node_2 = require("pip-services-commons-node");
 const pip_services_commons_node_3 = require("pip-services-commons-node");
 const ConnectionParams_1 = require("./ConnectionParams");
 /**
- * Helper class that stores connection parameters ([[ConnectionParams]]) and is capable of acquiring parameters
- * from various discovery services.
+ * Helper class to retrieve component connections.
+ *
+ * If connections are configured to be retrieved from [[IDiscovery]],
+ * it automatically locates [[IDiscovery]] in component references
+ * and retrieve connections from there using discovery_key parameter.
  *
  * ### Configuration parameters ###
  *
- * Parameters to pass to the [[configure]] method for component configuration:
+ * - connection:
+ *   - discovery_key:               (optional) a key to retrieve the connection from [[IDiscovery]]
+ *   - ...                          other connection parameters
  *
- * - __"connection(s)"__
- *     - "connection.discovery_key" - the key to use for connection resolving in a discovery service;
- *     - "connection.protocol" - the connection's protocol;
- *     - "connection.host" - the target host;
- *     - "connection.port" - the target port;
- *     - "connection.uri" - the target URI.
+ * - connections:                   alternative to connection
+ *   - [connection params 1]:       first connection parameters
+ *     - ...
+ *   - [connection params N]:       Nth connection parameters
+ *     - ...
  *
  * ### References ###
  *
- * A discovery service can be referenced by passing the following reference
- * to the object's [[setReferences]] method:
- *
- * - <code>"\*:discovery:\*:\*:1.0"</code>
+ * - *:discovery:*:*:1.0            (optional) IDiscovery services
  *
  * @see [[ConnectionParams]]
  * @see [[IDiscovery]]
  *
  * ### Example ###
  *
- * Example ConnectionResolver object usage:
+ * let config = ConfigParams.fromTuples(
+ *      "connection.host", "10.1.1.100",
+ *      "connection.port", 8080
+ * );
  *
- *     public MyMethod() {
- *         let config = ConfigParams.fromTuples(
- *             "connection.protocol", "http",
- *             "connection.host", "localhost",
- *             "connection.port", 3000
- *         );
+ * let connectionResolver = new ConnectionResolver();
+ * connectionResolver.configure(config);
+ * connectionResolver.setReferences(references);
  *
- *         let conectionResolver = new ConnectionResolver(config);
- *         ...
- *
- *         let connection = new ConnectionParams();
- *         conectionResolver.register("correlationId", connection);
- *         ...
- *     }
+ * connectionResolver.resolve("123", (err, connection) => {
+ *      // Now use connection...
+ * });
  */
 class ConnectionResolver {
     /**
-     * @param config        ConfigParams (connections) to configure this object with.
-     * @param references    references to the discovery services that should be used by this ConnectionResolver.
+     * Creates a new instance of connection resolver.
      *
-     * @see [[configure]]
-     * @see [[setReferences]]
+     * @param config        (optional) component configuration parameters
+     * @param references    (optional) component references
      */
     constructor(config = null, references = null) {
         this._connections = [];
@@ -68,69 +64,41 @@ class ConnectionResolver {
             this.setReferences(references);
     }
     /**
-     * Sets a reference to this ConnectionResolver's discovery service.
+     * Configures object by passing configuration parameters.
      *
-     * __References:__
-     * - <code>"\*:discovery:\*:\*:1.0"</code>
-     *
-     * @param references    an IReferences object, containing the discovery service reference to set.
-     *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
-     */
-    setReferences(references) {
-        this._references = references;
-    }
-    /**
-     * Configures this object by parsing the "connection(s)" section of the passed ConfigParams
-     * into a list of ConnectionParams and adding them to this ConnectionResolver's list of connections.
-     *
-     * __Connection parameters:__
-     * - __"connection(s)"__
-     *     - "connection.discovery_key" - the key to use for connection resolving in a discovery service;
-     *     - "connection.protocol" - the connection's protocol;
-     *     - "connection.host" - the target host;
-     *     - "connection.port" - the target port;
-     *     - "connection.uri" - the target URI.
-     *
-     * @param config    the "connection(s)" to add to this ConnectionResolver's list of connections.
-     *
-     * @see [[ConnectionParams.manyFromConfig]]
-     * @see [[ConnectionParams]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
+     * @param config    configuration parameters to be set.
      */
     configure(config) {
         let connections = ConnectionParams_1.ConnectionParams.manyFromConfig(config);
         this._connections.push(...connections);
     }
     /**
-     * @returns a list of all connections that are stored in this ConnectionResolver.
+     * Sets references to dependent components.
+     *
+     * @param references 	references to locate the component dependencies.
+     */
+    setReferences(references) {
+        this._references = references;
+    }
+    /**
+     * Gets all connections configured in component configuration.
+     *
+     * Redirect to Discovery services is not done at this point.
+     * If you need fully fleshed connection use [[resolve]] method instead.
+     *
+     * @returns a list with connection parameters
      */
     getAll() {
         return this._connections;
     }
     /**
-     * Adds a new connection to this ConnectionResolver's list of connections.
+     * Adds a new connection to component connections
      *
-     * @param connection    ConnectionParams for the connection that is to be added.
-     *
-     * @see [[ConnectionParams]]
+     * @param connection    new connection parameters to be added
      */
     add(connection) {
         this._connections.push(connection);
     }
-    /**
-     * Private method that resolves a connection to a given end-point using the 'connection' parameter's
-     * discovery key in the discovery services referenced.
-     *
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param connection        ConnectionParams that contain a discovery key, which will be used for
-     *                          resolving connections.
-     * @param callback          callback function that will be called with an error or with the
-     *                          first ConnectionParams found. Null will be returned if the connection
-     *                          does not have a key, or there are no references set.
-     * @throws a ReferenceException if no valid "discovery" services are referenced.
-     */
     resolveInDiscovery(correlationId, connection, callback) {
         if (!connection.useDiscovery()) {
             callback(null, null);
@@ -165,15 +133,13 @@ class ConnectionResolver {
         });
     }
     /**
-     * Resolves a connection in this ConnectionResolver using its list of connections ([[ConnectionParams]])
-     * and the discovery services ([[IDiscovery]]) referenced.
+     * Resolves a single component connection. If connections are configured to be retrieved
+     * from Discovery service it finds a [[IDiscovery]] and resolves the connection there.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param callback          callback function that will be called with an error or with the
-     *                          return value. Returns: the first connection found that does not
-     *                          need to be resolved in a discovery service or the first connection
-     *                          successfully resolved in a discovery service. Returns null
-     *                          if no connections were resolved.
+     * @param callback 			callback function that receives resolved connection or error.
+     *
+     * @see [[IDiscovery]]
      */
     resolve(correlationId, callback) {
         if (this._connections.length == 0) {
@@ -209,18 +175,6 @@ class ConnectionResolver {
             callback(err, firstResult);
         });
     }
-    /**
-     * Private method that resolves all of the connections to a given end-point using the 'connection'
-     * parameter's discovery key in the discovery services referenced.
-     *
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param connection        ConnectionParams that contain a discovery key, which will be used for
-     *                          resolving connections.
-     * @param callback          callback function that will be called with an error or with the
-     *                          list of ConnectionParams that were found in the referenced discovery
-     *                          services using the 'connection' parameter's discovery key.
-     * @throws a ReferenceException if no "discovery" services are referenced.
-     */
     resolveAllInDiscovery(correlationId, connection, callback) {
         let resolved = [];
         let key = connection.getDiscoveryKey();
@@ -255,14 +209,13 @@ class ConnectionResolver {
         });
     }
     /**
-     * Resolves all connections that:
-     * - are stored in this ConnectionResolver and do not need to be resolved in a discovery service;
-     * - are resolved in referenced discovery services ([[IDiscovery]]) using the discovery keys stored in the ConnectionResolver's
-     * connections ([[ConnectionParams]]).
+     * Resolves all component connection. If connections are configured to be retrieved
+     * from Discovery service it finds a [[IDiscovery]] and resolves the connection there.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param callback          callback function that will be called with an error or with the
-     *                          list of ConnectionParams resolved.
+     * @param callback 			callback function that receives resolved connections or error.
+     *
+     * @see [[IDiscovery]]
      */
     resolveAll(correlationId, callback) {
         let resolved = [];
@@ -294,17 +247,6 @@ class ConnectionResolver {
             callback(err, resolved);
         });
     }
-    /**
-     * Private method that registers the given connection in all referenced discovery services.
-     * Used for dynamic discovery (described in [[MemoryDiscovery]]).
-     *
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param connection        connection to register in the discovery services.
-     * @param callback          callback function that will be called with an error or with a
-     *                          boolean result (successful or not).
-     *
-     * @see [[MemoryDiscovery]]
-     */
     registerInDiscovery(correlationId, connection, callback) {
         if (!connection.useDiscovery()) {
             if (callback)
@@ -333,14 +275,14 @@ class ConnectionResolver {
         });
     }
     /**
-     * Registers the given connection in all referenced discovery services. Used for dynamic discovery
-     * (described in [[MemoryDiscovery]]).
+     * Registers the given connection in all referenced discovery services.
+     * This method can be used for dynamic service discovery.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param connection        connection to register in the discovery services.
-     * @param callback          callback function that will be called with an error (if one is raised).
+     * @param connection        a connection to register.
+     * @param callback          callback function that receives registered connection or error.
      *
-     * @see [[MemoryDiscovery]]
+     * @see [[IDiscovery]]
      */
     register(correlationId, connection, callback) {
         this.registerInDiscovery(correlationId, connection, (err, result) => {

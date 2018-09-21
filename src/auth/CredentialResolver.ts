@@ -13,14 +13,14 @@ import { ICredentialStore } from './ICredentialStore';
 /**
  * Helper class to retrieve component credentials.
  * 
- * If credentials are configured to be retrieved from [[CredentialStore]],
- * it automatically locates [[CredentialStore]] in component references
+ * If credentials are configured to be retrieved from [[ICredentialStore]],
+ * it automatically locates [[ICredentialStore]] in component references
  * and retrieve credentials from there using store_key parameter.
  * 
  * ### Configuration parameters ###
  * 
  * - credential:    
- *   - store_key:                   (optional) a key to retrieve the credentials from [[CredentialStore]]
+ *   - store_key:                   (optional) a key to retrieve the credentials from [[ICredentialStore]]
  *   - ...                          other credential parameters
  * 
  * - credentials:                   alternative to credential
@@ -57,7 +57,7 @@ export class CredentialResolver {
     private _references: IReferences = null;
 
     /**
-     * Creates a new instance of credentials resolver and sets its values.
+     * Creates a new instance of credentials resolver.
      * 
      * @param config        (optional) component configuration parameters
      * @param references    (optional) component references
@@ -65,15 +65,6 @@ export class CredentialResolver {
     public constructor(config: ConfigParams = null, references: IReferences = null) {
         if (config != null) this.configure(config);
         if (references != null) this.setReferences(references);
-    }
-
-    /**
-	 * Sets references to dependent components.
-	 * 
-	 * @param references 	references to locate the component dependencies. 
-     */
-    public setReferences(references: IReferences): void {
-        this._references = references;
     }
 
     /**
@@ -87,12 +78,21 @@ export class CredentialResolver {
     }
 
     /**
+	 * Sets references to dependent components.
+	 * 
+	 * @param references 	references to locate the component dependencies. 
+     */
+    public setReferences(references: IReferences): void {
+        this._references = references;
+    }
+
+    /**
      * Gets all credentials configured in component configuration.
      * 
      * Redirect to CredentialStores is not done at this point.
      * If you need fully fleshed credential use [[lookup]] method instead.
      * 
-     * @returns a list credential parameters
+     * @returns a list with credential parameters
      */
     public getAll(): CredentialParams[] {
         return this._credentials;
@@ -107,15 +107,7 @@ export class CredentialResolver {
         this._credentials.push(credential);
     }
 
-    /**
-     * Looks up a credential in CredentialStores is store_key is set.
-     * If store_key is null, it returnes credential parameters "as is".
-     * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param credential        credential parameters to lookup
-     * @param callback 			callback function that receives resolved credential parameters or error.
-     */
-    public lookupInStores(correlationId: string, credential: CredentialParams, 
+    private lookupInStores(correlationId: string, credential: CredentialParams, 
         callback: (err: any, result: CredentialParams) => void): void {
 
         if (!credential.useCredentialStore()) {
@@ -161,10 +153,10 @@ export class CredentialResolver {
 
     /**
      * Looks up component credential parameters. If credentials are configured to be retrieved
-     * from CredentialStore it finds a CredentialStore and lookups credentials there.
+     * from Credential store it finds a [[ICredentialStore]] and lookups credentials there.
      * 
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param callback 			callback function that receives resolved credential parameters or error.
+     * @param callback 			callback function that receives resolved credential or error.
      */
     public lookup(correlationId: string, callback: (err: any, result: CredentialParams) => void): void {
 

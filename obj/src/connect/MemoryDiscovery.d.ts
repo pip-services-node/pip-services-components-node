@@ -3,85 +3,78 @@ import { IReconfigurable } from 'pip-services-commons-node';
 import { ConnectionParams } from './ConnectionParams';
 import { IDiscovery } from './IDiscovery';
 /**
- * Discovery service (see [[IDiscovery]]) that stores its registry of connections ([[ConnectionParams]]) in memory.
+ * Discovery service that keeps connections in memory.
  *
- * Supports both static and dynamic discovery.
+ * ### Configuration parameters ###
  *
- * - Static discovery: all services have static IP addresses (like a DNS, which also works using static discovery)
- * that are registered from the start (using [[configure]]) and don't change along the way. As of late,
- * static discovery has been used more often than dynamic, as it is simpler to use and more reliable
- * (infrastructure does all of the hard work right out of the box).
- *
- *
- * - Dynamic discovery: every time a service starts, it registers its address in the discovery service ("Service name"
- * is available at "IP address") using [[register]]. Clients then ask to resolve the address by which the requested
- * service can be reached. Dynamic discovery is more challenging to use than static discovery: if a service stops working,
- * its address needs to be refreshed, stale addresses need to be cleaned, heartbeats must be used – many problems and
- * challenges occur along the way.
+ * - [connection key 1]:
+ *   - ...                          connection parameters for key 1
+ * - [connection key 2]:
+ *   - ...                          connection parameters for key N
  *
  * @see [[IDiscovery]]
  * @see [[ConnectionParams]]
+ *
+ * ### Example ###
+ *
+ * let config = ConfigParams.fromTuples(
+ *      "key1.host", "10.1.1.100",
+ *      "key1.port", "8080",
+ *      "key2.host", "10.1.1.100",
+ *      "key2.port", "8082"
+ * );
+ *
+ * let discovery = new MemoryDiscovery();
+ * discovery.readConnections(config);
+ *
+ * discovery.resolve("123", "key1", (err, connection) => {
+ *      // Result: host=10.1.1.100;port=8080
+ * });
  */
 export declare class MemoryDiscovery implements IDiscovery, IReconfigurable {
     private _items;
     /**
-     * Creates a MemoryDiscovery object and configures it for static discovery using the given ConfigParams. If no
-     * ConfigParams are given, then the object must be configured using the [[configure]] method, or it must
-     * be used in dynamic discovery mode (using the [[register]] method).
+     * Creates a new instance of discovery service.
      *
-     * @param config    ConfigParams to configure the new object with.
-     *
-     * @see [[configure]]
-     * @see [[register]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @param config    (optional) configuration with connection parameters.
      */
     constructor(config?: ConfigParams);
     /**
-     * Configures this object by calling [[readConnections]] and setting the connections that were read.
-     * Used to set the discovery service's static registery.
+     * Configures object by passing configuration parameters.
      *
-     * @param config    ConfigParams that contain connection information.
-     *
-     * @see [[readConnections]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
+     * @param config    configuration parameters to be set.
      */
     configure(config: ConfigParams): void;
     /**
-     * Parses the connections passed as ConfigParams into this object's registry, which is used for
-     * static discovery. The registry's keys will be identical to the ConfigParams' keys.
+     * Reads connections from configuration parameters.
+     * Each section represents an individual Connectionparams
      *
-     * @param connections   ConfigParams that contain connection information.
-     *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @param config   configuration parameters to be read
      */
-    readConnections(connections: ConfigParams): void;
+    readConnections(config: ConfigParams): void;
     /**
-     * Registers a connection to an end-point, using the key provided. Used for dynamic discovery.
+     * Registers connection parameters into the discovery service.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param key               key to register the connection by.
-     * @param connection        ConnectionParams for the given connection.
-     * @param callback          callback function that will be called with an error or with the
-     *                          result of the operation.
+     * @param key               a key to uniquely identify the connection parameters.
+     * @param credential        a connection to be registered.
+     * @param callback 			callback function that receives a registered connection or error.
      */
     register(correlationId: string, key: string, connection: ConnectionParams, callback: (err: any, result: any) => void): void;
     /**
-     * Resolves and returns a connection (the first one found) to the end-point that is registered by the given key.
+     * Resolves a single connection parameters by its key.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param key               the key to search for a connection by.
-     * @param callback          callback function that will be called with an error or with the
-     *                          ConnectionParams that were found.
+     * @param key               a key to uniquely identify the connection.
+     * @param callback          callback function that receives found connection or error.
      */
     resolveOne(correlationId: string, key: string, callback: (err: any, result: ConnectionParams) => void): void;
     /**
-     * Resolves and returns all connections to the end-point that is registered by the given key.
+     * Resolves all connection parameters by their key.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param key               the connection's key to search for.
-     * @param callback          callback function that will be called with an error or with the
-     *                          list of ConnectionParams that were found.
+     * @param key               a key to uniquely identify the connections.
+     * @param callback          callback function that receives found connections or error.
      */
     resolveAll(correlationId: string, key: string, callback: (err: any, result: ConnectionParams[]) => void): void;
 }

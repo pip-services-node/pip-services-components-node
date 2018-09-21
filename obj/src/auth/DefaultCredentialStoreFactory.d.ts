@@ -6,6 +6,7 @@ import { Factory } from '../build/Factory';
  *
  * @see [[IFactory]]
  * @see [[ICredentialStore]]
+ * @see [[MemoryCredentialStore]]
  */
 export declare class DefaultCredentialStoreFactory extends Factory {
     static readonly Descriptor: Descriptor;

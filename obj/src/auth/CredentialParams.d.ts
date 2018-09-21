@@ -17,7 +17,7 @@ import { ConfigParams } from 'pip-services-commons-node';
  * - client_key:    alternative to access_key
  * - secret_key:    alternative to access_key
  *
- * In addition to standard parameters Credentials may contain any number of custom parameters
+ * In addition to standard parameters CredentialParams may contain any number of custom parameters
  *
  * @see [[ConfigParams]]
  * @see [[ConnectionParams]]
@@ -26,15 +26,15 @@ import { ConfigParams } from 'pip-services-commons-node';
  *
  * ### Example ###
  *
- * let credentials = CredentialParams.fromTuples(
+ * let credential = CredentialParams.fromTuples(
  *  "user", "jdoe",
  *  "pass", "pass123",
  *  "pin", "321"
  * );
  *
- * let username = credentials.getUsername();    // Result: "jdoe"
- * let password = credentials.getPassword();    // Result: "pass123"
- * let pin = credentials.getAsNullableString(); // Result: 321
+ * let username = credential.getUsername();             // Result: "jdoe"
+ * let password = credential.getPassword();             // Result: "pass123"
+ * let pin = credential.getAsNullableString("pin");     // Result: 321
  */
 export declare class CredentialParams extends ConfigParams {
     /**

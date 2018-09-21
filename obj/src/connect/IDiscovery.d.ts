@@ -1,42 +1,36 @@
 /** @module connect */
 import { ConnectionParams } from './ConnectionParams';
 /**
- * The role of a Discovery service is to store a registry of various end-points (what services are where, and how to connect
- * to them - similar to a DNS). It contains information about the end-points themselves, but does not have the credentials
- * to connect to them (separated for security reasons - see [[CredentialParams]]).
- *
- * This interface can be used for creating discovery services (connection registeries).
+ * Interface for discovery services which are used to store and resolve connection parameters
+ * to connect to external services.
  *
  * @see [[ConnectionParams]]
  * @see [[CredentialParams]]
  */
 export interface IDiscovery {
     /**
-     * Abstract method that will contain the logic for registering the connection to an end-point, using the key provided.
+     * Registers connection parameters into the discovery service.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param key               key to register the connection by.
-     * @param connection        ConnectionParams of the connection to be registered.
-     * @param callback          callback function that will be called with an error or with the result.
+     * @param key               a key to uniquely identify the connection parameters.
+     * @param credential        a connection to be registered.
+     * @param callback 			callback function that receives a registered connection or error.
      */
     register(correlationId: string, key: string, connection: ConnectionParams, callback: (err: any, result: any) => void): void;
     /**
-     * Abstract method that will contain the logic for resolving a connection (the first one found), using the key provided.
+     * Resolves a single connection parameters by its key.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param key               the connection's key to search for.
-     * @param callback          callback function that will be called with an error or with the
-     *                          ConnectionParams that were found.
+     * @param key               a key to uniquely identify the connection.
+     * @param callback          callback function that receives found connection or error.
      */
     resolveOne(correlationId: string, key: string, callback: (err: any, result: ConnectionParams) => void): void;
     /**
-     * Abstract method that will contain the logic for resolving all connections that are registered by the key provided
-     * (since a service can have multiple corresponding addresses).
+     * Resolves all connection parameters by their key.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param key               the connection's key to search for.
-     * @param callback          callback function that will be called with an error or with the
-     *                          list of ConnectionParams that were found.
+     * @param key               a key to uniquely identify the connections.
+     * @param callback          callback function that receives found connections or error.
      */
     resolveAll(correlationId: string, key: string, callback: (err: any, result: ConnectionParams[]) => void): void;
 }

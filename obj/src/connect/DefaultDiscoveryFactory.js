@@ -5,15 +5,15 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
 const Factory_1 = require("../build/Factory");
 const MemoryDiscovery_1 = require("./MemoryDiscovery");
 /**
- * Contains a static read-only descriptor for [[MemoryDiscovery]] and the default "discovery" descriptor.
+ * Creates [[IDiscovery]] components by their descriptors.
  *
  * @see [[Factory]]
+ * @see [[IDiscovery]]
+ * @see [[MemoryDiscovery]]
  */
 class DefaultDiscoveryFactory extends Factory_1.Factory {
     /**
-     * Create a new DefaultDiscoveryFactory object, containing a [[MemoryDiscovery]] object factory.
-     *
-     * @see [[MemoryDiscovery]]
+     * Create a new instance of the factory.
      */
     constructor() {
         super();

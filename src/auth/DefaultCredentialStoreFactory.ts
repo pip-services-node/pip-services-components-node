@@ -9,6 +9,7 @@ import { MemoryCredentialStore } from './MemoryCredentialStore';
  * 
  * @see [[IFactory]]
  * @see [[ICredentialStore]]
+ * @see [[MemoryCredentialStore]]
  */
 export class DefaultCredentialStoreFactory extends Factory {
 	public static readonly Descriptor = new Descriptor("pip-services", "factory", "credential-store", "default", "1.0");

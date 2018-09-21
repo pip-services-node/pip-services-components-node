@@ -15,6 +15,9 @@ const CredentialParams_1 = require("./CredentialParams");
  * - [credential key 2]:
  *   - ...                          credential parameters for key N
  *
+ * @see [[ICredentialStore]]
+ * @see [[CredentialParams]]
+ *
  * ### Example ###
  *
  * let config = ConfigParams.fromTuples(
@@ -30,9 +33,6 @@ const CredentialParams_1 = require("./CredentialParams");
  * credentialStore.lookup("123", "key1", (err, credential) => {
  *      // Result: user=jdoe;pass=pass123
  * });
- *
- * @see [[ICredentialStore]]
- * @see [[CredentialParams]]
  */
 class MemoryCredentialStore {
     /**

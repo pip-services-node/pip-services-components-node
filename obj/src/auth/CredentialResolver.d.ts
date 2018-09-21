@@ -4,14 +4,14 @@ import { CredentialParams } from './CredentialParams';
 /**
  * Helper class to retrieve component credentials.
  *
- * If credentials are configured to be retrieved from [[CredentialStore]],
- * it automatically locates [[CredentialStore]] in component references
+ * If credentials are configured to be retrieved from [[ICredentialStore]],
+ * it automatically locates [[ICredentialStore]] in component references
  * and retrieve credentials from there using store_key parameter.
  *
  * ### Configuration parameters ###
  *
  * - credential:
- *   - store_key:                   (optional) a key to retrieve the credentials from [[CredentialStore]]
+ *   - store_key:                   (optional) a key to retrieve the credentials from [[ICredentialStore]]
  *   - ...                          other credential parameters
  *
  * - credentials:                   alternative to credential
@@ -47,18 +47,12 @@ export declare class CredentialResolver {
     private readonly _credentials;
     private _references;
     /**
-     * Creates a new instance of credentials resolver and sets its values.
+     * Creates a new instance of credentials resolver.
      *
      * @param config        (optional) component configuration parameters
      * @param references    (optional) component references
      */
     constructor(config?: ConfigParams, references?: IReferences);
-    /**
-     * Sets references to dependent components.
-     *
-     * @param references 	references to locate the component dependencies.
-     */
-    setReferences(references: IReferences): void;
     /**
      * Configures object by passing configuration parameters.
      *
@@ -66,12 +60,18 @@ export declare class CredentialResolver {
      */
     configure(config: ConfigParams): void;
     /**
+     * Sets references to dependent components.
+     *
+     * @param references 	references to locate the component dependencies.
+     */
+    setReferences(references: IReferences): void;
+    /**
      * Gets all credentials configured in component configuration.
      *
      * Redirect to CredentialStores is not done at this point.
      * If you need fully fleshed credential use [[lookup]] method instead.
      *
-     * @returns a list credential parameters
+     * @returns a list with credential parameters
      */
     getAll(): CredentialParams[];
     /**
@@ -80,21 +80,13 @@ export declare class CredentialResolver {
      * @param credential    new credential parameters to be added
      */
     add(credential: CredentialParams): void;
-    /**
-     * Looks up a credential in CredentialStores is store_key is set.
-     * If store_key is null, it returnes credential parameters "as is".
-     *
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param credential        credential parameters to lookup
-     * @param callback 			callback function that receives resolved credential parameters or error.
-     */
-    lookupInStores(correlationId: string, credential: CredentialParams, callback: (err: any, result: CredentialParams) => void): void;
+    private lookupInStores;
     /**
      * Looks up component credential parameters. If credentials are configured to be retrieved
-     * from CredentialStore it finds a CredentialStore and lookups credentials there.
+     * from Credential store it finds a [[ICredentialStore]] and lookups credentials there.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param callback 			callback function that receives resolved credential parameters or error.
+     * @param callback 			callback function that receives resolved credential or error.
      */
     lookup(correlationId: string, callback: (err: any, result: CredentialParams) => void): void;
 }

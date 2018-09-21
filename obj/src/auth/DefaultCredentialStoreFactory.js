@@ -9,6 +9,7 @@ const MemoryCredentialStore_1 = require("./MemoryCredentialStore");
  *
  * @see [[IFactory]]
  * @see [[ICredentialStore]]
+ * @see [[MemoryCredentialStore]]
  */
 class DefaultCredentialStoreFactory extends Factory_1.Factory {
     /**

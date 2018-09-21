@@ -12,6 +12,9 @@ import { ICredentialStore } from './ICredentialStore';
  * - [credential key 2]:
  *   - ...                          credential parameters for key N
  *
+ * @see [[ICredentialStore]]
+ * @see [[CredentialParams]]
+ *
  * ### Example ###
  *
  * let config = ConfigParams.fromTuples(
@@ -27,9 +30,6 @@ import { ICredentialStore } from './ICredentialStore';
  * credentialStore.lookup("123", "key1", (err, credential) => {
  *      // Result: user=jdoe;pass=pass123
  * });
- *
- * @see [[ICredentialStore]]
- * @see [[CredentialParams]]
  */
 export declare class MemoryCredentialStore implements ICredentialStore, IReconfigurable {
     private readonly _items;

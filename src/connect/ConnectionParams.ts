@@ -3,22 +3,20 @@ import { ConfigParams } from 'pip-services-commons-node';
 import { StringValueMap } from 'pip-services-commons-node';
 
 /**
- * Contains implementation of connection parameters, using various connection strings, which are 
- * stripped of all credentials. Connection parameters and credentials are stored separately, 
- * since the latter have special requirements for secure storage (see [[CredentialParams]] for more info).
+ * Contains connection parameters to connect to external services.
+ * They are used together with credential parameters, but usually stored
+ * separately from more protected sensitive values.
  * 
- * If a service needs to configure a certain connection, then the port, ip address, protocol, 
- * and other parameters can be set using a ConnectionParams object. Relevant helper classes 
- * (like [[ConnectionResolver]]) can be used to acquiring these parameters and discover objects 
- * or components that store and retrieve connection parameters (discovery services - see [[IDiscovery]]). 
+ * ### Configuration parameters ###
+ * - discovery_key: key to retrieve parameters from discovery service
+ * - protocol:      connection protocol like http, https, tcp, udp
+ * - host:          host name or IP address
+ * - port:          port number
+ * - uri:           resource URI or connection string with all parameters in it
  * 
- * ### Possible configuration parameters: ###
- * - "discovery_key" - the key to use for connection resolving in a discovery service;
- * - "protocol" - the connection's protocol;
- * - "host" - the target host;
- * - "port" - the target port;
- * - "uri" - the target URI.
+ * In addition to standard parameters ConnectionParams may contain any number of custom parameters
  * 
+ * @see [[ConfigParams]]
  * @see [[CredentialParams]]
  * @see [[ConnectionResolver]]
  * @see [[IDiscovery]]
@@ -27,43 +25,45 @@ import { StringValueMap } from 'pip-services-commons-node';
  * 
  * Example ConnectionParams object usage:
  * 
- *     public MyMethod() {
- *         let connection = new ConnectionParams();
- *         connection.setDiscoveryKey("Discovery key");
- *         connection.setProtocol("https");
- *         connection.setHost("localhost");
- *         connection.setPort("8080");
- *         connection.setUri("http://localhost:0");
- *         ...
- *     }
+ * let connection = ConnectionParams.fromTuples(
+ *  "protocol", "http",
+ *  "host", "10.1.1.100",
+ *  "port", "8080",
+ *  "cluster", "mycluster"
+ * );
+ * 
+ * let host = connection.getHost();                             // Result: "10.1.1.100"
+ * let port = connection.getPort();                             // Result: 8080
+ * let cluster = connection.getAsNullableString("cluster");     // Result: "mycluster"   
  */
 export class ConnectionParams extends ConfigParams {
 
     /**
-     * Creates a new ConnectionParams object. Calls 
-     * [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#constructor StringValueMap's constructor]], 
-     * which it extends by extending [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]].
+	 * Creates a new ConnectionParams and fills it with values.
      * 
-     * @param values    values to fill these ConnectionParams with. Defaults to null.
-     * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#constructor StringValueMap's constructor]] (in the PipServices "Commons" package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+	 * @param values 	(optional) an object to be converted into key-value pairs to initialize this connection.
      */
     public constructor(values: any = null) {
         super(values);
     }
 
     /**
-     * @returns     whether or not these ConnectionParams contain a key that can be
-     *              used in a discovery service for resolving connections 
-     *              ("discovery_key" is not null?).
+     * Checks if these connection parameters shall be retrieved from [[DiscoveryService]].
+     * The connection parameters are redirected to [[DiscoveryService]] when discovery_key parameter is set.
+     * 
+     * @returns     true if connection shall be retrieved from [[DiscoveryService]]
+     * 
+     * @see [[getDiscoveryKey]]
      */
     public useDiscovery(): boolean {
         return super.getAsNullableString("discovery_key") != null;
     }
 
     /**
-     * @returns     the key to use for connection resolving in a discovery service.
+     * Gets the key to retrieve this connection from [[DiscoveryService]].
+     * If this key is null, than all parameters are already present.
+     * 
+     * @returns     the discovery key to retrieve connection.
      * 
      * @see [[useDiscovery]]
      */
@@ -72,32 +72,37 @@ export class ConnectionParams extends ConfigParams {
     }
 
     /**
-     * @param value     the key to use when resolving connections in a discovery service.
+     * Sets the key to retrieve these parameters from [[DiscoveryService]].
+     * 
+     * @param value     a new key to retrieve connection.
      */
     public setDiscoveryKey(value: string): void {
         return super.put("discovery_key", value);
     }
 
     /**
-     * @param defaultValue  (optional) value to return if no protocol is set. 
-     *                      Defaults to null if omitted.
-     * @returns             the protocol set in these ConnectionParams or defaultValue, 
-     *                      if no protocol was set.
+     * Gets the connection protocol.
+     * 
+     * @param defaultValue  (optional) the default protocol
+     * @returns             the connection protocol or the default value if it's not set.
      */
     public getProtocol(defaultValue: string = null): string {
         return super.getAsStringWithDefault("protocol", defaultValue);
     }
 
     /**
-     * @param value     protocol to use in these ConnectionParams.
+     * Sets the connection protocol.
+     * 
+     * @param value     a new connection protocol.
      */
     public setProtocol(value: string): void {
         return super.put("protocol", value);
     }
 
     /**
-     * @returns     the "host" or the "ip" (if no host was found) that is set in 
-     *              these ConnectionParams.
+     * Gets the host name or IP address.
+     * 
+     * @returns     the host name or IP address.
      */
     public getHost(): string {
         let host: string = super.getAsNullableString("host");
@@ -106,25 +111,27 @@ export class ConnectionParams extends ConfigParams {
     }
 
     /**
-     * Sets the host's name or ip address that will be used in these ConnectionParams.
+     * Sets the host name or IP address.
      * 
-     * @param value     host's name or ip address.
+     * @param value     a new host name or IP address.
      */
     public setHost(value: string): void {
         return super.put("host", value);
     }
 
     /**
-     * @returns the port set in these ConnectionParams.
+     * Gets the port number.
+     * 
+     * @returns the port number.
      */
     public getPort(): number {
         return super.getAsInteger("port");
     }
 
     /**
-     * Sets the host's port for these ConnectionParams.
+     * Sets the port number.
      * 
-     * @param value     which port to connect to on the host.
+     * @param value     a new port number.
      * 
      * @see [[getHost]]
      */
@@ -133,31 +140,32 @@ export class ConnectionParams extends ConfigParams {
     }
 
     /**
-     * @returns the target URI of these ConnectionParams.
+     * Gets the resource URI or connection string.
+     * Usually it includes all connection parameters in it.
+     * 
+     * @returns the resource URI or connection string.
      */
     public getUri(): string {
         return super.getAsString("uri");
     }
 
     /**
-     * Sets the target URI of these ConnectionParams.
+     * Sets the resource URI or connection string.
      * 
-     * @param value     target URI.
+     * @param value     a new resource URI or connection string.
      */
     public setUri(value: string): void {
         return super.put("uri", value);
     }
 
     /**
-     * Static method for converting a parameterized string into a  ConnectionParams
-     * object.
-     * 
-     * Example string: "protocol=http;host=0.0.0.0;port=8080"
-     * 
-     * @param line  parameterized string that contains the connection's parameters.
-     * @returns     ConnectionParams that were generated.
-     * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#fromstring StringValueMap.fromString]] (in the PipServices "Commons" package)
+	 * Creates a new ConnectionParams object filled with key-value pairs serialized as a string.
+	 * 
+	 * @param line 		a string with serialized key-value pairs as "key1=value1;key2=value2;..."
+	 * 					Example: "Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z"
+	 * @returns			a new ConnectionParams object.
+	 * 
+	 * @see [[StringValueMap.fromString]]
      */
     public static fromString(line: string): ConnectionParams {
         let map: StringValueMap = StringValueMap.fromString(line);
@@ -165,18 +173,24 @@ export class ConnectionParams extends ConfigParams {
     }
 
     /**
-	 * Static method that converts a ConfigParams' "connection(s)" section into 
-     * a list of ConnectionParams.
-     * 
-     * If the section name "connections" is used, then each subsection will be treated as a 
-     * separate connection, for which a separate ConnectionParams object will be created and
-     * added to the list.
+	 * Creates a new ConnectionParams object filled with provided key-value pairs called tuples.
+	 * Tuples parameters contain a sequence of key1, value1, key2, value2, ... pairs.
 	 * 
-	 * @param config 	ConfigParams, containing a section named "connection(s)".
-	 * @returns			the generated list of ConnectionParams.
+	 * @param tuples	the tuples to fill a new ConnectionParams object.
+	 * @returns			a new ConnectionParams object.
+	 */
+	public static fromTuples(...tuples: any[]): ConnectionParams {
+		let map = StringValueMap.fromTuplesArray(tuples);
+		return new ConnectionParams(map);
+    }
+
+    /**
+	 * Retrieves all ConnectionParams from configuration parameters
+     * from "connections" section. If "connection" section is present instead,
+     * than it returns a list with only one ConnectionParams.
 	 * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipService's "Commons" package)
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html#getsection ConfigParams.getSection]]
+	 * @param config 	a configuration parameters to retrieve connections
+	 * @returns			a list of retrieved ConnectionParams
 	 */
     public static manyFromConfig(config: ConfigParams): ConnectionParams[] {
         let result: ConnectionParams[] = [];
@@ -198,16 +212,16 @@ export class ConnectionParams extends ConfigParams {
     }
 
     /**
-	 * Static method that retrieves the first ConnectionParams found in the given ConfigParams.
-     * The ConfigParams' "connection(s)" section will be converted into a ConnectionParams object.
+	 * Retrieves a single ConnectionParams from configuration parameters
+     * from "connection" section. If "connections" section is present instead,
+     * then is returns only the first connection element.
 	 * 
-	 * @param config 	ConfigParams, containing a section named "connection(s)".
-	 * @returns			the generated ConnectionParams object (or null).
+	 * @param config 	ConnectionParams, containing a section named "connection(s)".
+	 * @returns			the generated ConnectionParams object.
 	 * 
 	 * @see [[manyFromConfig]]
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
 	 */
-    public static fromConfig(config: ConfigParams) {
+    public static fromConfig(config: ConfigParams): ConnectionParams {
         let connections: ConnectionParams[] = this.manyFromConfig(config);
         return connections.length > 0 ? connections[0] : null;
     }
