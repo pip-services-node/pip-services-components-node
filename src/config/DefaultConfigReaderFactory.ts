@@ -7,10 +7,12 @@ import { JsonConfigReader } from './JsonConfigReader';
 import { YamlConfigReader } from './YamlConfigReader';
 
 /**
- * Contains static read-only descriptors for the [[MemoryConfigReader Memory]], [[JsonConfigReader JSON]], 
- * and [[YamlConfigReader YAML]] ConfigReaders (as well as a default "config-reader" descriptor).
+ * Creates [[IConfigReader]] components by their descriptors.
  * 
  * @see [[Factory]]
+ * @see [[MemoryConfigReader]]
+ * @see [[JsonConfigReader]]
+ * @see [[YamlConfigReader]]
  */
 export class DefaultConfigReaderFactory extends Factory {
 	public static readonly Descriptor = new Descriptor("pip-services", "factory", "config-reader", "default", "1.0");
@@ -19,12 +21,7 @@ export class DefaultConfigReaderFactory extends Factory {
 	public static readonly YamlConfigReaderDescriptor = new Descriptor("pip-services", "config-reader", "yaml", "*", "1.0");
 	
 	/**
-	 * Create a new DefaultConfigReaderFactory object, containing [[MemoryConfigReader]], [[JsonConfigReader]], 
-	 * and [[YamlConfigReader]] object factories.
-	 * 
-	 * @see [[MemoryConfigReader]]
-	 * @see [[JsonConfigReader]]
-	 * @see [[YamlConfigReader]]
+	 * Create a new instance of the factory.
 	 */
 	public constructor() {
         super();

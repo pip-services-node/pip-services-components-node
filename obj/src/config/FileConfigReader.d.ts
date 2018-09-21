@@ -2,65 +2,43 @@
 import { ConfigParams } from 'pip-services-commons-node';
 import { ConfigReader } from './ConfigReader';
 /**
- *
- * Abstract class that can be implemented by classes that need to read ConfigParams
- * from a file. The target file's location is stored in the '_path' field of this class.
- *
- * This class is abstract due to the fact that it inherits the abstract method
- * [[ConfigReader.readConfig]].
+ * Abstract config reader that reads configuration from a file.
+ * Child classes add support for config files in their specific format
+ * like JSON, YAML or property files.
  *
  * ### Configuration parameters ###
  *
- * Parameters to pass to the [[configure]] method for component configuration:
+ * - path:          path to configuration file
+ * - parameters:            this entire section is used as template parameters
+ *   ...
  *
- * - "path" - the path to the target file.
- * - "parameters.<...>" - the parameters to parameterize the configuration reader with.
- *
+ * @see [[IConfigReader]]
  * @see [[ConfigReader]]
- * @see [[ConfigReader.readConfig]]
- * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
- *
- * ### Example ###
- *
- * Example usage:
- *
- *     public MyMethod(path: string) {
- *         let fileConfigReader = new FileConfigReader(path);
- *         fileConfigReader.configure(new ConfigParams());
- *         ...
- *     }
  */
 export declare abstract class FileConfigReader extends ConfigReader {
     private _path;
     /**
-     * @param path path to the target file, containing configuration parameters.
+     * Creates a new instance of the config reader.
+     *
+     * @param path  (optional) a path to configuration file.
      */
     constructor(path?: string);
     /**
-     * Get the path to the target configurations file.
+     * Configures object by passing configuration parameters.
      *
-     * @returns path to the target file, containing configuration parameters.
+     * @param config    configuration parameters to be set.
+     */
+    configure(config: ConfigParams): void;
+    /**
+     * Get the path to configuration file..
+     *
+     * @returns the path to configuration file.
      */
     getPath(): string;
     /**
-     * Set the path to the target configurations file.
+     * Set the path to configuration file.
      *
-     * @param path path to the target file, containing configuration parameters.
+     * @param path  a new path to configuration file.
      */
     setPath(path: string): void;
-    /**
-     * Sets this object's configuration parameters and 'path' to the values
-     * set in the passed configuration parameters.
-     *
-     * __Configuration parameters:__
-     * - "path" - the path to the target file.
-     * - "parameters.<...>" - the parameters to parameterize the configuration reader with.
-     *
-     * @param config    configures this class in accordance with [[ConfigReader.configure]]
-     *                  and sets this class's '_path' field to the value stored in 'config'
-     *                  with the key "path".
-     *
-     * @see [[ConfigReader.configure]]
-     */
-    configure(config: ConfigParams): void;
 }

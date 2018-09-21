@@ -10,43 +10,51 @@ import { FileException } from 'pip-services-commons-node';
 
 import { FileConfigReader } from './FileConfigReader';
 
- /**
- * Provides methods for reading configuration parameters from a YAML file.
+/**
+ * Config reader that reads configuration from YAML file.
  * 
+ * The reader supports parameterization using Handlebar template engine.
+ * 
+ * ### Configuration parameters ###
+ * 
+ * - path:          path to configuration file
+ * - parameters:    this entire section is used as template parameters
+ *   ...
+ * 
+ * @see [[IConfigReader]]
  * @see [[FileConfigReader]]
  * 
  * ### Example ###
  * 
- * Example usage:
+ * ======== config.yml ======
+ * key1: "{{KEY1_VALUE}}"
+ * key2: "{{KEY2_VALUE}}"
+ * ===========================
  * 
- *     public MyMethod() {
- *         ConfigParams config = YamlConfigReader.readConfig(null, "data/config.yaml");
- *         ...
- *     }
+ * let configReader = new YamlConfigReader("config.yml");
+ * 
+ * let parameters = ConfigParams.fromTuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC");
+ * configReader.readConfig("123", parameters, (err, config) => {
+ *      // Result: key1=123;key2=ABC
+ * });
  */
 export class YamlConfigReader extends FileConfigReader {
 
     /** 
-     * @param path (optional) path to the target file, containing configuration parameters in YAML format. 
-     *              If 'path' is omitted in the constructor, then it must be set otherwise 
-     *              (for example, using "setPath()") before using the new object.
+     * Creates a new instance of the config reader.
      * 
-     * @see [[FileConfigReader]]
-     * @see [[FileConfigReader.setPath]]
+     * @param path  (optional) a path to configuration file.
      */
     public constructor(path: string = null) {
         super(path);
     }
 
     /**
-     * Reads the YAML data from the file and returns it as a parameterized nullable map. 
-     * Reader's path must be set.
+     * Reads configuration file, parameterizes its content and converts it into JSON object.
      * 
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param parameters        used to parameterize the reader.
-     * @returns                 NullableMap with data from the YAML file.
-     * 
-     * @see [[ConfigReader.parameterize]]
+     * @param parameters        values to parameters the configuration.
+     * @returns                 a JSON object with configuration.
      */
     public readObject(correlationId: string, parameters: ConfigParams): any {
         if (super.getPath() == null)
@@ -70,16 +78,11 @@ export class YamlConfigReader extends FileConfigReader {
     }
     
     /**
-     * Reads the YAML data from the file and returns it as a parameterized ConfigParams object. 
-     * Reader's path must be set.
+     * Reads configuration and parameterize it with given values.
      * 
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param parameters        used to parameterize the reader.
-     * @param callback          callback function that will be called with an error or with the
-     *                          ConfigParams that were read.
-     * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
-     * @see [[readObject]]
+     * @param parameters        values to parameters the configuration or null to skip parameterization.
+     * @param callback          callback function that receives configuration or error.
      */
     public readConfig(correlationId: string, parameters: ConfigParams,
         callback: (err: any, config: ConfigParams) => void): void {
@@ -93,29 +96,24 @@ export class YamlConfigReader extends FileConfigReader {
     }
 
     /**
-     * Static implementation of YamlConfigReader's non-static [[readObject]].
+     * Reads configuration file, parameterizes its content and converts it into JSON object.
      * 
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param path              location of the target YAML file.
-     * @param parameters        used to parameterize the reader.
-     * 
-     * @see [[readObject]]
+     * @param file              a path to configuration file.
+     * @param parameters        values to parameters the configuration.
+     * @returns                 a JSON object with configuration.
      */
-    public static readObject(correlationId: string, path: string, parameters: ConfigParams): void {
+    public static readObject(correlationId: string, path: string, parameters: ConfigParams): any {
         return new YamlConfigReader(path).readObject(correlationId, parameters);
     }
 
     /**
-     * Static implementation of YamlConfigReader's non-static [[readConfig]].
+     * Reads configuration from a file, parameterize it with given values and returns a new ConfigParams object.
      * 
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param path              location of the target YAML file.
-     * @param parameters        used to parameterize the reader.
-     * @returns the ConfigParams that were read from the file.
-     * 
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
-     * @see [[readConfig]]
-     * @see [[readObject]]
+     * @param file              a path to configuration file.
+     * @param parameters        values to parameters the configuration or null to skip parameterization.
+     * @param callback          callback function that receives configuration or error.
      */
     public static readConfig(correlationId: string, path: string, parameters: ConfigParams): ConfigParams {
         let value: any = new YamlConfigReader(path).readObject(correlationId, parameters);
