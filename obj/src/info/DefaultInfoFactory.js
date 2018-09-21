@@ -5,16 +5,14 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
 const Factory_1 = require("../build/Factory");
 const ContextInfo_1 = require("./ContextInfo");
 /**
- * Contains static read-only descriptors for ContextInfo and ContainerInfo (as well as a default "info" descriptor).
+ * Creates information components by their descriptors.
  *
- * @see [[Factory]]
+ * @see [[IFactory]]
+ * @see [[ContextInfo]]
  */
 class DefaultInfoFactory extends Factory_1.Factory {
     /**
-     * Create a new DefaultInfoFactory object, containing two [[ContextInfo]] object factories - one for ContextInfo and one
-     * for ContainerInfo.
-     *
-     * @see [[ContextInfo]]
+     * Create a new instance of the factory.
      */
     constructor() {
         super();

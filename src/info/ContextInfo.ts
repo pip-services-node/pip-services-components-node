@@ -7,41 +7,31 @@ import { ConfigParams } from 'pip-services-commons-node';
 import { IReconfigurable } from 'pip-services-commons-node';
 
 /**
- * A simple class that defines the context of execution. Used for various logging functions, where information 
- * about the source that is being logging must be known (what's the process's name, what is it, what does it do). 
+ * Context information component that provides detail information
+ * about execution context: container or/and process.
  * 
+ * Most often ContextInfo is used by logging and performance counters
+ * to identify source of the collected logs and metrics.
  * 
  * ### Configuration parameters ###
  * 
- * Parameters to pass to the [[configure]] method for component configuration:
- * 
- * - "name" - the context's name;
- * - "description" - the context's description;
- * - "properties.<...>" - additional properties of the context.
+ * - name: 					the context (container or process) name
+ * - description: 		   	human-readable description of the context
+ * - properties: 			entire section of additional descriptive properties
+ * 	 ...
  * 
  * ### Example ###
  * 
- * Examples of ContextInfo object creation:
+ * let contextInfo = new ContextInfo();
+ * contextInfo.configure(ConfigParams.fromTuples(
+ * 		"name", "MyMicroservice",
+ * 		"description", "My first microservice"
+ * ));
  * 
- *     public MyMethod1() {
- *         let contextInfo = new ContextInfo();
- *         contextInfo.setName("new name");
- *         contextInfo.setDescription("new description");
- *         contextInfo.setContextId("new context id");
- *         ...
- *     }
- * 
- *     public MyMethod2() {
- *         let config = ConfigParams.fromTuples(
- *             "info.name", "new name",
- *             "info.description", "new description",
- *             "properties.access_key", "key",
- *             "properties.store_key", "store key"
- *         );
- *         
- *         let contextInfo = ContextInfo.fromConfig(config);
- *         ...
- *     }
+ * context.name;			// Result: "MyMicroservice"
+ * context.contextId;		// Possible result: "mylaptop"
+ * context.startTime;		// Possible result: 2018-01-01:22:12:23.45Z
+ * context.uptime;			// Possible result: 3454345
  */
 export class ContextInfo implements IReconfigurable {	
 	private _name: string = "unknown";
@@ -51,8 +41,10 @@ export class ContextInfo implements IReconfigurable {
 	private _properties: StringValueMap = new StringValueMap();
 
 	/**
-	 * @param name  		(optional) name of the context of execution. Defaults to "unknown" if omitted.
-	 * @param description 	(optional) description of the context of execution. Defaults to null if omitted.
+	 * Creates a new instance of this context info.
+	 * 
+	 * @param name  		(optional) a context name.
+	 * @param description 	(optional) a human-readable description of the context.
 	 */
 	public constructor(name?: string, description?: string) {
 		this._name = name || "unknown";
@@ -60,18 +52,9 @@ export class ContextInfo implements IReconfigurable {
 	}
 
 	/**
-	 * Sets this object's 'name' and 'description' to the values set in the passed configuration parameters. 
-	 * Also sets 'properties' to the values stored in the section named "properties".
-	 * 
-	 * __Configuration parameters:__
-     * - "name" - the context's name;
-     * - "description" - the context's description;
-	 * - "properties.<...>" - additional properties of the context.
-	 * 
-	 * @param config 	the ConfigParams to configure this object with.
-	 * 
-	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
-	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices "Commons" package)
+     * Configures component by passing configuration parameters.
+     * 
+     * @param config    configuration parameters to be set.
 	 */
 	public configure(config: ConfigParams): void {
 		this.name = config.getAsStringWithDefault("name", this.name);
@@ -79,55 +62,93 @@ export class ContextInfo implements IReconfigurable {
 		this.properties = config.getSection("properties");
 	}
 	
-	/** Gets the name of the context of execution. */
+	/**
+	 * Gets the context name.
+	 * 
+	 * @returns the context name 
+	 */
 	public get name(): string { return this._name; }
+
 	/** 
-	 * Sets the name of the context of execution. 
-	 * @param value		name to set. Defaults to "unknown" if null.
+	 * Sets the context name.
+	 *  
+	 * @param value		a new name for the context.
 	 */
 	public set name(value: string) { this._name = value || "unknown"; }
 	
-	/** Gets the description of the context of execution. */
+	/**
+	 * Gets the human-readable description of the context.
+	 * 
+	 * @returns the human-readable description of the context.
+	 */
 	public get description(): string { return this._description; }
-	/** Set the description of the context of execution. */
+
+	/**
+	 * Sets the human-readable description of the context.
+	 * 
+	 * @param value a new human readable description of the context.
+	 */
 	public set description(value: string) { this._description = value; }
 	
-	/** Gets the id of the context of execution. */
+	/**
+	 * Gets the unique context id.
+	 * Usually it is the current host name.
+	 * 
+	 * @returns the unique context id.
+	 */
 	public get contextId(): string { return this._contextId; }
-	/** Sets the id of the context of execution. */
+
+	/**
+	 * Sets the unique context id.
+	 * 
+	 * @param value a new unique context id.
+	 */
 	public set contextId(value: string) { this._contextId = value; }
 	
-	/** Gets the time at which the execution was started. */
+	/**
+	 * Gets the context start time.
+	 * 
+	 * @returns the context start time.
+	 */
 	public get startTime(): Date { return this._startTime; }
-	/** Sets the time at which the execution was started. */
+
+	/**
+	 * Sets the context start time.
+	 * 
+	 * @param value a new context start time.
+	 */
 	public set startTime(value: Date) { this._startTime = value || new Date(); }
 
-	/** @returns the amount of time that has passed since the execution started. */
+	/**
+	 * Calculates the context uptime as from the start time.
+	 * 
+	 * @returns number of milliseconds from the context start time.
+	 */
 	public get uptime(): number {
 		return new Date().getTime() - this._startTime.getTime();
 	}
 
-	/** Gets the properties of the context of execution. */
+	/**
+	 * Gets context additional parameters.
+	 * 
+	 * @returns a JSON object with additional context parameters.
+	 */
 	public get properties(): any { return this._properties; }
+
 	/** 
-	 * Sets the properties of the context of execution. 
+	 * Sets context additional parameters.
 	 * 
-	 * @param properties 	values that will be converted to a StringValueMap and saved
-	 * 						to this ContextInfo's properties.
-	 * 
-	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html StringValueMap]] (in the PipServices "Commons" package)
+	 * @param properties 	a JSON object with context additional parameters
 	*/
 	public set properties(properties: any) {
 		this._properties = StringValueMap.fromValue(properties);
 	}
 	
 	/**
-	 * Static method that creates and configures a ContextInfo object using the ConfigParams 
-	 * passed in 'config'.
+	 * Creates a new ContextInfo and sets its configuration parameters.
 	 * 
-	 * @param config 	ConfigParams to use when configuring the new ContextInfo object.
-	 * 
-	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+	 * @param config 	configuration parameters for the new ContextInfo.
+	 * @returns a newly created ContextInfo
 	 */
 	public static fromConfig(config: ConfigParams): ContextInfo {
 		let result = new ContextInfo();
