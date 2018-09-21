@@ -6,9 +6,12 @@ import { MemoryLock } from './MemoryLock';
 import { Factory } from '../build/Factory';
 
 /**
- * Contains static read-only descriptors for [[NullLock]] and [[MemoryLock]] (as well as a default "lock" descriptor).
+ * Creates [[ILock]] components by their descriptors.
  * 
  * @see [[Factory]]
+ * @see [[ILock]]
+ * @see [[MemoryLock]]
+ * @see [[NullLock]]
  */
 export class DefaultLockFactory extends Factory {
 	public static readonly Descriptor = new Descriptor("pip-services", "factory", "lock", "default", "1.0");
@@ -16,10 +19,7 @@ export class DefaultLockFactory extends Factory {
 	public static readonly MemoryLockDescriptor = new Descriptor("pip-services", "lock", "memory", "*", "1.0");
 
 	/**
-	 * Create a new DefaultLockFactory object, containing [[NullLock]] and [[MemoryLock]] object factories.
-	 * 
-	 * @see [[NullLock]]
-	 * @see [[MemoryLock]]
+	 * Create a new instance of the factory.
 	 */
 	public constructor() {
         super();

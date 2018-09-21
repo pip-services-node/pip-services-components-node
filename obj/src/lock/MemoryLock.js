@@ -3,9 +3,33 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /** @module lock */
 const Lock_1 = require("./Lock");
 /**
- * Stores a registry of locks in memory. A lock contains a string key (by which
- * the resource that is being locked can be identified) and the lock's
- * time to live (after which the lock is considered to be expired).
+ * Lock that is used to synchronize execution within one process using shared memory.
+ *
+ * Remember: This implementation is not suitable for synchronization of distributed processes.
+ *
+ * ### Configuration parameters ###
+ *
+ * - options:
+ *   - retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)
+ *
+ * @see [[ILock]]
+ * @see [[Lock]]
+ *
+ * ### Example ###
+ *
+ * let lock = new MemoryLock();
+ *
+ * lock.acquire("123", "key1", (err) => {
+ *      if (err == null) {
+ *          try {
+ *            // Processing...
+ *          } finally {
+ *             lock.releaseLock("123", "key1", (err) => {
+ *                // Continue...
+ *             });
+ *          }
+ *      }
+ * });
  */
 class MemoryLock extends Lock_1.Lock {
     constructor() {
@@ -13,13 +37,13 @@ class MemoryLock extends Lock_1.Lock {
         this._locks = {};
     }
     /**
-     * Attempts to acquire a lock for the resource that is identified by the given key.
+     * Makes a single attempt to acquire a lock by its key.
+     * It returns immediately a positive or negative result.
      *
-     * @param correlationId     not used.
-     * @param key               the key to identify the lock by.
-     * @param ttl               the lock's time-to-live.
-     * @param callback          the function that will be called with the result of the attempt or
-     *                          with an error (if one is raised).
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param key               a unique lock key to acquire.
+     * @param ttl               a lock timeout (time to live) in milliseconds.
+     * @param callback          callback function that receives a lock result or error.
      */
     tryAcquireLock(correlationId, key, ttl, callback) {
         let expireTime = this._locks[key];

@@ -4,10 +4,13 @@ const CacheEntry_1 = require("./CacheEntry");
 /**
  * Cache that stores values in the process memory.
  *
+ * Remember: This implementation is not suitable for synchronization of distributed processes.
+ *
  * ### Configuration parameters ###
  *
- * - timeout:               default caching timeout in milliseconds (default: 1 minute)
- * - max_size:              maximum number of values stored in this cache (default: 1000)
+ * - options:
+ *   - timeout:               default caching timeout in milliseconds (default: 1 minute)
+ *   - max_size:              maximum number of values stored in this cache (default: 1000)
  *
  * @see [[ICache]]
  *
@@ -29,9 +32,8 @@ class MemoryCache {
     constructor() {
         this._cache = {};
         this._count = 0;
-        //milliseconds
-        this._timeout = MemoryCache._defaultTimeout;
-        this._maxSize = MemoryCache._defaultMaxSize;
+        this._timeout = 60000;
+        this._maxSize = 1000;
     }
     /**
      * Configures component by passing configuration parameters.
@@ -39,8 +41,8 @@ class MemoryCache {
      * @param config    configuration parameters to be set.
      */
     configure(config) {
-        this._timeout = config.getAsLongWithDefault("timeout", this._timeout);
-        this._maxSize = config.getAsLongWithDefault("max_size", this._maxSize);
+        this._timeout = config.getAsLongWithDefault("options.timeout", this._timeout);
+        this._maxSize = config.getAsLongWithDefault("options.max_size", this._maxSize);
     }
     /**
      * Clears component state.
@@ -172,8 +174,5 @@ class MemoryCache {
             callback(null);
     }
 }
-//milliseconds
-MemoryCache._defaultTimeout = 60000;
-MemoryCache._defaultMaxSize = 1000;
 exports.MemoryCache = MemoryCache;
 //# sourceMappingURL=MemoryCache.js.map

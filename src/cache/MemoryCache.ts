@@ -8,10 +8,13 @@ import { CacheEntry } from './CacheEntry';
 /**
  * Cache that stores values in the process memory.
  * 
+ * Remember: This implementation is not suitable for synchronization of distributed processes.
+ * 
  * ### Configuration parameters ###
  * 
- * - timeout:               default caching timeout in milliseconds (default: 1 minute)
- * - max_size:              maximum number of values stored in this cache (default: 1000)        
+ * - options:
+ *   - timeout:               default caching timeout in milliseconds (default: 1 minute)
+ *   - max_size:              maximum number of values stored in this cache (default: 1000)        
  *  
  * @see [[ICache]]
  * 
@@ -27,16 +30,11 @@ import { CacheEntry } from './CacheEntry';
  * 
  */
 export class MemoryCache implements ICache, IReconfigurable {
-    //milliseconds
-    private static readonly _defaultTimeout: number = 60000;
-    private static readonly _defaultMaxSize: number = 1000;
-
     private _cache: any = {};
     private _count: number = 0;
 
-    //milliseconds
-    private _timeout: number = MemoryCache._defaultTimeout;
-    private _maxSize: number = MemoryCache._defaultMaxSize;
+    private _timeout: number = 60000;
+    private _maxSize: number = 1000;
 
 	/**
 	 * Creates a new instance of the cache.
@@ -49,8 +47,8 @@ export class MemoryCache implements ICache, IReconfigurable {
      * @param config    configuration parameters to be set.
 	 */
     public configure(config: ConfigParams): void {
-        this._timeout = config.getAsLongWithDefault("timeout", this._timeout);
-        this._maxSize = config.getAsLongWithDefault("max_size", this._maxSize);
+        this._timeout = config.getAsLongWithDefault("options.timeout", this._timeout);
+        this._maxSize = config.getAsLongWithDefault("options.max_size", this._maxSize);
     }
 
 	/**

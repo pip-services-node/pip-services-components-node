@@ -1,39 +1,40 @@
 /** @module lock */
 import { ILock } from './ILock';
 /**
- * Dummy implementation of the [[ILock]] interface. Methods do not contain any logic and
- * simply accept the parameters passed to them. Can be used to cut dependecies while testing.
+ * Dummy lock implementation that doesn't do anything.
+ *
+ * It can be used in testing or in situations when lock is required
+ * but shall be disabled.
  *
  * @see [[ILock]]
  */
 export declare class NullLock implements ILock {
     /**
-     * Attempts to acquire a lock for the resource that is identified by the given key.
+     * Makes a single attempt to acquire a lock by its key.
+     * It returns immediately a positive or negative result.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param key               the key to identify the lock by.
-     * @param ttl               the lock's time-to-live.
-     * @param callback          the function that will be called with the result of the attempt or
-     *                          with an error (if one is raised).
+     * @param key               a unique lock key to acquire.
+     * @param ttl               a lock timeout (time to live) in milliseconds.
+     * @param callback          callback function that receives a lock result or error.
      */
     tryAcquireLock(correlationId: string, key: string, ttl: number, callback: (err: any, result: boolean) => void): void;
     /**
-     * Acquiring a lock for a certain resource, identifiable by the lock's key.
+     * Makes multiple attempts to acquire a lock by its key within give time interval.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param key               the key to identify the lock by.
-     * @param ttl               the lock's time-to-live.
-     * @param timeout           the acquisition's retry interval.
-     * @param callback          the function to call once the lock has been acquired. Will be called
-     *                          with an error if one is raised.
+     * @param key               a unique lock key to acquire.
+     * @param ttl               a lock timeout (time to live) in milliseconds.
+     * @param timeout           a lock acquisition timeout.
+     * @param callback          callback function that receives error or null for success.
      */
     acquireLock(correlationId: string, key: string, ttl: number, timeout: number, callback: (err: any) => void): void;
     /**
-     * Releases the lock with the given key.
+     * Releases prevously acquired lock by its key.
      *
-     * @param correlationId     not used.
-     * @param key               the key of the lock that is to be released.
-     * @param callback          (optional) the function to call once the lock has been released.
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param key               a unique lock key to release.
+     * @param callback          callback function that receives error or null for success.
      */
     releaseLock(correlationId: string, key: string, callback?: (err: any) => void): void;
 }

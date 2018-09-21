@@ -6,16 +6,16 @@ const NullLock_1 = require("./NullLock");
 const MemoryLock_1 = require("./MemoryLock");
 const Factory_1 = require("../build/Factory");
 /**
- * Contains static read-only descriptors for [[NullLock]] and [[MemoryLock]] (as well as a default "lock" descriptor).
+ * Creates [[ILock]] components by their descriptors.
  *
  * @see [[Factory]]
+ * @see [[ILock]]
+ * @see [[MemoryLock]]
+ * @see [[NullLock]]
  */
 class DefaultLockFactory extends Factory_1.Factory {
     /**
-     * Create a new DefaultLockFactory object, containing [[NullLock]] and [[MemoryLock]] object factories.
-     *
-     * @see [[NullLock]]
-     * @see [[MemoryLock]]
+     * Create a new instance of the factory.
      */
     constructor() {
         super();

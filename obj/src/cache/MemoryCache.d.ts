@@ -5,10 +5,13 @@ import { ICache } from './ICache';
 /**
  * Cache that stores values in the process memory.
  *
+ * Remember: This implementation is not suitable for synchronization of distributed processes.
+ *
  * ### Configuration parameters ###
  *
- * - timeout:               default caching timeout in milliseconds (default: 1 minute)
- * - max_size:              maximum number of values stored in this cache (default: 1000)
+ * - options:
+ *   - timeout:               default caching timeout in milliseconds (default: 1 minute)
+ *   - max_size:              maximum number of values stored in this cache (default: 1000)
  *
  * @see [[ICache]]
  *
@@ -24,8 +27,6 @@ import { ICache } from './ICache';
  *
  */
 export declare class MemoryCache implements ICache, IReconfigurable {
-    private static readonly _defaultTimeout;
-    private static readonly _defaultMaxSize;
     private _cache;
     private _count;
     private _timeout;

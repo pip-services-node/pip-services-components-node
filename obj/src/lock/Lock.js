@@ -2,46 +2,35 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 /**
- * Abstract class that can be implemented by classes that need to be configurable and
- * manage resoure locking.
+ * Abstract lock that implements default lock acquisition routine.
  *
  * ### Configuration parameters ###
  *
- * Parameters to pass to the [[configure]] method for component configuration:
+ * - options:
+ *   - retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)
  *
- * - "options.retry_timeout" - the amount of time to retry lock acquisition (default is 100).
+ * @see [[ILock]]
  */
 class Lock {
     constructor() {
         this._retryTimeout = 100;
     }
     /**
-     * Configures this object using the parameters provided. Looks for a parameter with the
-     * key "options.retry_timeout" and sets it for this object. If the key is not found,
-     * the value will default to the value that was previously set for this object.
+     * Configures component by passing configuration parameters.
      *
-     * __Configuration parameters:__
-     * - "options.retry_timeout" - the amount of time to retry lock acquisition (default is 100).
-     *
-     * @param config    ConfigParams, containing a "options.retry_timeout" item.
-     *
-     * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]] (in the PipServices "Commons" package)
+     * @param config    configuration parameters to be set.
      */
     configure(config) {
         this._retryTimeout = config.getAsIntegerWithDefault("options.retry_timeout", this._retryTimeout);
     }
-    //TODO: check timeout vs _retryTimeout
     /**
-     * Acquiring a lock for a certain resource, identifiable by the lock's key.
+     * Makes multiple attempts to acquire a lock by its key within give time interval.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param key               the key to identify the lock by.
-     * @param ttl               the lock's time-to-live.
-     * @param timeout           the acquisition's retry interval.
-     * @param callback          the function to call once the lock has been acquired. Will be called
-     *                          with an error if one is raised. If the retry interval times out,
-     *                          a [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/errors.conflictexception.html ConflictException]]
-     *                          will be returned.
+     * @param key               a unique lock key to acquire.
+     * @param ttl               a lock timeout (time to live) in milliseconds.
+     * @param timeout           a lock acquisition timeout.
+     * @param callback          callback function that receives error or null for success.
      */
     acquireLock(correlationId, key, ttl, timeout, callback) {
         let retryTime = new Date().getTime() + timeout;
