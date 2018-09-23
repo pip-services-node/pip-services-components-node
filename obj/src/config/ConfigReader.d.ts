@@ -5,7 +5,7 @@ import { IConfigurable } from 'pip-services-commons-node';
  *
  * ### Configuration parameters ###
  *
- * - parameters:            this entire section is used as template parameters
+ * parameters:            this entire section is used as template parameters
  *   ...
  *
  *  @see [[IConfigReader]]

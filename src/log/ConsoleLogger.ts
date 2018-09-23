@@ -13,8 +13,8 @@ import { LogLevelConverter } from './LogLevelConverter';
  * 
  * ### Configuration parameters ###
  * 
- * - level:             maximum log level to capture
- * - source:            source (context) name
+ * level:             maximum log level to capture
+ * source:            source (context) name
  * 
  * ### References ###
  * 

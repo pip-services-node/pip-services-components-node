@@ -4,8 +4,7 @@ import { IFactory } from './IFactory';
  * When a new component is requested, it iterates through
  * factories to locate the one able to create the requested component.
  *
- * This component is used to conveniently keep all supported factories
- * in a single place.
+ * This component is used to conveniently keep all supported factories in a single place.
  *
  * ### Example ###
  *

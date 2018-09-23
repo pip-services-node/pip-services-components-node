@@ -13,9 +13,9 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
  *
  * ### Configuration parameters ###
  *
- * - name: 					the context (container or process) name
- * - description: 		   	human-readable description of the context
- * - properties: 			entire section of additional descriptive properties
+ * name: 					the context (container or process) name
+ * description: 		   	human-readable description of the context
+ * properties: 			entire section of additional descriptive properties
  * 	 ...
  *
  * ### Example ###

@@ -14,10 +14,10 @@ class DiscoveryItem {
  *
  * ### Configuration parameters ###
  *
- * - [connection key 1]:
- *   - ...                          connection parameters for key 1
- * - [connection key 2]:
- *   - ...                          connection parameters for key N
+ * [connection key 1]:
+ *   ...                          connection parameters for key 1
+ * [connection key 2]:
+ *   ...                          connection parameters for key N
  *
  * @see [[IDiscovery]]
  * @see [[ConnectionParams]]

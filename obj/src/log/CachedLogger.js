@@ -9,11 +9,11 @@ const LogLevelConverter_1 = require("./LogLevelConverter");
  *
  * ### Configuration parameters ###
  *
- * - level:             maximum log level to capture
- * - source:            source (context) name
- * - options:
- *   - interval:        interval in milliseconds to save log messages (default: 10 seconds)
- *   - max_cache_size:  maximum number of messages stored in this cache (default: 100)
+ * level:             maximum log level to capture
+ * source:            source (context) name
+ * options:
+ *   interval:        interval in milliseconds to save log messages (default: 10 seconds)
+ *   max_cache_size:  maximum number of messages stored in this cache (default: 100)
  *
  * ### References ###
  *

@@ -9,8 +9,8 @@ const Lock_1 = require("./Lock");
  *
  * ### Configuration parameters ###
  *
- * - options:
- *   - retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)
+ * options:
+ *   retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)
  *
  * @see [[ILock]]
  * @see [[Lock]]

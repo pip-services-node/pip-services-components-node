@@ -17,8 +17,8 @@ import { FileConfigReader } from './FileConfigReader';
  * 
  * ### Configuration parameters ###
  * 
- * - path:          path to configuration file
- * - parameters:    this entire section is used as template parameters
+ * path:          path to configuration file
+ * parameters:    this entire section is used as template parameters
  *   ...
  * 
  * @see [[IConfigReader]]

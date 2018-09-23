@@ -8,9 +8,9 @@ import { CachedCounters } from './CachedCounters';
  *
  * ### Configuration parameters ###
  *
- * - options:
- *   - interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
- *   - reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
+ * options:
+ *   interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
+ *   reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
  *
  * ### References ###
  *

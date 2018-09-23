@@ -10,10 +10,10 @@ const CredentialParams_1 = require("./CredentialParams");
  *
  * ### Configuration parameters ###
  *
- * - [credential key 1]:
- *   - ...                          credential parameters for key 1
- * - [credential key 2]:
- *   - ...                          credential parameters for key N
+ * [credential key 1]:
+ *   ...                          credential parameters for key 1
+ * [credential key 2]:
+ *   ...                          credential parameters for key N
  *
  * @see [[ICredentialStore]]
  * @see [[CredentialParams]]

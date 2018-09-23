@@ -15,15 +15,15 @@ const CredentialParams_1 = require("./CredentialParams");
  *
  * ### Configuration parameters ###
  *
- * - credential:
- *   - store_key:                   (optional) a key to retrieve the credentials from [[ICredentialStore]]
- *   - ...                          other credential parameters
+ * credential:
+ *   store_key:                   (optional) a key to retrieve the credentials from [[ICredentialStore]]
+ *   ...                          other credential parameters
  *
- * - credentials:                   alternative to credential
- *   - [credential params 1]:       first credential parameters
- *     - ...
- *   - [credential params N]:       Nth credential parameters
- *     - ...
+ * credentials:                   alternative to credential
+ *   [credential params 1]:       first credential parameters
+ *     ...
+ *   [credential params N]:       Nth credential parameters
+ *     ...
  *
  * ### References ###
  *

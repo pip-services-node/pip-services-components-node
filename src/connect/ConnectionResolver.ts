@@ -19,15 +19,15 @@ import { IDiscovery } from './IDiscovery';
  * 
  * ### Configuration parameters ###
  * 
- * - connection:    
- *   - discovery_key:               (optional) a key to retrieve the connection from [[IDiscovery]]
- *   - ...                          other connection parameters
+ * connection:    
+ *   discovery_key:               (optional) a key to retrieve the connection from [[IDiscovery]]
+ *   ...                          other connection parameters
  * 
- * - connections:                   alternative to connection
- *   - [connection params 1]:       first connection parameters
- *     - ...
- *   - [connection params N]:       Nth connection parameters
- *     - ...
+ * connections:                   alternative to connection
+ *   [connection params 1]:       first connection parameters
+ *     ...
+ *   [connection params N]:       Nth connection parameters
+ *     ...
  * 
  * ### References ###
  * 
