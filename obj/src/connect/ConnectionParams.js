@@ -9,11 +9,12 @@ const pip_services_commons_node_2 = require("pip-services-commons-node");
  * separately from more protected sensitive values.
  *
  * ### Configuration parameters ###
- * - discovery_key: key to retrieve parameters from discovery service
- * - protocol:      connection protocol like http, https, tcp, udp
- * - host:          host name or IP address
- * - port:          port number
- * - uri:           resource URI or connection string with all parameters in it
+ *
+ * discovery_key: key to retrieve parameters from discovery service
+ * protocol:      connection protocol like http, https, tcp, udp
+ * host:          host name or IP address
+ * port:          port number
+ * uri:           resource URI or connection string with all parameters in it
  *
  * In addition to standard parameters ConnectionParams may contain any number of custom parameters
  *

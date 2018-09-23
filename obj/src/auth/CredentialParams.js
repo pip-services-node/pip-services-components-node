@@ -9,16 +9,17 @@ const pip_services_commons_node_2 = require("pip-services-commons-node");
  * in a separate store, protected from unauthorized access.
  *
  * ### Configuration parameters ###
- * - store_key:     key to retrieve parameters from credential store
- * - username:      user name
- * - user:          alternative to username
- * - password:      user password
- * - pass:          alternative to password
- * - access_id:     application access id
- * - client_id:     alternative to access_id
- * - access_key:    application secret key
- * - client_key:    alternative to access_key
- * - secret_key:    alternative to access_key
+ *
+ * store_key:     key to retrieve parameters from credential store
+ * username:      user name
+ * user:          alternative to username
+ * password:      user password
+ * pass:          alternative to password
+ * access_id:     application access id
+ * client_id:     alternative to access_id
+ * access_key:    application secret key
+ * client_key:    alternative to access_key
+ * secret_key:    alternative to access_key
  *
  * In addition to standard parameters CredentialParams may contain any number of custom parameters
  *
