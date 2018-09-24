@@ -48,7 +48,6 @@ export declare class CompositeLogger extends Logger implements IReferenceable {
      * Sets references to dependent components.
      *
      * @param references 	references to locate the component dependencies.
-     *
      */
     setReferences(references: IReferences): void;
     /**

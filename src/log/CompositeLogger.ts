@@ -59,7 +59,6 @@ export class CompositeLogger extends Logger implements IReferenceable {
 	 * Sets references to dependent components.
 	 * 
 	 * @param references 	references to locate the component dependencies. 
-	 * 
      */
 	public setReferences(references: IReferences): void {
 		super.setReferences(references);

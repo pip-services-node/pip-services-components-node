@@ -51,7 +51,6 @@ class CompositeLogger extends Logger_1.Logger {
      * Sets references to dependent components.
      *
      * @param references 	references to locate the component dependencies.
-     *
      */
     setReferences(references) {
         super.setReferences(references);
