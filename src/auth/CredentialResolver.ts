@@ -31,7 +31,7 @@ import { ICredentialStore } from './ICredentialStore';
  * 
  * ### References ###
  * 
- * - *:credential-store:*:*:1.0     (optional) Credential stores
+ * - *:credential-store:*:*:1.0     (optional) Credential stores to resolve credentials
  * 
  * @see [[CredentialParams]]
  * @see [[ICredentialStore]]
