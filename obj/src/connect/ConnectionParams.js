@@ -40,7 +40,7 @@ const pip_services_commons_node_2 = require("pip-services-commons-node");
  */
 class ConnectionParams extends pip_services_commons_node_1.ConfigParams {
     /**
-     * Creates a new ConnectionParams and fills it with values.
+     * Creates a new connection parameters and fills it with values.
      *
      * @param values 	(optional) an object to be converted into key-value pairs to initialize this connection.
      */

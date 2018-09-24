@@ -42,7 +42,7 @@ const pip_services_commons_node_2 = require("pip-services-commons-node");
  */
 class CredentialParams extends pip_services_commons_node_1.ConfigParams {
     /**
-     * Creates a new ConfigParams and fills it with values.
+     * Creates a new credential parameters and fills it with values.
      *
      * @param values 	(optional) an object to be converted into key-value pairs to initialize these credentials.
      */

@@ -22,7 +22,7 @@ import { ConnectionParams } from './ConnectionParams';
  *
  * ### References ###
  *
- * - *:discovery:*:*:1.0            (optional) IDiscovery services
+ * - *:discovery:*:*:1.0            (optional) IDiscovery services to resolve connections
  *
  * @see [[ConnectionParams]]
  * @see [[IDiscovery]]

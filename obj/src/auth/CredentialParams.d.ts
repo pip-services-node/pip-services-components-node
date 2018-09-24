@@ -39,7 +39,7 @@ import { ConfigParams } from 'pip-services-commons-node';
  */
 export declare class CredentialParams extends ConfigParams {
     /**
-     * Creates a new ConfigParams and fills it with values.
+     * Creates a new credential parameters and fills it with values.
      *
      * @param values 	(optional) an object to be converted into key-value pairs to initialize these credentials.
      */

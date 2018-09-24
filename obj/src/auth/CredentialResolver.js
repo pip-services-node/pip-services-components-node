@@ -27,7 +27,7 @@ const CredentialParams_1 = require("./CredentialParams");
  *
  * ### References ###
  *
- * - *:credential-store:*:*:1.0     (optional) Credential stores
+ * - *:credential-store:*:*:1.0     (optional) Credential stores to resolve credentials
  *
  * @see [[CredentialParams]]
  * @see [[ICredentialStore]]
