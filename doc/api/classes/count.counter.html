@@ -70,9 +70,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Used as performance counters. A Counter can show non-functional characteristics,
-							such as: times called, response time, objects saved/processed. They collect information
-						that can be used to answer such questions as: how much, how often, how long.</p>
+						<p>Data object to store measurement for a performance counter.
+						This object is used by <a href="count.cachedcounters.html">CachedCounters</a> to store counters.</p>
 					</div>
 				</div>
 			</section>
@@ -122,18 +121,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/Counter.ts#L25">count/Counter.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/Counter.ts#L24">count/Counter.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a new Counter object.</p>
+									<p>Creates a instance of the data obejct</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -141,7 +135,7 @@
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>the counter&#39;s name.</p>
+											<p>a counter name.</p>
 										</div>
 									</div>
 								</li>
@@ -149,7 +143,7 @@
 									<h5>type: <a href="../enums/count.countertype.html" class="tsd-signature-type">CounterType</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>the counter&#39;s type.</p>
+											<p>a counter type.</p>
 										</div>
 									</div>
 								</li>
@@ -167,12 +161,12 @@
 					<div class="tsd-signature tsd-kind-icon">average<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/Counter.ts#L23">count/Counter.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/Counter.ts#L22">count/Counter.ts:22</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The average of the values that were added to this counter.</p>
+							<p>The average value</p>
 						</div>
 					</div>
 				</section>
@@ -182,12 +176,12 @@
 					<div class="tsd-signature tsd-kind-icon">count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/Counter.ts#L17">count/Counter.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/Counter.ts#L16">count/Counter.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The number of values added to this counter.</p>
+							<p>The total count</p>
 						</div>
 					</div>
 				</section>
@@ -197,12 +191,12 @@
 					<div class="tsd-signature tsd-kind-icon">last<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/Counter.ts#L15">count/Counter.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/Counter.ts#L14">count/Counter.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The last value added to the counter.</p>
+							<p>The last recorded value</p>
 						</div>
 					</div>
 				</section>
@@ -212,12 +206,12 @@
 					<div class="tsd-signature tsd-kind-icon">max<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/Counter.ts#L21">count/Counter.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/Counter.ts#L20">count/Counter.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The maximum value added to this counter.</p>
+							<p>The maximum value</p>
 						</div>
 					</div>
 				</section>
@@ -227,12 +221,12 @@
 					<div class="tsd-signature tsd-kind-icon">min<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/Counter.ts#L19">count/Counter.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/Counter.ts#L18">count/Counter.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The minimum value added to this counter.</p>
+							<p>The minimum value</p>
 						</div>
 					</div>
 				</section>
@@ -242,12 +236,12 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/Counter.ts#L11">count/Counter.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/Counter.ts#L10">count/Counter.ts:10</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The counter&#39;s name, which should give an idea as to what is being counted.</p>
+							<p>The counter unique name</p>
 						</div>
 					</div>
 				</section>
@@ -257,12 +251,12 @@
 					<div class="tsd-signature tsd-kind-icon">time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/Counter.ts#L25">count/Counter.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/Counter.ts#L24">count/Counter.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The (last) time set in this counter.</p>
+							<p>The recorded timestamp</p>
 						</div>
 					</div>
 				</section>
@@ -272,12 +266,12 @@
 					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../enums/count.countertype.html" class="tsd-signature-type">CounterType</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/Counter.ts#L13">count/Counter.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/Counter.ts#L12">count/Counter.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The counter&#39;s <a href="../enums/count.countertype.html">type</a>, which defines what the counter keeps track of.</p>
+							<p>The counter type that defines measurement algorithm</p>
 						</div>
 					</div>
 				</section>

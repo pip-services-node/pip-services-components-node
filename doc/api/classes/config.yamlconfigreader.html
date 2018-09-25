@@ -70,17 +70,33 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Provides methods for reading configuration parameters from a YAML file.</p>
+						<p>Config reader that reads configuration from YAML file.</p>
 					</div>
+					<p>The reader supports parameterization using Handlebar template engine.</p>
+					<h3 id="configuration-parameters">Configuration parameters</h3>
+					<ul>
+						<li>path:          path to configuration file</li>
+						<li>parameters:    this entire section is used as template parameters</li>
+						<li>...</li>
+					</ul>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
+						<dd><p><a href="../interfaces/config.iconfigreader.html">IConfigReader</a></p>
+						</dd>
+						<dt>see</dt>
 						<dd><p><a href="config.fileconfigreader.html">FileConfigReader</a></p>
-							<h3 id="examples">Examples</h3>
-							<p>Example usage:</p>
-							<pre><code>public MyMethod() {
-    ConfigParams<span class="hljs-built_in"> config </span>= YamlConfigReader.readConfig(<span class="hljs-literal">null</span>, <span class="hljs-string">"data/config.yaml"</span>);
-    <span class="hljs-built_in">..</span>.
-}
+							<h3 id="example">Example</h3>
+							<pre><code>======== config.<span class="hljs-attr">yml</span> ======
+key1: <span class="hljs-string">"{{KEY1_VALUE}}"</span>
+key2: <span class="hljs-string">"{{KEY2_VALUE}}"</span>
+===========================
+
+<span class="hljs-keyword">let</span> <span class="hljs-attr">configReader</span> = new YamlConfigReader(<span class="hljs-string">"config.yml"</span>);
+
+<span class="hljs-keyword">let</span> <span class="hljs-attr">parameters</span> = ConfigParams.fromTuples(<span class="hljs-string">"KEY1_VALUE"</span>, <span class="hljs-number">123</span>, <span class="hljs-string">"KEY2_VALUE"</span>, <span class="hljs-string">"ABC"</span>);
+configReader.readConfig(<span class="hljs-string">"123"</span>, parameters, (err, config) =&gt; {
+    // Result: <span class="hljs-attr">key1=123;key2=ABC</span>
+});
 </code></pre></dd>
 					</dl>
 				</div>
@@ -143,18 +159,13 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="config.fileconfigreader.html">FileConfigReader</a>.<a href="config.fileconfigreader.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/YamlConfigReader.ts#L27">config/YamlConfigReader.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/YamlConfigReader.ts#L41">config/YamlConfigReader.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="config.fileconfigreader.html">FileConfigReader</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="config.fileconfigreader.html#setpath">FileConfigReader.setPath</a></p>
-									</dd>
-								</dl>
+								<div class="lead">
+									<p>Creates a new instance of the config reader.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -162,9 +173,7 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> path: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>(optional) path to the target file, containing configuration parameters in YAML format.
-												If &#39;path&#39; is omitted in the constructor, then it must be set otherwise
-											(for example, using &quot;setPath()&quot;) before using the new object.</p>
+											<p>(optional) a path to configuration file.</p>
 										</div>
 									</div>
 								</li>
@@ -188,33 +197,20 @@
 								<p>Inherited from <a href="config.fileconfigreader.html">FileConfigReader</a>.<a href="config.fileconfigreader.html#configure">configure</a></p>
 								<p>Overrides <a href="config.configreader.html">ConfigReader</a>.<a href="config.configreader.html#configure">configure</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/FileConfigReader.ts#L78">config/FileConfigReader.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/FileConfigReader.ts#L38">config/FileConfigReader.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets this object&#39;s configuration parameters and &#39;path&#39; to the values
-									set in the passed configuration parameters.</p>
+									<p>Configures component by passing configuration parameters.</p>
 								</div>
-								<p><strong>Configuration parameters:</strong></p>
-								<ul>
-									<li>&quot;path&quot; - the path to the target file.</li>
-									<li>&quot;parameters.&lt;...&gt;&quot; - the parameters to parameterize the configuration reader with.</li>
-								</ul>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="config.configreader.html#configure">ConfigReader.configure</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>configures this class in accordance with <a href="config.configreader.html#configure">ConfigReader.configure</a>
-											and sets this class&#39;s &#39;_path&#39; field to the value stored in &#39;config&#39;
-										with the key &quot;path&quot;.</p>
+										<p>configuration parameters to be set.</p>
 									</div>
 								</li>
 							</ul>
@@ -233,16 +229,16 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="config.fileconfigreader.html">FileConfigReader</a>.<a href="config.fileconfigreader.html#getpath">getPath</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/FileConfigReader.ts#L51">config/FileConfigReader.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/FileConfigReader.ts#L48">config/FileConfigReader.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get the path to the target configurations file.</p>
+									<p>Get the path to configuration file..</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>path to the target file, containing configuration parameters.</p>
+							<p>the path to configuration file.</p>
 						</li>
 					</ul>
 				</section>
@@ -257,45 +253,32 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="config.configreader.html">ConfigReader</a>.<a href="config.configreader.html#parameterize">parameterize</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/ConfigReader.ts#L104">config/ConfigReader.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/ConfigReader.ts#L58">config/ConfigReader.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Protected method for parameterizing ConfigReaders, which allows using <a href="https://handlebarsjs.com/" class="external">handlebars</a>
-									to create parameterized configurations.</p>
+									<p>Parameterized configuration template given as string with dynamic parameters.</p>
 								</div>
-								<p>The idea behind using parameterized configurations: handlebars allows us to take a templated configuration and
-									parameterize it, using a given set of parameters. Parameterization can be done with the help of environment variables
-									as well. For example: the configuration for a container can be created as such, that it will use certain environment
-								variables to tailor itself to the system by dynamically setting addresses, ports, etc.</p>
-								<p>Example of a templated configuration:</p>
-								<pre><code><span class="xml"></span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">if</span></span> MONGODB_ENABLED}}</span><span class="xml">
- # MongoDb persistence
- - descriptor: "service-name:persistence:mongodb:default:1.0"
- connection:
-     uri: </span><span class="hljs-template-variable">{{MONGODB_SERVICE_URI}}</span><span class="xml"></span><span class="hljs-template-variable">{{^<span class="hljs-builtin-name">if</span> MONGODB_SERVICE_URI}}</span><span class="xml">"mongodb://localhost:27017/test"</span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">if</span></span>}}</span><span class="xml">
-</span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">if</span></span>}}</span><span class="xml"></span>
-</code></pre>
+								<p>The method uses Handlebars template engine: <a href="https://handlebarsjs.com" class="external">https://handlebarsjs.com</a></p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>string containing the configuration that is to be parameterized using this ConfigReader&#39;s
-										parameters, as well as the parameters passed as &#39;parameters&#39;.</p>
+										<p>a string with configuration template to be parameterized</p>
 									</div>
 								</li>
 								<li>
 									<h5>parameters: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>ConfigParams that contain the parameters to override this ConfigReader&#39;s parameters with.</p>
+										<p>dynamic parameters to inject into the template</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>the parameterized configuration.</p>
+							<p>a parameterized configuration string.</p>
 						</li>
 					</ul>
 				</section>
@@ -310,22 +293,13 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="config.configreader.html">ConfigReader</a>.<a href="config.configreader.html#readconfig">readConfig</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/YamlConfigReader.ts#L84">config/YamlConfigReader.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/YamlConfigReader.ts#L87">config/YamlConfigReader.ts:87</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Reads the YAML data from the file and returns it as a parameterized ConfigParams object.
-									Reader&#39;s path must be set.</p>
+									<p>Reads configuration and parameterize it with given values.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="config.yamlconfigreader.html#readobject-1">readObject</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -338,14 +312,13 @@
 								<li>
 									<h5>parameters: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>used to parameterize the reader.</p>
+										<p>values to parameters the configuration or null to skip parameterization.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or with the
-										ConfigParams that were read.</p>
+										<p>callback function that receives configuration or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -384,19 +357,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/YamlConfigReader.ts#L51">config/YamlConfigReader.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/YamlConfigReader.ts#L59">config/YamlConfigReader.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Reads the YAML data from the file and returns it as a parameterized nullable map.
-									Reader&#39;s path must be set.</p>
+									<p>Reads configuration file, parameterizes its content and converts it into JSON object.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="config.configreader.html#parameterize">ConfigReader.parameterize</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -409,12 +376,12 @@
 								<li>
 									<h5>parameters: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>used to parameterize the reader.</p>
+										<p>values to parameters the configuration.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-							<p>NullableMap with data from the YAML file.</p>
+							<p>a JSON object with configuration.</p>
 						</li>
 					</ul>
 				</section>
@@ -429,12 +396,12 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="config.fileconfigreader.html">FileConfigReader</a>.<a href="config.fileconfigreader.html#setpath">setPath</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/FileConfigReader.ts#L60">config/FileConfigReader.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/FileConfigReader.ts#L57">config/FileConfigReader.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Set the path to the target configurations file.</p>
+									<p>Set the path to configuration file.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -442,7 +409,7 @@
 								<li>
 									<h5>path: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>path to the target file, containing configuration parameters.</p>
+										<p>a new path to configuration file.</p>
 									</div>
 								</li>
 							</ul>
@@ -460,24 +427,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/YamlConfigReader.ts#L120">config/YamlConfigReader.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/YamlConfigReader.ts#L118">config/YamlConfigReader.ts:118</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Static implementation of YamlConfigReader&#39;s non-static <a href="config.yamlconfigreader.html#readconfig-1">readConfig</a>.</p>
+									<p>Reads configuration from a file, parameterize it with given values and returns a new ConfigParams object.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="config.yamlconfigreader.html#readconfig-1">readConfig</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="config.yamlconfigreader.html#readobject-1">readObject</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -489,19 +445,15 @@
 								</li>
 								<li>
 									<h5>path: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>location of the target YAML file.</p>
-									</div>
 								</li>
 								<li>
 									<h5>parameters: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>used to parameterize the reader.</p>
+										<p>values to parameters the configuration or null to skip parameterization.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ConfigParams</span></h4>
-							<p>the ConfigParams that were read from the file.</p>
 						</li>
 					</ul>
 				</section>
@@ -509,24 +461,19 @@
 					<a name="readobject-1" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> read<wbr>Object</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">read<wbr>Object<span class="tsd-signature-symbol">(</span>correlationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">read<wbr>Object<span class="tsd-signature-symbol">(</span>correlationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/YamlConfigReader.ts#L104">config/YamlConfigReader.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/YamlConfigReader.ts#L106">config/YamlConfigReader.ts:106</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Static implementation of YamlConfigReader&#39;s non-static <a href="config.yamlconfigreader.html#readobject-1">readObject</a>.</p>
+									<p>Reads configuration file, parameterizes its content and converts it into JSON object.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="config.yamlconfigreader.html#readobject-1">readObject</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -538,18 +485,16 @@
 								</li>
 								<li>
 									<h5>path: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>location of the target YAML file.</p>
-									</div>
 								</li>
 								<li>
 									<h5>parameters: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>used to parameterize the reader.</p>
+										<p>values to parameters the configuration.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+							<p>a JSON object with configuration.</p>
 						</li>
 					</ul>
 				</section>
@@ -654,6 +599,9 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/config.iconfigreader.html" class="tsd-kind-icon">IConfig<wbr>Reader</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/config.html#handlebars" class="tsd-kind-icon">handlebars</a>
 					</li>
 				</ul>
 			</nav>

@@ -70,11 +70,9 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The role of a Discovery service is to store a registry of various end-points (what services are where, and how to connect
-							to them - similar to a DNS). It contains information about the end-points themselves, but does not have the credentials
-						to connect to them (separated for security reasons - see <a href="../classes/auth.credentialparams.html">CredentialParams</a>).</p>
+						<p>Interface for discovery services which are used to store and resolve connection parameters
+						to connect to external services.</p>
 					</div>
-					<p>This interface can be used for creating discovery services (connection registeries).</p>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="../classes/connect.connectionparams.html">ConnectionParams</a></p>
@@ -126,12 +124,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/IDiscovery.ts#L23">connect/IDiscovery.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/IDiscovery.ts#L20">connect/IDiscovery.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for registering the connection to an end-point, using the key provided.</p>
+									<p>Registers connection parameters into the discovery service.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -145,19 +143,16 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>key to register the connection by.</p>
+										<p>a key to uniquely identify the connection parameters.</p>
 									</div>
 								</li>
 								<li>
 									<h5>connection: <a href="../classes/connect.connectionparams.html" class="tsd-signature-type">ConnectionParams</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>ConnectionParams of the connection to be registered.</p>
-									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or with the result.</p>
+										<p>callback function that receives a registered connection or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -196,13 +191,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/IDiscovery.ts#L44">connect/IDiscovery.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/IDiscovery.ts#L39">connect/IDiscovery.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for resolving all connections that are registered by the key provided
-									(since a service can have multiple corresponding addresses).</p>
+									<p>Resolves all connection parameters by their key.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -216,14 +210,13 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the connection&#39;s key to search for.</p>
+										<p>a key to uniquely identify the connections.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or with the
-										list of ConnectionParams that were found.</p>
+										<p>callback function that receives found connections or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -262,12 +255,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/IDiscovery.ts#L33">connect/IDiscovery.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/IDiscovery.ts#L30">connect/IDiscovery.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for resolving a connection (the first one found), using the key provided.</p>
+									<p>Resolves a single connection parameters by its key.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -281,14 +274,13 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the connection&#39;s key to search for.</p>
+										<p>a key to uniquely identify the connection.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or with the
-										ConnectionParams that were found.</p>
+										<p>callback function that receives found connection or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">

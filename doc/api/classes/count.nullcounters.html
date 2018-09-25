@@ -70,9 +70,10 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Dummy implementation of the <a href="../interfaces/count.icounters.html">ICounters</a> interface. Methods do not contain any logic and
-						simply accept the parameters passed to them. Can be used to cut dependencies while testing.</p>
+						<p>Dummy implementation of performance counters that doesn&#39;t do anything.</p>
 					</div>
+					<p>It can be used in testing or in situations when counters is required
+					but shall be disabled.</p>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="../interfaces/count.icounters.html">ICounters</a></p>
@@ -126,12 +127,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/NullCounters.ts#L16">count/NullCounters.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/NullCounters.ts#L18">count/NullCounters.ts:18</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a new NullCounters object.</p>
+									<p>Creates a new instance of the counter.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -149,38 +150,27 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#begintiming">beginTiming</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/NullCounters.ts#L30">count/NullCounters.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/NullCounters.ts#L28">count/NullCounters.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a new <a href="count.timing.html">Timing</a> callback object, which will call an ITimingCallback&#39;s
-										<a href="../interfaces/count.itimingcallback.html#endtiming">endTiming</a> method once it receives the command to
-									<a href="count.timing.html#endtiming">stop timing</a>.</p>
+									<p>Begins measurement of execution time interval.
+										It returns <a href="count.timing.html">Timing</a> object which has to be called at
+									<a href="count.timing.html#endtiming">Timing.endTiming</a> to end the measurement and update the counter.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="count.timing.html">Timing</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="../interfaces/count.itimingcallback.html">ITimingCallback</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html#interval">CounterType.Interval</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the Interval Counter, for which a Timing is to be created.</p>
+										<p>a counter name of Interval type.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="count.timing.html" class="tsd-signature-type">Timing</a></h4>
-							<p>the Timing callback object that was created.</p>
+							<p>a <a href="count.timing.html">Timing</a> callback object to end timing.</p>
 						</li>
 					</ul>
 				</section>
@@ -195,32 +185,26 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#increment">increment</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/NullCounters.ts#L97">count/NullCounters.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/NullCounters.ts#L79">count/NullCounters.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Increments the named <a href="../enums/count.countertype.html#increment">Incremental Counter</a> by the
-									given value.</p>
+									<p>Increments counter by given value.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to increment.</p>
+										<p>a counter name of Increment type.</p>
 									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the value to increment the counter by.</p>
+										<p>a value to add to the counter.</p>
 									</div>
 								</li>
 							</ul>
@@ -239,28 +223,20 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#incrementone">incrementOne</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/NullCounters.ts#L86">count/NullCounters.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/NullCounters.ts#L71">count/NullCounters.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Incrementes the named <a href="../enums/count.countertype.html#increment">Incremental Counter</a> by 1.</p>
+									<p>Increments counter by 1.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="count.nullcounters.html#increment">increment</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to increment.</p>
+										<p>a counter name of Increment type.</p>
 									</div>
 								</li>
 							</ul>
@@ -279,32 +255,28 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#last">last</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/NullCounters.ts#L54">count/NullCounters.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/NullCounters.ts#L49">count/NullCounters.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Updates the named <a href="../enums/count.countertype.html#lastvalue">Last Counter</a> by setting
-									its last value to the value given.</p>
+									<p>Records the last calculated measurement value.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-								</dl>
+								<p>Usually this method is used by metrics calculated
+								externally.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to update.</p>
+										<p>a counter name of Last type.</p>
 									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the value to update the counter with.</p>
+										<p>a last value to record.</p>
 									</div>
 								</li>
 							</ul>
@@ -323,32 +295,26 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#stats">stats</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/NullCounters.ts#L43">count/NullCounters.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/NullCounters.ts#L38">count/NullCounters.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Adds the given value to the named <a href="../enums/count.countertype.html#statistics">Statistics Counter</a>
-									and recalculates its statistics, taking into account the new value.</p>
+									<p>Calculates min/average/max statistics based on the current and previous values.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to update.</p>
+										<p>a counter name of Statistics type</p>
 									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the value to update the counter with.</p>
+										<p>a value to update statistics</p>
 									</div>
 								</li>
 							</ul>
@@ -367,32 +333,26 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#timestamp">timestamp</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/NullCounters.ts#L76">count/NullCounters.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/NullCounters.ts#L64">count/NullCounters.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Updates the named <a href="../enums/count.countertype.html#timestamp">Timestamp Counter&#39;s</a> time to
-									the time given.</p>
+									<p>Records the given timestamp.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to update.</p>
+										<p>a counter name of Timestamp type.</p>
 									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">Date</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the timestamp to update the counter to.</p>
+										<p>a timestamp to record.</p>
 									</div>
 								</li>
 							</ul>
@@ -411,29 +371,20 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#timestampnow">timestampNow</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/NullCounters.ts#L65">count/NullCounters.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/NullCounters.ts#L56">count/NullCounters.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Updates the named <a href="../enums/count.countertype.html#timestamp">Timestamp Counter&#39;s</a> time to
-									the current time.</p>
+									<p>Records the current time as a timestamp.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="count.nullcounters.html#timestamp">timestamp</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to update.</p>
+										<p>a counter name of Timestamp type.</p>
 									</div>
 								</li>
 							</ul>

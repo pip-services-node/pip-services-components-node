@@ -44,11 +44,6 @@ export class MemoryCache implements ICache, IReconfigurable {
 	/**
      * Configures component by passing configuration parameters.
      * 
-     * __Configuration parameters:__
-     * - options:
-     *     - timeout:               default caching timeout in milliseconds (default: 1 minute)
-     *     - max_size:              maximum number of values stored in this cache (default: 1000)   
-     * 
      * @param config    configuration parameters to be set.
 	 */
     public configure(config: ConfigParams): void {

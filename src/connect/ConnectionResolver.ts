@@ -69,18 +69,6 @@ export class ConnectionResolver {
     /**
      * Configures component by passing configuration parameters.
      * 
-     * __Configuration parameters__
-     * 
-     * - connection:  
-     *     - discovery_key:               (optional) a key to retrieve the connection from [[IDiscovery]]
-     *     - ...                          other connection parameters
-     * 
-     * - connections:                  alternative to connection
-     *     - [connection params 1]:       first connection parameters
-     *         - ...                      connection parameters for key 1
-     *     - [connection params N]:       Nth connection parameters
-     *         - ...                      connection parameters for key N
-     * 
      * @param config    configuration parameters to be set.
      */
     public configure(config: ConfigParams): void {

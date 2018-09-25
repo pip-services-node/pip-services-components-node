@@ -70,8 +70,9 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Interface for creating classes that manage resource locking.</p>
+						<p>Interface for locks to synchronize work or parallel processes and to prevent collisions.</p>
 					</div>
+					<p>The lock allows to manage multiple locks identified by unique keys.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -117,12 +118,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/lock/ILock.ts#L29">lock/ILock.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/lock/ILock.ts#L30">lock/ILock.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for acquiring a lock</p>
+									<p>Makes multiple attempts to acquire a lock by its key within give time interval.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -136,26 +137,25 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the key to identify the lock by.</p>
+										<p>a unique lock key to acquire.</p>
 									</div>
 								</li>
 								<li>
 									<h5>ttl: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the lock&#39;s time-to-live.</p>
+										<p>a lock timeout (time to live) in milliseconds.</p>
 									</div>
 								</li>
 								<li>
 									<h5>timeout: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the acquisition&#39;s retry timeout.</p>
+										<p>a lock acquisition timeout.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the function to call once the lock has been acquired. Will be called
-										with an error if one is raised.</p>
+										<p>callback function that receives error or null for success.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -191,13 +191,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/lock/ILock.ts#L41">lock/ILock.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/lock/ILock.ts#L40">lock/ILock.ts:40</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for releasing the lock
-									with the given key.</p>
+									<p>Releases prevously acquired lock by its key.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -211,14 +210,13 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the key of the lock that is to be released.</p>
+										<p>a unique lock key to release.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>(optional) the function to call once the lock has been released. Will be called
-										with an error if one is raised.</p>
+										<p>callback function that receives error or null for success.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -254,13 +252,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/lock/ILock.ts#L16">lock/ILock.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/lock/ILock.ts#L18">lock/ILock.ts:18</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for attempting to
-									acquire a lock.</p>
+									<p>Makes a single attempt to acquire a lock by its key.
+									It returns immediately a positive or negative result.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -274,20 +272,19 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the key to identify the lock by.</p>
+										<p>a unique lock key to acquire.</p>
 									</div>
 								</li>
 								<li>
 									<h5>ttl: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the lock&#39;s time-to-live.</p>
+										<p>a lock timeout (time to live) in milliseconds.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the function that will be called with the result of the attempt or
-										with an error (if one is raised).</p>
+										<p>callback function that receives a lock result or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">

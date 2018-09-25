@@ -70,8 +70,31 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Provides methods for reading configuration parameters that are stored in memory (as ConfigParams objects).</p>
+						<p>Config reader that stores configuration in memory.</p>
 					</div>
+					<p>The reader supports parameterization using Handlebars
+					template engine: <a href="https://handlebarsjs.com" class="external">https://handlebarsjs.com</a></p>
+					<h3 id="configuration-parameters">Configuration parameters</h3>
+					<p>The configuration parameters are the configuration template</p>
+					<dl class="tsd-comment-tags">
+						<dt>see</dt>
+						<dd><p><a href="../interfaces/config.iconfigreader.html">IConfigReader</a></p>
+							<h3 id="example">Example</h3>
+							<pre><code><span class="hljs-keyword">let</span> config = <span class="hljs-type">ConfigParams</span>.fromTuples(
+    <span class="hljs-string">"connection.host"</span>, <span class="hljs-string">"{{SERVICE_HOST}}"</span>,
+    <span class="hljs-string">"connection.port"</span>, <span class="hljs-string">"{{SERVICE_PORT}}{{^SERVICE_PORT}}8080{{/SERVICE_PORT}}"</span>
+);
+
+<span class="hljs-keyword">let</span> configReader = <span class="hljs-function"><span class="hljs-keyword">new</span> <span class="hljs-title">MemoryConfigReader</span>();
+<span class="hljs-title">configReader</span>.<span class="hljs-title">configure</span>(config);
+
+<span class="hljs-title">let</span> <span class="hljs-title">parameters</span> = <span class="hljs-title">ConfigParams</span>.<span class="hljs-title">fromValue</span>(process.env);
+
+<span class="hljs-title">configReader</span>.<span class="hljs-title">readConfig</span>("<span class="hljs-number">123</span>", parameters, (err, config) =&gt;</span> {
+    <span class="hljs-comment">// Possible result: connection.host=10.1.1.100;connection.port=8080</span>
+});
+</code></pre></dd>
+					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -127,18 +150,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/MemoryConfigReader.ts#L14">config/MemoryConfigReader.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/MemoryConfigReader.ts#L41">config/MemoryConfigReader.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="config.memoryconfigreader.html#configure">configure</a></p>
-									</dd>
-								</dl>
+								<div class="lead">
+									<p>Creates a new instance of config reader.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -146,9 +164,7 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> config: <span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>(optional) ConfigParams to use in this MemoryConfigReader.
-												If &#39;config&#39; is omitted in the constructor, then it must be set
-											using <a href="config.memoryconfigreader.html#configure">configure</a> prior to using the new object.</p>
+											<p>(optional) component configuration parameters</p>
 										</div>
 									</div>
 								</li>
@@ -166,7 +182,7 @@
 					<div class="tsd-signature tsd-kind-icon">_config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol"> =&nbsp;new ConfigParams()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/MemoryConfigReader.ts#L14">config/MemoryConfigReader.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/MemoryConfigReader.ts#L41">config/MemoryConfigReader.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -183,28 +199,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/MemoryConfigReader.ts#L37">config/MemoryConfigReader.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/MemoryConfigReader.ts#L57">config/MemoryConfigReader.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets the parameters with which this configuration reader should be parameterized.</p>
+									<p>Configures component by passing configuration parameters.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html" class="external">IConfigurable</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the ConfigParams to use for reader parameterization.</p>
+										<p>configuration parameters to be set.</p>
 									</div>
 								</li>
 							</ul>
@@ -222,22 +230,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/MemoryConfigReader.ts#L53">config/MemoryConfigReader.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/MemoryConfigReader.ts#L68">config/MemoryConfigReader.ts:68</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Reads the ConfigParams stored in this object and returns them as a parameterized
-									ConfigParams object. Reader&#39;s ConfigParams must be set.</p>
+									<p>Reads configuration and parameterize it with given values.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="config.jsonconfigreader.html#readobject">readObject</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -250,14 +249,13 @@
 								<li>
 									<h5>parameters: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>used to parameterize the reader.</p>
+										<p>values to parameters the configuration or null to skip parameterization.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or with the
-										ConfigParams that were read.</p>
+										<p>callback function that receives configuration or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -372,6 +370,9 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/config.iconfigreader.html" class="tsd-kind-icon">IConfig<wbr>Reader</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/config.html#handlebars" class="tsd-kind-icon">handlebars</a>
 					</li>
 				</ul>
 			</nav>

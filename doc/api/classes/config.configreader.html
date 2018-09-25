@@ -70,43 +70,17 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Combination of the <a href="../interfaces/config.iconfigreader.html">IConfigReader</a> and
-							<a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html" class="external">IConfigurable</a>
-							interfaces. Allows for object configuration using ConfigParams via the <a href="config.configreader.html#configure">configure</a> method,
-							and contains the abstract method <a href="config.configreader.html#readconfig">readConfig</a>, which, upon implementation, should contain
-							the logic necessary for reading and parsing ConfigParams. Also contains the <a href="config.configreader.html#parameterize">parameterize</a>
-						method.</p>
+						<p>Abstract config reader that supports configuration parameterization.</p>
 					</div>
 					<h3 id="configuration-parameters">Configuration parameters</h3>
-					<p>Parameters to pass to the <a href="config.configreader.html#configure">configure</a> method for component configuration:</p>
 					<ul>
-						<li>&quot;parameters.&lt;...&gt;&quot; - the parameters to parameterize the configuration reader with.</li>
+						<li><p><strong>parameters:</strong>            this entire section is used as template parameters</p>
+							<ul>
+								<li>...</li>
+							</ul>
+							<p>@see <a href="../interfaces/config.iconfigreader.html">IConfigReader</a></p>
+						</li>
 					</ul>
-					<dl class="tsd-comment-tags">
-						<dt>see</dt>
-						<dd><p><a href="../interfaces/config.iconfigreader.html">IConfigReader</a></p>
-						</dd>
-						<dt>see</dt>
-						<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html" class="external">IConfigurable</a> (in the PipServices &quot;Commons&quot; package)</p>
-						</dd>
-						<dt>see</dt>
-						<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-							<h3 id="examples">Examples</h3>
-							<p>Example usage:</p>
-							<pre><code>public MyMethod(): string {
-    let<span class="hljs-built_in"> config </span>= <span class="hljs-string">"{{#if A}}{{B}}{{/if}}"</span>;
-    let values = Parameters.fromTuples(
-        <span class="hljs-string">"A"</span>, <span class="hljs-string">"true"</span>,
-        <span class="hljs-string">"B"</span>, <span class="hljs-string">"XYZ"</span>
-    );
-
-    let parameters = new ConfigParams();
-    parameters.append(values);
-
-    return ConfigReader.parameterize(config, parameters));
-}
-</code></pre></dd>
-					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -161,9 +135,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/ConfigReader.ts#L45">config/ConfigReader.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/ConfigReader.ts#L21">config/ConfigReader.ts:21</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new instance of the config reader.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <a href="config.configreader.html" class="tsd-signature-type">ConfigReader</a></h4>
 						</li>
 					</ul>
@@ -181,37 +160,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/ConfigReader.ts#L63">config/ConfigReader.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/ConfigReader.ts#L33">config/ConfigReader.ts:33</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets this object&#39;s configuration parameters.</p>
+									<p>Configures component by passing configuration parameters.</p>
 								</div>
-								<p><strong>Configuration parameters:</strong></p>
-								<ul>
-									<li>&quot;parameters.&lt;...&gt;&quot; - the parameters to parameterize the configuration reader with.</li>
-								</ul>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="config.configreader.html#parameterize">parameterize</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html" class="external">IConfigurable</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>ConfigParams that contain a section named &quot;parameters&quot;,
-											which will be used when <a href="config.configreader.html#parameterize">parameterizing</a>
-										configurations that are passed to this ConfigReader.</p>
+										<p>configuration parameters to be set.</p>
 									</div>
 								</li>
 							</ul>
@@ -229,45 +191,32 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/ConfigReader.ts#L104">config/ConfigReader.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/ConfigReader.ts#L58">config/ConfigReader.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Protected method for parameterizing ConfigReaders, which allows using <a href="https://handlebarsjs.com/" class="external">handlebars</a>
-									to create parameterized configurations.</p>
+									<p>Parameterized configuration template given as string with dynamic parameters.</p>
 								</div>
-								<p>The idea behind using parameterized configurations: handlebars allows us to take a templated configuration and
-									parameterize it, using a given set of parameters. Parameterization can be done with the help of environment variables
-									as well. For example: the configuration for a container can be created as such, that it will use certain environment
-								variables to tailor itself to the system by dynamically setting addresses, ports, etc.</p>
-								<p>Example of a templated configuration:</p>
-								<pre><code><span class="xml"></span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">if</span></span> MONGODB_ENABLED}}</span><span class="xml">
- # MongoDb persistence
- - descriptor: "service-name:persistence:mongodb:default:1.0"
- connection:
-     uri: </span><span class="hljs-template-variable">{{MONGODB_SERVICE_URI}}</span><span class="xml"></span><span class="hljs-template-variable">{{^<span class="hljs-builtin-name">if</span> MONGODB_SERVICE_URI}}</span><span class="xml">"mongodb://localhost:27017/test"</span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">if</span></span>}}</span><span class="xml">
-</span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">if</span></span>}}</span><span class="xml"></span>
-</code></pre>
+								<p>The method uses Handlebars template engine: <a href="https://handlebarsjs.com" class="external">https://handlebarsjs.com</a></p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>string containing the configuration that is to be parameterized using this ConfigReader&#39;s
-										parameters, as well as the parameters passed as &#39;parameters&#39;.</p>
+										<p>a string with configuration template to be parameterized</p>
 									</div>
 								</li>
 								<li>
 									<h5>parameters: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>ConfigParams that contain the parameters to override this ConfigReader&#39;s parameters with.</p>
+										<p>dynamic parameters to inject into the template</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>the parameterized configuration.</p>
+							<p>a parameterized configuration string.</p>
 						</li>
 					</ul>
 				</section>
@@ -281,13 +230,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/ConfigReader.ts#L78">config/ConfigReader.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/ConfigReader.ts#L46">config/ConfigReader.ts:46</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic of reading and parsing ConfigParams
-									in classes that implement this abstract class.</p>
+									<p>Reads configuration and parameterize it with given values.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -301,14 +249,13 @@
 								<li>
 									<h5>parameters: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>ConfigParams to read.</p>
+										<p>values to parameters the configuration or null to skip parameterization.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or with the
-										ConfigParams that were read.</p>
+										<p>callback function that receives configuration or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -423,6 +370,9 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/config.iconfigreader.html" class="tsd-kind-icon">IConfig<wbr>Reader</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/config.html#handlebars" class="tsd-kind-icon">handlebars</a>
 					</li>
 				</ul>
 			</nav>

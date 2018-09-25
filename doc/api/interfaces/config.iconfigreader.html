@@ -70,15 +70,12 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Interface that can be implemented by classes that need to read ConfigParams from a certain
-							source. Contains the abstract method <a href="config.iconfigreader.html#readconfig">readConfig</a>, which, upon implementation, should contain
-						the logic necessary for reading and parsing ConfigParams.</p>
+						<p>Interface for configuration readers that retrieve configuration from various sources
+						and make it available for other components.</p>
 					</div>
-					<dl class="tsd-comment-tags">
-						<dt>see</dt>
-						<dd><p><a href="../classes/config.configreader.html">ConfigReader</a></p>
-						</dd>
-					</dl>
+					<p>Some IConfigReader implementations may support configuration parameterization.
+						The parameterization allows to use configuration as a template and inject there dynamic values.
+					The values may come from application command like arguments or environment variables.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -120,13 +117,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/config/IConfigReader.ts#L22">config/IConfigReader.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/config/IConfigReader.ts#L21">config/IConfigReader.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic of reading and parsing ConfigParams
-									in classes that implement this abstract class.</p>
+									<p>Reads configuration and parameterize it with given values.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -140,14 +136,13 @@
 								<li>
 									<h5>parameters: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>ConfigParams to read.</p>
+										<p>values to parameters the configuration or null to skip parameterization.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or with the
-										ConfigParams that were read.</p>
+										<p>callback function that receives configuration or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -254,6 +249,9 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/config.html#handlebars" class="tsd-kind-icon">handlebars</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

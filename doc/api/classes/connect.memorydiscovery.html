@@ -70,21 +70,18 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Discovery service (see <a href="../interfaces/connect.idiscovery.html">IDiscovery</a>) that stores its registry of connections (<a href="connect.connectionparams.html">ConnectionParams</a>) in memory.</p>
+						<p>Discovery service that keeps connections in memory.</p>
 					</div>
-					<p>Supports both static and dynamic discovery.</p>
+					<h3 id="configuration-parameters">Configuration parameters</h3>
 					<ul>
-						<li>Static discovery: all services have static IP addresses (like a DNS, which also works using static discovery)
-							that are registered from the start (using <a href="connect.memorydiscovery.html#configure">configure</a>) and don&#39;t change along the way. As of late,
-							static discovery has been used more often than dynamic, as it is simpler to use and more reliable
-						(infrastructure does all of the hard work right out of the box).</li>
-					</ul>
-					<ul>
-						<li>Dynamic discovery: every time a service starts, it registers its address in the discovery service (&quot;Service name&quot;
-							is available at &quot;IP address&quot;) using <a href="connect.memorydiscovery.html#register">register</a>. Clients then ask to resolve the address by which the requested
-							service can be reached. Dynamic discovery is more challenging to use than static discovery: if a service stops working,
-							its address needs to be refreshed, stale addresses need to be cleaned, heartbeats must be used – many problems and
-						challenges occur along the way.</li>
+						<li>[connection key 1]:<ul>
+								<li>...                          connection parameters for key 1</li>
+							</ul>
+						</li>
+						<li>[connection key 2]:<ul>
+								<li>...                          connection parameters for key N</li>
+							</ul>
+						</li>
 					</ul>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
@@ -92,7 +89,21 @@
 						</dd>
 						<dt>see</dt>
 						<dd><p><a href="connect.connectionparams.html">ConnectionParams</a></p>
-						</dd>
+							<h3 id="example">Example</h3>
+							<pre><code><span class="hljs-keyword">let</span> config = <span class="hljs-type">ConfigParams</span>.fromTuples(
+    <span class="hljs-string">"key1.host"</span>, <span class="hljs-string">"10.1.1.100"</span>,
+    <span class="hljs-string">"key1.port"</span>, <span class="hljs-string">"8080"</span>,
+    <span class="hljs-string">"key2.host"</span>, <span class="hljs-string">"10.1.1.100"</span>,
+    <span class="hljs-string">"key2.port"</span>, <span class="hljs-string">"8082"</span>
+);
+
+<span class="hljs-keyword">let</span> discovery = <span class="hljs-function"><span class="hljs-keyword">new</span> <span class="hljs-title">MemoryDiscovery</span>();
+<span class="hljs-title">discovery</span>.<span class="hljs-title">readConnections</span>(config);
+
+<span class="hljs-title">discovery</span>.<span class="hljs-title">resolve</span>("<span class="hljs-number">123</span>", "key1", (err, connection) =&gt;</span> {
+    <span class="hljs-comment">// Result: host=10.1.1.100;port=8080</span>
+});
+</code></pre></dd>
 					</dl>
 				</div>
 			</section>
@@ -146,26 +157,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/MemoryDiscovery.ts#L40">connect/MemoryDiscovery.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/MemoryDiscovery.ts#L49">connect/MemoryDiscovery.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a MemoryDiscovery object and configures it for static discovery using the given ConfigParams. If no
-										ConfigParams are given, then the object must be configured using the <a href="connect.memorydiscovery.html#configure">configure</a> method, or it must
-									be used in dynamic discovery mode (using the <a href="connect.memorydiscovery.html#register">register</a> method).</p>
+									<p>Creates a new instance of discovery service.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="connect.memorydiscovery.html#configure">configure</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="connect.memorydiscovery.html#register">register</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -173,7 +171,7 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> config: <span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>ConfigParams to configure the new object with.</p>
+											<p>(optional) configuration with connection parameters.</p>
 										</div>
 									</div>
 								</li>
@@ -195,32 +193,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/MemoryDiscovery.ts#L68">connect/MemoryDiscovery.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/MemoryDiscovery.ts#L66">connect/MemoryDiscovery.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Configures this object by calling <a href="connect.memorydiscovery.html#readconnections">readConnections</a> and setting the connections that were read.
-									Used to set the discovery service&#39;s static registery.</p>
+									<p>Configures component by passing configuration parameters.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="connect.memorydiscovery.html#readconnections">readConnections</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/config.iconfigurable.html" class="external">IConfigurable</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>ConfigParams that contain connection information.</p>
+										<p>configuration parameters to be set.</p>
 									</div>
 								</li>
 							</ul>
@@ -232,32 +218,27 @@
 					<a name="readconnections" class="tsd-anchor"></a>
 					<h3>read<wbr>Connections</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">read<wbr>Connections<span class="tsd-signature-symbol">(</span>connections<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">read<wbr>Connections<span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/MemoryDiscovery.ts#L80">connect/MemoryDiscovery.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/MemoryDiscovery.ts#L76">connect/MemoryDiscovery.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Parses the connections passed as ConfigParams into this object&#39;s registry, which is used for
-									static discovery. The registry&#39;s keys will be identical to the ConfigParams&#39; keys.</p>
+									<p>Reads connections from configuration parameters.
+									Each section represents an individual Connectionparams</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>connections: <span class="tsd-signature-type">ConfigParams</span></h5>
+									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>ConfigParams that contain connection information.</p>
+										<p>configuration parameters to be read</p>
 									</div>
 								</li>
 							</ul>
@@ -275,12 +256,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/MemoryDiscovery.ts#L102">connect/MemoryDiscovery.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/MemoryDiscovery.ts#L97">connect/MemoryDiscovery.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Registers a connection to an end-point, using the key provided. Used for dynamic discovery.</p>
+									<p>Registers connection parameters into the discovery service.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -294,20 +275,16 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>key to register the connection by.</p>
+										<p>a key to uniquely identify the connection parameters.</p>
 									</div>
 								</li>
 								<li>
 									<h5>connection: <a href="connect.connectionparams.html" class="tsd-signature-type">ConnectionParams</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>ConnectionParams for the given connection.</p>
-									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or with the
-										result of the operation.</p>
+										<p>callback function that receives a registered connection or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -346,12 +323,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/MemoryDiscovery.ts#L138">connect/MemoryDiscovery.ts:138</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/MemoryDiscovery.ts#L131">connect/MemoryDiscovery.ts:131</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Resolves and returns all connections to the end-point that is registered by the given key.</p>
+									<p>Resolves all connection parameters by their key.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -365,14 +342,13 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the connection&#39;s key to search for.</p>
+										<p>a key to uniquely identify the connections.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or with the
-										list of ConnectionParams that were found.</p>
+										<p>callback function that receives found connections or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -411,12 +387,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/MemoryDiscovery.ts#L118">connect/MemoryDiscovery.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/MemoryDiscovery.ts#L112">connect/MemoryDiscovery.ts:112</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Resolves and returns a connection (the first one found) to the end-point that is registered by the given key.</p>
+									<p>Resolves a single connection parameters by its key.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -430,14 +406,13 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the key to search for a connection by.</p>
+										<p>a key to uniquely identify the connection.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or with the
-										ConnectionParams that were found.</p>
+										<p>callback function that receives found connection or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">

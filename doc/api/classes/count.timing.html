@@ -70,19 +70,16 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Callback object that is used to end the timing for a block of code.</p>
+						<p>Callback object returned by [[ICounters.begingTiming]] to end timing
+						of execution block and update the associated counter.</p>
 					</div>
-					<p>An <a href="../enums/count.countertype.html#interval">interval</a> counter can create a new Timing and use it
-						to measure the amount of time it takes a block of code to execute. The measured
-						interval can additionally be added to a statistical counter to gather information
-					about the minimum, maximum, and average time it takes for the block of code to execute.</p>
-					<h3 id="examples">Examples</h3>
-					<p>Using Timing objects:</p>
-					<pre><code> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyMethod</span>(<span class="hljs-params">references: IReferences</span>) </span>{
-     <span class="hljs-keyword">let</span> _counters = <span class="hljs-keyword">new</span> CompositeCounters(references);
-     Timing timing = _counters.beginTiming(<span class="hljs-string">"Timing"</span>);
-     ...
- }
+					<h3 id="example">Example</h3>
+					<pre><code><span class="hljs-keyword">let</span> timing = counters.beginTiming(<span class="hljs-string">"mymethod.exec_time"</span>);
+<span class="hljs-keyword">try</span> {
+    ...
+} finally {
+    timing.endTiming();
+}
 </code></pre>
 				</div>
 			</section>
@@ -125,22 +122,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/Timing.ts#L25">count/Timing.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/Timing.ts#L21">count/Timing.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a new Timing object and starts timing. To end timing, call this
-									object&#39;s <a href="count.timing.html#endtiming">endTiming</a> method.</p>
+									<p>Creates a new instance of the timing callback object.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html#interval">CounterType.Interval</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="count.timing.html#endtiming">endTiming</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -148,8 +136,7 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> counter: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>the name of the Interval Counter, for which a new
-											Timing is being created.</p>
+											<p>an associated counter name</p>
 										</div>
 									</div>
 								</li>
@@ -157,8 +144,7 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> callback: <a href="../interfaces/count.itimingcallback.html" class="tsd-signature-type">ITimingCallback</a><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>the function to call with the elapsed time once
-											<a href="count.timing.html#endtiming">endTiming</a> is called.</p>
+											<p>a callback that shall be called when endTiming is called.</p>
 										</div>
 									</div>
 								</li>
@@ -180,13 +166,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/Timing.ts#L49">count/Timing.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/Timing.ts#L39">count/Timing.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Calls the <a href="../interfaces/count.itimingcallback.html">Timing Callback</a> that was set for this object and
-									passes it the time elapsed since this Timing object was created.</p>
+									<p>Ends timing of an execution block, calculates elapsed time
+									and updates the associated counter.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

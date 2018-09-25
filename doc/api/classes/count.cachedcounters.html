@@ -70,36 +70,19 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Abstract class for working with various cached <a href="count.counter.html">Counters</a>.</p>
+						<p>Abstract implementation of performance counters that measures and stores counters in memory.
+						Child classes implement saving of the counters into various destinations.</p>
 					</div>
-					<p>Can be configured by passing ConfigParams, containing &quot;interval&quot; and/or &quot;reset_timeout&quot;
-						items, to the <a href="count.cachedcounters.html#configure">configure</a> method. Interval defines the update interval (used to dump
-						the cache to memory at regular intervals), and reset timeout defines when the cache should
-					be reset.</p>
 					<h3 id="configuration-parameters">Configuration parameters</h3>
-					<p>Parameters to pass to the <a href="count.cachedcounters.html#configure">configure</a> method for component configuration:</p>
 					<ul>
-						<li>&quot;interval&quot; - the interval of time after which the cache should be dumped to memory (default
-						is 300000);</li>
-						<li>&quot;reset_timeout&quot; - the timeout for resetting the cache (default is 0, which turn off resetting).</li>
+						<li>options:<ul>
+								<li>interval:        interval in milliseconds to save current counters measurements
+								(default: 5 mins)</li>
+								<li>reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset
+								(default: 0)</li>
+							</ul>
+						</li>
 					</ul>
-					<dl class="tsd-comment-tags">
-						<dt>see</dt>
-						<dd><p><a href="count.counter.html">Counter</a></p>
-							<h3 id="examples">Examples</h3>
-							<p>Example CachedCounters object usage:</p>
-							<pre><code> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyMethod</span>(<span class="hljs-params"></span>) </span>{
-     <span class="hljs-keyword">let</span> _counters = <span class="hljs-keyword">new</span> CachedCounters();
-     _counters.last(<span class="hljs-string">"LastValue"</span>, <span class="hljs-number">123</span>);
-     Counter counter = _counters.<span class="hljs-keyword">get</span>(<span class="hljs-string">"LastValue"</span>, CounterType.LastValue);
-     ...
-
-     _counters.stats(<span class="hljs-string">"Statistics"</span>, <span class="hljs-number">1</span>);
-     counter = _counters.<span class="hljs-keyword">get</span>(<span class="hljs-string">"Statistics"</span>, CounterType.Statistics);
-     ...
- }
-</code></pre></dd>
-					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -173,7 +156,7 @@
 					<div class="tsd-signature tsd-kind-icon">_cache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L47">count/CachedCounters.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L26">count/CachedCounters.ts:26</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -191,7 +174,7 @@
 					<div class="tsd-signature tsd-kind-icon">_interval<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;300000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L45">count/CachedCounters.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L24">count/CachedCounters.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -201,7 +184,7 @@
 					<div class="tsd-signature tsd-kind-icon">_last<wbr>Dump<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;new Date().getTime()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L49">count/CachedCounters.ts:49</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L28">count/CachedCounters.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -211,7 +194,7 @@
 					<div class="tsd-signature tsd-kind-icon">_last<wbr>Reset<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;new Date().getTime()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L50">count/CachedCounters.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L29">count/CachedCounters.ts:29</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -221,7 +204,7 @@
 					<div class="tsd-signature tsd-kind-icon">_reset<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L46">count/CachedCounters.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L25">count/CachedCounters.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -231,7 +214,7 @@
 					<div class="tsd-signature tsd-kind-icon">_updated<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L48">count/CachedCounters.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L27">count/CachedCounters.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -248,7 +231,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L55">count/CachedCounters.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L34">count/CachedCounters.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -271,37 +254,27 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#begintiming">beginTiming</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L130">count/CachedCounters.ts:130</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L98">count/CachedCounters.ts:98</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a new <a href="count.timing.html">Timing</a> callback object, which will call this object&#39;s <a href="count.cachedcounters.html#endtiming">endTiming</a>
-									method once it receives the command to <a href="count.timing.html#endtiming">stop timing</a>.</p>
+									<p>Begins measurement of execution time interval.
+										It returns <a href="count.timing.html">Timing</a> object which has to be called at
+									<a href="count.timing.html#endtiming">Timing.endTiming</a> to end the measurement and update the counter.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="count.timing.html">Timing</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="count.cachedcounters.html#endtiming">endTiming</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html#interval">CounterType.Interval</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the Interval Counter, for which a Timing is to be created.</p>
+										<p>a counter name of Interval type.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="count.timing.html" class="tsd-signature-type">Timing</a></h4>
-							<p>the Timing callback object that was created.</p>
+							<p>a <a href="count.timing.html">Timing</a> callback object to end timing.</p>
 						</li>
 					</ul>
 				</section>
@@ -315,12 +288,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L107">count/CachedCounters.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L78">count/CachedCounters.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Removes the <a href="count.counter.html">Counter</a> with the given name from this object&#39;s cache.</p>
+									<p>Clears (resets) a counter specified by its name.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -328,7 +301,7 @@
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to remove.</p>
+										<p>a counter name to clear.</p>
 									</div>
 								</li>
 							</ul>
@@ -346,12 +319,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L114">count/CachedCounters.ts:114</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L85">count/CachedCounters.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Removes all <a href="count.counter.html">Counters</a> from this object&#39;s cache.</p>
+									<p>Clears (resets) all counters.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -368,33 +341,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L97">count/CachedCounters.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L41">count/CachedCounters.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Configures this object using the parameters provided. Looks for parameters with the
-										keys &quot;interval&quot; and &quot;reset_timeout&quot; and sets them for this object. If a key is not found,
-									the corresponding value will default to the value that was previously set for this object.</p>
+									<p>Configures component by passing configuration parameters.</p>
 								</div>
-								<p><strong>Configuration parameters:</strong></p>
-								<ul>
-									<li>&quot;interval&quot; - the interval of time after which the cache should be dumped to memory (default
-									is 300000);</li>
-									<li>&quot;reset_timeout&quot; - the timeout for resetting the cache (default is 0, which turn off resetting).</li>
-								</ul>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>ConfigParams, containing &quot;interval&quot; and/or &quot;reset_timeout&quot; items.</p>
+										<p>configuration parameters to be set.</p>
 									</div>
 								</li>
 							</ul>
@@ -412,13 +372,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L140">count/CachedCounters.ts:140</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L107">count/CachedCounters.ts:107</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Dumps the <a href="count.counter.html">Counters</a> that are stored in this object&#39;s
-									cache to memory.</p>
+									<p>Dumps (saves) the current values of counters.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
@@ -441,19 +400,14 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.itimingcallback.html">ITimingCallback</a>.<a href="../interfaces/count.itimingcallback.html#endtiming">endTiming</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L252">count/CachedCounters.ts:252</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L207">count/CachedCounters.ts:207</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Called by a <a href="count.timing.html">Timing</a> callback object once its
-										<a href="count.timing.html#endtiming">endTiming</a> method has been called. The resulting
-									time interval will be used to update timing statistics.</p>
+									<p>Ends measurement of execution elapsed time and updates specified counter.</p>
 								</div>
 								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="count.cachedcounters.html#begintiming">beginTiming</a></p>
-									</dd>
 									<dt>see</dt>
 									<dd><p><a href="count.timing.html#endtiming">Timing.endTiming</a></p>
 									</dd>
@@ -464,14 +418,13 @@
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the Interval Counter that created the
-										Timing object.</p>
+										<p>a counter name</p>
 									</div>
 								</li>
 								<li>
 									<h5>elapsed: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the time elapsed since timing began.</p>
+										<p>execution elapsed time in milliseconds to update the counter.</p>
 									</div>
 								</li>
 							</ul>
@@ -489,40 +442,33 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L212">count/CachedCounters.ts:212</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L171">count/CachedCounters.ts:171</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Looks for a <a href="count.counter.html">Counter</a> with the given name and type within this object&#39;s
-										cache. If none are found, then a new <a href="count.counter.html">Counter</a> of the given
-									<a href="../enums/count.countertype.html">type</a> is created, added to the cache, and returned.</p>
+									<p>Gets a counter specified by its name.
+										It counter does not exist or its type doesn&#39;t match the specified type
+									it creates a new one.</p>
 								</div>
-								<p>If the need for cache resetting is detected, calling this method will
-								trigger the reset.</p>
-								<dl class="tsd-comment-tags">
-									<dt>throws</dt>
-									<dd><p>an Error if name is <code>null</code></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to retrieve.</p>
+										<p>a counter name to retrieve.</p>
 									</div>
 								</li>
 								<li>
 									<h5>type: <a href="../enums/count.countertype.html" class="tsd-signature-type">CounterType</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the counter&#39;s type.</p>
+										<p>a counter type.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="count.counter.html" class="tsd-signature-type">Counter</a></h4>
-							<p>the counter found in the cache or the one created (if none were found).</p>
+							<p>an existing or newly created counter of the specified type.</p>
 						</li>
 					</ul>
 				</section>
@@ -536,18 +482,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L187">count/CachedCounters.ts:187</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L151">count/CachedCounters.ts:151</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Retrieves the <a href="count.counter.html">Counters</a> that are stored in this object&#39;s cache.</p>
+									<p>Gets all captured counters.</p>
 								</div>
-								<p>If the need for cache resetting is detected, calling this method will
-								trigger the reset.</p>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="count.counter.html" class="tsd-signature-type">Counter</a><span class="tsd-signature-symbol">[]</span></h4>
-							<p>an array, containing all cached Counters.</p>
+							<p>a list with counters.</p>
 						</li>
 					</ul>
 				</section>
@@ -561,14 +505,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L61">count/CachedCounters.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L53">count/CachedCounters.ts:53</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the counters dump/save interval.</p>
+								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-							<p>this CachedCounters&#39; update interval. Used to dump the cache to memory at
-							regular intervals.</p>
+							<p>the interval in milliseconds.</p>
 						</li>
 					</ul>
 				</section>
@@ -583,35 +529,26 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#increment">increment</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L342">count/CachedCounters.ts:342</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L276">count/CachedCounters.ts:276</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Increments the named <a href="../enums/count.countertype.html#increment">Incremental Counter</a> by the
-									given value.</p>
+									<p>Increments counter by given value.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="count.cachedcounters.html#get">get</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to increment.</p>
+										<p>a counter name of Increment type.</p>
 									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the value to increment the counter by.</p>
+										<p>a value to add to the counter.</p>
 									</div>
 								</li>
 							</ul>
@@ -630,28 +567,20 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#incrementone">incrementOne</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L328">count/CachedCounters.ts:328</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L266">count/CachedCounters.ts:266</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Incrementes the named <a href="../enums/count.countertype.html#increment">Incremental Counter</a> by 1.</p>
+									<p>Increments counter by 1.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="count.cachedcounters.html#increment">increment</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to increment.</p>
+										<p>a counter name of Increment type.</p>
 									</div>
 								</li>
 							</ul>
@@ -670,35 +599,28 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#last">last</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L285">count/CachedCounters.ts:285</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L234">count/CachedCounters.ts:234</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Updates the named <a href="../enums/count.countertype.html#lastvalue">Last Counter</a> by setting
-									its last value to the value given.</p>
+									<p>Records the last calculated measurement value.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="count.cachedcounters.html#get">get</a></p>
-									</dd>
-								</dl>
+								<p>Usually this method is used by metrics calculated
+								externally.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to update.</p>
+										<p>a counter name of Last type.</p>
 									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the value to update the counter with.</p>
+										<p>a last value to record.</p>
 									</div>
 								</li>
 							</ul>
@@ -716,13 +638,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L81">count/CachedCounters.ts:81</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L71">count/CachedCounters.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for saving an array of <a href="count.counter.html">counters</a>
-									to memory.</p>
+									<p>Saves the current counters measurements.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -730,7 +651,7 @@
 								<li>
 									<h5>counters: <a href="count.counter.html" class="tsd-signature-type">Counter</a><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the Counters to save.</p>
+										<p>current counters measurements to be saves.</p>
 									</div>
 								</li>
 							</ul>
@@ -748,13 +669,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L71">count/CachedCounters.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L62">count/CachedCounters.ts:62</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets this CachedCounters&#39; update interval, which is used to dump the cache to memory
-									at regular intervals.</p>
+									<p>Sets the counters dump/save interval.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -762,7 +682,7 @@
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the value to set this CachedCounters&#39; update interval to.</p>
+										<p>a new interval in milliseconds.</p>
 									</div>
 								</li>
 							</ul>
@@ -781,36 +701,26 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#stats">stats</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L269">count/CachedCounters.ts:269</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L219">count/CachedCounters.ts:219</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Adds the given value to the named <a href="../enums/count.countertype.html#statistics">Statistics Counter</a>
-										and recalculates its statistics, taking into account the new value.
-									Statistics include last, count, min, max, and average.</p>
+									<p>Calculates min/average/max statistics based on the current and previous values.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="count.cachedcounters.html#get">get</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to update.</p>
+										<p>a counter name of Statistics type</p>
 									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the value to update the counter with.</p>
+										<p>a value to update statistics</p>
 									</div>
 								</li>
 							</ul>
@@ -829,35 +739,26 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#timestamp">timestamp</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L314">count/CachedCounters.ts:314</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L255">count/CachedCounters.ts:255</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Updates the named <a href="../enums/count.countertype.html#timestamp">Timestamp Counter&#39;s</a> time to
-									the time given.</p>
+									<p>Records the given timestamp.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="count.cachedcounters.html#get">get</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to update.</p>
+										<p>a counter name of Timestamp type.</p>
 									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">Date</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the timestamp to update the counter to.</p>
+										<p>a timestamp to record.</p>
 									</div>
 								</li>
 							</ul>
@@ -876,29 +777,20 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/count.icounters.html">ICounters</a>.<a href="../interfaces/count.icounters.html#timestampnow">timestampNow</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L300">count/CachedCounters.ts:300</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L245">count/CachedCounters.ts:245</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Updates the named <a href="../enums/count.countertype.html#timestamp">Timestamp Counter&#39;s</a> time to
-									the current time.</p>
+									<p>Records the current time as a timestamp.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/count.countertype.html">CounterType</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="count.cachedcounters.html#timestamp">timestamp</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the name of the counter to update.</p>
+										<p>a counter name of Timestamp type.</p>
 									</div>
 								</li>
 							</ul>
@@ -916,13 +808,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/count/CachedCounters.ts#L157">count/CachedCounters.ts:157</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/count/CachedCounters.ts#L124">count/CachedCounters.ts:124</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Checks whether or not the update interval has passed (since the last
-									<a href="count.cachedcounters.html#dump">dump</a>) and, if it has, performs a new <a href="count.cachedcounters.html#dump">dump</a>.</p>
+									<p>Makes counter measurements as updated
+									and dumps them when timeout expires.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>

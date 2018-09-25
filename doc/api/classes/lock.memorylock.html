@@ -70,10 +70,38 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Stores a registry of locks in memory. A lock contains a string key (by which
-							the resource that is being locked can be identified) and the lock&#39;s
-						time to live (after which the lock is considered to be expired).</p>
+						<p>Lock that is used to synchronize execution within one process using shared memory.</p>
 					</div>
+					<p>Remember: This implementation is not suitable for synchronization of distributed processes.</p>
+					<h3 id="configuration-parameters">Configuration parameters</h3>
+					<ul>
+						<li><strong>options:</strong><ul>
+								<li>retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)</li>
+							</ul>
+						</li>
+					</ul>
+					<dl class="tsd-comment-tags">
+						<dt>see</dt>
+						<dd><p><a href="../interfaces/lock.ilock.html">ILock</a></p>
+						</dd>
+						<dt>see</dt>
+						<dd><p><a href="lock.lock-1.html">Lock</a></p>
+							<h3 id="example">Example</h3>
+							<pre><code><span class="hljs-keyword">let</span> lock = <span class="hljs-keyword">new</span> MemoryLock();
+
+lock.acquire(<span class="hljs-string">"123"</span>, <span class="hljs-string">"key1"</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (err == <span class="hljs-literal">null</span>) {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Processing...</span>
+        } <span class="hljs-keyword">finally</span> {
+            lock.releaseLock(<span class="hljs-string">"123"</span>, <span class="hljs-string">"key1"</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+                <span class="hljs-comment">// Continue...</span>
+            });
+        }
+    }
+});
+</code></pre></dd>
+					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -125,12 +153,12 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="lock.lock-1.html">Lock</a>.<a href="lock.lock-1.html#acquirelock">acquireLock</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/lock/Lock.ts#L76">lock/Lock.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/lock/Lock.ts#L62">lock/Lock.ts:62</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Acquiring a lock for a certain resource, identifiable by the lock&#39;s key.</p>
+									<p>Makes multiple attempts to acquire a lock by its key within give time interval.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -144,28 +172,25 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the key to identify the lock by.</p>
+										<p>a unique lock key to acquire.</p>
 									</div>
 								</li>
 								<li>
 									<h5>ttl: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the lock&#39;s time-to-live.</p>
+										<p>a lock timeout (time to live) in milliseconds.</p>
 									</div>
 								</li>
 								<li>
 									<h5>timeout: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the acquisition&#39;s retry interval.</p>
+										<p>a lock acquisition timeout.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the function to call once the lock has been acquired. Will be called
-											with an error if one is raised. If the retry interval times out,
-											a <a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/errors.conflictexception.html" class="external">ConflictException</a>
-										will be returned.</p>
+										<p>callback function that receives error or null for success.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -202,31 +227,20 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="lock.lock-1.html">Lock</a>.<a href="lock.lock-1.html#configure">configure</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/lock/Lock.ts#L33">lock/Lock.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/lock/Lock.ts#L26">lock/Lock.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Configures this object using the parameters provided. Looks for a parameter with the
-										key &quot;options.retry_timeout&quot; and sets it for this object. If the key is not found,
-									the value will default to the value that was previously set for this object.</p>
+									<p>Configures component by passing configuration parameters.</p>
 								</div>
-								<p><strong>Configuration parameters:</strong></p>
-								<ul>
-									<li>&quot;options.retry_timeout&quot; - the amount of time to retry lock acquisition (default is 100).</li>
-								</ul>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>ConfigParams, containing a &quot;options.retry_timeout&quot; item.</p>
+										<p>configuration parameters to be set.</p>
 									</div>
 								</li>
 							</ul>
@@ -245,7 +259,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="lock.lock-1.html">Lock</a>.<a href="lock.lock-1.html#releaselock">releaseLock</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/lock/MemoryLock.ts#L42">lock/MemoryLock.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/lock/MemoryLock.ts#L66">lock/MemoryLock.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -308,12 +322,13 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="lock.lock-1.html">Lock</a>.<a href="lock.lock-1.html#tryacquirelock">tryAcquireLock</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/lock/MemoryLock.ts#L21">lock/MemoryLock.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/lock/MemoryLock.ts#L45">lock/MemoryLock.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Attempts to acquire a lock for the resource that is identified by the given key.</p>
+									<p>Makes a single attempt to acquire a lock by its key.
+									It returns immediately a positive or negative result.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -321,26 +336,25 @@
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>not used.</p>
+										<p>(optional) transaction id to trace execution through call chain.</p>
 									</div>
 								</li>
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the key to identify the lock by.</p>
+										<p>a unique lock key to acquire.</p>
 									</div>
 								</li>
 								<li>
 									<h5>ttl: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the lock&#39;s time-to-live.</p>
+										<p>a lock timeout (time to live) in milliseconds.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the function that will be called with the result of the attempt or
-										with an error (if one is raised).</p>
+										<p>callback function that receives a lock result or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">

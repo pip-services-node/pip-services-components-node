@@ -70,8 +70,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Can be used to serialize log messages, which allows for cross-service and
-						cross-language logging over REST interfaces.</p>
+						<p>Data object to store captured log messages.
+						This object is used by <a href="log.cachedlogger.html">CachedLogger</a>.</p>
 					</div>
 				</div>
 			</section>
@@ -109,12 +109,12 @@
 					<div class="tsd-signature tsd-kind-icon">correlation_<wbr>id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogMessage.ts#L16">log/LogMessage.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogMessage.ts#L16">log/LogMessage.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Unique business transaction id to trace calls across components.</p>
+							<p>The transaction id to trace execution through call chain.</p>
 						</div>
 					</div>
 				</section>
@@ -124,17 +124,15 @@
 					<div class="tsd-signature tsd-kind-icon">error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ErrorDescription</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogMessage.ts#L24">log/LogMessage.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogMessage.ts#L23">log/LogMessage.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The
-								<a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/errors.errordescription.html" class="external">ErrorDescription</a>
-								of the
-								<a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/errors.applicationexception.html" class="external">ApplicationException</a>
-							that is to be included with this message.</p>
+							<p>The description of the captured error</p>
 						</div>
+						<p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/errors.errordescription.html" class="external">ErrorDescription</a>
+						<a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/errors.applicationexception.html" class="external">ApplicationException</a></p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -143,12 +141,12 @@
 					<div class="tsd-signature tsd-kind-icon">level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogMessage.ts#L14">log/LogMessage.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogMessage.ts#L14">log/LogMessage.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>This message&#39;s log level.</p>
+							<p>This log level</p>
 						</div>
 					</div>
 				</section>
@@ -158,12 +156,12 @@
 					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogMessage.ts#L26">log/LogMessage.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogMessage.ts#L25">log/LogMessage.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The message&#39;s main message text.</p>
+							<p>The human-readable message</p>
 						</div>
 					</div>
 				</section>
@@ -173,12 +171,12 @@
 					<div class="tsd-signature tsd-kind-icon">source<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogMessage.ts#L12">log/LogMessage.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogMessage.ts#L12">log/LogMessage.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The source (context) of the logger that created this message.</p>
+							<p>The source (context name)</p>
 						</div>
 					</div>
 				</section>
@@ -188,12 +186,12 @@
 					<div class="tsd-signature tsd-kind-icon">time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogMessage.ts#L10">log/LogMessage.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogMessage.ts#L10">log/LogMessage.ts:10</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The message&#39;s timestamp.</p>
+							<p>The time then message was generated</p>
 						</div>
 					</div>
 				</section>

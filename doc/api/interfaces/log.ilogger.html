@@ -70,18 +70,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Interface for creating classes that can log messages of various log levels.</p>
+						<p>Interface for logger components that capture execution log messages.</p>
 					</div>
-					<h3 id="examples">Examples</h3>
-					<p>Example implementation of the ILogger interface:</p>
-					<pre><code><span class="hljs-keyword">export</span> class <span class="hljs-type">MyLogger</span> implements <span class="hljs-type">ILogger</span> {
-    public log(level: <span class="hljs-type">LogLevel</span>, correlationId: <span class="hljs-built_in">string</span>, error: <span class="hljs-type">Error</span>, message: <span class="hljs-built_in">string</span>,
-        ...args: <span class="hljs-built_in">any</span>[]) : <span class="hljs-built_in">void</span> <span class="hljs-meta">{...}</span>
-    public fatal(correlationId: <span class="hljs-built_in">string</span>, error: <span class="hljs-type">Error</span>, message: <span class="hljs-built_in">string</span>,
-        ...args: <span class="hljs-built_in">any</span>[]) : <span class="hljs-built_in">void</span> <span class="hljs-meta">{...}</span>
-    ...
-}
-</code></pre>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -135,19 +125,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/ILogger.ts#L121">log/ILogger.ts:121</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/ILogger.ts#L86">log/ILogger.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for logging a message using the
-									<a href="../enums/log.loglevel.html#debug">debug log level</a>.</p>
+									<p>Logs a high-level debug information for troubleshooting.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -160,13 +144,13 @@
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log as a debug message.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to add to the log entry.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>
@@ -184,19 +168,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/ILogger.ts#L82">log/ILogger.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/ILogger.ts#L56">log/ILogger.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for logging a message using the
-									<a href="../enums/log.loglevel.html#error">error log level</a>.</p>
+									<p>Logs recoverable application error.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -209,19 +187,19 @@
 								<li>
 									<h5>error: <span class="tsd-signature-type">Error</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the Error to include in the log entry.</p>
+										<p>an error object associated with this message.</p>
 									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log as an error.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to add to the log entry.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>
@@ -239,19 +217,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/ILogger.ts#L66">log/ILogger.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/ILogger.ts#L43">log/ILogger.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for logging a message using the
-									<a href="../enums/log.loglevel.html#fatal">fatal log level</a>.</p>
+									<p>Logs fatal (unrecoverable) message that caused the process to crash.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -264,19 +236,19 @@
 								<li>
 									<h5>error: <span class="tsd-signature-type">Error</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the Error to include in the log entry.</p>
+										<p>an error object associated with this message.</p>
 									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log as a fatal message.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to add to the log entry.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>
@@ -294,22 +266,17 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/ILogger.ts#L29">log/ILogger.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/ILogger.ts#L15">log/ILogger.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for retrieving the current
-									logger&#39;s <a href="../enums/log.loglevel.html">LogLevel</a>.</p>
+									<p>Gets the maximum log level.
+									Messages with higher log level are filtered out.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h4>
-							<p>this logger&#39;s LogLevel.</p>
+							<p>the maximum log level.</p>
 						</li>
 					</ul>
 				</section>
@@ -323,19 +290,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/ILogger.ts#L109">log/ILogger.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/ILogger.ts#L77">log/ILogger.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for logging a message using the
-									<a href="../enums/log.loglevel.html#info">info log level</a>.</p>
+									<p>Logs an important information message</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -348,13 +309,13 @@
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log as an informational message.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to add to the log entry.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>
@@ -372,26 +333,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/ILogger.ts#L53">log/ILogger.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/ILogger.ts#L33">log/ILogger.ts:33</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for logging a message using the
-									given <a href="../enums/log.loglevel.html">LogLevel</a> and parameters.</p>
+									<p>Logs a message at specified log level.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>level: <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the LogLevel to use.</p>
+										<p>a log level.</p>
 									</div>
 								</li>
 								<li>
@@ -403,19 +358,19 @@
 								<li>
 									<h5>error: <span class="tsd-signature-type">Error</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the Error to include in the log entry.</p>
+										<p>an error object associated with this message.</p>
 									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to add to the log entry.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>
@@ -433,26 +388,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/ILogger.ts#L39">log/ILogger.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/ILogger.ts#L22">log/ILogger.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for setting the current
-									logger&#39;s <a href="../enums/log.loglevel.html">LogLevel</a>.</p>
+									<p>Set the maximum log level.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the LogLevel to set this logger to.</p>
+										<p>a new maximum log level.</p>
 									</div>
 								</li>
 							</ul>
@@ -470,19 +419,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/ILogger.ts#L133">log/ILogger.ts:133</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/ILogger.ts#L95">log/ILogger.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for logging a message using the
-									<a href="../enums/log.loglevel.html#trace">trace log level</a>.</p>
+									<p>Logs a low-level debug information for troubleshooting.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -495,13 +438,13 @@
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log as a trace message.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to add to the log entry.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>
@@ -519,19 +462,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/ILogger.ts#L97">log/ILogger.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/ILogger.ts#L68">log/ILogger.ts:68</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for logging a message using the
-									<a href="../enums/log.loglevel.html#warn">warn log level</a>.</p>
+									<p>Logs a warning that may or may not have a negative impact.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -544,13 +481,13 @@
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log as a warning.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to add to the log entry.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>

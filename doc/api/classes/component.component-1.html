@@ -70,26 +70,24 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The root package of pip-services-components.</p>
+						<p>Abstract component that supportes configurable dependencies, logging
+						and performance counters.</p>
 					</div>
 					<h3 id="configuration-parameters">Configuration parameters</h3>
-					<p>Parameters to pass to the <a href="component.component-1.html#configure">configure</a> method for component configuration:</p>
 					<ul>
-						<li>&quot;level&quot; - the component logger&#39;s <a href="../enums/log.loglevel.html">LogLevel</a> (default is LogLevel.Info);</li>
-						<li>&quot;source&quot; - the component logger&#39;s source.</li>
-						<li>&quot;dependencies&quot; - section that is used to configure this service&#39;s dependency resolver. Should contain
-						locators to dependencies.</li>
-					</ul>
-					<h3 id="references">References</h3>
-					<p>Loggers (along with their context) and counters can be referenced by passing the
-					following references to the object&#39;s <a href="component.component-1.html#setreferences">setReferences</a> method:</p>
-					<ul>
-						<li>Loggers: <code>&quot;*:logger:*:*:1.0&quot;</code>;<ul>
-								<li>Their context (source): <code>&quot;*:context-info:*:*:1.0&quot;</code>;</li>
+						<li><strong>dependencies:</strong><ul>
+								<li>[dependency name 1]: Dependency 1 locator (descriptor)</li>
+								<li>...</li>
+								<li>[dependency name N]: Dependency N locator (descriptor)</li>
 							</ul>
 						</li>
-						<li>Counters: <code>&quot;*:counters:*:*:1.0&quot;</code>;</li>
-						<li>Other references that should be set in this object&#39;s dependency resolver.</li>
+					</ul>
+					<h3 id="references">References</h3>
+					<ul>
+						<li><code>*:counters:*:*:1.0</code>     (optional) <a href="../interfaces/count.icounters.html">ICounters</a> components to pass collected<pre><code><span class="hljs-attribute">                                   measurements</span>
+</code></pre></li>
+						<li><code>*:logger:*:*:1.0</code>       (optional) <a href="../interfaces/log.ilogger.html">ILogger</a> components to pass log messages</li>
+						<li>...                                    References must match configured dependencies.</li>
 					</ul>
 				</div>
 			</section>
@@ -138,7 +136,7 @@
 					<div class="tsd-signature tsd-kind-icon">_counters<span class="tsd-signature-symbol">:</span> <a href="count.compositecounters.html" class="tsd-signature-type">CompositeCounters</a><span class="tsd-signature-symbol"> =&nbsp;new CompositeCounters()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/Component.ts#L39">Component.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/Component.ts#L35">Component.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -148,7 +146,7 @@
 					<div class="tsd-signature tsd-kind-icon">_dependency<wbr>Resolver<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DependencyResolver</span><span class="tsd-signature-symbol"> =&nbsp;new DependencyResolver()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/Component.ts#L37">Component.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/Component.ts#L33">Component.ts:33</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -158,7 +156,7 @@
 					<div class="tsd-signature tsd-kind-icon">_logger<span class="tsd-signature-symbol">:</span> <a href="log.compositelogger.html" class="tsd-signature-type">CompositeLogger</a><span class="tsd-signature-symbol"> =&nbsp;new CompositeLogger()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/Component.ts#L38">Component.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/Component.ts#L34">Component.ts:34</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -175,32 +173,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/Component.ts#L54">Component.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/Component.ts#L42">Component.ts:42</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Configures this component using the parameters provided.</p>
+									<p>Configures component by passing configuration parameters.</p>
 								</div>
-								<p><strong>Configuration parameters:</strong></p>
-								<ul>
-									<li>&quot;level&quot; - the component logger&#39;s <a href="../enums/log.loglevel.html">LogLevel</a> (default is LogLevel.Info);</li>
-									<li>&quot;source&quot; - the component logger&#39;s source;</li>
-									<li>&quot;dependencies&quot; - section that is used to configure this service&#39;s dependency resolver. Should contain
-									locators to dependencies.</li>
-								</ul>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the ConfigParams to use for component configuration.</p>
+										<p>configuration parameters to be set.</p>
 									</div>
 								</li>
 							</ul>
@@ -218,36 +204,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/Component.ts#L74">Component.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/Component.ts#L52">Component.ts:52</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets references to this component&#39;s loggers (along their context), counters, and adds
-									references to this object&#39;s dependency resolver.</p>
+									<p>Sets references to dependent components.</p>
 								</div>
-								<p><strong>References:</strong></p>
-								<ul>
-									<li>Loggers: <code>&quot;*:logger:*:*:1.0&quot;</code>;<ul>
-											<li>Their context (source): <code>&quot;*:context-info:*:*:1.0&quot;</code>;</li>
-										</ul>
-									</li>
-									<li>Counters: <code>&quot;*:counters:*:*:1.0&quot;</code>;</li>
-									<li>Other references that should be set in this object&#39;s dependency resolver.</li>
-								</ul>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html" class="external">IReferences</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>references: <span class="tsd-signature-type">IReferences</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>an IReferences object, containing references to a logger, a context,
-										counters, and the references to set in the dependency resolver.</p>
+										<p>references to locate the component dependencies.</p>
 									</div>
 								</li>
 							</ul>

@@ -70,9 +70,10 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Dummy implementation of the <a href="../interfaces/log.ilogger.html">ILogger</a> interface. Methods do not contain any logic and
-						simply accept the parameters passed to them. Can be used to cut dependecies while testing.</p>
+						<p>Dummy implementation of logger that doesn&#39;t do anything.</p>
 					</div>
+					<p>It can be used in testing or in situations when logger is required
+					but shall be disabled.</p>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="../interfaces/log.ilogger.html">ILogger</a></p>
@@ -133,12 +134,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/NullLogger.ts#L10">log/NullLogger.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/NullLogger.ts#L13">log/NullLogger.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a new NullLogger object.</p>
+									<p>Creates a new instance of the logger.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="log.nulllogger.html" class="tsd-signature-type">NullLogger</a></h4>
@@ -159,18 +160,13 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#debug">debug</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/NullLogger.ts#L103">log/NullLogger.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/NullLogger.ts#L91">log/NullLogger.ts:91</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Logs a message using the <a href="../enums/log.loglevel.html#debug">debug</a> log level.</p>
+									<p>Logs a high-level debug information for troubleshooting.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -183,13 +179,13 @@
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log as debug or the format string to use for formatting.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>
@@ -208,18 +204,13 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#error">error</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/NullLogger.ts#L69">log/NullLogger.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/NullLogger.ts#L64">log/NullLogger.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Logs a message using the <a href="../enums/log.loglevel.html#error">error</a> log level.</p>
+									<p>Logs recoverable application error.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -232,19 +223,19 @@
 								<li>
 									<h5>error: <span class="tsd-signature-type">Error</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the Error to include in the log entry.</p>
+										<p>an error object associated with this message.</p>
 									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log as error or the format string to use for formatting.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>
@@ -263,18 +254,13 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#fatal">fatal</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/NullLogger.ts#L57">log/NullLogger.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/NullLogger.ts#L54">log/NullLogger.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Logs a message using the <a href="../enums/log.loglevel.html#fatal">fatal</a> log level.</p>
+									<p>Logs fatal (unrecoverable) message that caused the process to crash.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -287,19 +273,19 @@
 								<li>
 									<h5>error: <span class="tsd-signature-type">Error</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the Error to include in the log entry.</p>
+										<p>an error object associated with this message.</p>
 									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log as fatal or the format string to use for formatting.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>
@@ -318,22 +304,17 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#getlevel">getLevel</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/NullLogger.ts#L25">log/NullLogger.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/NullLogger.ts#L26">log/NullLogger.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Retrieves the <a href="../enums/log.loglevel.html">LogLevel</a> that is currently set.</p>
+									<p>Gets the maximum log level.
+									Messages with higher log level are filtered out.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h4>
-							<p>this logger&#39;s LogLevel. Dummy implementation
-							will always return <code>LogLevel.None</code>.</p>
+							<p>the maximum log level.</p>
 						</li>
 					</ul>
 				</section>
@@ -348,18 +329,13 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#info">info</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/NullLogger.ts#L92">log/NullLogger.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/NullLogger.ts#L82">log/NullLogger.ts:82</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Logs a message using the <a href="../enums/log.loglevel.html#info">info</a> log level.</p>
+									<p>Logs an important information message</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -372,13 +348,13 @@
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log as info or the format string to use for formatting.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>
@@ -397,12 +373,12 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#log">log</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/NullLogger.ts#L45">log/NullLogger.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/NullLogger.ts#L44">log/NullLogger.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Logs a message using the given <a href="../enums/log.loglevel.html">LogLevel</a> and parameters.</p>
+									<p>Logs a message at specified log level.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -410,7 +386,7 @@
 								<li>
 									<h5>level: <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the LogLevel to use.</p>
+										<p>a log level.</p>
 									</div>
 								</li>
 								<li>
@@ -422,19 +398,19 @@
 								<li>
 									<h5>error: <span class="tsd-signature-type">Error</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the Error to include in the log entry for fatal and error logs.</p>
+										<p>an error object associated with this message.</p>
 									</div>
 								</li>
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log or the format string to use for formatting.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>
@@ -453,25 +429,20 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#setlevel">setLevel</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/NullLogger.ts#L34">log/NullLogger.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/NullLogger.ts#L33">log/NullLogger.ts:33</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets this logger&#39;s <a href="../enums/log.loglevel.html">LogLevel</a>.</p>
+									<p>Set the maximum log level.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the LogLevel to set this logger to.</p>
+										<p>a new maximum log level.</p>
 									</div>
 								</li>
 							</ul>
@@ -490,18 +461,13 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#trace">trace</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/NullLogger.ts#L114">log/NullLogger.ts:114</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/NullLogger.ts#L100">log/NullLogger.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Logs a message using the <a href="../enums/log.loglevel.html#trace">trace</a> log level.</p>
+									<p>Logs a low-level debug information for troubleshooting.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -514,13 +480,13 @@
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log as trace or the format string to use for formatting.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>
@@ -539,18 +505,13 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/log.ilogger.html">ILogger</a>.<a href="../interfaces/log.ilogger.html#warn">warn</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/NullLogger.ts#L80">log/NullLogger.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/NullLogger.ts#L73">log/NullLogger.ts:73</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Logs a message using the <a href="../enums/log.loglevel.html#warn">warn</a> log level.</p>
+									<p>Logs a warning that may or may not have a negative impact.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -563,13 +524,13 @@
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the message to log as warn or the format string to use for formatting.</p>
+										<p>a human-readable message to log.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the arguments to format <code>message</code> with if it is a format string.</p>
+										<p>arguments to parameterize the message.</p>
 									</div>
 								</li>
 							</ul>

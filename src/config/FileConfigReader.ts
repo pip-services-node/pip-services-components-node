@@ -33,11 +33,6 @@ export abstract class FileConfigReader extends ConfigReader {
     /**
      * Configures component by passing configuration parameters.
      * 
-     * __Configuration parameters:__
-     * - path:          path to configuration file
-     * - parameters:    this entire section is used as template parameters
-     * - ...
-     * 
      * @param config    configuration parameters to be set.
      */
     public configure(config: ConfigParams): void {

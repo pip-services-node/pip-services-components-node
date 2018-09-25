@@ -70,17 +70,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Simplifies working with key-value pairs in/from the cache.</p>
+						<p>Data object to store cached values with their keys used by <a href="cache.memorycache.html">MemoryCache</a></p>
 					</div>
-					<h3 id="examples">Examples</h3>
-					<p>Example usage:</p>
-					<pre><code><span class="hljs-keyword">public</span> MyMethod(ICache <span class="hljs-keyword">cache</span>, <span class="hljs-built_in">string</span> key): any {
-    <span class="hljs-keyword">let</span> entry = <span class="hljs-keyword">cache</span>.get(key);
-    <span class="hljs-params">...</span>
-
-    <span class="hljs-keyword">return</span> entry.getValue();
-}
-</code></pre>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -126,10 +117,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/cache/CacheEntry.ts#L19">cache/CacheEntry.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/cache/CacheEntry.ts#L9">cache/CacheEntry.ts:9</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new instance of the cache entry and assigns its values.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -137,7 +131,7 @@
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>unique key to locate the value by in the cache.</p>
+											<p>a unique key to locate the value.</p>
 										</div>
 									</div>
 								</li>
@@ -145,7 +139,7 @@
 									<h5>value: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>value to be stored in (or retrieved from) the cache.</p>
+											<p>a value to be stored.</p>
 										</div>
 									</div>
 								</li>
@@ -153,7 +147,7 @@
 									<h5>timeout: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>expiration timeout for this cache entry.</p>
+											<p>expiration timeout in milliseconds.</p>
 										</div>
 									</div>
 								</li>
@@ -175,13 +169,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/cache/CacheEntry.ts#L50">cache/CacheEntry.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/cache/CacheEntry.ts#L47">cache/CacheEntry.ts:47</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the expiration timeout.</p>
+								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-							<p>the expiration timeout for this cache entry.</p>
+							<p>the expiration timeout in milliseconds.</p>
 						</li>
 					</ul>
 				</section>
@@ -195,14 +192,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/cache/CacheEntry.ts#L36">cache/CacheEntry.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/cache/CacheEntry.ts#L29">cache/CacheEntry.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the key to locate the cached value.</p>
+								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>the unique key by which this cache entry&#39;s value can be
-							located in the cache.</p>
+							<p>the value key.</p>
 						</li>
 					</ul>
 				</section>
@@ -216,13 +215,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/cache/CacheEntry.ts#L43">cache/CacheEntry.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/cache/CacheEntry.ts#L38">cache/CacheEntry.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the cached value.</p>
+								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-							<p>the value of this cache entry.</p>
+							<p>the value object.</p>
 						</li>
 					</ul>
 				</section>
@@ -236,13 +238,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/cache/CacheEntry.ts#L66">cache/CacheEntry.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/cache/CacheEntry.ts#L67">cache/CacheEntry.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if this value already expired.</p>
+								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-							<p>whether or not this cache entry&#39;s timeout has expired.</p>
+							<p>true if the value already expires and false otherwise.</p>
 						</li>
 					</ul>
 				</section>
@@ -256,23 +261,26 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/cache/CacheEntry.ts#L58">cache/CacheEntry.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/cache/CacheEntry.ts#L57">cache/CacheEntry.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets a new value and extends its expiration.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the value to be stored in (or retrieved from) the cache by this cache entry&#39;s key.</p>
+										<p>a new cached value.</p>
 									</div>
 								</li>
 								<li>
 									<h5>timeout: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>expiration timeout for this cache entry.</p>
+										<p>a expiration timeout in milliseconds.</p>
 									</div>
 								</li>
 							</ul>

@@ -70,8 +70,11 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Enumeration for defining log levels.</p>
+						<p>Standard log levels.</p>
 					</div>
+					<p>Logs at debug and trace levels are usually captured
+						only locally for troubleshooting
+					and never sent to consolidated log services.</p>
 				</div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -101,12 +104,12 @@
 					<div class="tsd-signature tsd-kind-icon">Debug<span class="tsd-signature-symbol">:</span> </div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogLevel.ts#L17">log/LogLevel.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogLevel.ts#L22">log/LogLevel.ts:22</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Messages that contain fine-grained informational events that can be useful during debugging.</p>
+							<p>Log everything except traces</p>
 						</div>
 					</div>
 				</section>
@@ -116,12 +119,12 @@
 					<div class="tsd-signature tsd-kind-icon">Error<span class="tsd-signature-symbol">:</span> </div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogLevel.ts#L11">log/LogLevel.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogLevel.ts#L16">log/LogLevel.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Messages that contain information about error events that can still allow a service to continue running.</p>
+							<p>Log all errors.</p>
 						</div>
 					</div>
 				</section>
@@ -131,12 +134,12 @@
 					<div class="tsd-signature tsd-kind-icon">Fatal<span class="tsd-signature-symbol">:</span> </div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogLevel.ts#L9">log/LogLevel.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogLevel.ts#L14">log/LogLevel.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Messages that contain information about very severe error events that will presumably cause an abort.</p>
+							<p>Log only fatal errors that cause processes to crash</p>
 						</div>
 					</div>
 				</section>
@@ -146,12 +149,12 @@
 					<div class="tsd-signature tsd-kind-icon">Info<span class="tsd-signature-symbol">:</span> </div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogLevel.ts#L15">log/LogLevel.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogLevel.ts#L20">log/LogLevel.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Designates informational messages that highlight the progress of the application at coarse-grained level.</p>
+							<p>Log errors and important information messages</p>
 						</div>
 					</div>
 				</section>
@@ -161,12 +164,12 @@
 					<div class="tsd-signature tsd-kind-icon">None<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogLevel.ts#L7">log/LogLevel.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogLevel.ts#L12">log/LogLevel.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Messages that do not have a log level.</p>
+							<p>Nothing to log</p>
 						</div>
 					</div>
 				</section>
@@ -176,12 +179,12 @@
 					<div class="tsd-signature tsd-kind-icon">Trace<span class="tsd-signature-symbol">:</span> </div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogLevel.ts#L19">log/LogLevel.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogLevel.ts#L24">log/LogLevel.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Messages that contain finer-grained informational events than Debug.</p>
+							<p>Log everything.</p>
 						</div>
 					</div>
 				</section>
@@ -191,12 +194,12 @@
 					<div class="tsd-signature tsd-kind-icon">Warn<span class="tsd-signature-symbol">:</span> </div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogLevel.ts#L13">log/LogLevel.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogLevel.ts#L18">log/LogLevel.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Messages that contain information about potentially harmful situations.</p>
+							<p>Log errors and warnings</p>
 						</div>
 					</div>
 				</section>

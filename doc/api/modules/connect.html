@@ -66,6 +66,7 @@
 		<div class="col-8 col-content">
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
+					<p>Todo: Rewrite this description</p>
 					<p>Contains implementation of connection parameters, using various connection strings,
 						which are stripped of all credentials. If we need to configure a service, the port,
 						ip address, protocol, and other parameters – we use the ConnectionParams object, and
@@ -83,18 +84,19 @@
 								discovery) that are configured from the start and don&#39;t change along the way. As of lately, used
 							more often than dynamic, because it is simpler to use and more reliable.</p>
 							<ul>
-								<li>Proxy (or reverse proxy) is created with a dns name, and all the dynamics of starting/restarting
-									/switching from one host to another – everything is nice and clear for the clients. Infrastructure
-								does all the hard work out of the box.</li>
+								<li>Proxy (or reverse proxy) is created with a dns name, and all the dynamics of
+									starting/restarting/switching from one host to another – everything is nice and clear
+								for the clients. Infrastructure does all the hard work out of the box.</li>
 								<li>Configure sets the static registry.</li>
 							</ul>
 						</li>
-						<li><p>Dynamic discovery: every time a service starts, it registers its address in the discovery service (&quot;Service
-								name&quot; at the following address &quot;IP&quot;). Clients then ask to resolve the address by which the requested service
-							can be reached. The service has a general name, by which other services can resolve it.</p>
+						<li><p>Dynamic discovery: every time a service starts, it registers its address in the discovery
+								service (&quot;Service name&quot; at the following address &quot;IP&quot;). Clients then ask to resolve the address
+								by which the requested service can be reached. The service has a general name, by which other
+							services can resolve it.</p>
 							<ul>
-								<li>If a service stops working, you need to refresh its address, clean stale addresses, heartbeats must be
-								used – lots of problems and challenges.</li>
+								<li>If a service stops working, you need to refresh its address, clean stale addresses,
+								heartbeats must be used – lots of problems and challenges.</li>
 							</ul>
 						</li>
 					</ul>

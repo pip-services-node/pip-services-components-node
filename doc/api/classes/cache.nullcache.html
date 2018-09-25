@@ -70,9 +70,10 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Dummy implementation of the <a href="../interfaces/cache.icache.html">ICache</a> interface. Returns null instead of real values.
-						Can be used for cutting dependecies while testing.</p>
+						<p>Dummy cache implementation that doesn&#39;t do anything.</p>
 					</div>
+					<p>It can be used in testing or in situations when cache is required
+					but shall be disabled.</p>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="../interfaces/cache.icache.html">ICache</a></p>
@@ -121,12 +122,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/cache/NullCache.ts#L45">cache/NullCache.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/cache/NullCache.ts#L45">cache/NullCache.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Removes a value from the cache using its key.</p>
+									<p>Removes a value from the cache by its key.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -140,13 +141,13 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>unique key to locate the value by in the cache.</p>
+										<p>a unique value key.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or success.</p>
+										<p>(optional) callback function that receives an error or null for success</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -182,15 +183,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/cache/NullCache.ts#L21">cache/NullCache.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/cache/NullCache.ts#L21">cache/NullCache.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Retrieves a value from the cache by its unique key.
-										It is recommended to use either string GUIDs (for example: &#39;123456789abc&#39;)
-										or unique natural keys prefixed with the functional group (for example:
-									&#39;pip-services-storage:block-123&#39;).</p>
+									<p>Retrieves cached value from the cache using its key.
+									If value is missing in the cache or expired it returns null.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -204,14 +203,13 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>unique key to locate the value by in the cache.</p>
+										<p>a unique value key.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or the retrieved value.
-										Returns <b>null</b> if the value was not found.</p>
+										<p>callback function that receives cached value or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -250,12 +248,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/cache/NullCache.ts#L34">cache/NullCache.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/cache/NullCache.ts#L34">cache/NullCache.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Stores a value, identified by its unique key, in the cache.</p>
+									<p>Stores value in the cache with expiration time.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -269,25 +267,25 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>unique key to locate the value by in the cache.</p>
+										<p>a unique value key.</p>
 									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the value to store.</p>
+										<p>a value to store.</p>
 									</div>
 								</li>
 								<li>
 									<h5>timeout: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>expiration timeout for the cache entry.</p>
+										<p>expiration timeout in milliseconds.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error or the stored value.</p>
+										<p>(optional) callback function that receives an error or null for success</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">

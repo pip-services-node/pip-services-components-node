@@ -70,7 +70,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The exception that is thrown, when a component cannot be created by the factory.</p>
+						<p>Error raised when factory is not able to create requested component.</p>
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
@@ -155,32 +155,24 @@
 							<aside class="tsd-sources">
 								<p>Overrides InternalException.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/build/CreateException.ts#L10">build/CreateException.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/build/CreateException.ts#L10">build/CreateException.ts:10</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../interfaces/build.ifactory.html#create">IFactory.create</a></p>
-									</dd>
-								</dl>
+								<div class="lead">
+									<p>Creates an error instance and assigns its values.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> correlationId: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>(optional) transaction id to trace execution through call chain.</p>
-										</div>
-									</div>
 								</li>
 								<li>
 									<h5>messageOrLocator: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>message to add to the exception, or the locator of the component
-											that was passed to the factory for component creation.</p>
+											<p>human-readable error or locator of the component that cannot be created.</p>
 										</div>
 									</div>
 								</li>

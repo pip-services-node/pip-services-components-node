@@ -70,23 +70,23 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Contains implementation of connection parameters, using various connection strings, which are
-							stripped of all credentials. Connection parameters and credentials are stored separately,
-						since the latter have special requirements for secure storage (see <a href="auth.credentialparams.html">CredentialParams</a> for more info).</p>
+						<p>Contains connection parameters to connect to external services.
+							They are used together with credential parameters, but usually stored
+						separately from more protected sensitive values.</p>
 					</div>
-					<p>If a service needs to configure a certain connection, then the port, ip address, protocol,
-						and other parameters can be set using a ConnectionParams object. Relevant helper classes
-						(like <a href="connect.connectionresolver.html">ConnectionResolver</a>) can be used to acquiring these parameters and discover objects
-					or components that store and retrieve connection parameters (discovery services - see <a href="../interfaces/connect.idiscovery.html">IDiscovery</a>).</p>
-					<h3 id="possible-configuration-parameters-">Possible configuration parameters:</h3>
+					<h3 id="configuration-parameters">Configuration parameters</h3>
 					<ul>
-						<li>&quot;discovery_key&quot; - the key to use for connection resolving in a discovery service;</li>
-						<li>&quot;protocol&quot; - the connection&#39;s protocol;</li>
-						<li>&quot;host&quot; - the target host;</li>
-						<li>&quot;port&quot; - the target port;</li>
-						<li>&quot;uri&quot; - the target URI.</li>
+						<li>discovery_key: key to retrieve parameters from discovery service</li>
+						<li>protocol:      connection protocol like http, https, tcp, udp</li>
+						<li>host:          host name or IP address</li>
+						<li>port:          port number</li>
+						<li>uri:           resource URI or connection string with all parameters in it</li>
 					</ul>
+					<p>In addition to standard parameters ConnectionParams may contain any number of custom parameters</p>
 					<dl class="tsd-comment-tags">
+						<dt>see</dt>
+						<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a></p>
+						</dd>
 						<dt>see</dt>
 						<dd><p><a href="auth.credentialparams.html">CredentialParams</a></p>
 						</dd>
@@ -95,17 +95,18 @@
 						</dd>
 						<dt>see</dt>
 						<dd><p><a href="../interfaces/connect.idiscovery.html">IDiscovery</a></p>
-							<h3 id="examples">Examples</h3>
+							<h3 id="example">Example</h3>
 							<p>Example ConnectionParams object usage:</p>
-							<pre><code>public MyMethod() {
-    let<span class="hljs-built_in"> connection </span>= new ConnectionParams();
-    connection.setDiscoveryKey(<span class="hljs-string">"Discovery key"</span>);
-    connection.setProtocol(<span class="hljs-string">"https"</span>);
-    connection.setHost(<span class="hljs-string">"localhost"</span>);
-    connection.setPort(<span class="hljs-string">"8080"</span>);
-    connection.setUri(<span class="hljs-string">"http://localhost:0"</span>);
-    <span class="hljs-built_in">..</span>.
-}
+							<pre><code><span class="hljs-keyword">let</span> <span class="hljs-attr">connection</span> = ConnectionParams.fromTuples(
+    <span class="hljs-string">"protocol"</span>, <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"host"</span>, <span class="hljs-string">"10.1.1.100"</span>,
+    <span class="hljs-string">"port"</span>, <span class="hljs-string">"8080"</span>,
+    <span class="hljs-string">"cluster"</span>, <span class="hljs-string">"mycluster"</span>
+);
+
+<span class="hljs-keyword">let</span> <span class="hljs-attr">host</span> = connection.getHost();                             // Result: <span class="hljs-string">"10.1.1.100"</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">port</span> = connection.getPort();                             // Result: <span class="hljs-number">8080</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">cluster</span> = connection.getAsNullableString(<span class="hljs-string">"cluster"</span>);     // Result: <span class="hljs-string">"mycluster"</span>
 </code></pre></dd>
 					</dl>
 				</div>
@@ -197,7 +198,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="connect.connectionparams.html#fromconfig" class="tsd-kind-icon">from<wbr>Config</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="connect.connectionparams.html#frommaps" class="tsd-kind-icon">from<wbr>Maps</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static"><a href="connect.connectionparams.html#fromstring" class="tsd-kind-icon">from<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="connect.connectionparams.html#fromtuples" class="tsd-kind-icon">from<wbr>Tuples</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static"><a href="connect.connectionparams.html#fromtuples" class="tsd-kind-icon">from<wbr>Tuples</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="connect.connectionparams.html#fromtuplesarray" class="tsd-kind-icon">from<wbr>Tuples<wbr>Array</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="connect.connectionparams.html#fromvalue" class="tsd-kind-icon">from<wbr>Value</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="connect.connectionparams.html#manyfromconfig" class="tsd-kind-icon">many<wbr>From<wbr>Config</a></li>
@@ -220,23 +221,13 @@
 							<aside class="tsd-sources">
 								<p>Overrides ConfigParams.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L40">connect/ConnectionParams.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L40">connect/ConnectionParams.ts:40</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a new ConnectionParams object. Calls
-										<a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#constructor" class="external">StringValueMap&#39;s constructor</a>,
-									which it extends by extending <a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a>.</p>
+									<p>Creates a new connection parameters and fills it with values.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#constructor" class="external">StringValueMap&#39;s constructor</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -244,7 +235,7 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> values: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>values to fill these ConnectionParams with. Defaults to null.</p>
+											<p>(optional) an object to be converted into key-value pairs to initialize this connection.</p>
 										</div>
 									</div>
 								</li>
@@ -1656,10 +1647,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L70">connect/ConnectionParams.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L71">connect/ConnectionParams.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the key to retrieve this connection from [[DiscoveryService]].
+									If this key is null, than all parameters are already present.</p>
+								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
 									<dd><p><a href="connect.connectionparams.html#usediscovery">useDiscovery</a></p>
@@ -1667,7 +1662,7 @@
 								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>the key to use for connection resolving in a discovery service.</p>
+							<p>the discovery key to retrieve connection.</p>
 						</li>
 					</ul>
 				</section>
@@ -1681,14 +1676,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L102">connect/ConnectionParams.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L108">connect/ConnectionParams.ts:108</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the host name or IP address.</p>
+								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>the &quot;host&quot; or the &quot;ip&quot; (if no host was found) that is set in
-							these ConnectionParams.</p>
+							<p>the host name or IP address.</p>
 						</li>
 					</ul>
 				</section>
@@ -1723,13 +1720,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L120">connect/ConnectionParams.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L128">connect/ConnectionParams.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the port number.</p>
+								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-							<p>the port set in these ConnectionParams.</p>
+							<p>the port number.</p>
 						</li>
 					</ul>
 				</section>
@@ -1743,24 +1743,25 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L87">connect/ConnectionParams.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L90">connect/ConnectionParams.ts:90</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the connection protocol.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> defaultValue: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>(optional) value to return if no protocol is set.
-										Defaults to null if omitted.</p>
+										<p>(optional) the default protocol</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>the protocol set in these ConnectionParams or defaultValue,
-							if no protocol was set.</p>
+							<p>the connection protocol or the default value if it&#39;s not set.</p>
 						</li>
 					</ul>
 				</section>
@@ -1829,13 +1830,17 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L138">connect/ConnectionParams.ts:138</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L149">connect/ConnectionParams.ts:149</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the resource URI or connection string.
+									Usually it includes all connection parameters in it.</p>
+								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>the target URI of these ConnectionParams.</p>
+							<p>the resource URI or connection string.</p>
 						</li>
 					</ul>
 				</section>
@@ -2059,17 +2064,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L77">connect/ConnectionParams.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L80">connect/ConnectionParams.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the key to retrieve these parameters from [[DiscoveryService]].</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the key to use when resolving connections in a discovery service.</p>
+										<p>a new key to retrieve connection.</p>
 									</div>
 								</li>
 							</ul>
@@ -2087,12 +2095,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L113">connect/ConnectionParams.ts:113</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L119">connect/ConnectionParams.ts:119</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets the host&#39;s name or ip address that will be used in these ConnectionParams.</p>
+									<p>Sets the host name or IP address.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2100,7 +2108,7 @@
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>host&#39;s name or ip address.</p>
+										<p>a new host name or IP address.</p>
 									</div>
 								</li>
 							</ul>
@@ -2118,12 +2126,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L131">connect/ConnectionParams.ts:131</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L139">connect/ConnectionParams.ts:139</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets the host&#39;s port for these ConnectionParams.</p>
+									<p>Sets the port number.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
@@ -2136,7 +2144,7 @@
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>which port to connect to on the host.</p>
+										<p>a new port number.</p>
 									</div>
 								</li>
 							</ul>
@@ -2154,17 +2162,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L94">connect/ConnectionParams.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L99">connect/ConnectionParams.ts:99</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the connection protocol.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>protocol to use in these ConnectionParams.</p>
+										<p>a new connection protocol.</p>
 									</div>
 								</li>
 							</ul>
@@ -2182,12 +2193,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L147">connect/ConnectionParams.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L158">connect/ConnectionParams.ts:158</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets the target URI of these ConnectionParams.</p>
+									<p>Sets the resource URI or connection string.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2195,7 +2206,7 @@
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>target URI.</p>
+										<p>a new resource URI or connection string.</p>
 									</div>
 								</li>
 							</ul>
@@ -2235,15 +2246,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L61">connect/ConnectionParams.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L59">connect/ConnectionParams.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if these connection parameters shall be retrieved from [[DiscoveryService]].
+									The connection parameters are redirected to [[DiscoveryService]] when discovery_key parameter is set.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="connect.connectionparams.html#getdiscoverykey">getDiscoveryKey</a></p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-							<p>whether or not these ConnectionParams contain a key that can be
-								used in a discovery service for resolving connections
-							(&quot;discovery_key&quot; is not null?).</p>
+							<p>true if connection shall be retrieved from [[DiscoveryService]]</p>
 						</li>
 					</ul>
 				</section>
@@ -2257,20 +2275,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L210">connect/ConnectionParams.ts:210</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L225">connect/ConnectionParams.ts:225</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Static method that retrieves the first ConnectionParams found in the given ConfigParams.
-									The ConfigParams&#39; &quot;connection(s)&quot; section will be converted into a ConnectionParams object.</p>
+									<p>Retrieves a single ConnectionParams from configuration parameters
+										from &quot;connection&quot; section. If &quot;connections&quot; section is present instead,
+									then is returns only the first connection element.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
 									<dd><p><a href="connect.connectionparams.html#manyfromconfig">manyFromConfig</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipServices &quot;Commons&quot; package)</p>
 									</dd>
 								</dl>
 							</div>
@@ -2279,12 +2295,12 @@
 								<li>
 									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>ConfigParams, containing a section named &quot;connection(s)&quot;.</p>
+										<p>ConnectionParams, containing a section named &quot;connection(s)&quot;.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="connect.connectionparams.html" class="tsd-signature-type">ConnectionParams</a></h4>
-							<p>the generated ConnectionParams object (or null).</p>
+							<p>the generated ConnectionParams object.</p>
 						</li>
 					</ul>
 				</section>
@@ -2332,18 +2348,16 @@
 							<aside class="tsd-sources">
 								<p>Overrides ConfigParams.fromString</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L162">connect/ConnectionParams.ts:162</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L171">connect/ConnectionParams.ts:171</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Static method for converting a parameterized string into a  ConnectionParams
-									object.</p>
+									<p>Creates a new ConnectionParams object filled with key-value pairs serialized as a string.</p>
 								</div>
-								<p>Example string: &quot;protocol=http;host=0.0.0.0;port=8080&quot;</p>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/data.stringvaluemap.html#fromstring" class="external">StringValueMap.fromString</a> (in the PipServices &quot;Commons&quot; package)</p>
+									<dd><p>[[StringValueMap.fromString]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -2352,51 +2366,47 @@
 								<li>
 									<h5>line: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>parameterized string that contains the connection&#39;s parameters.</p>
+										<p>a string with serialized key-value pairs as &quot;key1=value1;key2=value2;...&quot;
+										Example: &quot;Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z&quot;</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="connect.connectionparams.html" class="tsd-signature-type">ConnectionParams</a></h4>
-							<p>ConnectionParams that were generated.</p>
+							<p>a new ConnectionParams object.</p>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
 					<a name="fromtuples" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> from<wbr>Tuples</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">from<wbr>Tuples<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>tuples<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConfigParams</span></li>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">from<wbr>Tuples<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>tuples<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="connect.connectionparams.html" class="tsd-signature-type">ConnectionParams</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from ConfigParams.fromTuples</p>
-								<p>Overrides StringValueMap.fromTuples</p>
+								<p>Overrides ConfigParams.fromTuples</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-components-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:104</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L183">connect/ConnectionParams.ts:183</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Static method that creates a ConfigParams object using the tuples passed to the method.</p>
+									<p>Creates a new ConnectionParams object filled with provided key-value pairs called tuples.
+									Tuples parameters contain a sequence of key1, value1, key2, value2, ... pairs.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p>[[StringValueMap.fromTuplesArray]]</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>tuples: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the tuples to convert to a ConfigParams object.</p>
+										<p>the tuples to fill a new ConnectionParams object.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ConfigParams</span></h4>
-							<p>the generated ConfigParams.</p>
+							<h4 class="tsd-returns-title">Returns <a href="connect.connectionparams.html" class="tsd-signature-type">ConnectionParams</a></h4>
+							<p>a new ConnectionParams object.</p>
 						</li>
 					</ul>
 				</section>
@@ -2483,37 +2493,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/connect/ConnectionParams.ts#L181">connect/ConnectionParams.ts:181</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/connect/ConnectionParams.ts#L196">connect/ConnectionParams.ts:196</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Static method that converts a ConfigParams&#39; &quot;connection(s)&quot; section into
-									a list of ConnectionParams.</p>
+									<p>Retrieves all ConnectionParams from configuration parameters
+										from &quot;connections&quot; section. If &quot;connection&quot; section is present instead,
+									than it returns a list with only one ConnectionParams.</p>
 								</div>
-								<p>If the section name &quot;connections&quot; is used, then each subsection will be treated as a
-									separate connection, for which a separate ConnectionParams object will be created and
-								added to the list.</p>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html" class="external">ConfigParams</a> (in the PipService&#39;s &quot;Commons&quot; package)</p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html#getsection" class="external">ConfigParams.getSection</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>ConfigParams, containing a section named &quot;connection(s)&quot;.</p>
+										<p>a configuration parameters to retrieve connections</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="connect.connectionparams.html" class="tsd-signature-type">ConnectionParams</a><span class="tsd-signature-symbol">[]</span></h4>
-							<p>the generated list of ConnectionParams.</p>
+							<p>a list of retrieved ConnectionParams</p>
 						</li>
 					</ul>
 				</section>
@@ -2798,7 +2798,7 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
 								<a href="connect.connectionparams.html#fromstring" class="tsd-kind-icon">from<wbr>String</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
 								<a href="connect.connectionparams.html#fromtuples" class="tsd-kind-icon">from<wbr>Tuples</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">

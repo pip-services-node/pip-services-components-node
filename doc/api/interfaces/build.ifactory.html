@@ -70,21 +70,12 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Interface for creating component factories. IFactory is part of the &quot;factory design pattern&quot;,
-							which is used to make factory classes. Factory classes are capable of creating instances of
-						components that are requested using component locators.</p>
+						<p>Interface for component factories.</p>
 					</div>
-					<p>Allows for implementaion of various factory types in a portable manner.</p>
-					<h3 id="examples">Examples</h3>
-					<p>Example implementation of the IFactory interface:</p>
-					<pre><code><span class="hljs-keyword">export</span> class <span class="hljs-type">MyFactory</span> implements <span class="hljs-type">IFactory</span> {
-    public canCreate(locator: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">any</span> <span class="hljs-meta">{...}</span>
-
-    public create(locator: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">any</span> <span class="hljs-meta">{...}</span>
-
-    ...
-}
-</code></pre>
+					<p>Factories use locators to identify components to be created.</p>
+					<p>The locators are similar to those used to locate components in references.
+						They can be of any type like strings or integers. However Pip.Services toolkit
+					most often uses Descriptor objects as component locators.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -137,26 +128,28 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/build/IFactory.ts#L29">build/IFactory.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/build/IFactory.ts#L23">build/IFactory.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Checks if the factory is able to create the requested component
-									and returns its locator.</p>
+									<p>Checks if this factory is able to create component by given locator.</p>
 								</div>
+								<p>This method searches for all registered components and returns
+									a locator for component it is able to create that matches the given locator.
+								If the factory is not able to create a requested component is returns null.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>locator: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the locator of the requested component.</p>
+										<p>a locator to identify component to be created.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-							<p>the locator of the object that is to be created.</p>
+							<p>a locator for a component that the factory is able to create.</p>
 						</li>
 					</ul>
 				</section>
@@ -170,19 +163,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/build/IFactory.ts#L40">build/IFactory.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/build/IFactory.ts#L33">build/IFactory.ts:33</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates an instance of the component with the given locator.</p>
+									<p>Creates a component identified by given locator.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>throws</dt>
-									<dd><p>a CreateException, when component creation fails.</p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="../classes/build.createexception.html">CreateException</a></p>
+									<dd><p>a CreateException if the factory is not able to create the component.</p>
 									</dd>
 								</dl>
 							</div>
@@ -191,12 +181,12 @@
 								<li>
 									<h5>locator: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the requested component.</p>
+										<p>a locator to identify component to be created.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-							<p>an instance of the created component.</p>
+							<p>the created component.</p>
 						</li>
 					</ul>
 				</section>

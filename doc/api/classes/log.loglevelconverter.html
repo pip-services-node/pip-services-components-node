@@ -70,8 +70,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Helper class that contains static methods for converting <a href="../enums/log.loglevel.html">LogLevels</a>
-						to and from string values.</p>
+						<p>Helper class to convert log level values.</p>
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
@@ -115,31 +114,25 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogLevelConverter.ts#L76">log/LogLevelConverter.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogLevelConverter.ts#L66">log/LogLevelConverter.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Static method that converts a <a href="../enums/log.loglevel.html">LogLevel</a> to its numeric
-									equivalent. Fatal is 1 and Trace is 6.</p>
+									<p>Converts log level to a number.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>level: <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the LogLevel to convert.</p>
+										<p>a log level to convert.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-							<p>the LogLevel as an integer.</p>
+							<p>log level number value.</p>
 						</li>
 					</ul>
 				</section>
@@ -153,38 +146,31 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogLevelConverter.ts#L26">log/LogLevelConverter.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogLevelConverter.ts#L20">log/LogLevelConverter.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Static method that converts integers and strings to their corresponding <a href="../enums/log.loglevel.html">LogLevels</a>.</p>
+									<p>Converts numbers and strings to standard log level values.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="../enums/log.loglevel.html">LogLevel</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the integer or string value to convert.
-										Example values: 0/&quot;NOTHING&quot;/&quot;NONE&quot;; 1/&quot;FATAL&quot;; 6/&quot;TRACE&quot;.</p>
+										<p>a value to be converted</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> defaultValue: <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a><span class="tsd-signature-symbol"> =&nbsp;LogLevel.Info</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the default LogLevel to use if conversion is not possible.
-										Defaults to LogLevel.Info if omitted.</p>
+										<p>a default value if conversion is not possible</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h4>
-							<p>the LogLevel that corresponds to the given value.</p>
+							<p>converted log level</p>
 						</li>
 					</ul>
 				</section>
@@ -198,13 +184,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/log/LogLevelConverter.ts#L57">log/LogLevelConverter.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/log/LogLevelConverter.ts#L50">log/LogLevelConverter.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Static method that converts a <a href="../enums/log.loglevel.html">LogLevel</a> to its string
-									equivalent (its name in CAPS).</p>
+									<p>Converts log level to a string.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
@@ -217,12 +202,12 @@
 								<li>
 									<h5>level: <a href="../enums/log.loglevel.html" class="tsd-signature-type">LogLevel</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the LogLevel to convert.</p>
+										<p>a log level to convert</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>the LogLevel&#39;s name or &quot;UNDEF&quot; (if the level is undefined).</p>
+							<p>log level name string.</p>
 						</li>
 					</ul>
 				</section>

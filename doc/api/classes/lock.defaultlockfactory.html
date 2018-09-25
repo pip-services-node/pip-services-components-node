@@ -70,11 +70,20 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Contains static read-only descriptors for <a href="lock.nulllock.html">NullLock</a> and <a href="lock.memorylock.html">MemoryLock</a> (as well as a default &quot;lock&quot; descriptor).</p>
+						<p>Creates <a href="../interfaces/lock.ilock.html">ILock</a> components by their descriptors.</p>
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="build.factory.html">Factory</a></p>
+						</dd>
+						<dt>see</dt>
+						<dd><p><a href="../interfaces/lock.ilock.html">ILock</a></p>
+						</dd>
+						<dt>see</dt>
+						<dd><p><a href="lock.memorylock.html">MemoryLock</a></p>
+						</dd>
+						<dt>see</dt>
+						<dd><p><a href="lock.nulllock.html">NullLock</a></p>
 						</dd>
 					</dl>
 				</div>
@@ -140,21 +149,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/lock/DefaultLockFactory.ts#L16">lock/DefaultLockFactory.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/lock/DefaultLockFactory.ts#L19">lock/DefaultLockFactory.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Create a new DefaultLockFactory object, containing <a href="lock.nulllock.html">NullLock</a> and <a href="lock.memorylock.html">MemoryLock</a> object factories.</p>
+									<p>Create a new instance of the factory.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>see</dt>
-									<dd><p><a href="lock.nulllock.html">NullLock</a></p>
-									</dd>
-									<dt>see</dt>
-									<dd><p><a href="lock.memorylock.html">MemoryLock</a></p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="lock.defaultlockfactory.html" class="tsd-signature-type">DefaultLockFactory</a></h4>
 						</li>
@@ -169,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">Descriptor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Descriptor</span><span class="tsd-signature-symbol"> =&nbsp;new Descriptor(&quot;pip-services&quot;, &quot;factory&quot;, &quot;lock&quot;, &quot;default&quot;, &quot;1.0&quot;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/lock/DefaultLockFactory.ts#L14">lock/DefaultLockFactory.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/lock/DefaultLockFactory.ts#L17">lock/DefaultLockFactory.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -179,7 +180,7 @@
 					<div class="tsd-signature tsd-kind-icon">Memory<wbr>Lock<wbr>Descriptor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Descriptor</span><span class="tsd-signature-symbol"> =&nbsp;new Descriptor(&quot;pip-services&quot;, &quot;lock&quot;, &quot;memory&quot;, &quot;*&quot;, &quot;1.0&quot;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/lock/DefaultLockFactory.ts#L16">lock/DefaultLockFactory.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/lock/DefaultLockFactory.ts#L19">lock/DefaultLockFactory.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -189,7 +190,7 @@
 					<div class="tsd-signature tsd-kind-icon">Null<wbr>Lock<wbr>Descriptor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Descriptor</span><span class="tsd-signature-symbol"> =&nbsp;new Descriptor(&quot;pip-services&quot;, &quot;lock&quot;, &quot;null&quot;, &quot;*&quot;, &quot;1.0&quot;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/lock/DefaultLockFactory.ts#L15">lock/DefaultLockFactory.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/lock/DefaultLockFactory.ts#L18">lock/DefaultLockFactory.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -208,25 +209,28 @@
 								<p>Implementation of <a href="../interfaces/build.ifactory.html">IFactory</a>.<a href="../interfaces/build.ifactory.html#cancreate">canCreate</a></p>
 								<p>Inherited from <a href="build.factory.html">Factory</a>.<a href="build.factory.html#cancreate">canCreate</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/build/Factory.ts#L81">build/Factory.ts:81</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/build/Factory.ts#L83">build/Factory.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Checks if the factory contains the given locator.</p>
+									<p>Checks if this factory is able to create component by given locator.</p>
 								</div>
+								<p>This method searches for all registered components and returns
+									a locator for component it is able to create that matches the given locator.
+								If the factory is not able to create a requested component is returns null.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>locator: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the locator to search for in this factory.</p>
+										<p>a locator to identify component to be created.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-							<p>the locator that was found or null otherwise.</p>
+							<p>a locator for a component that the factory is able to create.</p>
 						</li>
 					</ul>
 				</section>
@@ -242,16 +246,16 @@
 								<p>Implementation of <a href="../interfaces/build.ifactory.html">IFactory</a>.<a href="../interfaces/build.ifactory.html#create">create</a></p>
 								<p>Inherited from <a href="build.factory.html">Factory</a>.<a href="build.factory.html#create">create</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/build/Factory.ts#L99">build/Factory.ts:99</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/build/Factory.ts#L101">build/Factory.ts:101</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates an object using the given locator.</p>
+									<p>Creates a component identified by given locator.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>throws</dt>
-									<dd><p>a CreateException if it fails to create an object using the given locator.</p>
+									<dd><p>a CreateException if the factory is not able to create the component.</p>
 									</dd>
 								</dl>
 							</div>
@@ -260,12 +264,12 @@
 								<li>
 									<h5>locator: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the locator of the factory that needs to be called.</p>
+										<p>a locator to identify component to be created.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-							<p>the object that was created by the factory with the given locator.</p>
+							<p>the created component.</p>
 						</li>
 					</ul>
 				</section>
@@ -280,34 +284,26 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="build.factory.html">Factory</a>.<a href="build.factory.html#register">register</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/build/Factory.ts#L43">build/Factory.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/build/Factory.ts#L43">build/Factory.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Registers a factory.</p>
+									<p>Registers a component using a factory method.</p>
 								</div>
-								<p>Example factory:</p>
-								<pre><code>(locator) =&gt; { <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> myClass(); }
-</code></pre>
-								<dl class="tsd-comment-tags">
-									<dt>throws</dt>
-									<dd><p>Error, when locator or factory parameters are null.</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>locator: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the locator that is used to identify the factory. Cannot be null.</p>
+										<p>a locator to identify component to be created.</p>
 									</div>
 								</li>
 								<li>
 									<h5>factory: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the factory to add. Cannot be null.</p>
+										<p>a factory function that receives a locator and returns a created component.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -337,38 +333,33 @@
 					<a name="registerastype" class="tsd-anchor"></a>
 					<h3>register<wbr>AsType</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">register<wbr>AsType<span class="tsd-signature-symbol">(</span>locator<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, objectFactory<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">register<wbr>AsType<span class="tsd-signature-symbol">(</span>locator<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="build.factory.html">Factory</a>.<a href="build.factory.html#registerastype">registerAsType</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/build/Factory.ts#L63">build/Factory.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/build/Factory.ts#L61">build/Factory.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Registers a factory that can create instances of &#39;objectFactory&#39; classes.</p>
+									<p>Registers a component using its type (a constructor function).</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>throws</dt>
-									<dd><p>Error, when locator or factory parameters are null.</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>locator: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the locator that is used to identify the object factory. Cannot be null.</p>
+										<p>a locator to identify component to be created.</p>
 									</div>
 								</li>
 								<li>
-									<h5>objectFactory: <span class="tsd-signature-type">any</span></h5>
+									<h5>type: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the object type that can be created by this factory. Cannot be null.</p>
+										<p>a component type.</p>
 									</div>
 								</li>
 							</ul>

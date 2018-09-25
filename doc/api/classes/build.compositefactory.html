@@ -70,15 +70,20 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Class that can add and/or remove various Factory (classes that implement <a href="../interfaces/build.ifactory.html">IFactory</a>) to its list
-							of factories. Using this class, multiple factories can be collected into one object for ease of use.
-						Added factories are called via their unique locators.</p>
+						<p>Aggregates multiple factories into a single factory component.
+							When a new component is requested, it iterates through
+						factories to locate the one able to create the requested component.</p>
 					</div>
-					<dl class="tsd-comment-tags">
-						<dt>see</dt>
-						<dd><p><a href="../interfaces/build.ifactory.html">IFactory</a></p>
-						</dd>
-					</dl>
+					<p>This component is used to conveniently keep all supported factories in a single place.</p>
+					<h3 id="example">Example</h3>
+					<pre><code>let <span class="hljs-keyword">factory</span> = <span class="hljs-keyword">new</span> CompositeFactory();
+<span class="hljs-keyword">factory</span>.add(<span class="hljs-keyword">new</span> DefaultLoggerFactory());
+<span class="hljs-keyword">factory</span>.add(<span class="hljs-keyword">new</span> DefaultCountersFactory());
+
+let loggerLocator = <span class="hljs-keyword">new</span> Descriptor(<span class="hljs-string">"*"</span>, <span class="hljs-string">"logger"</span>, <span class="hljs-string">"*"</span>, <span class="hljs-string">"*"</span>, <span class="hljs-string">"1.0"</span>);
+<span class="hljs-keyword">factory</span>.canCreate(loggerLocator);         <span class="hljs-comment">// Result: Descriptor("pip-service", "logger", "null", "default", "1.0")</span>
+<span class="hljs-keyword">factory</span>.create(loggerLocator);             <span class="hljs-comment">// Result: created NullLogger</span>
+</code></pre>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -129,10 +134,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/build/CompositeFactory.ts#L16">build/CompositeFactory.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/build/CompositeFactory.ts#L26">build/CompositeFactory.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new instance of the factory.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -140,7 +148,7 @@
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>factories: <a href="../interfaces/build.ifactory.html" class="tsd-signature-type">IFactory</a><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>list of factories to add to this CompositeFactory.</p>
+											<p>a list of factories to embed into this factory.</p>
 										</div>
 									</div>
 								</li>
@@ -162,25 +170,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/build/CompositeFactory.ts#L33">build/CompositeFactory.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/build/CompositeFactory.ts#L43">build/CompositeFactory.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Adds a factory to this CompositeFactory.</p>
+									<p>Adds a factory into the list of embedded factories.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>throws</dt>
-									<dd><p>an Error if factory is null.</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>factory: <a href="../interfaces/build.ifactory.html" class="tsd-signature-type">IFactory</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the factory to add. Cannot be null.</p>
+										<p>a factory to be added.</p>
 									</div>
 								</li>
 							</ul>
@@ -199,30 +202,28 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/build.ifactory.html">IFactory</a>.<a href="../interfaces/build.ifactory.html#cancreate">canCreate</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/build/CompositeFactory.ts#L57">build/CompositeFactory.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/build/CompositeFactory.ts#L69">build/CompositeFactory.ts:69</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Checks if the factory contains the given locator.</p>
+									<p>Checks if this factory is able to create component by given locator.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>throws</dt>
-									<dd><p>an Error if the locator is null.</p>
-									</dd>
-								</dl>
+								<p>This method searches for all registered components and returns
+									a locator for component it is able to create that matches the given locator.
+								If the factory is not able to create a requested component is returns null.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>locator: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the locator to search for in this factory. Cannot be null.</p>
+										<p>a locator to identify component to be created.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-							<p>the locator that was found or null otherwise.</p>
+							<p>a locator for a component that the factory is able to create.</p>
 						</li>
 					</ul>
 				</section>
@@ -237,17 +238,16 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/build.ifactory.html">IFactory</a>.<a href="../interfaces/build.ifactory.html#create">create</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/build/CompositeFactory.ts#L80">build/CompositeFactory.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/build/CompositeFactory.ts#L91">build/CompositeFactory.ts:91</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates an object using the given locator.</p>
+									<p>Creates a component identified by given locator.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>throws</dt>
-									<dd><p>a CreateException if it fails to create an object using the given locator,
-										or an Error if the locator is null.</p>
+									<dd><p>a CreateException if the factory is not able to create the component.</p>
 									</dd>
 								</dl>
 							</div>
@@ -256,12 +256,12 @@
 								<li>
 									<h5>locator: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the locator of the factory that needs to be called. Cannot be null.</p>
+										<p>a locator to identify component to be created.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-							<p>the object that was created by the factory with the given locator.</p>
+							<p>the created component.</p>
 						</li>
 					</ul>
 				</section>
@@ -275,12 +275,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/build/CompositeFactory.ts#L45">build/CompositeFactory.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/build/CompositeFactory.ts#L55">build/CompositeFactory.ts:55</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Removes a factory from this CompositeFactory.</p>
+									<p>Removes a factory from the list of embedded factories.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>

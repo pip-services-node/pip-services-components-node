@@ -70,24 +70,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Interface that can be used for creating various distributed caches. We can save
-						an object to cache and retrieve it by its key, using various implementations.</p>
+						<p>Interface for caches that are used to cache values to improve performance.</p>
 					</div>
-					<h3 id="examples">Examples</h3>
-					<p>Example implementation of the ICache interface:</p>
-					<pre><code><span class="hljs-keyword">export</span> class <span class="hljs-type">MyCache</span> implements <span class="hljs-type">ICache</span> {
-    public retrieve(correlationId: <span class="hljs-built_in">string</span>, key: <span class="hljs-built_in">string</span>,
-       callback: (err: <span class="hljs-built_in">any</span>, value: <span class="hljs-built_in">any</span>) =&gt; <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span> <span class="hljs-meta">{...}</span>
-
-    public store(correlationId: <span class="hljs-built_in">string</span>, key: <span class="hljs-built_in">string</span>, value: <span class="hljs-built_in">any</span>, timeout: number,
-       callback?: (err: <span class="hljs-built_in">any</span>) =&gt; <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span> <span class="hljs-meta">{...}</span>
-
-    public remove(correlationId: <span class="hljs-built_in">string</span>, key: <span class="hljs-built_in">string</span>,
-       callback?: (err: <span class="hljs-built_in">any</span>) =&gt; <span class="hljs-built_in">void</span>) <span class="hljs-meta">{...}</span>
-
-    ...
-}
-</code></pre>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -132,13 +116,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/cache/ICache.ts#L60">cache/ICache.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/cache/ICache.ts#L37">cache/ICache.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for removing key-value pairs
-									from the cache.</p>
+									<p>Removes a value from the cache by its key.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -152,14 +135,13 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>key to delete key-value pair by.</p>
+										<p>a unique value key.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>(optional) callback function that will be called with
-										an error (if one is raised).</p>
+										<p>(optional) callback function that receives an error or null for success</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -195,13 +177,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/cache/ICache.ts#L34">cache/ICache.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/cache/ICache.ts#L15">cache/ICache.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for retrieving key-value pairs
-									from the cache.</p>
+									<p>Retrieves cached value from the cache using its key.
+									If value is missing in the cache or expired it returns null.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -215,14 +197,13 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>key to retrieve value by.</p>
+										<p>a unique value key.</p>
 									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>callback function that will be called with an error
-										or the retrieved value.</p>
+										<p>callback function that receives cached value or error.</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
@@ -261,13 +242,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/2b6f14b/src/cache/ICache.ts#L48">cache/ICache.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-components-node/blob/7c98d3b/src/cache/ICache.ts#L27">cache/ICache.ts:27</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Abstract method that will contain the logic for storing key-value pairs
-									in the cache.</p>
+									<p>Stores value in the cache with expiration time.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -281,26 +261,25 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>key to store the value by in the cache.</p>
+										<p>a unique value key.</p>
 									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the value to store in the cache.</p>
+										<p>a value to store.</p>
 									</div>
 								</li>
 								<li>
 									<h5>timeout: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>expiration timeout for the cache entry.</p>
+										<p>expiration timeout in milliseconds.</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <span class="tsd-signature-type">function</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>(optional) callback function that will be called with
-										an error (if one is raised).</p>
+										<p>(optional) callback function that receives an error or null for success</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
