@@ -17,26 +17,26 @@ import { FileConfigReader } from './FileConfigReader';
  * 
  * ### Configuration parameters ###
  * 
- * path:          path to configuration file
- * parameters:    this entire section is used as template parameters
- *   ...
+ * - path:          path to configuration file
+ * - parameters:    this entire section is used as template parameters
+ * - ...
  * 
  * @see [[IConfigReader]]
  * @see [[FileConfigReader]]
  * 
  * ### Example ###
  * 
- * ======== config.yml ======
- * key1: "{{KEY1_VALUE}}"
- * key2: "{{KEY2_VALUE}}"
- * ===========================
- * 
- * let configReader = new YamlConfigReader("config.yml");
- * 
- * let parameters = ConfigParams.fromTuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC");
- * configReader.readConfig("123", parameters, (err, config) => {
- *      // Result: key1=123;key2=ABC
- * });
+ *     ======== config.yml ======
+ *     key1: "{{KEY1_VALUE}}"
+ *     key2: "{{KEY2_VALUE}}"
+ *     ===========================
+ *     
+ *     let configReader = new YamlConfigReader("config.yml");
+ *     
+ *     let parameters = ConfigParams.fromTuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC");
+ *     configReader.readConfig("123", parameters, (err, config) => {
+ *         // Result: key1=123;key2=ABC
+ *     });
  */
 export class YamlConfigReader extends FileConfigReader {
 

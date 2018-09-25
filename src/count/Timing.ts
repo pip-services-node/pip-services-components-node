@@ -7,12 +7,12 @@ import { ITimingCallback } from './ITimingCallback';
  * 
  * ### Example ###
  * 
- * let timing = counters.beginTiming("mymethod.exec_time");
- * try {
- *     ...
- * } finally {
- *   timing.endTiming();
- * }
+ *     let timing = counters.beginTiming("mymethod.exec_time");
+ *     try {
+ *         ...
+ *     } finally {
+ *         timing.endTiming();
+ *     }
  * 
  */
 export class Timing {

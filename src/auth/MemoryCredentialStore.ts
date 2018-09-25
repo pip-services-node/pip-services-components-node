@@ -14,29 +14,30 @@ import { ICredentialStore } from './ICredentialStore';
  * 
  * ### Configuration parameters ###
  * 
- * [credential key 1]:            
- *   ...                          credential parameters for key 1
- * [credential key 2]:            
- *   ...                          credential parameters for key N
+ * - [credential key 1]:            
+ *     - ...                          credential parameters for key 1
+ * - [credential key 2]:            
+ *     - ...                          credential parameters for key N
+ * - ...
  *  
  * @see [[ICredentialStore]]
  * @see [[CredentialParams]]
  * 
  * ### Example ###
  * 
- * let config = ConfigParams.fromTuples(
- *      "key1.user", "jdoe",
- *      "key1.pass", "pass123",
- *      "key2.user", "bsmith",
- *      "key2.pass", "mypass"
- * );
- *
- * let credentialStore = new MemoryCredentialStore();
- * credentialStore.readCredentials(config);
- * 
- * credentialStore.lookup("123", "key1", (err, credential) => {
- *      // Result: user=jdoe;pass=pass123
- * });
+ *     let config = ConfigParams.fromTuples(
+ *         "key1.user", "jdoe",
+ *         "key1.pass", "pass123",
+ *         "key2.user", "bsmith",
+ *         "key2.pass", "mypass"
+ *     );
+ *     
+ *     let credentialStore = new MemoryCredentialStore();
+ *     credentialStore.readCredentials(config);
+ *     
+ *     credentialStore.lookup("123", "key1", (err, credential) => {
+ *         // Result: user=jdoe;pass=pass123
+ *     });
  */
 export class MemoryCredentialStore implements ICredentialStore, IReconfigurable {
     private readonly _items: StringValueMap = new StringValueMap();

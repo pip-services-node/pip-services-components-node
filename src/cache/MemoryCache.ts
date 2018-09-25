@@ -12,21 +12,21 @@ import { CacheEntry } from './CacheEntry';
  * 
  * ### Configuration parameters ###
  * 
- * options:
- *   timeout:               default caching timeout in milliseconds (default: 1 minute)
- *   max_size:              maximum number of values stored in this cache (default: 1000)        
+ * __options:__
+ * - timeout:               default caching timeout in milliseconds (default: 1 minute)
+ * - max_size:              maximum number of values stored in this cache (default: 1000)        
  *  
  * @see [[ICache]]
  * 
  * ### Example ###
  * 
- * let cache = new MemoryCache();
- * 
- * cache.store("123", "key1", "ABC", (err) => {
- *      cache.store("123", "key1", (err, value) => {
- *          // Result: "ABC"
- *      });
- * });
+ *     let cache = new MemoryCache();
+ *     
+ *     cache.store("123", "key1", "ABC", (err) => {
+ *         cache.store("123", "key1", (err, value) => {
+ *             // Result: "ABC"
+ *         });
+ *     });
  * 
  */
 export class MemoryCache implements ICache, IReconfigurable {
@@ -43,6 +43,11 @@ export class MemoryCache implements ICache, IReconfigurable {
 
 	/**
      * Configures component by passing configuration parameters.
+     * 
+     * __Configuration parameters:__
+     * - options:
+     *     - timeout:               default caching timeout in milliseconds (default: 1 minute)
+     *     - max_size:              maximum number of values stored in this cache (default: 1000)   
      * 
      * @param config    configuration parameters to be set.
 	 */

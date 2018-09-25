@@ -9,15 +9,15 @@ import { StringValueMap } from 'pip-services-commons-node';
  * 
  * ### Configuration parameters ###
  * 
- * discovery_key: key to retrieve parameters from discovery service
- * protocol:      connection protocol like http, https, tcp, udp
- * host:          host name or IP address
- * port:          port number
- * uri:           resource URI or connection string with all parameters in it
+ * - discovery_key: key to retrieve parameters from discovery service
+ * - protocol:      connection protocol like http, https, tcp, udp
+ * - host:          host name or IP address
+ * - port:          port number
+ * - uri:           resource URI or connection string with all parameters in it
  * 
  * In addition to standard parameters ConnectionParams may contain any number of custom parameters
  * 
- * @see [[ConfigParams]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
  * @see [[CredentialParams]]
  * @see [[ConnectionResolver]]
  * @see [[IDiscovery]]
@@ -26,16 +26,16 @@ import { StringValueMap } from 'pip-services-commons-node';
  * 
  * Example ConnectionParams object usage:
  * 
- * let connection = ConnectionParams.fromTuples(
- *  "protocol", "http",
- *  "host", "10.1.1.100",
- *  "port", "8080",
- *  "cluster", "mycluster"
- * );
- * 
- * let host = connection.getHost();                             // Result: "10.1.1.100"
- * let port = connection.getPort();                             // Result: 8080
- * let cluster = connection.getAsNullableString("cluster");     // Result: "mycluster"   
+ *     let connection = ConnectionParams.fromTuples(
+ *         "protocol", "http",
+ *         "host", "10.1.1.100",
+ *         "port", "8080",
+ *         "cluster", "mycluster"
+ *     );
+ *     
+ *     let host = connection.getHost();                             // Result: "10.1.1.100"
+ *     let port = connection.getPort();                             // Result: 8080
+ *     let cluster = connection.getAsNullableString("cluster");     // Result: "mycluster"   
  */
 export class ConnectionParams extends ConfigParams {
 

@@ -13,23 +13,23 @@ import { LogLevelConverter } from './LogLevelConverter';
  * 
  * ### Configuration parameters ###
  * 
- * level:             maximum log level to capture
- * source:            source (context) name
+ * - level:             maximum log level to capture
+ * - source:            source (context) name
  * 
  * ### References ###
  * 
- * - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
+ * - <code>\*:context-info:\*:\*:1.0</code>     (optional) [[ContextInfo]] to detect the context id 
+ *                                              and specify counters source
  * 
  * @see [[Logger]]
  * 
  * ### Example ###
  * 
- * let logger = new ConsoleLogger();
- * logger.setLevel(LogLevel.debug);
- * 
- * logger.error("123", ex, "Error occured: %s", ex.message);
- * logger.debug("123", "Everything is OK.");
- * 
+ *     let logger = new ConsoleLogger();
+ *     logger.setLevel(LogLevel.debug);
+ *     
+ *     logger.error("123", ex, "Error occured: %s", ex.message);
+ *     logger.debug("123", "Everything is OK.");
  */
 export class ConsoleLogger extends Logger {
     

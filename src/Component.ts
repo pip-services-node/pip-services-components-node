@@ -17,16 +17,17 @@ import { CompositeCounters } from './count/CompositeCounters';
  * 
  * ### Configuration parameters ###
  * 
- * dependencies:
- *   [dependency name 1]: Dependency 1 locator (descriptor)
- *   ...
- *   [dependency name N]: Dependency N locator (descriptor)
+ * - __dependencies:__
+ *     - [dependency name 1]: Dependency 1 locator (descriptor)
+ *     - ...
+ *     - [dependency name N]: Dependency N locator (descriptor)
  * 
  * ### References ###
  * 
- * - *:counters:*:*:1.0       (optional) [[ICounters]] components to pass collected measurements
- * - *:logger:*:*:1.0         (optional) [[ILogger]] components to pass log messages
- * - ...                      References must match configured dependencies.
+ * - <code>\*:counters:\*:\*:1.0</code>     (optional) [[ICounters]] components to pass collected 
+ *                                          measurements
+ * - <code>\*:logger:\*:\*:1.0</code>       (optional) [[ILogger]] components to pass log messages
+ * - ...                                    References must match configured dependencies.
  */
 export class Component implements IConfigurable, IReferenceable {
     protected _dependencyResolver: DependencyResolver = new DependencyResolver();

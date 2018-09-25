@@ -19,37 +19,38 @@ import { ICredentialStore } from './ICredentialStore';
  * 
  * ### Configuration parameters ###
  * 
- * credential:    
- *   store_key:                   (optional) a key to retrieve the credentials from [[ICredentialStore]]
- *   ...                          other credential parameters
+ * __credential:__ 
+ * - store_key:                   (optional) a key to retrieve the credentials from [[ICredentialStore]]
+ * - ...                          other credential parameters
  * 
- * credentials:                   alternative to credential
- *   [credential params 1]:       first credential parameters
- *     ...
- *   [credential params N]:       Nth credential parameters
- *     ...
+ * __credentials:__                   alternative to credential
+ * - [credential params 1]:       first credential parameters
+ *     - ...                      credential parameters for key 1
+ * - ...
+ * - [credential params N]:       Nth credential parameters
+ *     - ...                      credential parameters for key N
  * 
  * ### References ###
  * 
- * - *:credential-store:*:*:1.0     (optional) Credential stores to resolve credentials
+ * - <code>\*:credential-store:\*:\*:1.0</code>  (optional) Credential stores to resolve credentials
  * 
  * @see [[CredentialParams]]
  * @see [[ICredentialStore]]
  * 
  * ### Example ###
  * 
- * let config = ConfigParams.fromTuples(
- *      "credential.user", "jdoe",
- *      "credential.pass",  "pass123"
- * );
- * 
- * let credentialResolver = new CredentialResolver();
- * credentialResolver.configure(config);
- * credentialResolver.setReferences(references);
- * 
- * credentialResolver.lookup("123", (err, credential) => {
- *      // Now use credential...
- * });
+ *     let config = ConfigParams.fromTuples(
+ *         "credential.user", "jdoe",
+ *         "credential.pass",  "pass123"
+ *     );
+ *     
+ *     let credentialResolver = new CredentialResolver();
+ *     credentialResolver.configure(config);
+ *     credentialResolver.setReferences(references);
+ *     
+ *     credentialResolver.lookup("123", (err, credential) => {
+ *         // Now use credential...
+ *     });
  * 
  */
 export class CredentialResolver {

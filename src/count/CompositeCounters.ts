@@ -14,30 +14,30 @@ import { ITimingCallback } from './ITimingCallback';
  * 
  * ### References ###
  * 
- * - *:counters:*:*:1.0         (optional) [[ICounters]] components to pass collected measurements
+ * - <code>\*:counters:\*:\*:1.0</code>     (optional) [[ICounters]] components to pass collected measurements
  * 
  * @see [[ICounters]]
  * 
  * ### Example ###
  * 
- * class MyComponent implements IReferenceable {
- *     private _counters: CompositeCounters = new CompositeCounters();
- * 
- *     public setReferences(references: IReferences): void {
- *         this._counters.setReferences(references);
- *         ...
- *     }
- * 
- *     public myMethod(): void {
- *         this._counters.increment("mycomponent.mymethod.calls");
- *         var timing = this._counters.beginTiming("mycomponent.mymethod.exec_time");
- *         try {
- *            ...
- *         } finally {
- *             timing.endTiming();
+ *     class MyComponent implements IReferenceable {
+ *         private _counters: CompositeCounters = new CompositeCounters();
+ *         
+ *         public setReferences(references: IReferences): void {
+ *             this._counters.setReferences(references);
+ *             ...
+ *         }
+ *         
+ *         public myMethod(): void {
+ *             this._counters.increment("mycomponent.mymethod.calls");
+ *             var timing = this._counters.beginTiming("mycomponent.mymethod.exec_time");
+ *             try {
+ *                 ...
+ *             } finally {
+ *                 timing.endTiming();
+ *             }
  *         }
  *     }
- * }
  * 
  */
 export class CompositeCounters implements ICounters, ITimingCallback, IReferenceable {

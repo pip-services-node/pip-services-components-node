@@ -11,8 +11,8 @@ import { ConfigReader } from './ConfigReader'
  * ### Configuration parameters ###
  * 
  * - path:          path to configuration file
- * - parameters:            this entire section is used as template parameters
- *   ...
+ * - parameters:    this entire section is used as template parameters
+ * - ...
  * 
  * @see [[IConfigReader]]
  * @see [[ConfigReader]]
@@ -32,6 +32,11 @@ export abstract class FileConfigReader extends ConfigReader {
 
     /**
      * Configures component by passing configuration parameters.
+     * 
+     * __Configuration parameters:__
+     * - path:          path to configuration file
+     * - parameters:    this entire section is used as template parameters
+     * - ...
      * 
      * @param config    configuration parameters to be set.
      */

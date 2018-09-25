@@ -14,13 +14,13 @@ import { CreateException } from './CreateException';
  * 
  * ### Example ###
  * 
- * let factory = new CompositeFactory();
- * factory.add(new DefaultLoggerFactory());
- * factory.add(new DefaultCountersFactory());
- * 
- * let loggerLocator = new Descriptor("*", "logger", "*", "*", "1.0");
- * factory.canCreate(loggerLocator); 		// Result: Descriptor("pip-service", "logger", "null", "default", "1.0")
- * factory.create(loggerLocator); 			// Result: created NullLogger
+ *     let factory = new CompositeFactory();
+ *     factory.add(new DefaultLoggerFactory());
+ *     factory.add(new DefaultCountersFactory());
+ *     
+ *     let loggerLocator = new Descriptor("*", "logger", "*", "*", "1.0");
+ *     factory.canCreate(loggerLocator); 		// Result: Descriptor("pip-service", "logger", "null", "default", "1.0")
+ *     factory.create(loggerLocator); 			// Result: created NullLogger
  */
 export class CompositeFactory implements IFactory {
     private _factories: IFactory[] = [];

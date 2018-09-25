@@ -14,30 +14,30 @@ import { LogLevel } from './LogLevel';
  * 
  * ### References ###
  * 
- * - *:logger:*:*:1.0         (optional) [[ILogger]] components to pass log messages
+ * - <code>\*:logger:\*:\*:1.0</code> 	(optional) [[ILogger]] components to pass log messages
  * 
  * @see [[ILogger]]
  * 
  * ### Example ###
  * 
- * class MyComponent implements IConfigurable, IReferenceable {
- *     private _logger: CompositeLogger = new CompositeLogger();
- * 
- *     public configure(config: ConfigParams): void {
- *        this._logger.configure(config);
- *        ...
+ *     class MyComponent implements IConfigurable, IReferenceable {
+ *         private _logger: CompositeLogger = new CompositeLogger();
+ *     
+ *         public configure(config: ConfigParams): void {
+ *             this._logger.configure(config);
+ *             ...
+ *         }
+ *     
+ *         public setReferences(references: IReferences): void {
+ *             this._logger.setReferences(references);
+ *             ...
+ *         }
+ *     
+ *         public myMethod(string correlationId): void {
+ *             this._logger.debug(correlationId, "Called method mycomponent.mymethod");
+ *             ...
+ *         }
  *     }
- * 
- *     public setReferences(references: IReferences): void {
- *         this._logger.setReferences(references);
- *         ...
- *     }
- * 
- *     public myMethod(string correlationId): void {
- *         this._logger.debug(correlationId, "Called method mycomponent.mymethod");
- *         ...
- *     }
- * }
  * 
  */
 export class CompositeLogger extends Logger implements IReferenceable {
