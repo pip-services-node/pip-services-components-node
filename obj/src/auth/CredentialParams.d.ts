@@ -7,35 +7,35 @@ import { ConfigParams } from 'pip-services-commons-node';
  *
  * ### Configuration parameters ###
  *
- * store_key:     key to retrieve parameters from credential store
- * username:      user name
- * user:          alternative to username
- * password:      user password
- * pass:          alternative to password
- * access_id:     application access id
- * client_id:     alternative to access_id
- * access_key:    application secret key
- * client_key:    alternative to access_key
- * secret_key:    alternative to access_key
+ * - store_key:     key to retrieve parameters from credential store
+ * - username:      user name
+ * - user:          alternative to username
+ * - password:      user password
+ * - pass:          alternative to password
+ * - access_id:     application access id
+ * - client_id:     alternative to access_id
+ * - access_key:    application secret key
+ * - client_key:    alternative to access_key
+ * - secret_key:    alternative to access_key
  *
  * In addition to standard parameters CredentialParams may contain any number of custom parameters
  *
- * @see [[ConfigParams]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
  * @see [[ConnectionParams]]
  * @see [[CredentialResolver]]
  * @see [[ICredentialStore]]
  *
  * ### Example ###
  *
- * let credential = CredentialParams.fromTuples(
- *  "user", "jdoe",
- *  "pass", "pass123",
- *  "pin", "321"
- * );
+ *     let credential = CredentialParams.fromTuples(
+ *         "user", "jdoe",
+ *         "pass", "pass123",
+ *         "pin", "321"
+ *     );
  *
- * let username = credential.getUsername();             // Result: "jdoe"
- * let password = credential.getPassword();             // Result: "pass123"
- * let pin = credential.getAsNullableString("pin");     // Result: 321
+ *     let username = credential.getUsername();             // Result: "jdoe"
+ *     let password = credential.getPassword();             // Result: "pass123"
+ *     let pin = credential.getAsNullableString("pin");     // Result: 321
  */
 export declare class CredentialParams extends ConfigParams {
     /**

@@ -9,8 +9,8 @@ import { ConfigReader } from './ConfigReader';
  * ### Configuration parameters ###
  *
  * - path:          path to configuration file
- * - parameters:            this entire section is used as template parameters
- *   ...
+ * - parameters:    this entire section is used as template parameters
+ * - ...
  *
  * @see [[IConfigReader]]
  * @see [[ConfigReader]]

@@ -17,11 +17,11 @@ import { IOpenable } from "pip-services-commons-node";
  *
  * ### Example ###
  *
- * let shutdown = new Shutdown();
- * shutdown.configure(ConfigParams.fromTuples(
- *      "mode": "exception"
- * ));
- * shutdown.shutdown();         // Result: Bang!!! the process crashes
+ *     let shutdown = new Shutdown();
+ *     shutdown.configure(ConfigParams.fromTuples(
+ *         "mode": "exception"
+ *     ));
+ *     shutdown.shutdown();         // Result: Bang!!! the process crashes
  */
 export declare class Shutdown implements IConfigurable, IOpenable {
     private _interval;

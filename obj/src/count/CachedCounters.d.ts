@@ -13,8 +13,10 @@ import { Counter } from './Counter';
  * ### Configuration parameters ###
  *
  * - options:
- *   - interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
- *   - reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
+ *     - interval:        interval in milliseconds to save current counters measurements
+ *     (default: 5 mins)
+ *     - reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset
+ *     (default: 0)
  */
 export declare abstract class CachedCounters implements ICounters, IReconfigurable, ITimingCallback {
     protected _interval: number;

@@ -6,12 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
  *
  * ### Example ###
  *
- * let timing = counters.beginTiming("mymethod.exec_time");
- * try {
- *     ...
- * } finally {
- *   timing.endTiming();
- * }
+ *     let timing = counters.beginTiming("mymethod.exec_time");
+ *     try {
+ *         ...
+ *     } finally {
+ *         timing.endTiming();
+ *     }
  *
  */
 class Timing {

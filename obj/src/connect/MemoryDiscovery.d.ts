@@ -7,29 +7,29 @@ import { IDiscovery } from './IDiscovery';
  *
  * ### Configuration parameters ###
  *
- * [connection key 1]:
- *   ...                          connection parameters for key 1
- * [connection key 2]:
- *   ...                          connection parameters for key N
+ * - [connection key 1]:
+ *     - ...                          connection parameters for key 1
+ * - [connection key 2]:
+ *     - ...                          connection parameters for key N
  *
  * @see [[IDiscovery]]
  * @see [[ConnectionParams]]
  *
  * ### Example ###
  *
- * let config = ConfigParams.fromTuples(
- *      "key1.host", "10.1.1.100",
- *      "key1.port", "8080",
- *      "key2.host", "10.1.1.100",
- *      "key2.port", "8082"
- * );
+ *     let config = ConfigParams.fromTuples(
+ *         "key1.host", "10.1.1.100",
+ *         "key1.port", "8080",
+ *         "key2.host", "10.1.1.100",
+ *         "key2.port", "8082"
+ *     );
  *
- * let discovery = new MemoryDiscovery();
- * discovery.readConnections(config);
+ *     let discovery = new MemoryDiscovery();
+ *     discovery.readConnections(config);
  *
- * discovery.resolve("123", "key1", (err, connection) => {
- *      // Result: host=10.1.1.100;port=8080
- * });
+ *     discovery.resolve("123", "key1", (err, connection) => {
+ *         // Result: host=10.1.1.100;port=8080
+ *     });
  */
 export declare class MemoryDiscovery implements IDiscovery, IReconfigurable {
     private _items;

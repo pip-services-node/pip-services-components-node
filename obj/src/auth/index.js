@@ -2,19 +2,21 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @module auth
- * @preferred
  *
  * Todo: Rewrite this description
  *
+ * @preferred
  * Contains credentials implementation.
  *
- * Credentials – passwords, logins, application keys, secrets. This information is usually linked with connection parameters.
- * Connection parameters separate from authentication, because auth. is saved as a secret, and stored separately from
- * configuration parameters (host name, ip addresses). They need added security and protection, so they were separated.
+ * Credentials – passwords, logins, application keys, secrets. This information is usually linked
+ * with connection parameters. Connection parameters separate from authentication, because auth.
+ * is saved as a secret, and stored separately from configuration parameters (host name, ip
+ * addresses). They need added security and protection, so they were separated.
  *
  * Credential parameters include various credentials.
  *
- * Interfaces and abstract classes for credential stores, which can save or retrieve various credential parameters.
+ * Interfaces and abstract classes for credential stores, which can save or retrieve various
+ * credential parameters.
  */
 var CredentialParams_1 = require("./CredentialParams");
 exports.CredentialParams = CredentialParams_1.CredentialParams;

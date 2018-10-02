@@ -8,13 +8,13 @@ import { IFactory } from './IFactory';
  *
  * ### Example ###
  *
- * let factory = new CompositeFactory();
- * factory.add(new DefaultLoggerFactory());
- * factory.add(new DefaultCountersFactory());
+ *     let factory = new CompositeFactory();
+ *     factory.add(new DefaultLoggerFactory());
+ *     factory.add(new DefaultCountersFactory());
  *
- * let loggerLocator = new Descriptor("*", "logger", "*", "*", "1.0");
- * factory.canCreate(loggerLocator); 		// Result: Descriptor("pip-service", "logger", "null", "default", "1.0")
- * factory.create(loggerLocator); 			// Result: created NullLogger
+ *     let loggerLocator = new Descriptor("*", "logger", "*", "*", "1.0");
+ *     factory.canCreate(loggerLocator); 		// Result: Descriptor("pip-service", "logger", "null", "default", "1.0")
+ *     factory.create(loggerLocator); 			// Result: created NullLogger
  */
 export declare class CompositeFactory implements IFactory {
     private _factories;

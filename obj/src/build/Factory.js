@@ -8,23 +8,23 @@ class Registration {
  *
  * #### Example ###
  *
- * let factory = new Factory();
+ *     let factory = new Factory();
  *
- * factory.registerAsType(
- * 		new Descriptor("mygroup", "mycomponent1", "default", "*", "1.0"),
- * 		MyComponent1
- * );
- * factory.register(
- * 		new Descriptor("mygroup", "mycomponent2", "default", "*", "1.0"),
- * 		(locator) => {
- * 			return new MyComponent2();
- * 		}
- * );
+ *     factory.registerAsType(
+ *         new Descriptor("mygroup", "mycomponent1", "default", "*", "1.0"),
+ *         MyComponent1
+ *     );
+ *     factory.register(
+ *         new Descriptor("mygroup", "mycomponent2", "default", "*", "1.0"),
+ *         (locator) => {
+ *             return new MyComponent2();
+ *         }
+ *     );
  *
- * factory.create(new Descriptor("mygroup", "mycomponent1", "default", "name1", "1.0"))
- * factory.create(new Descriptor("mygroup", "mycomponent2", "default", "name2", "1.0"))
+ *     factory.create(new Descriptor("mygroup", "mycomponent1", "default", "name1", "1.0"))
+ *     factory.create(new Descriptor("mygroup", "mycomponent2", "default", "name2", "1.0"))
  *
- * @see [[Descriptor]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/classes/refer.descriptor.html Descriptor]]
  * @see [[IFactory]]
  */
 class Factory {

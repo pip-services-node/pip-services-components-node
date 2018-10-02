@@ -16,26 +16,26 @@ const FileConfigReader_1 = require("./FileConfigReader");
  *
  * ### Configuration parameters ###
  *
- * path:          path to configuration file
- * parameters:    this entire section is used as template parameters
- *   ...
+ * - path:          path to configuration file
+ * - parameters:    this entire section is used as template parameters
+ * - ...
  *
  * @see [[IConfigReader]]
  * @see [[FileConfigReader]]
  *
  * ### Example ###
  *
- * ======== config.yml ======
- * key1: "{{KEY1_VALUE}}"
- * key2: "{{KEY2_VALUE}}"
- * ===========================
+ *     ======== config.yml ======
+ *     key1: "{{KEY1_VALUE}}"
+ *     key2: "{{KEY2_VALUE}}"
+ *     ===========================
  *
- * let configReader = new YamlConfigReader("config.yml");
+ *     let configReader = new YamlConfigReader("config.yml");
  *
- * let parameters = ConfigParams.fromTuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC");
- * configReader.readConfig("123", parameters, (err, config) => {
- *      // Result: key1=123;key2=ABC
- * });
+ *     let parameters = ConfigParams.fromTuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC");
+ *     configReader.readConfig("123", parameters, (err, config) => {
+ *         // Result: key1=123;key2=ABC
+ *     });
  */
 class YamlConfigReader extends FileConfigReader_1.FileConfigReader {
     /**

@@ -15,19 +15,19 @@ import { IConfigReader } from './IConfigReader';
  *
  * ### Example ####
  *
- * let config = ConfigParams.fromTuples(
- *      "connection.host", "{{SERVICE_HOST}}",
- *      "connection.port", "{{SERVICE_PORT}}{{^SERVICE_PORT}}8080{{/SERVICE_PORT}}"
- * );
+ *     let config = ConfigParams.fromTuples(
+ *         "connection.host", "{{SERVICE_HOST}}",
+ *         "connection.port", "{{SERVICE_PORT}}{{^SERVICE_PORT}}8080{{/SERVICE_PORT}}"
+ *     );
  *
- * let configReader = new MemoryConfigReader();
- * configReader.configure(config);
+ *     let configReader = new MemoryConfigReader();
+ *     configReader.configure(config);
  *
- * let parameters = ConfigParams.fromValue(process.env);
+ *     let parameters = ConfigParams.fromValue(process.env);
  *
- * configReader.readConfig("123", parameters, (err, config) => {
- *      // Possible result: connection.host=10.1.1.100;connection.port=8080
- * });
+ *     configReader.readConfig("123", parameters, (err, config) => {
+ *         // Possible result: connection.host=10.1.1.100;connection.port=8080
+ *     });
  *
  */
 export declare class MemoryConfigReader implements IConfigReader, IReconfigurable {

@@ -9,30 +9,30 @@ const Logger_1 = require("./Logger");
  *
  * ### References ###
  *
- * - *:logger:*:*:1.0         (optional) [[ILogger]] components to pass log messages
+ * - <code>\*:logger:\*:\*:1.0</code> 	(optional) [[ILogger]] components to pass log messages
  *
  * @see [[ILogger]]
  *
  * ### Example ###
  *
- * class MyComponent implements IConfigurable, IReferenceable {
- *     private _logger: CompositeLogger = new CompositeLogger();
+ *     class MyComponent implements IConfigurable, IReferenceable {
+ *         private _logger: CompositeLogger = new CompositeLogger();
  *
- *     public configure(config: ConfigParams): void {
- *        this._logger.configure(config);
- *        ...
- *     }
+ *         public configure(config: ConfigParams): void {
+ *             this._logger.configure(config);
+ *             ...
+ *         }
  *
- *     public setReferences(references: IReferences): void {
- *         this._logger.setReferences(references);
- *         ...
- *     }
+ *         public setReferences(references: IReferences): void {
+ *             this._logger.setReferences(references);
+ *             ...
+ *         }
  *
- *     public myMethod(string correlationId): void {
- *         this._logger.debug(correlationId, "Called method mycomponent.mymethod");
- *         ...
+ *         public myMethod(string correlationId): void {
+ *             this._logger.debug(correlationId, "Called method mycomponent.mymethod");
+ *             ...
+ *         }
  *     }
- * }
  *
  */
 class CompositeLogger extends Logger_1.Logger {

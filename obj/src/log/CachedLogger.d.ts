@@ -9,15 +9,16 @@ import { LogMessage } from './LogMessage';
  *
  * ### Configuration parameters ###
  *
- * level:             maximum log level to capture
- * source:            source (context) name
- * options:
- *   interval:        interval in milliseconds to save log messages (default: 10 seconds)
- *   max_cache_size:  maximum number of messages stored in this cache (default: 100)
+ * - level:             maximum log level to capture
+ * - source:            source (context) name
+ * - options:
+ *     - interval:        interval in milliseconds to save log messages (default: 10 seconds)
+ *     - max_cache_size:  maximum number of messages stored in this cache (default: 100)
  *
  * ### References ###
  *
- * - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
+ * - <code>\*:context-info:\*:\*:1.0</code>     (optional) [[ContextInfo]] to detect the context id
+ *                                              and specify counters source
  *
  * @see [[ILogger]]
  * @see [[Logger]]

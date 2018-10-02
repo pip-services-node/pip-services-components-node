@@ -17,7 +17,8 @@ import { LogLevel } from './LogLevel';
  *
  * ### References ###
  *
- * - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
+ * - <code>\*:context-info:\*:\*:1.0</code>     (optional) [[ContextInfo]] to detect the context id
+ *                                              and specify counters source
  *
  * @see [[ILogger]]
  */

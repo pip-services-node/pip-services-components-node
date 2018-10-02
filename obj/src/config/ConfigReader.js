@@ -11,8 +11,8 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
  *
  * ### Configuration parameters ###
  *
- * parameters:            this entire section is used as template parameters
- *   ...
+ * - __parameters:__            this entire section is used as template parameters
+ *     - ...
  *
  *  @see [[IConfigReader]]
  */

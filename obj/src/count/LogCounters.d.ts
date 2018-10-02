@@ -8,14 +8,17 @@ import { CachedCounters } from './CachedCounters';
  *
  * ### Configuration parameters ###
  *
- * options:
- *   interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
- *   reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
+ * - __options:__
+ *     - interval:          interval in milliseconds to save current counters measurements
+ *                          (default: 5 mins)
+ *     - reset_timeout:     timeout in milliseconds to reset the counters. 0 disables the reset
+ *                          (default: 0)
  *
  * ### References ###
  *
- * - *:logger:*:*:1.0           [[ILogger]] components to dump the captured counters
- * - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
+ * - <code>\*:logger:\*:\*:1.0</code>           [[ILogger]] components to dump the captured counters
+ * - <code>\*:context-info:\*:\*:1.0</code>     (optional) [[ContextInfo]] to detect the context id
+ *                                              and specify counters source
  *
  * @see [[Counter]]
  * @see [[CachedCounters]]
@@ -23,20 +26,20 @@ import { CachedCounters } from './CachedCounters';
  *
  * ### Example ###
  *
- * let counters = new LogCounters();
- * counters.setReferences(References.fromTuples(
- *     new Descriptor("pip-services", "logger", "console", "default", "1.0"), new ConsoleLogger()
- * ));
+ *     let counters = new LogCounters();
+ *     counters.setReferences(References.fromTuples(
+ *         new Descriptor("pip-services", "logger", "console", "default", "1.0"), new ConsoleLogger()
+ *     ));
  *
- * counters.increment("mycomponent.mymethod.calls");
- * let timing = counters.beginTiming("mycomponent.mymethod.exec_time");
- * try {
- *     ...
- * } finally {
- *     timing.endTiming();
- * }
+ *     counters.increment("mycomponent.mymethod.calls");
+ *     let timing = counters.beginTiming("mycomponent.mymethod.exec_time");
+ *     try {
+ *         ...
+ *     } finally {
+ *         timing.endTiming();
+ *     }
  *
- * counters.dump();
+ *     counters.dump();
  */
 export declare class LogCounters extends CachedCounters implements IReferenceable {
     private readonly _logger;

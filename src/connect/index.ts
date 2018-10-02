@@ -1,9 +1,9 @@
 /** 
  * @module connect 
- * @preferred
  * 
  * Todo: Rewrite this description
  * 
+ * @preferred
  * Contains implementation of connection parameters, using various connection strings, 
  * which are stripped of all credentials. If we need to configure a service, the port, 
  * ip address, protocol, and other parameters – we use the ConnectionParams object, and 

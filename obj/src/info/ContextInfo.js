@@ -13,23 +13,23 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
  *
  * ### Configuration parameters ###
  *
- * name: 					the context (container or process) name
- * description: 		   	human-readable description of the context
- * properties: 			entire section of additional descriptive properties
- * 	 ...
+ * - name: 					the context (container or process) name
+ * - description: 		   	human-readable description of the context
+ * - properties: 			entire section of additional descriptive properties
+ * - ...
  *
  * ### Example ###
  *
- * let contextInfo = new ContextInfo();
- * contextInfo.configure(ConfigParams.fromTuples(
- * 		"name", "MyMicroservice",
- * 		"description", "My first microservice"
- * ));
+ *     let contextInfo = new ContextInfo();
+ *     contextInfo.configure(ConfigParams.fromTuples(
+ *         "name", "MyMicroservice",
+ *         "description", "My first microservice"
+ *     ));
  *
- * context.name;			// Result: "MyMicroservice"
- * context.contextId;		// Possible result: "mylaptop"
- * context.startTime;		// Possible result: 2018-01-01:22:12:23.45Z
- * context.uptime;			// Possible result: 3454345
+ *     context.name;			// Result: "MyMicroservice"
+ *     context.contextId;		// Possible result: "mylaptop"
+ *     context.startTime;		// Possible result: 2018-01-01:22:12:23.45Z
+ *     context.uptime;			// Possible result: 3454345
  */
 class ContextInfo {
     /**

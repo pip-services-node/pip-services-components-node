@@ -6,8 +6,8 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
  *
  * ### Configuration parameters ###
  *
- * options:
- *   retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)
+ * - __options:__
+ *     - retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)
  *
  * @see [[ILock]]
  */

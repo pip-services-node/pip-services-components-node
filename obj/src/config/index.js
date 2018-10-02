@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @module config
- * @preferred
  *
  * Todo: Rewrite this description
  *
+ * @preferred
  * Contains implementation of the config design pattern.
  *
  * ConfigReader's Parameterize method allows us to take a standard configuration, and,

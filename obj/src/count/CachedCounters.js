@@ -10,8 +10,10 @@ const Counter_1 = require("./Counter");
  * ### Configuration parameters ###
  *
  * - options:
- *   - interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
- *   - reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
+ *     - interval:        interval in milliseconds to save current counters measurements
+ *     (default: 5 mins)
+ *     - reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset
+ *     (default: 0)
  */
 class CachedCounters {
     constructor() {

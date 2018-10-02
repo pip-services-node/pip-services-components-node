@@ -21,11 +21,11 @@ const pip_services_commons_node_2 = require("pip-services-commons-node");
  *
  * ### Example ###
  *
- * let shutdown = new Shutdown();
- * shutdown.configure(ConfigParams.fromTuples(
- *      "mode": "exception"
- * ));
- * shutdown.shutdown();         // Result: Bang!!! the process crashes
+ *     let shutdown = new Shutdown();
+ *     shutdown.configure(ConfigParams.fromTuples(
+ *         "mode": "exception"
+ *     ));
+ *     shutdown.shutdown();         // Result: Bang!!! the process crashes
  */
 class Shutdown {
     /**

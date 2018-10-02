@@ -10,37 +10,37 @@ import { ConnectionParams } from './ConnectionParams';
  *
  * ### Configuration parameters ###
  *
- * connection:
- *   discovery_key:               (optional) a key to retrieve the connection from [[IDiscovery]]
- *   ...                          other connection parameters
+ * - __connection:__
+ *     - discovery_key:               (optional) a key to retrieve the connection from [[IDiscovery]]
+ *     - ...                          other connection parameters
  *
- * connections:                   alternative to connection
- *   [connection params 1]:       first connection parameters
- *     ...
- *   [connection params N]:       Nth connection parameters
- *     ...
+ * - __connections:__                  alternative to connection
+ *     - [connection params 1]:       first connection parameters
+ *         - ...                      connection parameters for key 1
+ *     - [connection params N]:       Nth connection parameters
+ *         - ...                      connection parameters for key N
  *
  * ### References ###
  *
- * - *:discovery:*:*:1.0            (optional) IDiscovery services to resolve connections
+ * - <code>\*:discovery:\*:\*:1.0</code>    (optional) IDiscovery services to resolve connections
  *
  * @see [[ConnectionParams]]
  * @see [[IDiscovery]]
  *
  * ### Example ###
  *
- * let config = ConfigParams.fromTuples(
- *      "connection.host", "10.1.1.100",
- *      "connection.port", 8080
- * );
+ *     let config = ConfigParams.fromTuples(
+ *         "connection.host", "10.1.1.100",
+ *         "connection.port", 8080
+ *     );
  *
- * let connectionResolver = new ConnectionResolver();
- * connectionResolver.configure(config);
- * connectionResolver.setReferences(references);
+ *     let connectionResolver = new ConnectionResolver();
+ *     connectionResolver.configure(config);
+ *     connectionResolver.setReferences(references);
  *
- * connectionResolver.resolve("123", (err, connection) => {
- *      // Now use connection...
- * });
+ *     connectionResolver.resolve("123", (err, connection) => {
+ *         // Now use connection...
+ *     });
  */
 export declare class ConnectionResolver {
     private readonly _connections;

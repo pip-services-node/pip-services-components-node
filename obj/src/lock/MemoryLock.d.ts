@@ -7,27 +7,27 @@ import { Lock } from './Lock';
  *
  * ### Configuration parameters ###
  *
- * options:
- *   retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)
+ * - __options:__
+ *     - retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)
  *
  * @see [[ILock]]
  * @see [[Lock]]
  *
  * ### Example ###
  *
- * let lock = new MemoryLock();
+ *     let lock = new MemoryLock();
  *
- * lock.acquire("123", "key1", (err) => {
- *      if (err == null) {
- *          try {
- *            // Processing...
- *          } finally {
- *             lock.releaseLock("123", "key1", (err) => {
- *                // Continue...
- *             });
- *          }
- *      }
- * });
+ *     lock.acquire("123", "key1", (err) => {
+ *         if (err == null) {
+ *             try {
+ *                 // Processing...
+ *             } finally {
+ *                 lock.releaseLock("123", "key1", (err) => {
+ *                     // Continue...
+ *                 });
+ *             }
+ *         }
+ *     });
  */
 export declare class MemoryLock extends Lock {
     private _locks;
