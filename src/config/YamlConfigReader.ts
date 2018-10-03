@@ -13,7 +13,7 @@ import { FileConfigReader } from './FileConfigReader';
 /**
  * Config reader that reads configuration from YAML file.
  * 
- * The reader supports parameterization using Handlebar template engine.
+ * The reader supports parameterization using Handlebars template engine.
  * 
  * ### Configuration parameters ###
  * 

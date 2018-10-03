@@ -2,7 +2,7 @@
 import { ITimingCallback } from './ITimingCallback';
 
 /**
- * Callback object returned by [[ICounters.begingTiming]] to end timing
+ * Callback object returned by {@link ICounters.beginTiming} to end timing
  * of execution block and update the associated counter.
  * 
  * ### Example ###

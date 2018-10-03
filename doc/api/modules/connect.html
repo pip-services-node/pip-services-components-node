@@ -69,14 +69,14 @@
 					<p>Contains implementation of connection parameters, using various connection strings,
 						which are stripped of all credentials. If we need to configure a service, the port,
 						ip address, protocol, and other parameters – we use the ConnectionParams object, and
-						relevant helper classes (like ConnectionResolver), for acquiring these parameters,
+						relevant helper classes (like <a href="../classes/connect.connectionresolver.html">ConnectionResolver</a>), for acquiring these parameters,
 					and for discovery of objects, components (which store and retrieve connection parameters).</p>
 					<h3 id="discovery">Discovery</h3>
 					<p>Service that store a registry of various end-points (what services are where, and how to
 						connect to them). It knows the end-points, but doesn&#39;t have the credentials to connect to them.
 					Separated for security reasons.</p>
-					<p>IDiscovery – interface for creating registries.</p>
-					<p>MemoryDiscovery – registry that is stored in memory.</p>
+					<p><a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html" class="external">IDiscovery</a> – interface for creating registries.</p>
+					<p><a href="../classes/connect.memorydiscovery.html">MemoryDiscovery</a> – registry that is stored in memory.</p>
 					<p>There exist 2 types of discovery:</p>
 					<ul>
 						<li><p>Static discovery: all services have static IP addresses (like DNS, which also works using static

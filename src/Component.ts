@@ -24,8 +24,7 @@ import { CompositeCounters } from './count/CompositeCounters';
  * 
  * ### References ###
  * 
- * - <code>\*:counters:\*:\*:1.0</code>     (optional) [[ICounters]] components to pass collected 
- *                                          measurements
+ * - <code>\*:counters:\*:\*:1.0</code>     (optional) [[ICounters]] components to pass collected measurements
  * - <code>\*:logger:\*:\*:1.0</code>       (optional) [[ILogger]] components to pass log messages
  * - ...                                    References must match configured dependencies.
  */

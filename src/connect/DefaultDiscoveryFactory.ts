@@ -5,7 +5,7 @@ import { Factory } from '../build/Factory';
 import { MemoryDiscovery } from './MemoryDiscovery';
 
 /**
- * Creates [[IDiscovery]] components by their descriptors.
+ * Creates [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] components by their descriptors.
  * 
  * @see [[Factory]]
  * @see [[IDiscovery]]

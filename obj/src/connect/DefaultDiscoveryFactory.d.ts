@@ -2,7 +2,7 @@
 import { Descriptor } from 'pip-services-commons-node';
 import { Factory } from '../build/Factory';
 /**
- * Creates [[IDiscovery]] components by their descriptors.
+ * Creates [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] components by their descriptors.
  *
  * @see [[Factory]]
  * @see [[IDiscovery]]

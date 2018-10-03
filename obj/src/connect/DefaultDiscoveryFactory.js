@@ -5,7 +5,7 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
 const Factory_1 = require("../build/Factory");
 const MemoryDiscovery_1 = require("./MemoryDiscovery");
 /**
- * Creates [[IDiscovery]] components by their descriptors.
+ * Creates [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] components by their descriptors.
  *
  * @see [[Factory]]
  * @see [[IDiscovery]]
