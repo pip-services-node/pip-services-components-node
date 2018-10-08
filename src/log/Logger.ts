@@ -26,8 +26,7 @@ import { ContextInfo } from '../info/ContextInfo';
  * 
  * ### References ###
  * 
- * - <code>\*:context-info:\*:\*:1.0</code>     (optional) [[ContextInfo]] to detect the context id 
- *                                              and specify counters source
+ * - <code>\*:context-info:\*:\*:1.0</code>     (optional) [[ContextInfo]] to detect the context id and specify counters source
  * 
  * @see [[ILogger]]
  */
